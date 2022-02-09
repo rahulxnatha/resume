@@ -105,13 +105,27 @@
 
 const articles = document.getElementsByTagName("article");
 
-
+var clickedArticle = false;
 
 for (let i = 0; i < articles.length; i++) {
 
     articles[i].addEventListener("click", () => {
         articles[i].classList.toggle("active");
         articles[i].classList.toggle("microinteraction");
+
+        document.getElementById("defaultView").style.display = "none";
+        document.getElementById("linkedin_6830070522202718208").style.display = "block";
+      
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.getElementById("color_inversion_notice_box").style.display = "block";
+        } else {
+            document.getElementById("color_inversion_notice_box").style.display = "none";
+        }
+
+
+        document.getElementById("blurFocusScreen").style.display = "none";
+        clickedArticle = true;
+
 
         // articles[i].className = 'microinteraction';
 
@@ -130,7 +144,7 @@ function removeActive(j) {
             articles[i].classList.remove("active");
         }
         setTimeout(function () { articles[i].classList.remove("microinteraction"); }, 300);
-        
+
 
         console.log(j + " is the second key");
     };
@@ -142,6 +156,7 @@ document.getElementById("contact_focus_trigger").addEventListener("click", () =>
     document.getElementById("contact_section").classList.toggle("focus_element");
     setTimeout(function () { document.getElementById("contact_section").classList.remove("focus_element"); }, 4000);
 });
+
 
 
 // viewport functions
@@ -156,11 +171,44 @@ document.getElementById("contact_focus_trigger").addEventListener("click", () =>
 
 document.getElementById("course_linkedin_6830070522202718208").addEventListener("mouseover", () => {
 
-    document.getElementById("defaultView").style.display = "none";
-    document.getElementById("linkedin_6830070522202718208").style.display = "block";
-    document.getElementById("viewPort").style.zIndex = 4;
-    document.getElementById("blurFocusScreen").style.display = "block";
+    document.getElementById("linkedin_6830070522202718208").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
 
+    
+    if (clickedArticle == 0) {
+        document.getElementById("defaultView").style.display = "none";
+        document.getElementById("linkedin_6830070522202718208").style.display = "block";
+        
+
+
+        document.getElementById("viewPort").style.zIndex = 4;
+
+        document.getElementById("blurFocusScreen").style.display = "block";
+
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.getElementById("color_inversion_notice_box").style.display = "block";
+            document.getElementById("linkedin_6830070522202718208").style.filter = "invert(92%)";
+            document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
+
+            document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any images or content a bit off, turn off the color inversion using this switch.</p> ";
+
+        } else {
+            document.getElementById("color_inversion_notice_box").style.display = "none";
+        }
+
+    }
+
+});
+
+document.getElementById("course_linkedin_6830070522202718208").addEventListener("mouseout", () => {
+
+
+    if (clickedArticle == 0) {
+        document.getElementById("defaultView").style.display = "block";
+        document.getElementById("linkedin_6830070522202718208").style.display = "none";
+        document.getElementById("color_inversion_notice_box").style.display = "none";
+        document.getElementById("blurFocusScreen").style.display = "none";
+
+    }
     // if (true) {
     //     document.getElementById("linkedin_6830070522202718208").style.filter = "invert(100%)";
     // os-win artdeco windows theme--dark-lix
@@ -168,15 +216,12 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
 
 });
 
-document.getElementById("course_linkedin_6830070522202718208").addEventListener("mouseout", () => {
-
-    document.getElementById("defaultView").style.display = "block";
-    document.getElementById("linkedin_6830070522202718208").style.display = "none";
-    document.getElementById("blurFocusScreen").style.display = "none";
-
-    // if (true) {
-    //     document.getElementById("linkedin_6830070522202718208").style.filter = "invert(100%)";
-    // os-win artdeco windows theme--dark-lix
-    // }
-
+document.getElementById("color_inversion_for_viewport_embedded_content_toggle").addEventListener("click", () => {
+    if (
+        document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
+    ) {
+        document.getElementById("linkedin_6830070522202718208").style.filter = "invert(0%)";
+    } else {
+        document.getElementById("linkedin_6830070522202718208").style.filter = "invert(92%)";
+    }
 });
