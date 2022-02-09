@@ -256,3 +256,10 @@ input:checked + .slider:before {
 display: inline;
 }
 
+#color_inversion_notice_box {
+  display: none;
+  border: 1px solid #777;
+  padding: 0 20px 20px 20px;
+  border-radius: 7px;
+  margin-top: 20px;
+}
