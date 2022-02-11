@@ -149,6 +149,15 @@ function hasNetwork(online) {
     // element.innerText = "Offline";
 
     document.getElementById("offlineAlert").style.display = "block";
+
+
+    document.getElementById("offlineAlert").classList.toggle("slide_from_above");
+
+    setTimeout(function () {
+      document.getElementById("offlineAlert").classList.toggle("slide_from_above");
+    }, 500);
+
+
     document.getElementById("alertUI").style.display = "none";
 
     element2.innerText = "ffline";
@@ -176,6 +185,12 @@ function alertUI(show) {
   if (internetConnection && show) {
 
     document.getElementById("alertUI").style.display = "block";
+    document.getElementById("alertUI").classList.toggle("slide_from_above");
+
+    setTimeout(function () {
+      document.getElementById("alertUI").classList.toggle("slide_from_above");
+    }, 500);
+
     document.getElementById("alertUser").innerText = "Wanna change color theme?";
     document.getElementById("themeDescription").style.display = "block";
   } else {
