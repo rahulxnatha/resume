@@ -73,6 +73,10 @@ header {
     --selection: var(--lightSelection);
     --shadow: var(--lightShadow);
   }
+
+  body {
+    background-image: url('../images/pexels-ylanite-koppens-1883386.jpg');
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,6 +90,10 @@ header {
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
   }
+    body {
+      background-image: url('../images/pexels-cottonbro-7181899.jpg');
+    }
+  
 }
 
 ::-moz-selection {
@@ -120,7 +128,21 @@ body {
 
   background-color: var(--background);
   color: var(--font);
+
+ 
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+
+  
+
 }
+/* 
+#backgroundVideo {
+
+  position: fixed; top:0; left:0; width:100%; z-index: 0;
+ 
+} */
 
 @media print {
   html,

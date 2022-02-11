@@ -178,7 +178,7 @@ input:checked + .slider:before {
   float: right;
   margin: 0;
   font-size: 36px;
-  line-height: 0.6em;
+  line-height: 0.65em;
   color: transparent;
 }
 
@@ -258,6 +258,8 @@ display: inline;
 
 #color_inversion_notice_box {
   display: none;
+ 
+  
   border: 1px solid #777;
   padding: 0 20px 20px 20px;
   border-radius: 7px;
