@@ -182,7 +182,11 @@ window.addEventListener("load", () => {
 
 function alertUI(show) {
 
-  if (internetConnection && show) {
+  if (
+    
+    // internetConnection
+    1
+    && show) {
 
     document.getElementById("alertUI").style.display = "block";
     document.getElementById("alertUI").classList.toggle("slide_from_above");
@@ -197,6 +201,25 @@ function alertUI(show) {
     document.getElementById("alertUI").style.display = "none";
   }
 }
+
+function offlineAlertUI(show) {
+
+  if (internetConnection && show) {
+
+    document.getElementById("offlineAlert").style.display = "block";
+    document.getElementById("offlineAlert").classList.toggle("slide_from_above");
+
+    setTimeout(function () {
+      document.getElementById("offlineAlert").classList.toggle("slide_from_above");
+    }, 500);
+
+    document.getElementById("themeDescription").style.display = "block";
+  } else {
+    document.getElementById("offlineAlert").style.display = "none";
+  }
+}
+
+
 
 
 
