@@ -179,7 +179,7 @@ window.addEventListener("load", () => {
   });
 });
 
-document.getElementById("main").classList.toggle("main_animate");
+// document.getElementById("main").classList.toggle("main_animate");
 
 function alertUI(show) {
 
