@@ -3,7 +3,7 @@
 *:after {
   box-sizing: inherit;
   box-sizing: border-box;
-
+  
   z-index: 1;
 }
 
@@ -48,8 +48,9 @@ body {
 
   background-color: #f8f9fa;
   color: #34252f;
-
+  font-weight: 500;
   font-family: "Work Sans", sans-serif;
+  
 }
 
 dialog > div {
@@ -75,7 +76,7 @@ header {
   }
 
   body {
-    background-image: url('../images/pexels-ylanite-koppens-1883386.jpg');
+    background-image: url('../images/pexels-la-miko-3616764.jpg');
   }
 }
 

@@ -16,36 +16,45 @@
   }
 } */
 
-/* body {
+ .main_animate {
   position: relative;
   -webkit-animation-name: animatebottom;
   -webkit-animation-duration: 1s;
   animation-name: animatebottom;
-  animation-duration: 400ms;
+  animation-duration: 1s;
+
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-iteration-count:1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
 }
 
 @-webkit-keyframes animatebottom {
-  from {
-    bottom:-100vh;
-    opacity: 0;
+  0% {
+    top:100px;
+    
   } 
   
-  to {
-    top: 0px;
-    opacity: 1;
+  100% {
+  
+  
   }
 }
 
 @keyframes animatebottom {
-  from {
-    bottom: -100vh;
-    opacity: 0;
+  0% {
+    top: 100px;
+   
   }
-  to {
-    top: 0;
-    opacity: 1;
+  100% {
+   
+ 
   }
-} */
+} 
 
 /* #loading-box {
   position: fixed;

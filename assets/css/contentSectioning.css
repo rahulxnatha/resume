@@ -237,7 +237,7 @@ h6 {
   font-family: "Work Sans", sans-serif;
   margin: 0px;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 700;
 }
 
 header h1 {
@@ -270,6 +270,7 @@ main span h2 {
 
 article h1 {
   font-size: 18px;
+ 
 }
 
 /* 
