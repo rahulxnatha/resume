@@ -198,17 +198,20 @@ aside section a, #contact a {
 }
 
 article:hover, #contact a:hover {
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1); 
+  -ms-transform: scale(1.0); /* IE 9 */
+  -webkit-transform: scale(1.0); /* Safari 3-8 */
+  transform: scale(1.0); 
   z-index: 3;
 }
 
 aside section a:hover {
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1); 
+  -ms-transform: scale(1.0); /* IE 9 */
+  -webkit-transform: scale(1.0); /* Safari 3-8 */
+  transform: scale(1.0); 
   z-index: 4;
+
+
+
 }
 
 aside section a, #contact a {
@@ -225,6 +228,8 @@ aside section a:hover {
   
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
+
+ 
 }
 
 aside section div {

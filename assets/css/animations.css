@@ -307,3 +307,15 @@
 
   }
 }
+
+@keyframes article_hover {
+  0% {
+    
+    box-shadow: 5cm 5cm 13cm 2cm #88888809;
+  }
+
+  100% {
+    
+
+  }
+}
