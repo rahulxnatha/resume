@@ -274,7 +274,7 @@ input:checked + .slider:before {
   grid-column-start: 1;
   grid-column-end: 3;
 
-  background-image: url(../../../../../Pictures/IMG_20210524_194639_2.jpg);
+  background-image: url(../images/rahul.jpg);
 
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
