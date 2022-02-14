@@ -110,7 +110,7 @@ aside {
 
   margin: 20px 20px 20px 100px;
 
-  height: calc(100vh - 100px);
+  height: calc(100vh - 100px); 
 
   padding: 20px 0px 20px 0px;
 
@@ -123,6 +123,9 @@ main {
   float:left;
   width: calc(100% - 50px);
   margin-left: 50px;
+
+  position: relative;
+  top: calc(0px);
  
 }
 
@@ -134,8 +137,6 @@ main section {
   /* grid-auto-rows: minmax(100px, auto);
   grid-auto-columns: minmax(100px, auto); */
 
-  
-
 }
 
 main span {
@@ -145,7 +146,7 @@ main span {
 }
 
 }
-
+/* phone end  */
 
 aside section {
   display: block;
@@ -153,8 +154,9 @@ aside section {
   overflow-y: auto;
   transition-duration: 500ms;
   padding: 0 20px;
+  margin-right: 8px;
 }
-
+/* 
 aside section::-webkit-scrollbar {
   width: 20px;
 }
@@ -172,7 +174,7 @@ aside section::-webkit-scrollbar-thumb {
 
 aside section::-webkit-scrollbar-thumb:hover {
   background: #888888;
-}
+} */
 
 article,
 aside section a, #contact a {

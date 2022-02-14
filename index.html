@@ -72,6 +72,9 @@
   </style>
 
 
+  <script src="assets/js/functions.js" defer></script>
+  <script src="assets/js/autopilot.js" defer></script>
+
 </head>
 
 <body>
@@ -80,7 +83,7 @@
     style="position:fixed;top:0;left:0;display: none; z-index: 6; background-color: var(--background); height: 100%; width: 100%; padding: 30px;">
     Splash screen</div>
 
-<!-- 
+  <!-- 
 
 <video autoplay muted loop id="backgroundVideo">
   <source src="../resume/assets/images/pexels-mr-borys-9860821.mp4" type="video/mp4">
@@ -89,19 +92,17 @@
   <div id="blurFocusScreen" style="position:fixed;top:0;left:0;display: none; z-index: 3; background-color: var(--window); height: 100%; width: 100%; padding: 30px;-webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);"></div>
 
-
-  <script>document.getElementById("splashScreen").style.display = "block";</script>
-
   <header class="select_disabled">
-    <h1 style="cursor: pointer;">Rahul Natha</h1>
+    <h1 style="cursor: pointer;">Rahul Natha (beta)</h1>
 
     <span class="status2"></span>
-    
+
     <span class="status">&#8226;</span>
 
     <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-    <span class="status2 theme_selector" style="cursor: pointer;" onclick="alertUI(1)">&nbsp;&nbsp;&#9728;&nbsp;&nbsp;</span>
+    <span class="status2 theme_selector" style="cursor: pointer;"
+      onclick="alertUI(1)">&nbsp;&nbsp;&#9728;&nbsp;&nbsp;</span>
 
     <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
 
@@ -239,6 +240,83 @@
 
 
   <section>
+
+
+
+    <aside id="viewPort">
+
+      <section id="viewport">
+
+        <div id="defaultView" class="viewportContent">
+
+          <h1 style="font-size: 5em;">
+            My online
+            <div id="contain_online_what">
+              <span id="online_what_was"></span>
+              <div id="online_what">
+                résumé
+              </div>
+              <div style="visibility: hidden;">portfolio</div>
+            </div>
+          </h1>
+
+          <p> My name's Rahul and I'm a 22-year-old engineering graduate from Hyderabad, India. I now work as an
+            engineer, and
+            I'm a big fan of science and predictions.</p>
+
+          <p>Fun fact: I can write super fast.</p>
+
+          <p style="margin-bottom: 30px;">Connect with me on</p>
+
+
+          <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
+          <a href="https://g.dev/rah" target="_blank">Google Developers</a>
+          <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
+          <a href="#contact" id="contact_focus_trigger">Email or phone</a>
+
+
+
+        </div>
+
+
+
+        <iframe class="viewportContent" id="linkedin_6830070522202718208"
+          style="filter: invert(0%); display:none;margin-top: 0px;"
+          class="os-win artdeco windows theme--dark-lix theme--dark" src="" height="739" width="100%" frameborder="0"
+          allowfullscreen="" title="Embedded post"></iframe>
+
+        <div id="color_inversion_notice_box">
+          <span id="color_inversion_alert"></span>
+          <span>
+            <label for="rv756vr7vb76">Color inversion for embedded content
+              <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" name="rv756vr7vb76"
+                unchecked>
+            </label>
+          </span>
+        </div>
+
+
+
+        <!-- <h1>Bachelor of Technology in Mechanical Engineering</h1>
+
+        <p>I have completed Bachelor's in Technology in Mechanical Engineering from CMR College of Engineering &amp;
+          Technology.</p>
+
+        <p> My cumulative GPA is 8.91 which converts to 84.10%</p>
+
+        <p>I have been awarded with a gold medal for performing highest in the academics in the college.</p>
+
+        <figure>
+          <img width="556px" src="assets/images/first.jpg" alt="Merit certificate awarded to Rahul" />
+          <figcaption>Merit certificate awarded at CMRCET</figcaption>
+        </figure> -->
+      </section>
+    </aside>
+
+
+
+
 
     <main id="main">
 
@@ -553,88 +631,7 @@
 
     </main>
 
-    <aside id="viewPort">
-
-      <section id="viewport">
-
-        <div id="defaultView" class="viewportContent">
-
-          <h1 style="font-size: 5em;">
-            My online
-            <div id="contain_online_what">
-              <span id="online_what_was"></span>
-              <div id="online_what">
-                résumé
-              </div>
-              <div style="visibility: hidden;">portfolio</div>
-            </div>
-          </h1>
-
-          <p> My name's Rahul and I'm a 22-year-old engineering graduate from Hyderabad, India. I now work as an
-            engineer, and
-            I'm a big fan of science and predictions.</p>
-
-          <p>Fun fact: I can write super fast.</p>
-
-          <p style="margin-bottom: 30px;">Connect with me on</p>
-
-
-          <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
-          <a href="https://g.dev/rah" target="_blank">Google Developers</a>
-          <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
-          <a href="#contact" id="contact_focus_trigger">Email or phone</a>
-
-
-
-        </div>
-
-      
-
-        <iframe class="viewportContent" id="linkedin_6830070522202718208"
-          style="filter: invert(0%); display:none;margin-top: 0px;"
-          class="os-win artdeco windows theme--dark-lix theme--dark" src="" height="739" width="100%" frameborder="0"
-          allowfullscreen="" title="Embedded post"></iframe>
-
-        <div id="color_inversion_notice_box">
-          <span id="color_inversion_alert"></span>
-          <span>
-            <label for="rv756vr7vb76">Color inversion for embedded content
-              <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" name="rv756vr7vb76"
-                unchecked>
-            </label>
-          </span>
-        </div>
-
-
-
-        <!-- <h1>Bachelor of Technology in Mechanical Engineering</h1>
-
-        <p>I have completed Bachelor's in Technology in Mechanical Engineering from CMR College of Engineering &amp;
-          Technology.</p>
-
-        <p> My cumulative GPA is 8.91 which converts to 84.10%</p>
-
-        <p>I have been awarded with a gold medal for performing highest in the academics in the college.</p>
-
-        <figure>
-          <img width="556px" src="assets/images/first.jpg" alt="Merit certificate awarded to Rahul" />
-          <figcaption>Merit certificate awarded at CMRCET</figcaption>
-        </figure> -->
-      </section>
-    </aside>
-
   </section>
-
-
-
-
-  <script src="assets/js/functions.js"></script>
-  <script src="assets/js/autopilot.js"></script>
-
-
-
-
 
 </body>
 

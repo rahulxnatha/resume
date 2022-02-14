@@ -269,8 +269,6 @@
   }
 }
 
-
-
 .slide_from_above {
   -webkit-animation-name: slide_from_above;
   -webkit-animation-duration: 500ms;
@@ -289,7 +287,7 @@
 @-webkit-keyframes slide_from_above {
   0% {
     
-    top:-100px;
+    top:-1000px;
   }
 
   100% {
@@ -301,7 +299,7 @@
 @keyframes slide_from_above {
   0% {
     
-    top:-100px;
+    top:-1000px;
   }
 
   100% {
