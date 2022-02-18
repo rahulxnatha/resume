@@ -311,7 +311,7 @@
 @keyframes article_hover {
   0% {
     
-    box-shadow: 5cm 5cm 13cm 2cm #88888809;
+    box-shadow: 5cm 5cm 8cm 2cm var(--font);
   }
 
   100% {
