@@ -180,6 +180,7 @@ window.addEventListener("load", () => {
 });
 
 // document.getElementById("main").classList.toggle("main_animate");
+// document.getElementById("viewPort").classList.toggle("aside_animate");
 
 function alertUI(show) {
 
