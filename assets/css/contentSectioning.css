@@ -169,13 +169,15 @@ aside section a:hover {
   backdrop-filter: blur(13px);
 
   animation: article_hover 500ms ease 1;
-  animation
+  
 
 }
 
 aside section div {
   margin: 0;
 }
+
+
 h1,
 h2,
 h3,

@@ -42,7 +42,7 @@ details[open] summary {
   background-color: transparent;
   border: 0px solid grey;
 
-  z-index:4;
+  z-index:5;
 
   padding: 1px;
 }
@@ -57,7 +57,7 @@ dialog {
   background-color: transparent;
   border: 0px solid grey;
 
-  z-index:5;
+  z-index:6;
 
   padding: 1px;
 }

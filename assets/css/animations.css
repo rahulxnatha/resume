@@ -16,7 +16,7 @@
   }
 } */
 
- .main_animate {
+ main {
   position: relative;
   -webkit-animation-name: animatebottom;
   -webkit-animation-duration: 1s;
@@ -35,26 +35,69 @@
 
 @-webkit-keyframes animatebottom {
   0% {
-    top:100px;
+    top:100vh;
     
   } 
   
   100% {
-  
+    top:0vh;
   
   }
 }
 
 @keyframes animatebottom {
   0% {
-    top: 100px;
+    top: 100vh;
    
   }
   100% {
    
- 
+    top:0vh;
   }
 } 
+
+
+.aside_animate {
+  position: relative;
+  -webkit-animation-name: animatetopp;
+  -webkit-animation-duration: 1s;
+  animation-name: animatetopp;
+  animation-duration: 1s;
+
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-iteration-count:1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+}
+
+@-webkit-keyframes animatetopp {
+  0% {
+    top:-100vh;
+    
+  } 
+  
+  100% {
+   
+  
+  }
+}
+
+@keyframes animatetopp {
+  0% {
+    top: -100vh;
+   
+  }
+  100% {
+   
+    
+  }
+} 
+
+
 
 /* #loading-box {
   position: fixed;
@@ -65,7 +108,7 @@
 /* 
 */
 
-.microinteraction {
+.microinteractionn {
   -webkit-animation-name: microinteraction;
   -webkit-animation-duration: 0.3s;
   -webkit-animation-iteration-count: 1;

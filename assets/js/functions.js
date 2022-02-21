@@ -187,12 +187,9 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
             document.getElementById("linkedin_6830070522202718208").style.display = "block";
 
    
-
-
-
         document.getElementById("viewPort").style.zIndex = 4;
 
-        document.getElementById("blurFocusScreen").style.display = "block";
+        // document.getElementById("blurFocusScreen").style.display = "block";
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
