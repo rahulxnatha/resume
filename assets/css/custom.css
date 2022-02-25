@@ -270,7 +270,8 @@ input:checked + .slider:before {
 }
 
 .banner {
-  height: 200px;
+  
+  min-height: 50vmin;
   grid-column-start: 1;
   grid-column-end: 3;
 
@@ -278,11 +279,11 @@ input:checked + .slider:before {
 
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
-  background-size: cover;
+  background-size:contain;
 
   /**/
 
-  animation: mymove 5s infinite;
+  /* animation: mymove 5s infinite; */
 }
 
 @keyframes mymove {
