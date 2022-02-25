@@ -101,3 +101,21 @@ dialog > div, #alertUI > div {
 dialog p, #alertUI p {
   text-align: center;
 }
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  header,
+  dialog > div,
+  #alertUI > div {
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+  }
+}
+
+/* slightly transparent fallback for Firefox (not supporting backdrop-filter) */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  header,
+  dialog > div,
+  #alertUI > div {
+    background-color: var(--base80);
+  }
+}

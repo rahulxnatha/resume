@@ -14,6 +14,7 @@ header {
   transition-duration: 500ms;
 }
 
+
 footer {
   width: 100%;
   min-height: 200px;
@@ -139,11 +140,7 @@ article:hover,
   -webkit-transform: scale(1); /* Safari 3-8 */
   transform: scale(1);
   z-index: 3;
-
- 
 }
-
-
 
 aside section a:hover {
   -ms-transform: scale(1); /* IE 9 */
@@ -169,14 +166,11 @@ aside section a:hover {
   backdrop-filter: blur(13px);
 
   animation: article_hover 500ms ease 1;
-  
-
 }
 
 aside section div {
   margin: 0;
 }
-
 
 h1,
 h2,
@@ -280,7 +274,6 @@ address {
     grid-column-end: 3;
     margin-top: 0px;
   }
-
 }
 
 @media only screen and (max-width: 700px) {
@@ -289,16 +282,14 @@ address {
     /* background-color: #aaaaaa; */
     padding-left: 20px;
     padding-right: 20px;
-    margin:0;
-   
+    margin: 0;
   }
-
 
   main span {
     grid-column-start: 1;
     grid-column-end: 2;
     margin-top: 0px;
-    margin:0;
+    margin: 0;
   }
 
   main {
@@ -308,8 +299,6 @@ address {
     padding: 0;
     border: 0px solid grey;
   }
-  
-  
 
   aside {
     z-index: inherit;
@@ -320,7 +309,7 @@ address {
     height: calc(100vh - 100px);
     padding: 20px 0px 20px 0px;
     border: 2px solid grey;
-    border-radius: 7px; 
+    border-radius: 7px;
   }
 
   aside h1 {
