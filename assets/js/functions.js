@@ -114,12 +114,12 @@ for (let i = 0; i < articles.length; i++) {
         articles[i].classList.toggle("microinteraction");
 
         document.getElementById("defaultView").style.display = "none";
-       
 
-  
-            document.getElementById("linkedin_6830070522202718208").style.display = "block";
 
-    
+
+        document.getElementById("linkedin_6830070522202718208").style.display = "block";
+
+
 
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -180,16 +180,18 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
 
     if (clickedArticle == 0) {
         document.getElementById("defaultView").style.display = "none";
+
+
+
+
+        document.getElementById("linkedin_6830070522202718208").style.display = "block";
+
+
+        document.getElementById("viewPort").style.zIndex = 4;
     
 
-
-     
-            document.getElementById("linkedin_6830070522202718208").style.display = "block";
-
-   
-        document.getElementById("viewPort").style.zIndex = 4;
-
-        // document.getElementById("blurFocusScreen").style.display = "block";
+       
+ document.getElementById("blurFocusScreen").style.display = "block"; 
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
@@ -213,7 +215,7 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
 
     if (clickedArticle == 0) {
         document.getElementById("defaultView").style.display = "block";
-       
+
 
 
 
