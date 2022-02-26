@@ -200,7 +200,11 @@ function alertUI(show) {
     document.getElementById("alertUser").innerText = "Wanna change color theme?";
     document.getElementById("themeDescription").style.display = "block";
   } else {
-    document.getElementById("alertUI").style.display = "none";
+    document.getElementById("alertUI").classList.toggle("close_slide_down");
+    setTimeout(function () {
+      document.getElementById("alertUI").classList.toggle("close_slide_down");
+      document.getElementById("alertUI").style.display = "none";
+    }, 500);
   }
 }
 
@@ -217,7 +221,12 @@ function offlineAlertUI(show) {
 
     document.getElementById("themeDescription").style.display = "block";
   } else {
-    document.getElementById("offlineAlert").style.display = "none";
+    
+    document.getElementById("offlineAlert").classList.toggle("close_slide_down");
+    setTimeout(function () {
+      document.getElementById("offlineAlert").classList.toggle("close_slide_down");
+      document.getElementById("offlineAlert").style.display = "none";
+    }, 500);
   }
 }
 
