@@ -301,4 +301,5 @@ input:checked + .slider:before {
   border: 2px solid var(--base50i);
   border-radius: 7px;
   box-shadow: 0 2px 4px var(--shadow);
+  font-size:smaller;
 }
