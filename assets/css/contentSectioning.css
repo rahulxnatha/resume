@@ -179,9 +179,10 @@ h4,
 h5,
 h6 {
   font-family: "Work Sans", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 aside h1 {
@@ -314,6 +315,7 @@ address {
 
   aside h1 {
     font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
   }
 
   header {

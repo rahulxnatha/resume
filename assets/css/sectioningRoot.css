@@ -41,16 +41,19 @@
   --a: var(--lightAnchor);
   --selection: var(--lightSelection);
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 body {
   margin: 0px;
   padding: 0px;
 
   background-color: #f8f9fa;
   color: #34252f;
-  font-weight: 500;
-  /* font-family: "Work Sans", sans-serif; */
+  font-weight: 400;
   
+  
+
+  font-family: 'Work Sans', sans-serif;
+
 }
 
 dialog > div {
