@@ -70,6 +70,7 @@ header {
   :root {
     --base: #ffffff;
     --base80: hsla(0, 0%, 100%, 0.8);
+    --base50i:  hsla(0, 0%, 0%, 0.5);
     --background: var(--lightBackground);
     --font: var(--lightFont);
     --windowBackground: var(--lightWindowBackground);
@@ -88,6 +89,7 @@ header {
   :root {
     --base: #000000;
     --base80: hsla(0, 0%, 0%, 0.8);
+    --base50i: hsla(0, 0%, 100%, 0.5);
     --background: var(--darkBackground);
     --font: var(--darkFont);
     --windowBackground: var(--darkWindowBackground);

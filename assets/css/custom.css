@@ -296,3 +296,9 @@ input:checked + .slider:before {
   padding: 5px;
   background-color: #88888888;
 }
+
+.grade-out-text {
+  color: var(--base50i);
+border: 1px solid #777;
+border-radius: 1vmin;
+}
