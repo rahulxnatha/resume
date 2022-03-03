@@ -243,3 +243,12 @@ document.getElementById("color_inversion_for_viewport_embedded_content_toggle").
         document.getElementById("linkedin_6830070522202718208").style.filter = "invert(92%)";
     }
 });
+
+// function removeAside() {
+//     document.getElementById("viewPort").style.display = "none";
+//     document.getElementById("main").style.width = "calc(100% - 85px)";
+//     document.getElementById("testtgb").classList.add("three-repeat-main-section");
+
+
+
+// }

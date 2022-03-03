@@ -69,7 +69,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Work+Sans:wght@300;400&display=swap');
-  </style> 
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -95,27 +95,29 @@
     backdrop-filter: blur(7px);"></div>
 
   <header class="select_disabled">
-    <h1 style="cursor: pointer;">Rahul Natha &nbsp; <span class="grade-out-text">&nbsp;Preview&nbsp;</span> </h1>
 
-    <span class="status2"></span>
+    <div>
+      <h1 style="cursor: pointer;">Rahul Natha &nbsp; <span class="grade-out-text">&nbsp;Test&nbsp;</span> </h1>
 
-    <span class="status">&#8226;</span>
+      <span class="status2"></span>
 
-    <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="status">&#8226;</span>
 
-    <span class="status2 theme_selector" style="cursor: pointer;"
-      onclick="alertUI(1)">&nbsp;&nbsp;&#9728;&nbsp;&nbsp;</span>
+      <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-    <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+      <span class="status2 theme_selector" style="cursor: pointer;"
+        onclick="alertUI(1)">&nbsp;&nbsp;&#9728;&nbsp;&nbsp;</span>
 
-    <nav>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#work"> Experience</a>
+      <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
 
-    </nav>
+      <nav>
+        <a href="#education" onclick="removeAside()">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#work"> Experience</a>
 
+      </nav>
+    </div>
   </header>
 
   <div class="assistant">
@@ -222,10 +224,10 @@
         <details>
 
           <summary>
-            <h1 >Not liked fonts? (not yet enabled)</h1>
+            <h1>Not liked fonts? (not yet enabled)</h1>
           </summary>
 
-          <ul >
+          <ul>
             <li>You can change the default fonts in your browser and the same will be followed here.</li>
             <!-- <br> -->
             <!-- <label for=""> Enable dark theme <input type="checkbox" name="" id=""></label> -->
@@ -317,11 +319,12 @@
 
     <section style="float:right; display: none;">
 
-      <article class="banner" style="float:right; display: none;"><span class="name_brand_on_picture" style="float:right; display: none;"></span></article>
+      <article class="banner" style="float:right; display: none;"><span class="name_brand_on_picture"
+          style="float:right; display: none;"></span></article>
 
     </section>
 
-    <section class="backgroundHover">
+    <section class="backgroundHover" id="testtgb">
 
       <span>
         <h1 id="education">Education</h1>
