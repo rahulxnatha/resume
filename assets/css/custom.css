@@ -270,7 +270,6 @@ input:checked + .slider:before {
 }
 
 .banner {
-  
   min-height: 50vmin;
   grid-column-start: 1;
   grid-column-end: 3;
@@ -279,7 +278,7 @@ input:checked + .slider:before {
 
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
-  background-size:contain;
+  background-size: contain;
 
   /**/
 
@@ -299,6 +298,7 @@ input:checked + .slider:before {
 
 .grade-out-text {
   color: var(--base50i);
-border: 1px solid #777;
-border-radius: 1vmin;
+  border: 2px solid var(--base50i);
+  border-radius: 7px;
+  box-shadow: 0 2px 4px var(--shadow);
 }
