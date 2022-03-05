@@ -87,6 +87,9 @@ window.onscroll = function () {
     document.getElementById("viewPort").style.height = "calc(100vh - 100px)";
     document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px )";
 
+    document.getElementById("viewPort").style.transitionDuration = "500ms";
+    document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
+
     // document.getElementsByClassName("branding")[0].style.display = "none";
 
     // if (showSettings == true) {
@@ -110,6 +113,10 @@ window.onscroll = function () {
       document.getElementById("viewPort").style.height = "calc(100vh - 40px)";
       document.getElementById("viewport").style.height = "calc(100vh - 80px )";
 
+      document.getElementById("viewPort").style.transitionDuration = "500ms";
+      document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
+    
+
       //   document.getElementById("assistant").style.top = "0";
       // document.getElementById("assistant").style.display = "none";
       //   document.getElementsByClassName("branding")[0].style.top = "0";
@@ -131,6 +138,7 @@ function hasNetwork(online) {
   internetConnection = online;
   const element = document.querySelector(".status");
   const element2 = document.querySelector(".status2");
+  const element3 = document.querySelector(".status25");
   // Update the DOM to reflect the current status
   if (online) {
     element.classList.remove("offline");
@@ -160,7 +168,9 @@ function hasNetwork(online) {
 
     document.getElementById("alertUI").style.display = "none";
 
-    element2.innerText = "ffline";
+    
+    element3.innerText = ""; // slow use sl
+    element2.innerText = "ffline"; // wer internet
   }
 
 }

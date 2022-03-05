@@ -87,10 +87,9 @@
   }
 } 
 
-
-.aside_animate {
-  position: relative;
-  -webkit-animation-name: animatetopp;
+.transition_duration_500ms {
+  
+  /* -webkit-animation-name: animate_aside;
   -webkit-animation-duration: 1s;
   animation-name: animatetopp;
   animation-duration: 1s;
@@ -101,29 +100,31 @@
 
   animation-iteration-count:1;
   animation-timing-function: ease;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 
+  transition-duration: 500ms;
 }
 
-@-webkit-keyframes animatetopp {
+@-webkit-keyframes animate_aside {
   0% {
-    top:-100vh;
+    opacity: 0;
+    transition-duration: 500ms;
     
   } 
   
   100% {
-   
+    transition-duration: 500ms;
   
   }
 }
 
-@keyframes animatetopp {
+@keyframes animate_aside {
   0% {
-    top: -100vh;
-   
+    opacity: 0;
+    transition-duration: 500ms;
   }
   100% {
-   
+    transition-duration: 500ms;
     
   }
 } 
@@ -434,3 +435,4 @@
 
   }
 }
+

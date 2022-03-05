@@ -44,7 +44,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 body {
   margin: 0px;
-  padding: 0px;
+  padding:0;
+  
 
   background-color: #f8f9fa;
   color: #34252f;
@@ -157,8 +158,7 @@ header {
 }
 
 body {
-  margin: 0px;
-  padding: 0px;
+
 
   background-color: var(--background);
   color: var(--font);
