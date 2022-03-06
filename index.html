@@ -99,20 +99,19 @@
     <div>
       <h1 style="cursor: pointer;">Rahul Natha &nbsp; <span class="grade-out-text">&nbsp;Test&nbsp;</span> </h1>
 
-      <span class="status2" ></span>
+      <span id="JSregulated74545" style="display:none;">
+        <span class="status2"></span>
 
-     
+        <span class="status">&#8226;</span><span class="status25" style="margin-right:-2px;"></span>
 
-      <span class="status">&#8226;</span><span class="status25" style="margin-right:-2px;" ></span>
+        <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-      
+        <span class="status2 theme_selector" style="cursor: pointer;"
+          onclick="alertUI(1)">&nbsp;&nbsp;&#9728;&nbsp;&nbsp;</span>
 
-      <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+      </span>
 
-      <span class="status2 theme_selector" style="cursor: pointer;"
-        onclick="alertUI(1)">&nbsp;&nbsp;&#9728;&nbsp;&nbsp;</span>
-
-      <span style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
 
       <nav>
         <a href="#education" onclick="removeAside()">Education</a>
@@ -134,31 +133,37 @@
 
 
   <noscript>
-    <dialog open>
+    <dialog open id="JavaScriptNeeded">
 
       <div>
         <p>Alert</p>
 
 
         <div>
-          <details>
+          <details open>
 
             <summary>
               <h1>JavaScript needed!</h1>
             </summary>
 
             <ul>
-              <li>It looks like JavaScript is disabled. Some functionality in this website requires JavaScript to be
-                enabled. </li>
-              <li>If your browser doesn't allow you to enable JavaScript, consider using <a
+              <li>It looks like JavaScript is disabled. </li>
+
+              <li>Some functionalities in this website that require JavaScript are hidden. </li>
+
+              <!-- <li>If your browser doesn't allow you to enable JavaScript, consider using <a
                   href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>.</li>
               <li> If you are already on Microsoft Edge, make sure JavaScript is enabled at
                 <i>edge://settings/content/javascript</i>.
-              </li>
+              </li> -->
+
+
             </ul>
 
           </details>
         </div>
+
+        <p>This window will be closed after few seconds.</p>
       </div>
 
     </dialog>
@@ -194,7 +199,7 @@
         </details>
       </div>
 
-      <div >
+      <div>
         <details>
 
           <summary>
@@ -323,7 +328,7 @@
 
 
 
-      <iframe class="viewportContent" id="linkedin_6830070522202718208"
+      <iframe class="viewportContent" id="linkedin_post"
         style="filter: invert(0%); display:none;margin-top: 0px;"
         class="os-win artdeco windows theme--dark-lix theme--dark" src="" height="739" width="100%" frameborder="0"
         allowfullscreen="" title="Embedded post"></iframe>

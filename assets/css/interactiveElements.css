@@ -47,6 +47,14 @@ details[open] summary {
   padding: 1px;
 }
 
+#JavaScriptNeeded {
+  top: -50000vh;
+  
+}
+
+
+
+
 dialog {
   width: 100%;
 

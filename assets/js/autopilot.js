@@ -289,3 +289,4 @@ var i = setInterval(function () {
 
 document.getElementById("splashScreen").style.display = "none";
 document.getElementById("splashScreen").innerText = "Loading";
+document.getElementById("JSregulated74545").style.display = "inline";

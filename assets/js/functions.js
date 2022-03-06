@@ -115,12 +115,7 @@ for (let i = 0; i < articles.length; i++) {
 
         document.getElementById("defaultView").style.display = "none";
 
-
-
-        document.getElementById("linkedin_6830070522202718208").style.display = "block";
-
-
-
+        document.getElementById("linkedin_post").style.display = "block";
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
@@ -128,15 +123,47 @@ for (let i = 0; i < articles.length; i++) {
             document.getElementById("color_inversion_notice_box").style.display = "none";
         }
 
-
         document.getElementById("blurFocusScreen").style.display = "none";
         clickedArticle = true;
-
 
         // articles[i].className = 'microinteraction';
 
         console.log(i + " is the key");
         removeActive(i);
+    });
+
+    articles[i].addEventListener("mouseover", () => {
+
+        if (clickedArticle == 0) {
+            document.getElementById("defaultView").style.display = "none";
+            document.getElementById("linkedin_post").style.display = "block";
+            document.getElementById("viewPort").style.zIndex = 4;
+            document.getElementById("blurFocusScreen").style.display = "block";
+
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                document.getElementById("color_inversion_notice_box").style.display = "block";
+                document.getElementById("linkedin_post").style.filter = "invert(92%)";
+                document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
+
+                document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
+
+            } else {
+                document.getElementById("color_inversion_notice_box").style.display = "none";
+            }
+
+        }
+
+        document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
+    });
+
+    articles[i].addEventListener("mouseout", () => {
+        if (clickedArticle == 0) {
+            document.getElementById("defaultView").style.display = "block";
+            document.getElementById("linkedin_post").style.display = "none";
+            document.getElementById("color_inversion_notice_box").style.display = "none";
+            document.getElementById("blurFocusScreen").style.display = "none";
+
+        }
     });
 
     // element.classList.remove("offline");
@@ -181,21 +208,18 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
     if (clickedArticle == 0) {
         document.getElementById("defaultView").style.display = "none";
 
-
-
-
-        document.getElementById("linkedin_6830070522202718208").style.display = "block";
+        document.getElementById("linkedin_post").style.display = "block";
 
 
         document.getElementById("viewPort").style.zIndex = 4;
-    
 
-       
- document.getElementById("blurFocusScreen").style.display = "block"; 
+
+
+        document.getElementById("blurFocusScreen").style.display = "block";
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
-            document.getElementById("linkedin_6830070522202718208").style.filter = "invert(92%)";
+            document.getElementById("linkedin_post").style.filter = "invert(92%)";
             document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
 
             document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
@@ -206,7 +230,7 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
 
     }
 
-    document.getElementById("linkedin_6830070522202718208").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
+    document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
 
 });
 
@@ -215,14 +239,7 @@ document.getElementById("course_linkedin_6830070522202718208").addEventListener(
 
     if (clickedArticle == 0) {
         document.getElementById("defaultView").style.display = "block";
-
-
-
-
-        document.getElementById("linkedin_6830070522202718208").style.display = "none";
-
-
-
+        document.getElementById("linkedin_post").style.display = "none";
         document.getElementById("color_inversion_notice_box").style.display = "none";
         document.getElementById("blurFocusScreen").style.display = "none";
 
@@ -238,9 +255,9 @@ document.getElementById("color_inversion_for_viewport_embedded_content_toggle").
     if (
         document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
     ) {
-        document.getElementById("linkedin_6830070522202718208").style.filter = "invert(0%)";
+        document.getElementById("linkedin_post").style.filter = "invert(0%)";
     } else {
-        document.getElementById("linkedin_6830070522202718208").style.filter = "invert(92%)";
+        document.getElementById("linkedin_post").style.filter = "invert(92%)";
     }
 });
 
