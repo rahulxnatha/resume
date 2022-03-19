@@ -86,6 +86,8 @@ aside {
   padding: 20px 0px 20px 0px;
   border: 2px solid grey;
   border-radius: 7px;
+  overflow-y: hidden;
+  overflow: hidden;
 }
 
 aside section {
@@ -323,6 +325,9 @@ address {
     font-size: 3em;
     font-family: "Montserrat", sans-serif;
   }
+}
+
+  @media only screen and (max-width: 1000px) {
 
   header {
     overflow-x:auto;
@@ -351,11 +356,7 @@ address {
     background: #888888;
   }
 
-  
-  
-
-
   header div {
-    min-width: 700px;
+    min-width: 900px;
   }
 }

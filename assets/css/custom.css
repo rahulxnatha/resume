@@ -302,7 +302,7 @@ input:checked + .slider:before {
   border-radius: 7px;
   box-shadow: 0 2px 4px var(--shadow);
   font-size:smaller;
-  display:none;
+  /* display:none; */
 }
 
 
