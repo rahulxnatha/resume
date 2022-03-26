@@ -88,6 +88,10 @@ aside {
   border-radius: 7px;
   overflow-y: hidden;
   overflow: hidden;
+
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+
 }
 
 aside section {
@@ -138,6 +142,10 @@ aside section a,
   outline-offset: 6px;
   
   box-shadow: 0 4px 8px var(--shadow);
+
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+
 }
 
 article:hover,
@@ -166,7 +174,7 @@ aside section a,
 article:hover,
 #contact a:hover,
 aside section a:hover {
-  background-color: var(--base);
+  /* background-color: var(--base); */
 
   box-shadow: 0px var(--shadow);
 
@@ -196,6 +204,11 @@ h6 {
 aside h1 {
   font-size: 5em;
 }
+
+aside h2 {
+  font-size: 2em;
+}
+
 
 header h1 {
   font-size: 20px;

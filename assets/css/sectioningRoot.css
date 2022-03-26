@@ -78,9 +78,9 @@ header {
     --shadow: var(--lightShadow);
   }
 
-  /* body {
+   body {
     background-image: url('../images/pexels-la-miko-3616764.jpg');
-  } */
+  } 
 }
 
 @media (prefers-color-scheme: dark) {
@@ -96,10 +96,10 @@ header {
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
   }
-    /* body {
+     body {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
-    } */
+    } 
   
 }
 
