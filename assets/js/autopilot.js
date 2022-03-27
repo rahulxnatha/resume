@@ -282,7 +282,7 @@ var i = setInterval(function () {
 
 
   counter++;
-  if (counter === 100) {
+  if (counter === 10000000000000000000000000000000000000000000000000000000000000000000000000000) {
     clearInterval(i);
   }
 }, 5000);
