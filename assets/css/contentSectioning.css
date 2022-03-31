@@ -52,6 +52,8 @@ main {
   padding: 20px 50px 0 0;
 
   border: 0px solid grey;
+
+  
 }
 
 main section {
@@ -64,9 +66,11 @@ main section {
   row-gap: 20px;
   /* transition-duration: 500ms; */
   padding: 0 50px 20px 50px;
-  margin: 0;
-  border: 0px solid grey;
+  margin: 0px 0 20px  0;
+  border: 0px solid rgba(128, 128, 128, 0.103);
   border-radius: 7px;
+
+  
 }
 
 .three-repeat-main-section {

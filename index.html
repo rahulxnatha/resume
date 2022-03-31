@@ -85,10 +85,10 @@
     style="position:fixed;top:0;left:0;display: none; z-index: 6; background-color: var(--background); height: 100%; width: 100%; padding: 30px;">
     Splash screen</div>
 
-    <video autoplay muted loop id="backgVideo">
-      <source src="assets/images/Pexels Videos 3867.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+  <video autoplay muted loop id="backgVideo">
+    <source src="assets/images/Pexels Videos 3867.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
 
   <!-- 
 
@@ -120,7 +120,7 @@
 
 
       <nav>
-        <a href="#education" onclick="removeAside()" text="Education" >Education</a>
+        <a href="#education" onclick="removeAside()" text="Education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#work"> Experience</a>
@@ -231,68 +231,69 @@
   <div id="alertUI" style="display: none;">
 
     <div>
-      <p>Settings</p>
+      <div id="forscrollbarpadding">
+        <p>Settings</p>
 
-      <span onclick="alertUI(0)" class="close_alert_button"
-        style="position: absolute; top: 20px;right:40px;cursor: pointer;  height: 25px; padding:  0 0 18px 4px;">
-        <span>&times; <span class="close_button_suggestion"> Close</span> </span>
-      </span>
+        <span onclick="alertUI(0)" class="close_alert_button"
+          style="position: absolute; top: 20px;right:40px;cursor: pointer;  height: 25px; padding:  0 0 18px 4px;">
+          <span>&times; <span class="close_button_suggestion"> Close</span> </span>
+        </span>
 
 
-      <div>
-        <details>
+        <div>
+          <details>
 
-          <summary>
-            <h1 id="alertUser">Wanna change color theme?</h1>
-          </summary>
+            <summary>
+              <h1 id="alertUser">Wanna change color theme?</h1>
+            </summary>
 
-          <ul id="themeDescription">
-            <li>This website adapts to the color theme settings of your browser. To change color theme on this website
-              to dark or light, consider changing it on your browser settings.</li>
-            <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you can
-              change the theme at <i>edge://settings/appearance</i>.</li>
+            <ul id="themeDescription">
+              <li>This website adapts to the color theme settings of your browser. To change color theme on this website
+                to dark or light, consider changing it on your browser settings.</li>
+              <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you can
+                change the theme at <i>edge://settings/appearance</i>.</li>
 
-          </ul>
+            </ul>
 
-        </details>
+          </details>
+        </div>
+
+        <div>
+          <details>
+
+            <summary>
+              <h1 id="alertUser">Manual override color theme? (not yet enabled)</h1>
+            </summary>
+
+            <ul id="themeDescription">
+              <li>You can override the default color theme manually.</li>
+              <li>This feature will be available for you in future.</li>
+
+            </ul>
+
+          </details>
+        </div>
+
+        <div>
+          <details>
+
+            <summary>
+              <h1>Not liked fonts? (not yet enabled)</h1>
+            </summary>
+
+            <ul>
+              <li>You can change the default fonts in your browser and the same will be followed here.</li>
+              <!-- <br> -->
+              <!-- <label for=""> Enable dark theme <input type="checkbox" name="" id=""></label> -->
+              <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you can
+                change the fonts at <i>edge://settings/fonts</i>.</li>
+            </ul>
+
+          </details>
+        </div>
+
       </div>
-
-      <div>
-        <details>
-
-          <summary>
-            <h1 id="alertUser">Manual override color theme? (not yet enabled)</h1>
-          </summary>
-
-          <ul id="themeDescription">
-            <li>You can override the default color theme manually.</li>
-            <li>This feature will be available for you in future.</li>
-
-          </ul>
-
-        </details>
-      </div>
-
-      <div>
-        <details>
-
-          <summary>
-            <h1>Not liked fonts? (not yet enabled)</h1>
-          </summary>
-
-          <ul>
-            <li>You can change the default fonts in your browser and the same will be followed here.</li>
-            <!-- <br> -->
-            <!-- <label for=""> Enable dark theme <input type="checkbox" name="" id=""></label> -->
-            <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you can
-              change the fonts at <i>edge://settings/fonts</i>.</li>
-          </ul>
-
-        </details>
-      </div>
-
     </div>
-
   </div>
 
 
@@ -301,7 +302,7 @@
 
     <section id="viewport">
 
-      <div id="defaultView" class="viewportContent">
+      <div id="defaultView" class="content_preview viewportContent">
 
         <h1>
           My online
@@ -314,14 +315,15 @@
           </div>
         </h1>
 
-        <p> My name's Rahul and I'm a 22-year-old engineering graduate from Hyderabad, India. I'm looking for career
-          opportunities in research and development of science, engineering and technology. I'm a big fan of science and
-          technology.</p>
+        <p> My name's Rahul and I'm a 22-year-old engineering graduate from Hyderabad, India. I'm looking for academics,
+          education and career opportunities in research and development of science, engineering and technology. I'm a
+          big fan of science and technology.</p>
+
+        <p>This website is fully coded by me and I used no libraries.</p>
 
         <p>Fun fact: I can write super fast.</p>
 
         <p style="margin-bottom: 30px;">Connect with me on</p>
-
 
         <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
         <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
@@ -330,12 +332,10 @@
         <a href="#contact" id="contact_focus_trigger">Email or phone</a>
 
 
-
       </div>
 
-
-
-      <iframe class="viewportContent" id="linkedin_post" style="filter: invert(0%); display:none;margin-top: 0px;"
+      <iframe class="content_preview viewportContent" id="linkedin_post"
+        style="filter: invert(0%); display:none;margin-top: 0px;"
         class="os-win artdeco windows theme--dark-lix theme--dark" src="" height="739" width="100%" frameborder="0"
         allowfullscreen="" title="Embedded post"></iframe>
 
@@ -348,7 +348,7 @@
         </span>
       </div>
 
-      <div id="btechcmrcetviewcontent" class="hidden">
+      <div id="btechcmrcetviewcontent" class="content_preview hidden">
 
         <h2>Bachelor of Technology in Mechanical Engineering</h2>
 
@@ -741,7 +741,7 @@
     </section>
 
 
-   
+
 
 
   </main>
