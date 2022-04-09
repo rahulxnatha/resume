@@ -10,8 +10,6 @@ header {
   box-shadow: 0 4px 8px rgb(0 0 0 / 14%);
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-
-  
 }
 
 footer {
@@ -52,8 +50,6 @@ main {
   padding: 20px 50px 0 0;
 
   border: 0px solid grey;
-
-  
 }
 
 main section {
@@ -66,11 +62,9 @@ main section {
   row-gap: 20px;
   /* transition-duration: 500ms; */
   padding: 0 50px 20px 50px;
-  margin: 0px 0 20px  0;
+  margin: 0px 0 20px 0;
   border: 0px solid rgba(128, 128, 128, 0.103);
   border-radius: 7px;
-
-  
 }
 
 .three-repeat-main-section {
@@ -80,7 +74,7 @@ main section {
 
 aside {
   z-index: 2;
-  
+
   position: fixed;
   top: 60px;
   left: 0px;
@@ -95,14 +89,19 @@ aside {
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-
 }
+@media (prefers-color-scheme: light) {
+  aside {
+    background-color: var(--windowBackground);
+  }
+}
+
 
 aside section {
   display: block;
   height: calc(100vh - 100px - 40px);
   overflow-y: auto;
-  
+
   padding: 0 20px;
   margin-right: 8px;
 }
@@ -144,12 +143,11 @@ aside section a,
   outline-width: 2px;
   outline-style: hidden;
   outline-offset: 6px;
-  
+
   box-shadow: 0 4px 8px var(--shadow);
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-
 }
 
 article:hover,
@@ -212,7 +210,6 @@ aside h1 {
 aside h2 {
   font-size: 2em;
 }
-
 
 header h1 {
   font-size: 20px;
@@ -344,12 +341,10 @@ address {
   }
 }
 
-  @media only screen and (max-width: 1000px) {
-
+@media only screen and (max-width: 1000px) {
   header {
-    overflow-x:auto;
-    overflow-y:hidden;
-    
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   header::-webkit-scrollbar {
@@ -360,7 +355,6 @@ address {
   header::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0px none;
     background-color: var(--windowBackground);
-    
   }
 
   header::-webkit-scrollbar-thumb {

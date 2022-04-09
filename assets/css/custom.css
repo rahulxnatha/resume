@@ -305,14 +305,10 @@ input:checked + .slider:before {
   /* display:none; */
 }
 
-#backgVideo {
+.backgVideo {
 position: fixed;
 top: 0;
 left: 0;
-
 z-index: -2;
-
-
 width: 100%; 
-
 }
