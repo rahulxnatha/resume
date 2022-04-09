@@ -64,6 +64,8 @@ header {
   background-color: #e9ecef;
 }
 
+#backgVideoLIGHT {display: none;}
+#backgVideoDARK {display: none;}
 @media (prefers-color-scheme: light) {
   :root {
     --base: #ffffff;
@@ -81,7 +83,11 @@ header {
    body {
     background-image: url('../images/pexels-la-miko-3616764.jpg');
   } 
+  @media screen and (min-width: 1300px) {
+  #backgVideoLIGHT {display: block;}
+  }
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -100,7 +106,10 @@ header {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
     } 
-  
+   
+    @media screen and (min-width: 1300px) {
+    #backgVideoDARK {display: block;}
+    }
 }
 
 ::-moz-selection {
