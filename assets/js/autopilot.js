@@ -80,20 +80,16 @@
 const scroller = document.querySelector("#main_pageScroll");
 const outputhEight = document.querySelector("#outputhEight");
 var prevScrollpos = 0;
-
+var prevScrollpos = scroller.scrollTop;
 document.getElementById("main_pageScroll").addEventListener("scroll", event => {
   outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
 
 
-  var prevScrollpos = document.getElementById("main_pageScroll").scrollTop();
+  var currentScrollPos = scroller.scrollTop;
   
 
-});
-
-
-window.onscroll = function () {
   // var currentScrollPos = window.pageYOffset;
-  var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
+  // var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
 
   if (prevScrollpos > currentScrollPos) {
     // while scrolling towards the top of the webpage
@@ -147,8 +143,8 @@ window.onscroll = function () {
     }
   }
   prevScrollpos = currentScrollPos;
-}
 
+});
 
 var internetConnection = true;
 function hasNetwork(online) {
