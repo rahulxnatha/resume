@@ -74,11 +74,26 @@
 
 
 // var prevScrollpos = window.pageYOffset;
-var prevScrollpos = document.getElementById("main_pageScroll").pageYOffset;
+// var prevScrollpos = window.document.getElementById("main_pageScroll").scrollTop;
+
+
+const scroller = document.querySelector("#main_pageScroll");
+const outputhEight = document.querySelector("#outputhEight");
+var prevScrollpos = 0;
+
+document.getElementById("main_pageScroll").addEventListener("scroll", event => {
+  outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
+
+
+  var prevScrollpos = document.getElementById("main_pageScroll").scrollTop();
+  
+
+});
+
 
 window.onscroll = function () {
   // var currentScrollPos = window.pageYOffset;
-  var currentScrollPos = document.getElementById("main_pageScroll").pageYOffset;
+  var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
 
   if (prevScrollpos > currentScrollPos) {
     // while scrolling towards the top of the webpage
