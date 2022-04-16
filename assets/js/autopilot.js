@@ -73,10 +73,12 @@
 // yourFunction();
 
 
-var prevScrollpos = window.pageYOffset;
+// var prevScrollpos = window.pageYOffset;
+var prevScrollpos = document.getElementById("main_pageScroll").pageYOffset;
 
 window.onscroll = function () {
-  var currentScrollPos = window.pageYOffset;
+  // var currentScrollPos = window.pageYOffset;
+  var currentScrollPos = document.getElementById("main_pageScroll").pageYOffset;
 
   if (prevScrollpos > currentScrollPos) {
     // while scrolling towards the top of the webpage

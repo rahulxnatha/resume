@@ -72,6 +72,14 @@ main section {
   grid-template-columns: repeat(3, 1fr);
 }
 
+#main_pageScroll {
+  height: calc(100vh - 0px);
+  overflow:hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 8px 0px 0;
+}
+
 aside {
   z-index: 2;
 
