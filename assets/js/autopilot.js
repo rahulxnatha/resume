@@ -82,7 +82,7 @@ const outputhEight = document.querySelector("#outputhEight");
 var prevScrollpos = 0;
 var prevScrollpos = scroller.scrollTop;
 document.getElementById("main_pageScroll").addEventListener("scroll", event => {
-  outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
+  // outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
 
 
   var currentScrollPos = scroller.scrollTop;
@@ -103,6 +103,8 @@ document.getElementById("main_pageScroll").addEventListener("scroll", event => {
     document.getElementById("viewPort").style.transitionDuration = "500ms";
     document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
+    document.getElementById("main_pageScroll").style.height = "calc(100vh - 60px)";
+    document.getElementById("main_pageScroll").style.marginTop = "60px";
     // document.getElementsByClassName("branding")[0].style.display = "none";
 
     // if (showSettings == true) {
@@ -120,6 +122,9 @@ document.getElementById("main_pageScroll").addEventListener("scroll", event => {
     if (currentScrollPos > 60) {
       // while scrolling towards the bottom of the webpage
       document.getElementsByTagName("header")[0].style.top = "-60px";
+      document.getElementById("main_pageScroll").style.height = "calc(100vh - 0px)";
+      document.getElementById("main_pageScroll").style.marginTop = "0px";
+
 
       // document.getElementById("nav").style.top = "0px";
       document.getElementById("viewPort").style.top = "0px";

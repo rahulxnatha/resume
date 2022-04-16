@@ -45,7 +45,7 @@
 body {
   margin: 0px;
   padding:0;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #f8f9fa;
   color: #34252f;
   font-weight: 400;
