@@ -270,7 +270,8 @@ input:checked + .slider:before {
 }
 
 .banner {
-  min-height: 50vmin;
+  min-height: 30vmin;
+  min-width: 100%;
   grid-column-start: 1;
   grid-column-end: 3;
 

@@ -309,3 +309,9 @@ var i = setInterval(function () {
 document.getElementById("splashScreen").style.display = "none";
 document.getElementById("splashScreen").innerText = "Loading";
 document.getElementById("JSregulated74545").style.display = "inline";
+
+// Simulate a mouse click:
+// window.location.href = "/index.html";
+
+// Simulate an HTTP redirect:
+// window.location.replace("/index.html");

@@ -16,6 +16,9 @@
   --lightWindowBackground: #ffffff80;
   --darkWindowBackground: #343a4050;
 
+
+  --darkArticleBackground: #102d4950;
+
   --lightWindow: #ffffff18;
   --darkWindow: #343a4018;
 
@@ -66,6 +69,8 @@ header {
 
 #backgVideoLIGHT {display: none;}
 #backgVideoDARK {display: none;}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     --base: #ffffff;
@@ -74,6 +79,7 @@ header {
     --background: var(--lightBackground);
     --font: var(--lightFont);
     --windowBackground: var(--lightWindowBackground);
+    --articleBackground: var(--lightArticleBackground);
     --window: var(--lightWindow);
     --a: var(--lightAnchor);
     --selection: var(--lightSelection);
@@ -97,6 +103,7 @@ header {
     --background: var(--darkBackground);
     --font: var(--darkFont);
     --windowBackground: var(--darkWindowBackground);
+    --articleBackground: var(--darkArticleBackground);
     --window: var(--darkWindow); /* focus */
     --a: var(--darkAnchor);
     --selection: var(--darkSelection);

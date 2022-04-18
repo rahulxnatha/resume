@@ -76,9 +76,15 @@ main section {
   height: calc(100vh - 60px);
   overflow:visible;
   overflow-x: hidden;
-  overflow-y: auto;
-  margin: 60px 8px 0px 0;
+  overflow-y: hidden;
+  margin: 60px 12px 0px 0;
   padding: 20px 0 20px 0;
+  transition-duration: 0ms;
+}
+
+#main_pageScroll:hover {
+  overflow-y: auto;
+  margin-right: 8px;transition-duration: 0ms;
 }
 
 aside {
@@ -109,11 +115,19 @@ aside {
 aside section {
   display: block;
   height: calc(100vh - 100px - 40px);
-  overflow-y: auto;
-
+ 
+overflow: hidden;
   padding: 0 20px;
   margin-right: 8px;
+  
 }
+
+aside section:hover {
+  overflow-y: auto;
+}
+
+
+
 /* 
 aside section::-webkit-scrollbar {
   width: 20px;
@@ -145,6 +159,7 @@ aside section a,
 
   max-width: 600px;
   background-color: var(--windowBackground);
+  /* background-color: var(--articleBackground); */
 
   border-radius: 7px;
 
