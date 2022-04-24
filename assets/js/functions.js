@@ -140,6 +140,8 @@ for (let i = 0; i < articles.length; i++) {
             document.getElementById("viewPort").style.zIndex = 4;
             document.getElementById("blurFocusScreen").style.display = "block";
 
+            // document.getElementsByTagName("viewportContent")[i].style.display = "block";
+
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
                 document.getElementById("color_inversion_notice_box").style.display = "block";
                 document.getElementById("linkedin_post").style.filter = "invert(92%)";
