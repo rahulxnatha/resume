@@ -310,10 +310,12 @@ address {
     margin-top: 0px;
   }
 
-  #search_bar {
+  .search_bar {
     display: none;
   }
 }
+
+
 /* phone end  */
 
 @media only screen and (max-width: 1000px) {
