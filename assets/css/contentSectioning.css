@@ -114,7 +114,7 @@ aside {
 
 aside section {
   display: block;
-  height: calc(100vh - 100px - 40px);
+  height: calc(100vh - 100px - 40px - 40px);
  
 overflow: hidden;
   padding: 0 20px;
@@ -308,6 +308,10 @@ address {
     grid-column-start: 1;
     grid-column-end: 4;
     margin-top: 0px;
+  }
+
+  #search_bar {
+    display: none;
   }
 }
 /* phone end  */
