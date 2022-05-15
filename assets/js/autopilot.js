@@ -86,7 +86,7 @@ document.getElementById("main_pageScroll").addEventListener("scroll", event => {
 
 
   var currentScrollPos = scroller.scrollTop;
-  
+
 
   // var currentScrollPos = window.pageYOffset;
   // var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
@@ -134,7 +134,7 @@ document.getElementById("main_pageScroll").addEventListener("scroll", event => {
 
       document.getElementById("viewPort").style.transitionDuration = "500ms";
       document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
-    
+
 
       //   document.getElementById("assistant").style.top = "0";
       // document.getElementById("assistant").style.display = "none";
@@ -187,7 +187,7 @@ function hasNetwork(online) {
 
     document.getElementById("alertUI").style.display = "none";
 
-    
+
     element3.innerText = ""; // slow use sl
     element2.innerText = "ffline"; // wer internet
   }
@@ -214,7 +214,7 @@ window.addEventListener("load", () => {
 function alertUI(show) {
 
   if (
-    
+
     // internetConnection
     1
     && show) {
@@ -250,7 +250,7 @@ function offlineAlertUI(show) {
 
     document.getElementById("themeDescription").style.display = "block";
   } else {
-    
+
     document.getElementById("offlineAlert").classList.toggle("close_slide_down");
     setTimeout(function () {
       document.getElementById("offlineAlert").classList.toggle("close_slide_down");
@@ -308,6 +308,7 @@ var i = setInterval(function () {
 
 document.getElementById("splashScreen").style.display = "none";
 document.getElementById("splashScreen").innerText = "Loading";
+document.getElementById("my_age_in_year").innerText = year - 1999;
 document.getElementById("JSregulated74545").style.display = "inline";
 
 // Simulate a mouse click:
@@ -315,3 +316,4 @@ document.getElementById("JSregulated74545").style.display = "inline";
 
 // Simulate an HTTP redirect:
 // window.location.replace("/index.html");
+

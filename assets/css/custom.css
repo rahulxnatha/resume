@@ -195,6 +195,7 @@ input:checked + .slider:before {
 .active {
   outline: solid #aaa;
   outline-offset: 6px;
+  border: 2px solid #00000000;
 }
 
 #contact_section {
@@ -274,7 +275,7 @@ input:checked + .slider:before {
   min-width: 100%;
   grid-column-start: 1;
   grid-column-end: 3;
-
+/* display: none; */
   background-image: url(../images/rahul.jpg);
 
   background-repeat: no-repeat;

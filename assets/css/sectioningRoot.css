@@ -74,6 +74,7 @@ header {
 @media (prefers-color-scheme: light) {
   :root {
     --base: #ffffff;
+    --basei: #000;
     --base80: hsla(0, 0%, 100%, 0.8);
     --base50i:  hsla(0, 0%, 0%, 0.5);
     --background: var(--lightBackground);
@@ -98,6 +99,7 @@ header {
 @media (prefers-color-scheme: dark) {
   :root {
     --base: #000000;
+    --basei: #fff;
     --base80: hsla(0, 0%, 0%, 0.8);
     --base50i: hsla(0, 0%, 100%, 0.5);
     --background: var(--darkBackground);
