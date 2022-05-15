@@ -157,6 +157,7 @@ aside section a,
   max-width: 600px;
   background-color: var(--windowBackground);
   /* background-color: var(--articleBackground); */
+  overflow: hidden;
 
   border-radius: 7px;
 
@@ -169,6 +170,12 @@ aside section a,
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
+}
+
+.skillBase {
+  background-color: var(--base);
+  margin: 5px -20px -20px -20px;
+  padding: 10px 20px;
 }
 
 article:hover,
@@ -201,12 +208,10 @@ aside section a:hover {
 
   box-shadow: 0px var(--shadow);
 
-background-color: var(--base80);
+  background-color: var(--base80);
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-
-
 
   /* animation: article_hover 3s ease 1; */
 }

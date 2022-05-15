@@ -193,7 +193,7 @@ input:checked + .slider:before {
 }
 
 .active {
-  outline: solid #aaa;
+  outline: 4px solid #aaa;
   outline-offset: 6px;
   border: 2px solid #00000000;
 }
