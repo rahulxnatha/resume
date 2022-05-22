@@ -195,7 +195,7 @@
       </dialog>
     </noscript>
 
-    <dialog open id="offlineAlert" style="display: none; ">
+    <dialog open id="offlineAlert" style="display:none;">
 
       <div>
         <p>Alert</p>
@@ -216,7 +216,7 @@
             <ul>
               <li>It looks like your internet speed is low at this time.</li>
               <li>We're optimising this website to work on lower internet speeds.</li>
-              <li>You might find certain unimportant features disabled.</li>
+              <li>You might find certain non-essential functionalities disabled.</li>
 
             </ul>
 
@@ -233,6 +233,8 @@
             <ul>
               <li>It looks like you're disconnected from the internet.</li>
               <li>Try checking your network cables, modem, and routers, or reconnecting to your wireless network.</li>
+              <li>If you continue to use this website being offline, note that no new content gets updated on the canvas
+                except which've been already downloaded.</li>
 
             </ul>
 
@@ -317,18 +319,17 @@
 
 
     <aside id="viewPort">
-      <div class="tabbar">
+      <div class="tabbar" style="display:none;">
         <span class="elemtab elemtab_active">0</span><span class="elemtab ">1</span><span class="elemtab">2</span><span
           class="elemtab ">3</span>
 
         <span class="elemtab elemtab_add">+</span>
-
+        <hr>
       </div>
-      <hr>
+  
       <section id="viewport">
 
-
-        <div id="defaultView" class="content_preview viewportContent">
+        <div class="briefblock" id="briefblock0">
 
           <h1>
             My online
@@ -341,10 +342,9 @@
             </div>
           </h1>
 
-          <p> My name's Rahul and I'm a <span id="my_age_in_year">that-many<span>-year-old engineering graduate from
-                Hyderabad, India. I'm looking for
-                academics, education and career opportunities in research and development of science, engineering and
-                technology. I'm a big fan of science and technology.</p>
+          <p> My name's Rahul and I'm a<span id="my_age_in_year">n </span>engineering graduate from Hyderabad, India.
+            I'm looking for academics, education and career opportunities in research and development of science,
+            engineering and technology. I'm a big fan of science and technology.</p>
 
           <p>This website is fully programmed and coded by me and I've used no libraries or frameworks.</p>
 
@@ -359,10 +359,58 @@
           <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
           <a href="#contact" id="contact_focus_trigger">Email or IM</a>
 
-        </div>
+        </div> 
 
-        <iframe class="content_preview viewportContent" id="linkedin_post"
-          style="filter: invert(0%); display:none;margin-top: 0px;"
+       
+        <div class="briefblock">1</div>
+        <div class="briefblock">2</div>
+        <div class="briefblock">3</div>
+        <div class="briefblock">4</div>
+        <div class="briefblock">5</div>
+        <div class="briefblock">6</div>
+        <div class="briefblock">7</div>
+        <div class="briefblock">8</div>
+        <div class="briefblock">9</div>
+        <div class="briefblock">10</div>
+        <div class="briefblock">11</div>
+        <div class="briefblock">12</div>
+        <div class="briefblock">13</div>
+        <div class="briefblock">14</div>
+        <div class="briefblock">15</div>
+        <div class="briefblock">16</div>
+        <div class="briefblock">17</div>
+        <div class="briefblock">18</div>
+        <div class="briefblock">19</div>
+        <div class="briefblock">20</div>
+        <div class="briefblock">21</div>
+        <div class="briefblock">22</div>
+        <div class="briefblock">23</div>
+        <div class="briefblock">24</div>
+        <div class="briefblock">25</div>
+        <div class="briefblock">26</div>
+        <div class="briefblock">27</div>
+        <div class="briefblock">28</div>
+        <div class="briefblock">29</div>
+        <div class="briefblock">30</div>
+        <div class="briefblock">31</div>
+        <div class="briefblock">32</div>
+        <div class="briefblock">33</div>
+        <div class="briefblock">34</div>
+        <div class="briefblock">35</div>
+        <div class="briefblock">36</div>
+        <div class="briefblock">37</div>
+        <div class="briefblock">38</div>
+        <div class="briefblock">39</div>
+        <div class="briefblock">40</div>
+        <div class="briefblock"></div>
+        <div class="briefblock"></div>
+        <div class="briefblock"></div>
+        <div class="briefblock"></div>
+        <div class="briefblock"></div>
+    
+
+
+        <iframe class="briefblock" id="linkedin_post" style="filter: invert(0%); display:none;margin-top: 0px;"
           class="os-win artdeco windows theme--dark-lix theme--dark" src="" height="739" width="100%" frameborder="0"
           allowfullscreen="" title="Embedded post"></iframe>
 
@@ -375,7 +423,7 @@
           </span>
         </div>
 
-        <div id="btechcmrcetviewcontent" class="content_preview hidden viewportContent">
+        <div class="briefblock">
 
           <h2>Bachelor of Technology in Mechanical Engineering</h2>
 
@@ -392,6 +440,8 @@
             <figcaption>Merit certificate awarded at CMRCET</figcaption>
           </figure>
         </div>
+
+
       </section>
     </aside>
 
@@ -633,7 +683,7 @@
 
           <h1>HTML</h1>
           <p>#WebDevelopment</p>
-          <div class="skillBase">2 courses, 4 projects, 80% score</div>
+          <div class="skillBase">2 courses, 4 projects</div>
         </article>
 
 
@@ -769,7 +819,7 @@
           <address>
             <a href="mailto:Mr.RahulNatha@gmail.com" target="_blank">Mr.RahulNatha@gmail.com</a><br>
             <a href="https://t.me/rahulnatha" target="_blank">Telegram</a>
-          
+
           </address>
 
         </span>

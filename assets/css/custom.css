@@ -345,3 +345,11 @@ width: 100%;
   height: 25px;
   background-color: transparent;
 }
+
+.briefblock {
+  display: none;
+}
+
+#briefblock0 {
+  display: block;
+}
