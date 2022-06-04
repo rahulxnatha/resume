@@ -182,7 +182,12 @@ for (let i = 0; i < articles.length; i++) {
 
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
                 document.getElementById("color_inversion_notice_box").style.display = "block";
-                document.getElementById("linkedin_post").style.filter = "invert(92%)";
+                document.getElementById("show_color-inversion-toggle_view").style.display = "block";
+
+
+                document.getElementsByClassName("embedded_in_lighttheme")[i].style.filter = "invert(92%)";
+
+
                 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
 
                 document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
@@ -193,7 +198,7 @@ for (let i = 0; i < articles.length; i++) {
 
         }
 
-        document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
+        // document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
     });
 
     articles[i].addEventListener("mouseout", () => {
@@ -236,70 +241,101 @@ document.getElementById("contact_focus_trigger").addEventListener("click", () =>
 
 // });
 
-document.getElementById("course_linkedin_6830070522202718208").addEventListener("mouseover", () => {
+// document.getElementById("testblock").addEventListener("mouseover", () => {
 
 
-    if (clickedArticle == 0) {
-        // document.getElementById("defaultView").style.display = "none";
+//     if (clickedArticle == 0) {
 
-        // document.getElementById("linkedin_post").style.display = "block";
+//         document.getElementById("viewPort").style.zIndex = 4;
+//         document.getElementById("blurFocusScreen").style.display = "block";
+//         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+//             document.getElementById("color_inversion_notice_box").style.display = "block";
 
+//             document.getElementsByClassName("embedded_in_lighttheme")[0].style.filter = "invert(92%)";
 
-        document.getElementById("viewPort").style.zIndex = 4;
+//             document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
+//             document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
+//         } else {
+//             document.getElementById("color_inversion_notice_box").style.display = "none";
+//         }
 
-        document.getElementById("blurFocusScreen").style.display = "block";
+//     }
 
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            document.getElementById("color_inversion_notice_box").style.display = "block";
-            // document.getElementById("linkedin_post").style.filter = "invert(92%)";
-            document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
+// document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
 
-            document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
+// });
 
-        } else {
-            document.getElementById("color_inversion_notice_box").style.display = "none";
-        }
-
-    }
-
-    // document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
-
-});
-
-document.getElementById("course_linkedin_6830070522202718208").addEventListener("mouseout", () => {
+// document.getElementById("course_linkedin_6830070522202718208").addEventListener("mouseout", () => {
 
 
-    if (clickedArticle == 0) {
-        // document.getElementById("defaultView").style.display = "block";
-        // document.getElementById("linkedin_post").style.display = "none";
-        document.getElementById("color_inversion_notice_box").style.display = "none";
-        document.getElementById("blurFocusScreen").style.display = "none";
+//     if (clickedArticle == 0) {
+//         // document.getElementById("defaultView").style.display = "block";
+//         // document.getElementById("linkedin_post").style.display = "none";
+//         document.getElementById("color_inversion_notice_box").style.display = "none";
+//         document.getElementById("blurFocusScreen").style.display = "none";
 
-    }
-    // if (true) {
-    //     document.getElementById("linkedin_6830070522202718208").style.filter = "invert(100%)";
-    // os-win artdeco windows theme--dark-lix
-    // }
+//     }
+//     // if (true) {
+//     //     document.getElementById("linkedin_6830070522202718208").style.filter = "invert(100%)";
+//     // os-win artdeco windows theme--dark-lix
+//     // }
 
-});
+// });
 
 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").addEventListener("click", () => {
     if (
         document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
     ) {
-        // document.getElementById("linkedin_post").style.filter = "invert(0%)";
+        document.getElementsByClassName("embedded_in_lighttheme")[0].style.filter = "invert(0%)";
     } else {
-        // document.getElementById("linkedin_post").style.filter = "invert(92%)";
+        document.getElementsByClassName("embedded_in_lighttheme")[0].style.filter = "invert(92%)";
     }
 });
 
-// function removeAside() {
-//     document.getElementById("viewPort").style.display = "none";
-//     document.getElementById("main").style.width = "calc(100% - 85px)";
-//     document.getElementById("testtgb").classList.add("three-repeat-main-section");
+// // function removeAside() {
+// //     document.getElementById("viewPort").style.display = "none";
+// //     document.getElementById("main").style.width = "calc(100% - 85px)";
+// //     document.getElementById("testtgb").classList.add("three-repeat-main-section");
 
 
 
-// }
+// // }
+var makeitFullScreen = 0;
+document.getElementById("fullScreenViewPort").addEventListener("click", () => {
+    openFullscreenViewPort();
+});
 
+var elemviewPort = document.getElementById("viewPort");
+function openFullscreenViewPort() {
+
+    document.getElementById("fsexitclick").style.display = "inline";
+    document.getElementById("fsenterclick").style.display = "none";
+
+    if (elemviewPort.requestFullscreen) {
+        elemviewPort.requestFullscreen();
+    } else if (elemviewPort.webkitRequestFullscreen) { /* Safari */
+        elemviewPort.webkitRequestFullscreen();
+    } else if (elemviewPort.msRequestFullscreen) { /* IE11 */
+        elemviewPort.msRequestFullscreen();
+    }
+    if (makeitFullScreen == 1) {
+        makeitFullScreen = 0;
+        document.onclick = function (event) {
+            if (document.fullscreenElement) {
+                document.exitFullscreen()
+                    .then(() => console.log("Document Exited from Full screen mode"))
+                    .catch((err) => console.error(err))
+            } else {
+                document.documentElement.requestFullscreen();
+            }
+            document.getElementById("fsexitclick").style.display = "none";
+            document.getElementById("fsenterclick").style.display = "inline";
+        }
+    } else {
+        makeitFullScreen = 1;
+      
+    }
+
+
+}
 

@@ -115,8 +115,8 @@
     <header class="select_disabled">
 
       <div>
-        <h1 style="cursor: pointer;">Rahul Natha &nbsp; <span class="grade-out-text"
-            id="outputhEight">&nbsp;Beta&nbsp;</span> </h1>
+        <h1 style="cursor: pointer;">Rahul Natha &nbsp; <span class="grade-out-text" id="outputhEight"
+            title="This website is currently in beta testing stage">&nbsp;Beta&nbsp;</span> </h1>
 
         <span id="JSregulated74545" style="display:inline;">
           <span class="status2"></span>
@@ -126,8 +126,8 @@
           <span
             style="color:#77777780; visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-          <span class="status2 theme_selector" style="cursor: pointer;" onclick="alertUI(1)"><span
-              class="material-symbols-outlined">
+          <span class="status2 theme_selector" style="cursor: pointer;" onclick="alertUI(1)">
+            <span class="material-symbols-outlined" title="Settings">
               settings_suggest
             </span>&nbsp;&nbsp;</span>
 
@@ -145,7 +145,7 @@
           <a href="#education" onclick="removeAside()" text="Education">Education</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
-          <a href="#work"> Experience</a>
+          <a href="#work" title="Work experience"> Experience</a>
 
         </nav>
       </div>
@@ -319,14 +319,25 @@
 
 
     <aside id="viewPort">
-      <div class="tabbar" style="display:none;">
+      <div class="tabbar" style="display:block;">
         <span class="elemtab elemtab_active">0</span><span class="elemtab ">1</span><span class="elemtab">2</span><span
           class="elemtab ">3</span>
 
         <span class="elemtab elemtab_add">+</span>
+
+        <span style="float:right;" title="Full screen" id="fullScreenViewPort">
+          <span class="material-symbols-outlined" id="fsenterclick">
+          fullscreen
+          </span>
+          <span class="material-symbols-outlined" id="fsexitclick" style="display:none;">
+            fullscreen_exit
+            </span>
+        
+        </span>
+
         <hr>
       </div>
-  
+
       <section id="viewport">
 
         <div class="briefblock" id="briefblock0">
@@ -359,17 +370,50 @@
           <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
           <a href="#contact" id="contact_focus_trigger">Email or IM</a>
 
-        </div> 
+        </div>
 
-       
-        <div class="briefblock">1</div>
-        <div class="briefblock">2</div>
+        <div class="briefblock embedded_in_lighttheme" id="testblock">
+          <!-- <h2> Autodesk Fusion 360 Certified User</h2> -->
+
+          <iframe src="https://drive.google.com/file/d/1w-mjmBbe3Qt80tUzUgC37hlcaghhkswY/preview" width="100%"
+            height="480" allow="autoplay"></iframe>
+
+          <p>The Autodesk Fusion 360 Certified User exam demonstrates competency in product and part
+            design. The exam covers the basic use of the Fusion 360 software as well as basic mechanical design
+            techniques. An individual earning this certification has approximately 150 hours of instruction and
+            hands-on experience with the product, has proven competency at an industry entry-level and is ready
+            to enter into the job market.</p>
+
+
+
+          <a target="_blank" rel="noopener noreferrer"
+            href="https://certiport.pearsonvue.com/Certifications/Autodesk/Certifications/Overview">Learn more</a>
+
+
+
+          <a target="_blank" rel="noopener noreferrer"
+            href="https://drive.google.com/file/d/1BpF3LOf8WMspUcIG7dvJDtbQNlTzPWef/view?usp=sharing">Exam
+            objectives</a>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="briefblock"><iframe src="https://drive.google.com/file/d/1hrMn5eZgWUd7kSnRvebsYAwuYGB4aUsd/preview"
+            width="100%" height="480" allow="autoplay"></iframe> </div>
         <div class="briefblock">3</div>
         <div class="briefblock">4</div>
         <div class="briefblock">5</div>
         <div class="briefblock">6</div>
         <div class="briefblock">7</div>
-        <div class="briefblock">8</div>
+        <div class="briefblock">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6818553883439300609" height="510" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+
+        </div>
         <div class="briefblock">9</div>
         <div class="briefblock">10</div>
         <div class="briefblock">11</div>
@@ -378,10 +422,16 @@
         <div class="briefblock">14</div>
         <div class="briefblock">15</div>
         <div class="briefblock">16</div>
-        <div class="briefblock">17</div>
+        <div class="briefblock">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6889870711016579072" height="574" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+
+        </div>
         <div class="briefblock">18</div>
         <div class="briefblock">19</div>
-        <div class="briefblock">20</div>
+        <div class="briefblock">
+          <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6819098348902060032" height="470" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+
+        </div>
         <div class="briefblock">21</div>
         <div class="briefblock">22</div>
         <div class="briefblock">23</div>
@@ -407,16 +457,20 @@
         <div class="briefblock"></div>
         <div class="briefblock"></div>
         <div class="briefblock"></div>
-    
 
 
-        <iframe class="briefblock" id="linkedin_post" style="filter: invert(0%); display:none;margin-top: 0px;"
+        <!-- 
+        <iframe class="briefblock embedded_in_lighttheme" id="linkedin_post" style="filter: invert(0%); display:none;margin-top: 0px;"
           class="os-win artdeco windows theme--dark-lix theme--dark" src="" height="739" width="100%" frameborder="0"
-          allowfullscreen="" title="Embedded post"></iframe>
+          allowfullscreen="" title="Embedded post"></iframe> -->
 
         <div id="color_inversion_notice_box">
-          <span id="color_inversion_alert"></span>
-          <span>
+          <span id="color_inversion_alert">
+            <p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any
+              image or content a bit off, turn off the color inversion using this switch.</p>
+          </span>
+
+          <span id="show_color-inversion-toggle_view" style="display:none;">
             <label>Color inversion for embedded content
               <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" unchecked>
             </label>
@@ -480,7 +534,7 @@
         <article tabindex="0">
 
           <h1>Build your Analytical Skills with Statistical Analysis</h1>
-          <p>Coursera Learning Path</p>
+          <p>LinkedIn Learning Path</p>
 
         </article>
 
