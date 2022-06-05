@@ -286,15 +286,20 @@ address {
 /* If the browser window is 600px or smaller */
 @media only screen and (max-width: 1230px) {
   aside {
-    z-index: inherit;
+    z-index: 7;
     transition-duration: 500ms;
-    position: inherit;
-    width: calc(100% - 200px);
-    margin: 20px 20px 20px 100px;
-    height: calc(100vh - 100px);
+    position: fixed;
+  
+    width: calc(100% - 2 * 20px);
+    margin: 20px 0px 20px 20px;
+    height: calc(20vh - 40px);
     padding: 20px 0px 20px 0px;
     border: 2px solid grey;
     border-radius: 7px;
+
+
+   
+    top: calc(80vh);
   }
 
   main {
