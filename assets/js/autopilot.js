@@ -103,8 +103,8 @@ document.getElementById("main_pageScroll").addEventListener("scroll", event => {
     document.getElementById("viewPort").style.transitionDuration = "500ms";
     document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
-    document.getElementById("main_pageScroll").style.height = "calc(100vh - 60px)";
-    document.getElementById("main_pageScroll").style.marginTop = "60px";
+    document.getElementById("main_pageScroll").style.height = "calc(100vh - 80px)";
+    document.getElementById("main_pageScroll").style.marginTop = "80px";
     document.getElementById("main_pageScroll").style.transitionDuration = "500ms";
     // document.getElementsByClassName("branding")[0].style.display = "none";
 

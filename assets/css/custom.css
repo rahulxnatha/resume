@@ -281,7 +281,7 @@ input:checked + .slider:before {
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-size: contain;
-
+margin-top: -40px;
   /**/
 
   /* animation: mymove 5s infinite; */

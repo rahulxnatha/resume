@@ -73,11 +73,11 @@ main section {
 }
 
 #main_pageScroll {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 80px);
   overflow: visible;
   overflow-x: hidden;
   overflow-y: hidden;
-  margin: 60px 12px 0px 0;
+  margin: 80px 12px 0px 0;
   padding: 20px 0 20px 0;
   transition-duration: 0ms;
 }
@@ -115,6 +115,7 @@ aside {
 aside section {
   display: block;
   height: calc(100vh - 100px - 40px - 40px);
+  height: calc(100vh - 100px - 40px );
   /* width: calc(100% - 16px); */
   overflow: hidden;
   padding: 0 20px;
@@ -263,7 +264,7 @@ main span h1 {
   font-size: 35px;
   margin: 0 0 0 0;
   padding: 0;
-  padding-top: 60px;
+  padding-top: 20px;
 }
 main span h2 {
   font-size: 22px;
