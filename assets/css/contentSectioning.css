@@ -115,14 +115,15 @@ aside {
 aside section {
   display: block;
   height: calc(100vh - 100px - 40px - 40px);
-
+  /* width: calc(100% - 16px); */
   overflow: hidden;
   padding: 0 20px;
-  margin-right: 8px;
+  margin-right: 12px;
 }
 
 aside section:hover {
   overflow-y: auto;
+  margin-right: 8px;
 }
 
 /* 
@@ -241,7 +242,6 @@ aside h1 {
 
 aside h2 {
   font-size: 2em;
-  
 }
 
 header h1 {
@@ -292,7 +292,7 @@ address {
     z-index: 7;
     transition-duration: 500ms;
     position: fixed;
-  
+
     width: calc(100% - 2 * 20px);
     margin: 20px 0px 20px 20px;
     height: calc(20vh - 40px);
@@ -300,8 +300,6 @@ address {
     border: 2px solid grey;
     border-radius: 7px;
 
-
-   
     top: calc(80vh);
   }
 
