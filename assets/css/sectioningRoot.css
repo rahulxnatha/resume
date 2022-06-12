@@ -49,6 +49,9 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Work+Sans:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap');
+
 body {
   margin: 0px;
   padding:0;

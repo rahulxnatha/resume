@@ -227,7 +227,9 @@ h4,
 h5,
 h6 {
   font-family: "Work Sans", sans-serif;
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
+  /* font-family: 'Quicksand', sans-serif;font-family: 'Noto Sans Display', sans-serif; */
+  /* font-family: 'Roboto Slab', serif;font-family: 'Roboto Condensed', sans-serif; */
   margin: 0px;
   font-size: 20px;
   font-weight: 400;
@@ -239,6 +241,7 @@ aside h1 {
 
 aside h2 {
   font-size: 2em;
+  
 }
 
 header h1 {
@@ -377,7 +380,7 @@ address {
 
   aside h1 {
     font-size: 3em;
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
   }
 }
 

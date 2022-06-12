@@ -125,11 +125,6 @@ for (let i = 0; i < articles.length; i++) {
 
         briefblock[i].style.display = "block";
 
-        // document.getElementById("defaultView").style.display = "none";
-
-        // document.getElementById("linkedin_post").style.display = "block";
-
-
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
         } else {
@@ -137,8 +132,6 @@ for (let i = 0; i < articles.length; i++) {
         }
 
         document.getElementById("blurFocusScreen").style.display = "none";
-
-
 
         // articles[i].className = 'microinteraction';
 
@@ -167,12 +160,16 @@ for (let i = 0; i < articles.length; i++) {
 
         if (clickedArticle == 0) {
 
-            briefblock[clickedArticleIs].style.display = "none";
-            briefblock[0].style.display = "none";
-            briefblock[i].style.display = "block";
-            // document.getElementById("defaultView").style.display = "none";
-            // document.getElementById("linkedin_post").style.display = "block";
+            setTimeout(function () {
 
+                briefblock[clickedArticleIs].style.display = "none";
+                briefblock[0].style.display = "none";
+
+
+                briefblock[i].style.display = "inline";
+            }, 000);
+
+            // briefblock[i].style.display = "inline";
 
 
             document.getElementById("viewPort").style.zIndex = 4;
@@ -183,14 +180,29 @@ for (let i = 0; i < articles.length; i++) {
             if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
                 document.getElementById("color_inversion_notice_box").style.display = "block";
                 document.getElementById("show_color-inversion-toggle_view").style.display = "block";
-
-
-                document.getElementsByClassName("embedded_in_lighttheme")[i].style.filter = "invert(92%)";
-
-
                 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
 
-                document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
+                for (let embed = 0; embed < document.getElementsByClassName("embedded_in_lighttheme").length; embed++) {
+            
+                    if (
+                        document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
+                    ) {
+                        document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(0%)";
+                    }
+                 else {
+                   
+                        document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
+                    }
+                }
+
+
+
+                // for (embed = 0; embed < embedded_in_lighttheme.length; embed++) {
+                //     document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
+                // }
+                
+
+                // document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
 
             } else {
                 document.getElementById("color_inversion_notice_box").style.display = "none";
@@ -204,13 +216,15 @@ for (let i = 0; i < articles.length; i++) {
     articles[i].addEventListener("mouseout", () => {
         if (clickedArticle == 0) {
 
-            briefblock[i].style.display = "none";
-            briefblock[clickedArticleIs].style.display = "none";
-            briefblock[0].style.display = "block";
+            setTimeout(function () {
 
-            // document.getElementById("defaultView").style.display = "block";
-            // document.getElementById("linkedin_post").style.display = "none";
+                briefblock[i].style.display = "none";
+                briefblock[clickedArticleIs].style.display = "none";
+                briefblock[0].style.display = "inline";
 
+            }, 00);
+
+            // briefblock[0].style.display = "inline";
 
             document.getElementById("color_inversion_notice_box").style.display = "none";
             document.getElementById("blurFocusScreen").style.display = "none";
@@ -282,13 +296,22 @@ document.getElementById("contact_focus_trigger").addEventListener("click", () =>
 
 // });
 
+
+
 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").addEventListener("click", () => {
-    if (
-        document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
-    ) {
-        document.getElementsByClassName("embedded_in_lighttheme")[0].style.filter = "invert(0%)";
-    } else {
-        document.getElementsByClassName("embedded_in_lighttheme")[0].style.filter = "invert(92%)";
+   
+
+    for (let embed = 0; embed < document.getElementsByClassName("embedded_in_lighttheme").length; embed++) {
+            
+        if (
+            document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
+        ) {
+            document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(0%)";
+        }
+     else {
+       
+            document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
+        }
     }
 });
 
@@ -333,7 +356,7 @@ function openFullscreenViewPort() {
         }
     } else {
         makeitFullScreen = 1;
-      
+
     }
 
 
