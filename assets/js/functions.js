@@ -172,7 +172,8 @@ for (let i = 0; i < articles.length; i++) {
             // briefblock[i].style.display = "inline";
 
 
-            document.getElementById("viewPort").style.zIndex = 4;
+            document.getElementById("viewPort").style.zIndex = 5;
+         
             document.getElementById("blurFocusScreen").style.display = "block";
 
             // document.getElementsByTagName("viewportContent")[i].style.display = "block";

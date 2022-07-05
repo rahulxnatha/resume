@@ -314,19 +314,22 @@ var i = setInterval(function () {
 
 
   counter++;
-  if (counter === 10000000000000000000000000000000000000000000000000000000000000000000000000000) {
+  if (counter === Math.pow(2,50)) {
     clearInterval(i);
   }
 }, 5000);
 
-document.getElementById("splashScreen").style.display = "none";
+ document.getElementById("splashScreen").style.display = "none";
 document.getElementById("splashScreen").innerText = "Loading";
 document.getElementById("my_age_in_year").innerText = year - 1999;
 document.getElementById("JSregulated74545").style.display = "inline";
+
+
 
 // Simulate a mouse click:
 // window.location.href = "/index.html";
 
 // Simulate an HTTP redirect:
 // window.location.replace("/index.html");
+
 
