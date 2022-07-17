@@ -66,9 +66,15 @@ main section {
   /* transition-duration: 500ms; */
   padding: 0 50px 20px 50px;
   margin: 0px 0 20px 0;
-  border: 0px solid rgba(128, 128, 128, 0.103);
+  /* border-right: 2px solid rgb(128, 128, 128);
+  border-bottom: 2px solid rgb(128, 128, 128);
+  border-top: 2px solid rgb(128, 128, 128); */
+  
   border-radius: 7px;
 
+  max-height: 500px;
+  overflow:hidden;
+  overflow-y: scroll;
    /* background-color: none;
   -webkit-backdrop-filter: blur(0px);
   backdrop-filter: blur(0px);  */
@@ -76,8 +82,8 @@ main section {
 
  main section:hover {
   background-color: var(--windowBackground);
-  -webkit-backdrop-filter: blur(13px);
-  backdrop-filter: blur(13px);
+  /* -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px); */
 
 } 
 
