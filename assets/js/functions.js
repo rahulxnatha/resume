@@ -296,6 +296,27 @@ document.getElementById("contact_focus_trigger").addEventListener("click", () =>
 //     // }
 
 // });
+// var mainSection = document.getElementsByTagName("section");
+var mainSection = document.getElementsByClassName("mainSection");
+
+document.getElementById("expandAll").addEventListener("click", () => {
+   
+
+    for (let selSection = 0; selSection < mainSection.length; selSection++) {
+            
+        if (
+            document.getElementById("expandAll").checked == 1
+        ) {
+            // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "auto";
+            mainSection[selSection].style.maxHeight = "none";
+        }
+     else {
+            // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "500px";
+            mainSection[selSection].style.maxHeight = "500px";
+        }
+    }
+}
+);
 
 
 
