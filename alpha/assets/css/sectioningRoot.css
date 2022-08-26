@@ -1,0 +1,213 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  box-sizing: border-box;
+  
+  z-index: 1;
+  font-family: 'Work Sans', sans-serif;
+
+}
+
+:root {
+ 
+  color-scheme: light dark;
+
+  --lightBackground: #f7f7f7;
+  --darkBackground: #121212;
+
+  --lightWindowBackground: #ffffff80;
+  --darkWindowBackground: #343a4050;
+
+
+  --darkArticleBackground: #102d4950;
+
+  --lightWindow: #ffffff18;
+  --darkWindow: #343a4018;
+
+  --lightFont: #272727;
+  --darkFont: #f1faee;
+
+  --lightAnchor: #234e97;
+  --darkAnchor: #5fbcbf;
+
+  --lightSelection: #457b9d50;
+  --darkSelection: #a8dadc50;
+
+  --lightShadow: hsla(0, 0%, 0%, 0.14);
+  --darkShadow: rgba(0,0,0, 0.86);
+
+  /* font-family: monospace; */
+}
+
+:root {
+  --background: var(--lightBackground);
+  --font: var(--lightFont);
+  --windowBackground: var(--lightWindowBackground);
+  --a: var(--lightAnchor);
+  --selection: var(--lightSelection);
+}
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Work+Sans:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap');
+
+body {
+  margin: 0px;
+  padding:0;
+  /* overflow: hidden; */
+  background-color: #f8f9fa;
+  color: #34252f;
+  font-weight: 400;
+  
+
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Work Sans', sans-serif;
+}
+
+dialog > div {
+
+  background-color: #e9ecef;
+
+}
+
+header {
+  background-color: #e9ecef;
+}
+
+#backgVideoLIGHT {display: none;}
+#backgVideoDARK {display: none;}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --base: #ffffff;
+    --basei: #000;
+    --base80: hsla(0, 0%, 100%, 0.8);
+    --base50i:  hsla(0, 0%, 0%, 0.5);
+    --background: var(--lightBackground);
+    --font: var(--lightFont);
+    --windowBackground: var(--lightWindowBackground);
+    --articleBackground: var(--lightArticleBackground);
+    --window: var(--lightWindow);
+    --a: var(--lightAnchor);
+    --selection: var(--lightSelection);
+    --shadow: var(--lightShadow);
+  }
+
+   body {
+    background-image: url('../images/pexels-la-miko-3616764.jpg');
+    background-image: url('../images/pexels-karolina-grabowska-5208871.jpg');
+  } 
+  @media screen and (min-width: 1300px) {
+  #backgVideoLIGHT {display: block;}
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base: #000000;
+    --basei: #fff;
+    --base80: hsla(0, 0%, 0%, 0.8);
+    --base50i: hsla(0, 0%, 100%, 0.5);
+    --background: var(--darkBackground);
+    --font: var(--darkFont);
+    --windowBackground: var(--darkWindowBackground);
+    --articleBackground: var(--darkArticleBackground);
+    --window: var(--darkWindow); /* focus */
+    --a: var(--darkAnchor);
+    --selection: var(--darkSelection);
+    --shadow:var(--darkShadow);
+  }
+     body {
+      background-image: url('../images/pexels-cottonbro-7181899.jpg');
+      background-image: url('../images/pexels-alex-andrews-816608.jpg');
+      background-image: url('../images/pexels-eberhard-grossgasteiger-1421903.jpg');
+      /* background-image: url('../images/pexels-philippe-donn-1169754.jpg'); */
+    } 
+   
+    @media screen and (min-width: 1300px) {
+    #backgVideoDARK {display: block;}
+    }
+}
+
+::-moz-selection {
+  background: var(--selection);
+}
+::selection {
+  background: var(--selection);
+}
+
+/* ::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px none;
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #88888888;
+  border-radius: 50vmin;
+  border: 4px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+} */
+
+::-webkit-scrollbar {
+  width: 4px;
+  /* width: 0px; */
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px none;
+  background-color: var(--background);
+  background-color: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #88888888;
+  border-radius: 50vmin;
+  border: 8px solid var(--background);
+  border: 0px solid transparent;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}
+
+body {
+
+  background-color: var(--background);
+  color: var(--font);
+ 
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+
+}
+/* 
+#backgroundVideo {
+
+  position: fixed; top:0; left:0; width:100%; z-index: 0;
+ 
+} */
+
+@media print {
+  html,
+  body {
+    display: none; /* hide whole page while printing */
+  }
+}
+
+@supports not (display: grid) {
+  main div {
+    float: right;
+  }
+}
