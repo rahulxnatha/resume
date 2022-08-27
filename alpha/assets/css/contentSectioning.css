@@ -145,8 +145,8 @@ aside {
 
 aside section {
   display: block;
-  height: calc(100vh - 100px - 40px - 40px);
-  height: calc(100vh - 100px - 40px);
+  height: calc(100vh - 100px - 40px - 40px - 60px);
+  height: calc(100vh - 100px - 40px - 60px);
   /* width: calc(100% - 16px); */
   overflow: hidden;
   padding: 0 20px;
@@ -446,6 +446,6 @@ address {
   }
 
   header div {
-    min-width: 900px;
+    min-width: 1500px;
   }
 }

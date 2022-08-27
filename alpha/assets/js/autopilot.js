@@ -105,7 +105,7 @@ var prevScrollpos = 0;
     // document.getElementById("nav").style.top = "60px";
     document.getElementById("viewPort").style.top = "60px";
     document.getElementById("viewPort").style.height = "calc(100vh - 100px)";
-    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px )";
+    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px)";
 
     document.getElementById("viewPort").style.transitionDuration = "500ms";
     document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
@@ -143,7 +143,7 @@ var prevScrollpos = 0;
       // document.getElementById("nav").style.top = "0px";
       document.getElementById("viewPort").style.top = "0px";
       document.getElementById("viewPort").style.height = "calc(100vh - 40px)";
-      document.getElementById("viewport").style.height = "calc(100vh - 80px )";
+      document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px)";
 
       document.getElementById("viewPort").style.transitionDuration = "500ms";
       document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
