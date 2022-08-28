@@ -103,6 +103,16 @@
 // }, true);
 
 
+
+const elemtabs = document.getElementsByClassName("elemtab");
+
+for (let i = 0; i < elemtabs.length; i++) {
+    elemtabs[i].style.display = "none";
+    
+}
+elemtabs[elemtabs.length - 1].style.display = "inline";
+
+
 const articles = document.getElementsByTagName("article");
 const briefblock = document.getElementsByClassName("briefblock");
 
@@ -112,6 +122,8 @@ var clickedArticleIs = 0;
 for (let i = 0; i < articles.length; i++) {
 
     articles[i].addEventListener("click", () => {
+
+        elemtabs[i].style.display = "inline";
         clickedArticle = true;
         if (clickedArticleIs == i) {
             clickedArticle = false;
