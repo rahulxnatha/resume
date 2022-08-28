@@ -360,7 +360,7 @@ input:checked + .slider:before {
   /* background-color: green; */
   overflow: hidden;
   height: calc(30px);
-  width: calc(70% - 20px);
+  width: calc(100% - 0px - 130px);
   overflow-x: auto;
   overflow-y: hidden;
   float: left;
@@ -375,11 +375,11 @@ input:checked + .slider:before {
 .controlButtons {
   overflow: hidden;
   height: 30px;
-  width: 30%;
+  width: 130px;
   overflow-x: auto;
   overflow-y: hidden;
   float: right;
-  /* background-color: var(--windowBackground); */
+  /* background-color: blue; */
   border-radius: 7px;
 
 }
@@ -387,12 +387,14 @@ input:checked + .slider:before {
 .controlButtons > span {
   background-color: rgba(119, 119, 119, 0.337);
   font-size: 20px;
+  
   margin: 0 0 0 17px;
   border-radius: 7px;
   padding: 2px;
   float: right;
   cursor: pointer;
 }
+
 
 #fullScreenViewPort {
   cursor: pointer;

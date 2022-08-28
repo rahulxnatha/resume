@@ -53,7 +53,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap');
 
 body {
-  margin: 0px;
+  margin: 0px 0px 0 0;
   padding:0;
   /* overflow: hidden; */
   background-color: #f8f9fa;
@@ -159,10 +159,12 @@ header {
   background: #888888;
 } */
 
+
+/* using this */
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;
-  /* width: 0px; */
+  
 }
 
 ::-webkit-scrollbar-track {
