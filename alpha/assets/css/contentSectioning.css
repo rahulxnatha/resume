@@ -11,6 +11,7 @@ header {
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 header > div {
@@ -78,9 +79,9 @@ main section {
   transition-duration: 0s;
   border-radius: 7px;
 
-  max-height: 500px;
+  /* max-height: 500px; */
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   /* background-color: none;
   -webkit-backdrop-filter: blur(0px);
   backdrop-filter: blur(0px);  */

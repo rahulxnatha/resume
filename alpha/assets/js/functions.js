@@ -135,7 +135,8 @@ for (let i = 0; i < articles.length; i++) {
 
         briefblock[clickedArticleIs].style.display = "none";
 
-        briefblock[i].style.display = "block";
+        // briefblock[i].style.display = "block";
+        showBriefBlock(i);
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
@@ -396,3 +397,13 @@ function openFullscreenViewPort() {
 
 }
 
+// const briefblock = document.getElementsByClassName("briefblock");
+// var briefBlockNumber = 0;
+
+function showBriefBlock(briefBlockNumber) {
+    for (let i = 0; i < briefblock.length; i++) {
+
+        briefblock[i].style.display = "none";
+    }
+    briefblock[briefBlockNumber].style.display = "block";
+}
