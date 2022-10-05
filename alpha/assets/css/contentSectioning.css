@@ -190,6 +190,9 @@ aside section::-webkit-scrollbar-thumb:hover {
 article,
 aside section a,
 #contact a {
+  
+  position: relative;
+  
   margin: 0;
   padding: 20px 20px 20px 20px;
 
@@ -216,8 +219,11 @@ aside section a,
 
 .skillBase {
   background-color: var(--base);
-  margin: 5px -20px -20px -20px;
+  margin: 5px -20px 0 -20px;
   padding: 10px 20px;
+  position: absolute;
+  bottom:0px;
+  width:100%;
 }
 
 article:hover,
