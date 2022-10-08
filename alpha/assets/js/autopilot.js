@@ -94,7 +94,7 @@ var prevScrollpos = 0;
 
 
   // var prevScrollpos = window.pageYOffset;
-
+  document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
   window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
 
@@ -104,11 +104,13 @@ var prevScrollpos = 0;
 
     // document.getElementById("nav").style.top = "60px";
     document.getElementById("viewPort").style.top = "60px";
-    document.getElementById("viewPort").style.height = "calc(100vh - 100px)";
-    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px)";
+    document.getElementById("viewPort").style.height = "calc(100vh - 100px - 100px)";
+    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
 
-    document.getElementById("viewPort").style.transitionDuration = "500ms";
-    document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
+    document.getElementById("viewport").style.transitionDuration = "500ms";
+    // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
+
+    document.getElementById("smallNotification").style.bottom = "calc( 0px)";
 
     // turn this on later
     // document.getElementById("main_pageScroll").style.height = "calc(100vh - 60px)";
@@ -144,9 +146,11 @@ var prevScrollpos = 0;
       document.getElementById("viewPort").style.top = "0px";
       document.getElementById("viewPort").style.height = "calc(100vh - 40px)";
       document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px)";
+      
+      document.getElementById("smallNotification").style.bottom = "calc( -100px)";
 
-      document.getElementById("viewPort").style.transitionDuration = "500ms";
-      document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
+      // document.getElementById("viewPort").style.transitionDuration = "500ms";
+      // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
 
       //   document.getElementById("assistant").style.top = "0";

@@ -20,7 +20,9 @@
   <meta property="og:url" content="" />
   <meta property="og:image" content="" />
 
-  <link rel="icon" type="image/png" href="https://docs.google.com/drawings/d/e/2PACX-1vS1KgWUu8Zg8OBlmPBqxNBJC_ux_GtlfJfTXUSjYUEgVOPph1OpC37FC6R7_ylI3SFrn4txXEBFyz9s/pub?w=96&amp;h=96" sizes="96x96">
+  <link rel="icon" type="image/png"
+    href="https://docs.google.com/drawings/d/e/2PACX-1vS1KgWUu8Zg8OBlmPBqxNBJC_ux_GtlfJfTXUSjYUEgVOPph1OpC37FC6R7_ylI3SFrn4txXEBFyz9s/pub?w=96&amp;h=96"
+    sizes="96x96">
 
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -393,6 +395,7 @@
       </div>
     </div>
 
+    <div class="smallNotification" id="smallNotification"><span id="smallNotiText">Hi there. Good evening. Take a look at all the tiles at the right. Hover or click on them to see a glance or read about them right above.</span></div>
 
     <aside id="viewPort">
       <div class="viewPortMenu" style="display:block;">
@@ -402,7 +405,7 @@
             <!-- 240 tabs allowed -->
 
             <span class="elemtab elemtab_active">Introduction</span>
-            <span class="elemtab"></span>
+            <span class="elemtab">BTech</span>
             <span class="elemtab"></span>
             <span class="elemtab"></span>
             <span class="elemtab"></span>
@@ -921,10 +924,14 @@
 
       </section>
     </aside>
+
+
+
+
     <!-- --------------------------------------------------------------------------------------- -->
     <main id="main">
 
-      <section>
+      <section id="mainSettings">
         <span style="margin-top: 20px;">
           <h3>Display style</h3>
         </span>
@@ -933,17 +940,19 @@
           <input type="checkbox" name="expandAll" id="expandAll" style="margin-top: 20px;" checked>&nbsp;Expand all
         </label>
 
-        <label >
-          <input id="showFilters" type="checkbox" style="margin-top: 20px;" unchecked >&nbsp;Show filters
+        <label title="Checking this field will show the filters menu.  
+Unchecking will remove filters and hide filters menu." >
+          <input id="showFilters" type="checkbox" style="margin-top: 20px;" unchecked>&nbsp;<span
+            id="showFiltersCap">Filters</span>
         </label>
       </section>
 
 
       <section id="filtersSection" style="padding-top: 20px; display: none; ">
-        <span >
+        <span>
           <h3>Filter and sort (not yet enabled)</h3>
 
-          <label for="filterSortBasedOn" >Based on</label>
+          <label for="filterSortBasedOn">Based on</label>
           <select id="filterSortBasedOn" name="filterSortBasedOn" style="margin-top: 20px;">
             <option value="filterType1">Categories</option>
             <option value="filterType2">Time traveler</option>
@@ -953,21 +962,21 @@
         </span>
 
 
-        <label > <input type="checkbox"  unchecked>&nbsp;School and degree</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Certifications</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Courses</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Industry knowledge</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Tools & technologies</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Interpersonal skills</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Languages</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Other skills</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Graded projects for school</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Ungraded personal projects</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Work projects (non detail)</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Design Engineer</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Technical Illustrator</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Technical Writer</label>
-        <label > <input type="checkbox"  unchecked>&nbsp;Junior Research Fellow</label>
+        <label> <input type="checkbox" unchecked>&nbsp;School and degree</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Certifications</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Courses</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Industry knowledge</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Tools & technologies</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Interpersonal skills</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Languages</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Other skills</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Graded projects for school</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Ungraded personal projects</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Work projects (non detail)</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Design Engineer</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Technical Illustrator</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Technical Writer</label>
+        <label> <input type="checkbox" unchecked>&nbsp;Junior Research Fellow</label>
 
 
       </section>

@@ -341,10 +341,12 @@ document.getElementById("showFilters").addEventListener("click", () => {
         ) {
             // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "auto";
             document.getElementById("filtersSection").style.display = "grid";
+            document.getElementById("showFiltersCap").innerText = "Filters";
         }
         else {
             // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "500px";
             document.getElementById("filtersSection").style.display = "none";
+            document.getElementById("showFiltersCap").innerText = "Filters";
         }
     
 }
