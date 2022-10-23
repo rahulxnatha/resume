@@ -134,10 +134,17 @@
             Testing
             Stage: Somewhat Unstable&nbsp;</span> </h1> -->
 
-        <h1 style="cursor: pointer; ">Rahul Natha &nbsp; <span class="grade-out-text" id="outputhEight"
-            title="This version of the website is highly unstable and contains newest features">&nbsp;Alpha: Highly
-            Unstable&nbsp;</span> </h1>
+        <h1 style="cursor: pointer; ">Rahul Natha &nbsp;
+           <span class="grade-out-text" id="outputhEight"
+            title="This version of the website is highly unstable and contains newest features">
 
+           &nbsp;Alpha: Highly
+            Unstable&nbsp; </span>
+
+         
+
+        </h1>
+       
         <span id="JSregulated74545" style="display:inline;">
           <span class="status2"></span>
 
@@ -173,8 +180,23 @@
           <a href="#work" title="Work experience"> Experience</a>
 
         </nav>
-        <nav style="float:left; margin-left: 20px;"><a href="../index.html" title="Opens most stable version">
-            Stable</a></nav>
+
+        <!-- <nav style="float:left; margin-left: 20px; margin-top: -20px;">
+
+          <label for="filterSortBasedOn"></label>
+          <select id="filterSortBasedOn" name="filterSortBasedOn" style="margin-top: 20px;">
+
+            <option value="Channel1"><a href="https://hey-rahul.github.io/resume/" title="Opens Beta channel">
+                Beta: Somewhat Unstable</a></option>
+            <option value="Channel2"><a href="https://hey-rahul.github.io/resume/alpha" title="Alpha version">
+                Alpha: Highly Unstable</a></option>
+
+          </select>
+
+        </nav> -->
+
+        <nav style="float:left; margin-left: 20px;"><a href="../index.html" text="Switch to Alpha Testing Version"> Beta</a></nav>
+
       </div>
     </header>
 
@@ -384,8 +406,32 @@
             </details>
           </div>
 
-          <span style=" margin: 0 0 0px 45px;">Version: Alpha 2.0004 </span> <br><br>
-          <span style="margin-left: 45px;">Last updated: 05 October 2022 </span>
+          <div>
+            <details>
+
+              <summary>
+                <h1>Data saver mode (not yet enabled)</h1>
+              </summary>
+
+              <ul style="text-align: center;">
+                <li style="text-align: left;">Turning this on will reduce the amount of data downloaded.</li>
+
+
+                <input style="text-align: center;" type="date" name="" id="">
+                <br><br>
+
+                <input style="text-align: center;" type="button" value="Go">
+
+              </ul>
+
+
+
+
+            </details>
+          </div>
+
+          <span style=" margin: 0 0 0px 45px;">Version: Alpha 2.0007 </span> <br><br>
+          <span style="margin-left: 45px;">Last updated: 23 October 2022 </span>
 
           <br><br><br>
 
@@ -395,7 +441,17 @@
       </div>
     </div>
 
-    <div class="smallNotification" id="smallNotification"><span id="smallNotiText">Hi there. Good evening. Take a look at all the tiles at the right. Hover or click on them to see a glance or read about them right above.</span></div>
+    <div class="smallNotification" id="smallNotification">
+     
+      <span id="smallNotiText">
+        Hi there.
+        Good evening.
+        Take a look at all the tiles at the right.
+        Hover or click on them to see a glance or read about them right above.
+        
+      </span>
+
+    </div>
 
     <aside id="viewPort">
       <div class="viewPortMenu" style="display:block;">
@@ -654,13 +710,20 @@
 
         <span class="controlButtons">
 
-          <span class="material-symbols-outlined" title="Close">close</span>
+          <span class="material-symbols-outlined asideCloseClass" id="asideClose" title="Close" >close</span>
+
+
           <span class="material-symbols-outlined" id="fsenterclick">fullscreen</span>
           <span class="material-symbols-outlined" id="fsexitclick" style="display:none;">fullscreen_exit</span>
+
+
+
           <span class="material-symbols-outlined" style="float:right; cursor: pointer;"
             title="Unfold more">unfold_more</span>
           <span class="material-symbols-outlined" style="float:right; display:none;"
             title="Unfold less">unfold_less</span> -->
+
+
 
         </span>
       </div>
@@ -931,20 +994,30 @@
     <!-- --------------------------------------------------------------------------------------- -->
     <main id="main">
 
+
+
       <section id="mainSettings">
         <span style="margin-top: 20px;">
           <h3>Display style</h3>
         </span>
 
+
         <label for="expandAll">
           <input type="checkbox" name="expandAll" id="expandAll" style="margin-top: 20px;" checked>&nbsp;Expand all
         </label>
 
-        <label title="Checking this field will show the filters menu.  
-Unchecking will remove filters and hide filters menu." >
+        <label
+          title="Checking this field will show the filters menu. Unchecking will remove filters and hide filters menu.">
           <input id="showFilters" type="checkbox" style="margin-top: 20px;" unchecked>&nbsp;<span
             id="showFiltersCap">Filters</span>
         </label>
+
+        <label title="Show or hide preview pane"  >
+          <input id="asideOpenCheckbox" class="asideCloseClass" type="checkbox" style="margin-top: 20px; " checked>&nbsp;<span
+            id="showFiltersCap">Preview</span>
+        </label>
+
+
       </section>
 
 

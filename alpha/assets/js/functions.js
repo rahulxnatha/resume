@@ -334,21 +334,21 @@ document.getElementById("expandAll").addEventListener("click", () => {
 document.getElementById("showFilters").addEventListener("click", () => {
 
 
-   
 
-        if (
-            document.getElementById("showFilters").checked == 1
-        ) {
-            // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "auto";
-            document.getElementById("filtersSection").style.display = "grid";
-            document.getElementById("showFiltersCap").innerText = "Filters";
-        }
-        else {
-            // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "500px";
-            document.getElementById("filtersSection").style.display = "none";
-            document.getElementById("showFiltersCap").innerText = "Filters";
-        }
-    
+
+    if (
+        document.getElementById("showFilters").checked == 1
+    ) {
+        // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "auto";
+        document.getElementById("filtersSection").style.display = "grid";
+        document.getElementById("showFiltersCap").innerText = "Filters";
+    }
+    else {
+        // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "500px";
+        document.getElementById("filtersSection").style.display = "none";
+        document.getElementById("showFiltersCap").innerText = "Filters";
+    }
+
 }
 );
 
@@ -380,17 +380,71 @@ document.getElementById("color_inversion_for_viewport_embedded_content_toggle").
 
 
 // // }
-var makeitFullScreen = 0;
-document.getElementById("fullScreenViewPort").addEventListener("click", () => {
-    openFullscreenViewPort();
+
+const aside = document.getElementsByTagName("aside");
+const main = document.getElementsByTagName("main");
+
+document.getElementsByClassName("asideCloseClass")[0].addEventListener("click", () => {
+
+    setTimeout(function () {
+        let mainSections = document.querySelectorAll('main section');
+        for (let index = 0; index < mainSections.length; index++) {
+            mainSections[index].classList.toggle("mainSectionOnAsideClose");
+        }
+
+        let mainSpan = document.querySelectorAll('main span');
+        for (let index = 0; index < mainSpan.length; index++) {
+            mainSpan[index].classList.toggle("mainSpanOnAsideClose");
+        }
+        document.getElementById("asideOpenCheckbox").checked = !document.getElementById("asideOpenCheckbox").checked;
+
+        main[0].classList.toggle("mainOnAsideClose");
+    }, 0);
+    setTimeout(function () {
+        aside[0].classList.toggle("asideMoveOut");
+    }, 0);
+
 });
 
+document.getElementsByClassName("asideCloseClass")[1].addEventListener("click", () => {
+
+    setTimeout(function () {
+        let mainSections = document.querySelectorAll('main section');
+        for (let index = 0; index < mainSections.length; index++) {
+            mainSections[index].classList.toggle("mainSectionOnAsideClose");
+        }
+
+        let mainSpan = document.querySelectorAll('main span');
+        for (let index = 0; index < mainSpan.length; index++) {
+            mainSpan[index].classList.toggle("mainSpanOnAsideClose");
+        }
+
+        main[0].classList.toggle("mainOnAsideClose");
+    }, 0);
+
+    setTimeout(function () {
+        aside[0].classList.toggle("asideMoveOut");
+    }, 0);
+});
+
+
+
+
+
+
+
+
+var makeitFullScreen = 0;
+document.getElementById("fsenterclick").addEventListener("click", () => {
+    openFullscreenViewPort();
+});
+document.getElementById("fsexitclick").addEventListener("click", () => {
+    openFullscreenViewPort();
+});
 var elemviewPort = document.getElementById("viewPort");
 function openFullscreenViewPort() {
-
     document.getElementById("fsexitclick").style.display = "inline";
     document.getElementById("fsenterclick").style.display = "none";
-
     if (elemviewPort.requestFullscreen) {
         elemviewPort.requestFullscreen();
     } else if (elemviewPort.webkitRequestFullscreen) { /* Safari */
@@ -413,10 +467,7 @@ function openFullscreenViewPort() {
         }
     } else {
         makeitFullScreen = 1;
-
     }
-
-
 }
 
 // const briefblock = document.getElementsByClassName("briefblock");

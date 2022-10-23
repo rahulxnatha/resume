@@ -53,7 +53,7 @@ main {
   float: right;
   /* max-width: calc(100% - 660px - 100px); */
   width: calc(50%);
-
+  transition-duration: 50ms;
   margin: 0;
   padding: 20px 50px 0 0;
 
@@ -62,8 +62,17 @@ main {
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px); */
 }
+.mainOnAsideClose {
+  width : 100%;
+  padding-left: 50px;
+}
 
-main section {
+.mainSectionOnAsideClose {
+  grid-template-columns: repeat(4, 1fr);
+
+}
+
+main  section {
   display: grid;
   /* grid-template-columns: repeat(auto-fill, minmax(10px, 1fr)); */
   grid-template-columns: repeat(2, 1fr);
@@ -71,7 +80,7 @@ main section {
   grid-auto-columns: minmax(100px, auto); */
   column-gap: 20px;
   row-gap: 20px;
-  /* transition-duration: 500ms; */
+  transition-duration: 0ms;
   padding: 0 50px 20px 50px;
   margin: 0px 0 20px 0;
   /* border-right: 2px solid rgb(128, 128, 128);
@@ -86,6 +95,16 @@ main section {
   /* background-color: none;
   -webkit-backdrop-filter: blur(0px);
   backdrop-filter: blur(0px);  */
+}
+
+.mainSpanOnAsideClose {
+  grid-column-end:5; 
+}
+
+main span {
+   grid-column-start: 1;
+  grid-column-end:3; 
+  margin-top: 0px;
 }
 
 main section:hover {
@@ -126,6 +145,11 @@ main section:hover {
   /* transition-duration: 0ms; */
 }
 
+.asideMoveOut {
+  left: -50%;
+  transition-duration: 25ms;
+}
+
 aside {
   z-index: 2;
 
@@ -143,7 +167,7 @@ aside {
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
-  transition-duration:  0.5s;
+  transition-duration:  500ms;
 }
 
 @media (prefers-color-scheme: light) {
@@ -207,6 +231,7 @@ aside section a,
   padding: 20px 20px 20px 20px;
 
   border: 2px solid grey;
+  /* border: 2px solid transparent; */
   cursor: pointer;
 
   max-width: 600px;
@@ -229,7 +254,7 @@ aside section a,
 
 aside section a,
 #contact a {
-  border: 0px solid grey;
+  border: 1px solid grey;
   box-shadow: none;
 }
 
@@ -320,11 +345,7 @@ header span {
   float: right;
 }
 
-main span {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  margin-top: 0px;
-}
+
 
 main span h1 {
   font-size: 35px;
