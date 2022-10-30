@@ -56,14 +56,39 @@ body {
   margin: 0px;
   padding:0;
   /* overflow: hidden; */
-  background-color: #f8f9fa;
-  color: #34252f;
+  background-color: #121212;
+  color: #fff;
   font-weight: 400;
   
 
   font-family: 'Roboto Condensed', sans-serif;
   font-family: 'Noto Sans', sans-serif;
   font-family: 'Work Sans', sans-serif;
+}
+
+body{
+  scrollbar-base-color: pink;
+
+  scrollbar-face-color: #777;
+  /* this is  the scrollbar */
+
+  scrollbar-3dlight-color: green;
+
+
+  scrollbar-highlight-color: yellow;
+
+
+  scrollbar-track-color: #121212;
+
+
+  scrollbar-arrow-color: #121212;
+
+
+  scrollbar-shadow-color: #121212;
+/* around the scrollbar like a border  */
+
+  scrollbar-dark-shadow-color: brown;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 dialog > div {
@@ -73,7 +98,7 @@ dialog > div {
 }
 
 header {
-  background-color: #e9ecef;
+  background-color: #444;
 }
 
 #backgVideoLIGHT {display: none;}

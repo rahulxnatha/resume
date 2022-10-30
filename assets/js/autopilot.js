@@ -165,12 +165,15 @@ var prevScrollpos = 0;
 
 };
 
+
 var internetConnection = true;
 function hasNetwork(online) {
   internetConnection = online;
   const element = document.querySelector(".status");
   const element2 = document.querySelector(".status2");
   const element3 = document.querySelector(".status25");
+  document.getElementById("online_status_pipe").style.display = "inline";
+  document.getElementById("JSregulated74545").classList.add("widthAnimation");
   // Update the DOM to reflect the current status
   if (online) {
     element.classList.remove("offline");
@@ -178,6 +181,7 @@ function hasNetwork(online) {
     // element.innerText = "Online";
 
     element2.innerText = "nline";
+
 
     document.getElementById("offlineAlert").style.display = "none";
 
@@ -199,6 +203,7 @@ function hasNetwork(online) {
 
 
     document.getElementById("alertUI").style.display = "none";
+    
 
 
     element3.innerText = ""; // slow use sl

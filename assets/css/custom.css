@@ -1,10 +1,16 @@
 .select_disabled {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
 .splash_screen {
@@ -165,6 +171,30 @@ input:checked + .slider:before {
   background-color: transparent;
 }
 
+#JSregulated74545 {
+  /* animation-duration: 2s; */
+  /* animation: widthAnimation 1s; */
+  overflow: hidden;
+}
+
+.widthAnimation {
+  animation: widthAnimation 1s;
+  overflow: hidden;
+}
+@keyframes widthAnimation {
+  0% {
+    width: 0px;
+    height: 20px;
+    overflow: hidden;
+  }
+
+  100% {
+    width: 150px;
+    height: 20px;
+    overflow: hidden;
+  }
+}
+
 .status2 {
   float: right;
   margin-left: -3px;
@@ -178,7 +208,7 @@ input:checked + .slider:before {
   float: right;
   margin: 0;
   font-size: 36px;
-  line-height: 0.65em;
+  line-height: 0.64em;
   color: transparent;
 }
 
@@ -275,13 +305,13 @@ input:checked + .slider:before {
   min-width: 100%;
   grid-column-start: 1;
   grid-column-end: 3;
-/* display: none; */
+  /* display: none; */
   background-image: url(../images/rahul.jpg);
 
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-size: contain;
-margin-top: 20px;
+  margin-top: 20px;
   /**/
 
   /* animation: mymove 5s infinite; */
@@ -303,16 +333,16 @@ margin-top: 20px;
   border: 2px solid var(--base50i);
   border-radius: 7px;
   box-shadow: 0 2px 4px var(--shadow);
-  font-size:smaller;
+  font-size: smaller;
   /* display:none; */
 }
 
 .backgVideo {
-position: fixed;
-top: 0;
-left: 0;
-z-index: -2;
-width: 100%; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
 }
 
 
@@ -321,7 +351,7 @@ width: 100%;
 .elemtab {
 
   border-right: 1px solid grey;
-  margin: 0px ;
+  margin: 0px;
   padding: 0 30px;
   border-radius: 0px;
   cursor: pointer;
@@ -329,13 +359,13 @@ width: 100%;
 }
 
 .elemtab_active {
- background-color: rgba(119, 119, 119, 0.337);
- border-right: 1px solid rgba(128, 128, 128, 0);
+  background-color: rgba(119, 119, 119, 0.337);
+  border-right: 1px solid rgba(128, 128, 128, 0);
 }
 
 .elemtab_add {
   border: 0px solid transparent;
- 
+
   margin-left: -10px;
   margin-top: -10px;
 }
