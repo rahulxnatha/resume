@@ -4,8 +4,8 @@
 <head>
 
   <base href="index.html" target="_self" />
-  
-  
+
+
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge; charset=utf-8" />
   <!-- <meta http-equiv="refresh" content="...;url=..." /> -->
@@ -100,8 +100,8 @@
       style="position:fixed;top:0;left:0; z-index: 60; background-color: var(--background); height: 100%; width: 100%; padding: 30px;">
       </div> -->
 
-    <!--
-    <video autoplay muted loop class="backgVideo" id="backgVideoLIGHT">
+
+    <!-- <video autoplay muted loop class="backgVideo" id="backgVideoLIGHT">
 
       <source src="assets/images/pexels-rostislav-uzunov-8252781.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
@@ -112,9 +112,9 @@
       Your browser does not support HTML5 video.
     </video>
 
-      <video autoplay muted loop id="backgroundVideo">
-        <source src="../resume/assets/images/pexels-mr-borys-9860821.mp4" type="video/mp4">
-      </video>  -->
+    <video autoplay muted loop id="backgroundVideo">
+      <source src="../resume/assets/images/pexels-mr-borys-9860821.mp4" type="video/mp4">
+    </video> -->
 
     <div id="blurFocusScreen" style="position:fixed;top:0;left:0;display: none; z-index: 2; background-color: none; height: 100vh; width: 100vw; padding: 30px;-webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);"></div>
@@ -136,7 +136,7 @@
           <span class="status25" style="margin-right:-2px;"></span>
 
           <span id="online_status_pipe"
-            style="color:#77777780; visibility: visible; display:none; ">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 
+            style="color:#77777780; visibility: visible; display:none; ">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
             <span style="color:var(--font)">You're&nbsp;</span></span>
 
           <span class="status2 theme_selector" style="cursor: pointer; display: none;" onclick="alertUI(1)">
@@ -166,8 +166,14 @@
           <a href="#work" title="Work experience"> Experience</a>
 
         </nav>
-        <nav style="float:left; margin-left: 20px;"><a href="alpha/index.html" title="Switch to Alpha Testing Version"> Alpha</a></nav>
+        <nav style="float:left; margin-left: 20px; ">
+          <a style="color:#00000000;" href="alpha/index.html" title="Switch to Alpha Testing Version"
+            onMouseOver="this.style.color='var(--font)'" onMouseOut="this.style.color='#00000000'">Dev</a>
+        </nav>
       </div>
+
+
+
     </header>
 
     <!-- <div class="assistant">

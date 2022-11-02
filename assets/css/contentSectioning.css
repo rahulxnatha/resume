@@ -225,6 +225,13 @@ aside section a,
   padding: 10px 20px;
 }
 
+/* article:hover
+ {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  transition-duration: 500ms;
+} */
+
 article:hover,
 #contact a:hover {
   /* -ms-transform: scale(1);
