@@ -1,5 +1,5 @@
 
-speechSynthesis.speak(new SpeechSynthesisUtterance("Welcome to my website. Here you can view what all I have for you."));
+// speechSynthesis.speak(new SpeechSynthesisUtterance("Hi. I am a robot. I can assist you browse this website. Here you can view what all I have for you. You can turn me off by toggling off the switch."));
 // setTimeout(function () {
 //     var hour = new Date().getHours();
 
