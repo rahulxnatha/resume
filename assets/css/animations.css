@@ -240,7 +240,7 @@ main {
   0% {
   }
 
-  50% {
+  10% {
     -ms-transform: scale(0.8); /* IE 9 */
     -webkit-transform: scale(0.8); /* Safari 3-8 */
     transform: scale(0.8);
@@ -255,7 +255,7 @@ main {
   0% {
   }
 
-  50% {
+  10% {
     -ms-transform: scale(0.8); /* IE 9 */
     -webkit-transform: scale(0.8); /* Safari 3-8 */
     transform: scale(0.8);

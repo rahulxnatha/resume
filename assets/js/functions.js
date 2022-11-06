@@ -334,6 +334,8 @@ document.getElementById("close_preview_button").addEventListener("click", () => 
         mainSpan[index].classList.toggle("mainSpanOnAsideClose");
     }
 
+    document.getElementById("close_preview_button").classList.add("microinteraction");
+    setTimeout(function () { document.getElementById("close_preview_button").classList.remove("microinteraction"); }, 400);
 });
 
 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").addEventListener("click", () => {

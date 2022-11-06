@@ -45,7 +45,7 @@ main {
   float: right;
   /* max-width: calc(100% - 660px - 100px); */
   width: calc(50%);
-
+  transition-duration: 50ms;
   margin: 0;
   padding: 20px 50px 0 0;
 
@@ -153,7 +153,7 @@ aside {
   border-radius: 7px;
   overflow-y: hidden;
   overflow: hidden;
-
+  transition-duration:  500ms;
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
 }
