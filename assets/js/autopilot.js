@@ -94,7 +94,7 @@ var prevScrollpos = 0;
 
 
   // var prevScrollpos = window.pageYOffset;
-
+  document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px )";
   window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
 
@@ -108,6 +108,7 @@ var prevScrollpos = 0;
     document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px )";
 
     document.getElementById("viewPort").style.transitionDuration = "500ms";
+    document.getElementById("viewport").style.transitionDuration = "500ms";
     document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
     // turn this on later
@@ -146,6 +147,7 @@ var prevScrollpos = 0;
       document.getElementById("viewport").style.height = "calc(100vh - 80px )";
 
       document.getElementById("viewPort").style.transitionDuration = "500ms";
+      document.getElementById("viewport").style.transitionDuration = "500ms";
       document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
 

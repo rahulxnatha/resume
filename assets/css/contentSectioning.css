@@ -153,6 +153,7 @@ aside {
   border-radius: 7px;
   overflow-y: hidden;
   overflow: hidden;
+  
   transition-duration:  500ms;
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
@@ -179,6 +180,14 @@ aside section {
 aside section:hover {
   overflow-y: auto;
   /* margin-right: 8px; */
+}
+
+#viewport {
+  height : "calc(100vh - 100px - 40px  )";
+}
+
+aside, .viewPortMenu, .viewport, .viewPort, .briefblock, .tabbar, .tabbar > div {
+  transition-duration:  0.5s;
 }
 
 /* 
