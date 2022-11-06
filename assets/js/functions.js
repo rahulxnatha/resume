@@ -173,7 +173,7 @@ for (let i = 0; i < articles.length; i++) {
 
 
             document.getElementById("viewPort").style.zIndex = 5;
-         
+
             document.getElementById("blurFocusScreen").style.display = "block";
 
             // document.getElementsByTagName("viewportContent")[i].style.display = "block";
@@ -184,14 +184,14 @@ for (let i = 0; i < articles.length; i++) {
                 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked = 1;
 
                 for (let embed = 0; embed < document.getElementsByClassName("embedded_in_lighttheme").length; embed++) {
-            
+
                     if (
                         document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
                     ) {
                         document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(0%)";
                     }
-                 else {
-                   
+                    else {
+
                         document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
                     }
                 }
@@ -201,7 +201,7 @@ for (let i = 0; i < articles.length; i++) {
                 // for (embed = 0; embed < embedded_in_lighttheme.length; embed++) {
                 //     document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
                 // }
-                
+
 
                 // document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
 
@@ -300,17 +300,17 @@ document.getElementById("contact_focus_trigger").addEventListener("click", () =>
 var mainSection = document.getElementsByClassName("mainSection");
 
 document.getElementById("expandAll").addEventListener("click", () => {
-   
+
 
     for (let selSection = 0; selSection < mainSection.length; selSection++) {
-            
+
         if (
             document.getElementById("expandAll").checked == 1
         ) {
             // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "auto";
             mainSection[selSection].style.maxHeight = "none";
         }
-     else {
+        else {
             // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "500px";
             mainSection[selSection].style.maxHeight = "500px";
         }
@@ -322,20 +322,32 @@ document.getElementById("close_preview_button").addEventListener("click", () => 
 
     document.getElementById("viewPort").classList.toggle("close_preview_button");
 
+    let mainSections = document.querySelectorAll('main section');
+    for (let index = 0; index < mainSections.length; index++) {
+        mainSections[index].classList.toggle("mainSectionOnAsideClose");
+    }
+    const main = document.getElementsByTagName("main");
+    main[0].classList.toggle("mainOnAsideClose");
+
+    let mainSpan = document.querySelectorAll('main span');
+    for (let index = 0; index < mainSpan.length; index++) {
+        mainSpan[index].classList.toggle("mainSpanOnAsideClose");
+    }
+
 });
 
 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").addEventListener("click", () => {
-   
+
 
     for (let embed = 0; embed < document.getElementsByClassName("embedded_in_lighttheme").length; embed++) {
-            
+
         if (
             document.getElementById("color_inversion_for_viewport_embedded_content_toggle").checked == 0
         ) {
             document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(0%)";
         }
-     else {
-       
+        else {
+
             document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
         }
     }

@@ -66,6 +66,15 @@ main {
   }
 }
 
+.mainOnAsideClose {
+  width : 100%;
+  padding-left: 50px;
+}
+
+.mainSectionOnAsideClose {
+  grid-template-columns: repeat(4, 1fr);
+
+}
 
 main section {
   display: grid;
@@ -313,6 +322,10 @@ main span {
   margin-top: 0px;
 }
 
+.mainSpanOnAsideClose {
+  grid-column-end:5; 
+}
+
 main span h1 {
   font-size: 35px;
   margin: 0 0 0 0;
@@ -360,6 +373,11 @@ address {
     top: calc(80vh);
   }
 
+  .mainOnAsideClose {
+    width : calc(100% - 50px);
+    padding-left: 00px;
+  }
+
   main {
     float: left;
     width: calc(100% - 50px);
@@ -391,6 +409,15 @@ address {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .mainSpanOnAsideClose {
+    grid-column-end:3; 
+  }
+
+  .mainSectionOnAsideClose {
+    grid-template-columns: repeat(2, 1fr);
+  
+  }
+
   main span {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -408,6 +435,15 @@ address {
     padding-left: 20px;
     padding-right: 20px;
     margin: 0;
+  }
+
+  .mainSectionOnAsideClose {
+    grid-template-columns: repeat(1, 1fr);
+  
+  }
+
+  .mainSpanOnAsideClose {
+    grid-column-end:2; 
   }
 
   main span {
