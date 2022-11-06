@@ -341,7 +341,9 @@ address {
   margin-top: 20px;
 }
 
-/* If the browser window is 600px or smaller */
+/* If the browser window is 1230px or smaller */
+
+
 @media only screen and (max-width: 1230px) {
   aside {
     z-index: 7;
@@ -396,6 +398,9 @@ address {
   }
 }
 
+/* If the browser window is 700px or smaller */
+
+
 @media only screen and (max-width: 700px) {
   main section {
     grid-template-columns: repeat(1, 1fr);
@@ -420,7 +425,7 @@ address {
     border: 0px solid grey;
   }
 
-  aside {
+  /* aside {
     z-index: inherit;
     transition-duration: 500ms;
     position: inherit;
@@ -430,7 +435,7 @@ address {
     padding: 20px 0px 20px 0px;
     border: 2px solid grey;
     border-radius: 7px;
-  }
+  } */
 
   aside h1 {
     font-size: 3em;

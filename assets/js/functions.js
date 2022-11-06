@@ -318,7 +318,11 @@ document.getElementById("expandAll").addEventListener("click", () => {
 }
 );
 
+document.getElementById("close_preview_button").addEventListener("click", () => {
 
+    document.getElementById("viewPort").classList.toggle("close_preview_button");
+
+});
 
 document.getElementById("color_inversion_for_viewport_embedded_content_toggle").addEventListener("click", () => {
    

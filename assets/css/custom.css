@@ -390,3 +390,7 @@ input:checked + .slider:before {
 #briefblock0 {
   display: block;
 }
+
+.close_preview_button {
+  left: -10000000px;
+}
