@@ -59,6 +59,7 @@ main {
 
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) {
+
   article,
   aside section a,
   #contact a {
@@ -67,7 +68,7 @@ main {
 }
 
 .mainOnAsideClose {
-  width : 100%;
+  width: 100%;
   padding-left: 50px;
 }
 
@@ -90,8 +91,8 @@ main section {
   /* border-right: 2px solid rgb(128, 128, 128);
   border-bottom: 2px solid rgb(128, 128, 128);
   border-top: 2px solid rgb(128, 128, 128); */
-  transition-duration: 0s;
-  border-radius: 7px;
+  /* transition-duration: 0s; */
+  border-radius: 24px;
 
   /* max-height: 500px; */
   overflow: hidden;
@@ -103,15 +104,25 @@ main section {
 
 main section:hover {
   background-color: var(--windowBackground);
-  /* -webkit-backdrop-filter: blur(13px);
-  backdrop-filter: blur(13px); */
+  /* -webkit-backdrop-filter: blur(13px); */
+  /* backdrop-filter: blur(13px);  */
+ /* z-index: 1; */
 
 }
 
-.three-repeat-main-section {
+.mainSectionOnArticleHover {
+
+  /* display: none; */
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+ /* z-index: 1; */
+
+}
+
+/* .three-repeat-main-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-}
+} */
 
 /* #main_pageScroll {
   height: calc(100vh - 80px);
@@ -150,13 +161,19 @@ aside {
   height: calc(100vh - 100px);
   padding: 20px 0px 20px 0px;
   border: 2px solid grey;
-  border-radius: 7px;
+  border-radius: 24px;
   overflow-y: hidden;
   overflow: hidden;
-  
-  transition-duration:  500ms;
+
+  /* transition-duration: 500ms; */
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
+}
+
+aside:hover {
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  transition-duration: 500ms;
 }
 
 @media (prefers-color-scheme: light) {
@@ -183,11 +200,17 @@ aside section:hover {
 }
 
 #viewport {
-  height : "calc(100vh - 100px - 40px  )";
+  height: "calc(100vh - 100px - 40px  )";
 }
 
-aside, .viewPortMenu, .viewport, .viewPort, .briefblock, .tabbar, .tabbar > div {
-  transition-duration:  0.5s;
+aside,
+.viewPortMenu,
+.viewport,
+.viewPort,
+.briefblock,
+.tabbar,
+.tabbar>div {
+  transition-duration: 0.5s;
 }
 
 /* 
@@ -224,8 +247,8 @@ aside section a,
   /* background-color: var(--articleBackground); */
   overflow: hidden;
 
-  border-radius: 7px;
-
+  border-radius: 24px;
+/* transition-duration: 500ms; */
   outline-color: #aaaaaa;
   outline-width: 2px;
   outline-style: hidden;
@@ -233,6 +256,7 @@ aside section a,
 
   box-shadow: 0 4px 8px var(--shadow);
 
+  
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
 }
@@ -280,10 +304,11 @@ aside section a:hover {
 
   box-shadow: 0px var(--shadow);
 
-  background-color: var(--base80);
+  /* background-color: var(--base80); */
 
-  -webkit-backdrop-filter: blur(13px);
-  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  /* transition-duration: 50ms; */
 
   /* animation: article_hover 3s ease 1; */
 }
@@ -332,7 +357,7 @@ main span {
 }
 
 .mainSpanOnAsideClose {
-  grid-column-end:5; 
+  grid-column-end: 5;
 }
 
 main span h1 {
@@ -366,7 +391,7 @@ address {
 /* If the browser window is 1230px or smaller */
 
 
-@media only screen and (max-width: 1230px) {
+@media only screen and (max-width: 1231px) {
   aside {
     z-index: 7;
     transition-duration: 500ms;
@@ -383,7 +408,7 @@ address {
   }
 
   .mainOnAsideClose {
-    width : calc(100% - 50px);
+    width: calc(100% - 50px);
     padding-left: 00px;
   }
 
@@ -400,9 +425,14 @@ address {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .mainSectionOnAsideClose {
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+
   main span {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 3;
     margin-top: 0px;
   }
 
@@ -419,12 +449,12 @@ address {
   }
 
   .mainSpanOnAsideClose {
-    grid-column-end:3; 
+    grid-column-end: 3;
   }
 
   .mainSectionOnAsideClose {
     grid-template-columns: repeat(2, 1fr);
-  
+
   }
 
   main span {
@@ -448,11 +478,11 @@ address {
 
   .mainSectionOnAsideClose {
     grid-template-columns: repeat(1, 1fr);
-  
+
   }
 
   .mainSpanOnAsideClose {
-    grid-column-end:2; 
+    grid-column-end: 2;
   }
 
   main span {

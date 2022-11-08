@@ -131,6 +131,11 @@ for (let i = 0; i < articles.length; i++) {
             document.getElementById("color_inversion_notice_box").style.display = "none";
         }
 
+        let mainSections = document.querySelectorAll('main section');
+        for (let index = 0; index < mainSections.length; index++) {
+            mainSections[index].classList.remove("mainSectionOnArticleHover");
+        }
+
         document.getElementById("blurFocusScreen").style.display = "none";
 
         // articles[i].className = 'microinteraction';
@@ -173,6 +178,11 @@ for (let i = 0; i < articles.length; i++) {
 
 
             document.getElementById("viewPort").style.zIndex = 5;
+
+            let mainSections = document.querySelectorAll('main section');
+            for (let index = 0; index < mainSections.length; index++) {
+                mainSections[index].classList.add("mainSectionOnArticleHover");
+            }
 
             document.getElementById("blurFocusScreen").style.display = "block";
 
@@ -228,6 +238,12 @@ for (let i = 0; i < articles.length; i++) {
             // briefblock[0].style.display = "inline";
 
             document.getElementById("color_inversion_notice_box").style.display = "none";
+
+            let mainSections = document.querySelectorAll('main section');
+            for (let index = 0; index < mainSections.length; index++) {
+                mainSections[index].classList.remove("mainSectionOnArticleHover");
+            }
+
             document.getElementById("blurFocusScreen").style.display = "none";
 
         }

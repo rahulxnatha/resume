@@ -123,8 +123,9 @@
 
 
       <div>
-        <span id="close_preview_button" class="theme_selector" style="float:left; margin-right: 20px;" ><span class="material-symbols-outlined">
-          menu
+        <span id="close_preview_button" class="theme_selector" style="float:left; margin-right: 20px;"><span
+            class="material-symbols-outlined">
+            menu
           </span></span>
         <h1 style="cursor: pointer;">Rahul Natha &nbsp; <span class="grade-out-text" id="outputhEight"
             title="Website is being prepared for its release">&nbsp;Release Preview&nbsp;</span> </h1>
@@ -272,6 +273,69 @@
       </div>
 
     </dialog>
+
+
+
+    <dialog open id="releaseNotes" style="display:none;">
+
+      <div>
+        <p>Release Notes</p>
+
+        <span class="close_alert_button"
+          style="position: absolute; top: 20px;right:40px;cursor: pointer;  height: 25px; padding:  0 0 18px 4px;">
+          <span>&times; <span class="close_button_suggestion"> Close</span> </span>
+        </span>
+
+        <div >
+          <h1>Documentation for portfolio website – Jan 2023 release</h1>
+          This release is scheduled on 1 Jan 2023 IST at 12:00 AM
+          <h2>The Elements</h2>
+          <h3>Header bar</h3>
+
+          <ol style="line-height:1;">
+
+            <li style="line-height:1;">The header bar sticks to the topmost edge of the webpage by default.</li>
+            <li style="line-height:1;">*While the webpage is scrolled down, the header bar will move up until it is moved outside the webpage.
+            </li>
+            <li>*While the webpage is scrolled up, the header bar will again come to its initial position.</li>
+          <li> The header bar will get a horizontal scrollbar when the webpage is opened on smaller screen sizes such as
+            mobile or tablets. </li>
+          </ol>
+          <h3>Elements of the header bar</h3>
+          1. *Hamburger icon at the left, is used to toggle between viewing and hiding the preview box.
+          2. Branding with the logo of the webpage is done.
+          3. The channel indicator indicates the kind of set of features that are available in the webpage. Beta channel
+          has the features that will be rolled out soon. Alpha channel has the features that are scheduled to be
+          released after few years. This flyout also has options to switch between the channels and to view help section
+          which contains this documentation.
+          4. Nav links are used to quickly go to any section within the webpage.
+          5. *Online status indicator at the right indicates whether the user is online or offline. An alert box will
+          also appear if there are any internet disconnections or if slower speeds are detected.
+          6. *Search bar. This feature is not included in the current release. This feature is not included in the Beta
+          channel.
+          7. *Settings icon. This feature is not included in the current release. Hence not found in the Beta channel as
+          well.
+          <h3>The Body</h3>
+          1. The most prominent element is the Preview Box. It can be found at the left side on the webpage on desktop
+          screen. At the centre filling all the body, when viewed on smaller size screens. *This preview box shows the
+          content related to the Tile which is hovered or clicked by the curser.
+          2. At the right pane, a series of headings and Tiles will be shown. Each tile indicates some specific relevant
+          topic. *When an article is hovered for a second, all other tiles and headings in the right pane will get
+          blurred, so that only one tile and the preview pane is in focus.
+          3. *In order to read more about a tile, the user needs to click on the tile and then unhide the Preview Box if
+          it is not in the view by clicking the hamburger icon in the header bar.
+          <h2>Requirements</h2>
+          1. Browsers supported: Latest chromium-based browsers such as Microsoft Edge, Google Chrome, etc., HTML based
+          Microsoft Edge, Mozilla Firefox, and Internet Explorer 11.
+          2. The features marked with * are not compatible with Internet Explorer 11.
+
+        </div>
+
+      </div>
+
+    </dialog>
+
+
 
     <div id="alertUI" style="display: none;">
 
@@ -641,7 +705,7 @@
 
           <span
             style="float:left; margin-top: 20px; font-weight: bold;  border: 0px solid var(--font); padding: 20px; border-radius: 30px;line-height: 1.5;">
-            Welcome to my website. 
+            Welcome to my website.
             <br>
             Here you can view what all I have for
             you.
@@ -912,7 +976,7 @@
 
           <h1>Experiment on factors affecting machinability of MDN250 in CNC wire-cut EDM</h1>
           <p>
-            Guided by Mr. Manish Kumar, Scientist
+            Guided by a Scientist
             <br>
             Feb 2020 - Mar 2020
 
@@ -925,7 +989,7 @@
           <h1>Design and Analysis of Double Open-Ended Spanner using CATIA V5 R20: Part Design and Ansys R19.1
           </h1>
           <p>
-            Guided by Mr. B. Naresh Kumar, Assistant Professor, CMR College of Engineering & Technology
+            Guided by an Assistant Professor, CMR College of Engineering & Technology
             <br>
             May 2019 - Jul 2019
 
@@ -939,7 +1003,7 @@
 
           </h1>
           <p>
-            Guided by Mr. Ravi Kishore & Mr. G. Karthik, Professors, Chennai Institute of Technology, Chennai
+            Guided by Professors, Chennai Institute of Technology, Chennai
             <br>
 
             May 2018
