@@ -102,13 +102,13 @@ main section {
   backdrop-filter: blur(0px);  */
 }
 
-main section:hover {
-  background-color: var(--windowBackground);
+/* main section:hover { */
+  /* background-color: var(--windowBackground); */
   /* -webkit-backdrop-filter: blur(13px); */
   /* backdrop-filter: blur(13px);  */
  /* z-index: 1; */
 
-}
+/* } */
 
 .mainSectionOnArticleHover {
 
@@ -254,7 +254,7 @@ aside section a,
   outline-style: hidden;
   outline-offset: 6px;
 
-  box-shadow: 0 4px 8px var(--shadow);
+  /* box-shadow: 0 4px 8px var(--shadow); */
 
   
   -webkit-backdrop-filter: blur(13px);
