@@ -172,7 +172,7 @@ aside {
   height: calc(100vh - 100px);
   padding: 20px 0px 20px 0px;
   border: 2px solid grey;
-  border-radius: 24px;
+  border-radius: 7px;
   overflow-y: hidden;
   overflow: hidden;
 
@@ -258,7 +258,7 @@ aside section a,
   /* background-color: var(--articleBackground); */
   overflow: hidden;
 
-  border-radius: 24px;
+  border-radius: 7px;
 /* transition-duration: 500ms; */
   outline-color: #aaaaaa;
   outline-width: 2px;

@@ -87,7 +87,7 @@ body{
   scrollbar-shadow-color: #121212;
 /* around the scrollbar like a border  */
 
-  scrollbar-dark-shadow-color: brown;
+  /* scrollbar-dark-shadow-color: brown; */
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 

@@ -14,7 +14,8 @@
   color-scheme: light dark;
 
   --lightBackground: #f7f7f7;
-  --darkBackground: #121212;
+  --darkBackground: #121212; 
+  --darkBackground: #030303;
 
   --lightWindowBackground: #ffffff80;
   --darkWindowBackground: #343a4050;
