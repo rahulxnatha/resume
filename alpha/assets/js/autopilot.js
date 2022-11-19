@@ -85,18 +85,18 @@ var prevScrollpos = 0;
 
 // document.getElementById("main_pageScroll").addEventListener("scroll", event => {
 // document.getElementById("main_pageScroll-body").addEventListener("scroll", event => {
-  // outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
+// outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
 
-  // var currentScrollPos = scroller.scrollTop;
-  // var currentScrollPos = window.pageYOffset;
-  // var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
+// var currentScrollPos = scroller.scrollTop;
+// var currentScrollPos = window.pageYOffset;
+// var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
 
 
 
-  // var prevScrollpos = window.pageYOffset;
-  document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
-  window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
+// var prevScrollpos = window.pageYOffset;
+document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
+window.onscroll = function () {
+  var currentScrollPos = window.pageYOffset;
 
   if (prevScrollpos > currentScrollPos) {
     // while scrolling towards the top of the webpage
@@ -146,7 +146,7 @@ var prevScrollpos = 0;
       document.getElementById("viewPort").style.top = "0px";
       document.getElementById("viewPort").style.height = "calc(100vh - 40px)";
       document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px)";
-      
+
       document.getElementById("smallNotification").style.bottom = "calc( -100px)";
 
       // document.getElementById("viewPort").style.transitionDuration = "500ms";
@@ -318,15 +318,20 @@ var i = setInterval(function () {
 
 
   counter++;
-  if (counter === Math.pow(2,50)) {
+  if (counter === Math.pow(2, 50)) {
     clearInterval(i);
   }
 }, 5000);
 
- document.getElementById("splashScreen").style.display = "none";
-document.getElementById("splashScreen").innerText = "Loading";
-document.getElementById("my_age_in_year").innerText = year - 1999;
+
+// document.getElementById("splashScreen").innerText = "Loading";
+// document.getElementById("my_age_in_year").innerText = year - 1999;
 document.getElementById("JSregulated74545").style.display = "inline";
+
+
+// document.getElementById("main_pageScroll-off").style.display = "none";
+
+
 
 
 
@@ -337,3 +342,8 @@ document.getElementById("JSregulated74545").style.display = "inline";
 // window.location.replace("/index.html");
 
 
+
+
+setTimeout(function () {
+  document.getElementById("splashScreen").style.display = "none";
+}, 0);
