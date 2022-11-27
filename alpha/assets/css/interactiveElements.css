@@ -1,13 +1,14 @@
 details {
   padding: 0 0.5em;
-  /* overflow-y: scroll; */
+  /* overflow-y: scroll; */ 
+  
 }
 
 summary {
   /* font-weight: bold; */
   /* margin: -0.5em -0.5em 0; */
   padding: 0 0 0.5em 0;
-  cursor: pointer;
+  cursor: pointer;   
   font-size: 20px;
   margin: 0;
 }
@@ -66,7 +67,7 @@ dialog {
   position: fixed;
 
   top: 100px;
-  background-color: transparent;
+  background-color: transparent; 
   border: 0px solid grey;
 
   z-index:6;
@@ -80,7 +81,7 @@ dialog > div > div, #alertUI > div > div > div {
   margin-left: 5%;
   border: 2px solid grey;
   border-radius: 7px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
 
   padding: 10px 10px 0 10px;
 

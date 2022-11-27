@@ -274,7 +274,18 @@
 
     </dialog>
 
+    <dialog open id="eyeBreakAlert" style="display:none;">
+      <div>
+        <h1 style="text-align:center; font-size: 30px;margin-top: 30px;">Relax your eyes!</h1>
+        <p style="font-size:20px;">It seems you are reading past 20 mins continuously. Please take a break.</p>
 
+
+        <p style="font-size:20px;">
+          <button id="continue_eyeBreakAlert" disabled="disabled" onclick="window.open('index.html', '_self')">Continue</button> after at least 05:00 mins
+        </p>
+        
+      </div>
+    </dialog>
 
     <dialog open id="releaseNotes" style="display:none;">
 
@@ -299,35 +310,43 @@
               moved outside the webpage.
             </li>
             <li>*While the webpage is scrolled up, the header bar will again come to its initial position.</li>
-            <li> The header bar will get a horizontal scrollbar when the webpage is opened on smaller screen sizes such
+            <li> The header bar will get a horizontal scrollbar when the webpage is opened on smaller screen sizes
+              such
               as
               mobile or tablets. </li>
           </ol>
           <h3>Elements of the header bar</h3>
           1. *Hamburger icon at the left, is used to toggle between viewing and hiding the preview box.
           2. Branding with the logo of the webpage is done.
-          3. The channel indicator indicates the kind of set of features that are available in the webpage. Beta channel
+          3. The channel indicator indicates the kind of set of features that are available in the webpage. Beta
+          channel
           has the features that will be rolled out soon. Alpha channel has the features that are scheduled to be
-          released after few years. This flyout also has options to switch between the channels and to view help section
+          released after few years. This flyout also has options to switch between the channels and to view help
+          section
           which contains this documentation.
           4. Nav links are used to quickly go to any section within the webpage.
           5. *Online status indicator at the right indicates whether the user is online or offline. An alert box will
           also appear if there are any internet disconnections or if slower speeds are detected.
-          6. *Search bar. This feature is not included in the current release. This feature is not included in the Beta
+          6. *Search bar. This feature is not included in the current release. This feature is not included in the
+          Beta
           channel.
-          7. *Settings icon. This feature is not included in the current release. Hence not found in the Beta channel as
+          7. *Settings icon. This feature is not included in the current release. Hence not found in the Beta channel
+          as
           well.
           <h3>The Body</h3>
           1. The most prominent element is the Preview Box. It can be found at the left side on the webpage on desktop
           screen. At the centre filling all the body, when viewed on smaller size screens. *This preview box shows the
           content related to the Tile which is hovered or clicked by the curser.
-          2. At the right pane, a series of headings and Tiles will be shown. Each tile indicates some specific relevant
+          2. At the right pane, a series of headings and Tiles will be shown. Each tile indicates some specific
+          relevant
           topic. *When an article is hovered for a second, all other tiles and headings in the right pane will get
           blurred, so that only one tile and the preview pane is in focus.
-          3. *In order to read more about a tile, the user needs to click on the tile and then unhide the Preview Box if
+          3. *In order to read more about a tile, the user needs to click on the tile and then unhide the Preview Box
+          if
           it is not in the view by clicking the hamburger icon in the header bar.
           <h2>Requirements</h2>
-          1. Browsers supported: Latest chromium-based browsers such as Microsoft Edge, Google Chrome, etc., HTML based
+          1. Browsers supported: Latest chromium-based browsers such as Microsoft Edge, Google Chrome, etc., HTML
+          based
           Microsoft Edge, Mozilla Firefox, and Internet Explorer 11.
           2. The features marked with * are not compatible with Internet Explorer 11.
 
@@ -462,7 +481,7 @@
             </div>
             <br><br>
 
-            <iframe width="100%" style="min-height:315px ; border-radius: 7px;" 
+            <iframe width="100%" style="min-height:315px ; border-radius: 7px;"
               src="https://www.youtube.com/embed/K_gTh0yUYIk" title="YouTube video player" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
@@ -478,15 +497,15 @@
 
           <p style="margin-bottom: 30px;">Connect with me on</p>
 
-
-          <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
-          <a href="#contact" id="contact_focus_trigger">Email or IM</a>
-          <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
-          <a href="https://g.dev/rah" target="_blank">Google Developers</a>
-          <a href="https://docs.microsoft.com/en-us/users/rahulnatha/" target="_blank">Microsoft Learn</a>
-          <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
-          <a href="https://instagram.com/rahul.natha" target="_blank">Instagram</a>
-
+          <div class="a">
+            <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
+            <a href="#contact" id="contact_focus_trigger">Email or IM</a>
+            <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
+            <a href="https://g.dev/rah" target="_blank">Google Developers</a>
+            <a href="https://docs.microsoft.com/en-us/users/rahulnatha/" target="_blank">Microsoft Learn</a>
+            <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
+            <a href="https://instagram.com/rahul.natha" target="_blank">Instagram</a>
+          </div>
 
         </div>
 
@@ -662,7 +681,8 @@
 
         <div id="color_inversion_notice_box">
           <span id="color_inversion_alert">
-            <p>The dark theme is achieved on the above embedded content, if any, by a color inversion technique. If you
+            <p>The dark theme is achieved on the above embedded content, if any, by a color inversion technique. If
+              you
               find any
               image or content a bit off, turn off the color inversion using this switch.</p>
           </span>

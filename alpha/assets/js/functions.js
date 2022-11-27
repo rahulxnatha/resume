@@ -171,7 +171,13 @@ for (let i = 0; i < articles.length; i++) {
 
     articles[i].addEventListener("mouseover", () => {
 
+        setTimeout(function () {
+            articles[i].classList.add("article_hovered");
+        }, 0);
+
         if (clickedArticle == 0) {
+
+            
 
             setTimeout(function () {
 
@@ -228,7 +234,12 @@ for (let i = 0; i < articles.length; i++) {
     });
 
     articles[i].addEventListener("mouseout", () => {
+
+        articles[i].classList.remove("article_hovered");
+
         if (clickedArticle == 0) {
+
+            
 
             setTimeout(function () {
 

@@ -72,6 +72,22 @@
 
 // yourFunction();
 
+setTimeout(function () {
+  document.getElementById("eyeBreakAlert").style.display = "block";
+  document.getElementById("blurFocusScreen").style.display = "block";
+  document.getElementById("blurFocusScreen").style.zIndex = "5";
+  setTimeout(function () {
+    document.getElementById("continue_eyeBreakAlert").disabled = false;
+
+  },
+    // 1200000
+    5000
+  );
+
+},
+  // 1200000
+  20000
+);
 
 // var prevScrollpos = window.pageYOffset;
 // var prevScrollpos = window.document.getElementById("main_pageScroll").scrollTop;
@@ -85,18 +101,18 @@ var prevScrollpos = 0;
 
 // document.getElementById("main_pageScroll").addEventListener("scroll", event => {
 // document.getElementById("main_pageScroll-body").addEventListener("scroll", event => {
-  // outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
+// outputhEight.textContent = "scrollTop: " + scroller.scrollTop;
 
-  // var currentScrollPos = scroller.scrollTop;
-  // var currentScrollPos = window.pageYOffset;
-  // var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
+// var currentScrollPos = scroller.scrollTop;
+// var currentScrollPos = window.pageYOffset;
+// var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
 
 
 
-  // var prevScrollpos = window.pageYOffset;
-  document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px )";
-  window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
+// var prevScrollpos = window.pageYOffset;
+document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px )";
+window.onscroll = function () {
+  var currentScrollPos = window.pageYOffset;
 
   if (prevScrollpos > currentScrollPos) {
     // while scrolling towards the top of the webpage
@@ -205,7 +221,7 @@ function hasNetwork(online) {
 
 
     document.getElementById("alertUI").style.display = "none";
-    
+
 
 
     element3.innerText = ""; // slow use sl
@@ -321,12 +337,12 @@ var i = setInterval(function () {
 
 
   counter++;
-  if (counter === Math.pow(2,50)) {
+  if (counter === Math.pow(2, 50)) {
     clearInterval(i);
   }
 }, 5000);
 
- document.getElementById("splashScreen").style.display = "none";
+document.getElementById("splashScreen").style.display = "none";
 document.getElementById("splashScreen").innerText = "Loading";
 document.getElementById("my_age_in_year").innerText = year - 1999;
 document.getElementById("JSregulated74545").style.display = "inline";
@@ -338,5 +354,4 @@ document.getElementById("JSregulated74545").style.display = "inline";
 
 // Simulate an HTTP redirect:
 // window.location.replace("/index.html");
-
 

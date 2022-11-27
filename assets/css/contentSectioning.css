@@ -44,7 +44,7 @@ nav a {
 main {
   float: right;
   /* max-width: calc(100% - 660px - 100px); */
-  
+
   width: calc(50% - 75px - 150px);
   width: calc(50%);
 
@@ -99,7 +99,7 @@ main section {
   border-bottom: 2px solid rgb(128, 128, 128);
   border-top: 2px solid rgb(128, 128, 128); */
   /* transition-duration: 0s; */
-  border-radius: 24px;
+  border-radius: 8px;
 
   /* max-height: 500px; */
   overflow: hidden;
@@ -110,10 +110,10 @@ main section {
 }
 
 /* main section:hover { */
-  /* background-color: var(--windowBackground); */
-  /* -webkit-backdrop-filter: blur(13px); */
-  /* backdrop-filter: blur(13px);  */
- /* z-index: 1; */
+/* background-color: var(--windowBackground); */
+/* -webkit-backdrop-filter: blur(13px); */
+/* backdrop-filter: blur(13px);  */
+/* z-index: 1; */
 
 /* } */
 
@@ -122,7 +122,7 @@ main section {
   /* display: none; */
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
- /* z-index: 1; */
+  /* z-index: 1; */
 
 }
 
@@ -172,7 +172,10 @@ aside {
   height: calc(100vh - 100px);
   padding: 20px 0px 20px 0px;
   border: 2px solid grey;
-  border-radius: 7px;
+
+  border-radius: 8px;
+  border-radius: var(--container-border-radius);
+
   overflow-y: hidden;
   overflow: hidden;
 
@@ -245,7 +248,7 @@ aside section::-webkit-scrollbar-thumb:hover {
 } */
 
 article,
-aside section a,
+
 #contact a {
   /* margin: 0; */
   padding: 20px 20px 20px 20px;
@@ -258,8 +261,8 @@ aside section a,
   /* background-color: var(--articleBackground); */
   overflow: hidden;
 
-  border-radius: 7px;
-/* transition-duration: 500ms; */
+  border-radius: var(--container-border-radius);
+  /* transition-duration: 500ms; */
   outline-color: #aaaaaa;
   outline-width: 2px;
   outline-style: hidden;
@@ -267,7 +270,39 @@ aside section a,
 
   /* box-shadow: 0 4px 8px var(--shadow); */
 
-  
+
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+}
+
+/* aside section .a {
+  display: grid;
+  grid-template-columns:  repeat(auto-fill, 1fr);
+} */
+
+aside section a {
+  margin: 0 10px 10px 0;
+  padding: 10px 10px;
+
+  border: 2px solid grey;
+  cursor: pointer;
+
+  /* max-width: 600px; */
+  background-color: var(--windowBackground);
+  /* background-color: var(--articleBackground); */
+  overflow: hidden;
+
+  border-radius: var(--item-border-radius);
+  /* float: right; */
+  /* transition-duration: 500ms; */
+  outline-color: #aaaaaa;
+  outline-width: 2px;
+  outline-style: hidden;
+  outline-offset: 6px;
+
+  /* box-shadow: 0 4px 8px var(--shadow); */
+
+
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
 }
@@ -302,10 +337,18 @@ aside section a:hover {
   transition: transform 0.2s;
 }
 
-aside section a,
+
 #contact a {
   display: inline-block;
+  margin: 0 10px 10px 0;
+  padding:10px;
+  border-radius: var(--item-border-radius);
+}
+
+aside section a {
+  display: inline-block;
   margin: 0 20px 20px 0;
+
 }
 
 article:hover,

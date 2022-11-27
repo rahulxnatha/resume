@@ -11,6 +11,8 @@
 
 :root {
  
+/* colors */
+
   color-scheme: light dark;
 
   --lightBackground: #f7f7f7;
@@ -36,6 +38,13 @@
 
   --lightShadow: hsla(0, 0%, 0%, 0.14);
   --darkShadow: rgba(0,0,0, 0.86);
+
+/* border-radius  */
+ --container-border-radius: 8px;
+ --item-border-radius: 4px;
+
+
+
 
   /* font-family: monospace; */
 }

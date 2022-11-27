@@ -268,11 +268,16 @@ aside section a,
 }
 
 article:hover,
-#contact a:hover {
-  /* -ms-transform: scale(1);
-  -webkit-transform: scale(1); 
-  transform: scale(1); */
-  z-index: 3;
+#contact a:hover{
+z-index: 3;}
+
+.article_hovered
+ {
+  -ms-transform: scale(1.3);
+  -webkit-transform: scale(1.3); 
+  transform: scale(1.3);
+  transition-duration: 200ms;
+ 
   /* transition: transform 0.2s; */
 }
 
