@@ -102,6 +102,27 @@
 //     }
 // }, true);
 
+const articles = document.getElementsByTagName("article");
+const briefblock = document.getElementsByClassName("briefblock");
+
+
+   
+    for (let i = 0; i < briefblock.length; i++) {
+
+
+        document.getElementsByClassName("elemtab")[i].addEventListener("click", () => {
+            
+            for (let i = 0; i < briefblock.length; i++) {
+                briefblock[i].style.display = "none";
+            }
+            briefblock[i].style.display = "block";
+        });
+
+    
+    }
+
+   
+
 
 
 const elemtabs = document.getElementsByClassName("elemtab");
@@ -113,8 +134,7 @@ for (let i = 0; i < elemtabs.length; i++) {
 elemtabs[elemtabs.length - 1].style.display = "inline";
 
 
-const articles = document.getElementsByTagName("article");
-const briefblock = document.getElementsByClassName("briefblock");
+
 
 var clickedArticle = false;
 var clickedArticleIs = 0;

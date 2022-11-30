@@ -103,6 +103,7 @@
 // }, true);
 
 
+
 const articles = document.getElementsByTagName("article");
 const briefblock = document.getElementsByClassName("briefblock");
 
