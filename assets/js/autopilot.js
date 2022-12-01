@@ -81,12 +81,12 @@ setTimeout(function () {
 
   },
     // 1200000
-    5000
+    300000
   );
 
 },
   // 1200000
-  20000
+  1200000
 );
 
 // var prevScrollpos = window.pageYOffset;

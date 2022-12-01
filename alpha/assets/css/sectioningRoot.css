@@ -10,7 +10,7 @@
 }
 
 :root {
- 
+
   color-scheme: light dark;
 
   --lightBackground: #f7f7f7;
@@ -122,12 +122,22 @@ header {
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
   }
-     /* body {
-      background-image: url('../images/pexels-cottonbro-7181899.jpg');
+     /* body { */
+      /* background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
       background-image: url('../images/pexels-eberhard-grossgasteiger-1421903.jpg');
       background-image: url('../images/pexels-philippe-donn-1169754.jpg');
-    }  */
+      background-image: url('../images/IMG_20220128_105131_2.jpg'); */
+      /* background: linear-gradient(rgba(0, 0, 0, 0.314), rgba(0, 0, 0, 0.182)),
+       center / contain no-repeat url("../images/IMG_20220128_105131_2.jpg"), 
+      
+       ; */
+ 
+/* 
+       background: linear-gradient(rgba(34, 34, 34, 0), rgb(0, 0, 0)),
+       center / contain no-repeat url("../images/IMG_20220128_105131_2.jpg");  */
+    
+    /* }  */
    
     @media screen and (min-width: 1300px) {
     #backgVideoDARK {display: block;}
