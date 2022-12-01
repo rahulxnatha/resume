@@ -85,8 +85,11 @@ setTimeout(function () {
   );
 
 },
-  // 1200000
+  
   1200000
+// 1000
+
+
 );
 
 // var prevScrollpos = window.pageYOffset;

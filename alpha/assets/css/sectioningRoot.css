@@ -86,6 +86,7 @@ header {
     --base: #ffffff;
     --basei: #000;
     --base80: hsla(0, 0%, 100%, 0.8);
+    --base60: hsla(0, 0%, 100%, 0.6);
     --base50i:  hsla(0, 0%, 0%, 0.5);
     --background: var(--lightBackground);
     --font: var(--lightFont);
@@ -112,6 +113,7 @@ header {
     --base: #000000;
     --basei: #fff;
     --base80: hsla(0, 0%, 0%, 0.8);
+    --base60: hsla(0, 0%, 0%, 0.6);
     --base50i: hsla(0, 0%, 100%, 0.5);
     --background: var(--darkBackground);
     --font: var(--darkFont);
@@ -122,12 +124,15 @@ header {
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
   }
-     /* body { */
+     body {
       /* background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
       background-image: url('../images/pexels-eberhard-grossgasteiger-1421903.jpg');
-      background-image: url('../images/pexels-philippe-donn-1169754.jpg');
+      
       background-image: url('../images/IMG_20220128_105131_2.jpg'); */
+
+      background-image: url('../images/pexels-eberhard-grossgasteiger-1421903.jpg');
+
       /* background: linear-gradient(rgba(0, 0, 0, 0.314), rgba(0, 0, 0, 0.182)),
        center / contain no-repeat url("../images/IMG_20220128_105131_2.jpg"), 
       
@@ -137,7 +142,7 @@ header {
        background: linear-gradient(rgba(34, 34, 34, 0), rgb(0, 0, 0)),
        center / contain no-repeat url("../images/IMG_20220128_105131_2.jpg");  */
     
-    /* }  */
+    } 
    
     @media screen and (min-width: 1300px) {
     #backgVideoDARK {display: block;}
