@@ -73,6 +73,20 @@
 // yourFunction();
 
 setTimeout(function () {
+ 
+    // if (confirm("Close Window?")) {
+      close();
+    // }
+  
+
+},
+  // 1200000
+  2000
+);
+
+
+
+setTimeout(function () {
   document.getElementById("eyeBreakAlert").style.display = "block";
   document.getElementById("blurFocusScreen").style.display = "block";
   document.getElementById("blurFocusScreen").style.zIndex = "5";
