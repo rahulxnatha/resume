@@ -110,28 +110,32 @@
 //    tab_bar.style.zIndex = 100;
 // });
 
+document.getElementById("default_focus").click();
+document.getElementById("focus_search_bar").addEventListener("click", () => {
+    document.getElementById("search_bar").focus();
 
+});
 
 const articles = document.getElementsByTagName("article");
 const briefblock = document.getElementsByClassName("briefblock");
 
 
-   
-    for (let i = 0; i < briefblock.length; i++) {
+
+for (let i = 0; i < briefblock.length; i++) {
 
 
-        document.getElementsByClassName("elemtab")[i].addEventListener("click", () => {
-            
-            for (let i = 0; i < briefblock.length; i++) {
-                briefblock[i].style.display = "none";
-            }
-            briefblock[i].style.display = "block";
-        });
+    document.getElementsByClassName("elemtab")[i].addEventListener("click", () => {
 
-    
-    }
+        for (let i = 0; i < briefblock.length; i++) {
+            briefblock[i].style.display = "none";
+        }
+        briefblock[i].style.display = "block";
+    });
 
-   
+
+}
+
+
 
 
 
@@ -207,7 +211,7 @@ for (let i = 0; i < articles.length; i++) {
 
         if (clickedArticle == 0) {
 
-            
+
 
             setTimeout(function () {
 
@@ -269,7 +273,7 @@ for (let i = 0; i < articles.length; i++) {
 
         if (clickedArticle == 0) {
 
-            
+
 
             setTimeout(function () {
 
