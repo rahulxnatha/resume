@@ -72,17 +72,19 @@
 
 // yourFunction();
 
-setTimeout(function () {
- 
-    // if (confirm("Close Window?")) {
-      close();
-    // }
-  
+// var Closedone = 0;
 
-},
-  // 1200000
-  2000
-);
+// setTimeout(function () { var ww = window.open(window.location, '_self'); Closedone = 1;
+//  open(location, '_self').close();
+
+// if(Closedone == 1) {
+// setTimeout(function () { ww.close();  }, 1);}
+
+
+//  }, 0);
+
+
+
 
 
 
@@ -99,9 +101,9 @@ setTimeout(function () {
   );
 
 },
-  
+
   1200000
-// 1000
+  // 1000
 
 
 );

@@ -102,13 +102,13 @@
 //     }
 // }, true);
 
-const tab_bar = document.getElementsByTagName("tab_bar90");
-document.getElementById("vertical_tabs_switch").addEventListener("click", () => {
-   tab_bar.style.height = "500px";
-   tab_bar.style.position = "absolute";
-   tab_bar.style.top = "0px";
-   tab_bar.style.zIndex = 100;
-});
+// const tab_bar = document.getElementsByTagName("tab_bar90");
+// document.getElementById("vertical_tabs_switch").addEventListener("click", () => {
+//    tab_bar.style.height = "500px";
+//    tab_bar.style.position = "absolute";
+//    tab_bar.style.top = "0px";
+//    tab_bar.style.zIndex = 100;
+// });
 
 
 
