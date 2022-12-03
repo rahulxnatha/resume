@@ -347,3 +347,4 @@ document.getElementById("JSregulated74545").style.display = "inline";
 setTimeout(function () {
   document.getElementById("splashScreen").style.display = "none";
 }, 0);
+
