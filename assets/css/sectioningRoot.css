@@ -130,11 +130,11 @@ header {
     --shadow: var(--lightShadow);
   }
 
-   /* body {
+   body {
     background-image: url('../images/pexels-la-miko-3616764.jpg');
     background-image: url('../images/pexels-karolina-grabowska-5208871.jpg');
     background-image: url('../images/pexels-ds-stories-9227220.jpg');
-  }  */
+  } 
   @media screen and (min-width: 1300px) {
   #backgVideoLIGHT {display: block;}
   }
@@ -156,12 +156,12 @@ header {
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
   }
-     /* body {
+     body {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
       background-image: url('../images/pexels-pixabay-247676.jpg');
       
-    }  */
+    } 
    
     @media screen and (min-width: 1300px) {
     #backgVideoDARK {display: block;}
