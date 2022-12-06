@@ -107,10 +107,16 @@ window.onscroll = function () {
     document.getElementById("viewPort").style.height = "calc(100vh - 100px - 100px)";
     document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
 
+    document.getElementById("smallNotiText").innerText = "You are scrolling up.";
+
+    setTimeout(function () {
+      document.getElementById("smallNotiText").innerText = "Want to search anything, feel free to use the search box, or filters.";
+    }, 000);
+
     document.getElementById("viewport").style.transitionDuration = "500ms";
     // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
-    document.getElementById("smallNotification").style.bottom = "calc( 0px)";
+    // document.getElementById("smallNotification").style.bottom = "calc( 0px)";
 
     // turn this on later
     // document.getElementById("main_pageScroll").style.height = "calc(100vh - 60px)";
@@ -144,10 +150,30 @@ window.onscroll = function () {
 
       // document.getElementById("nav").style.top = "0px";
       document.getElementById("viewPort").style.top = "0px";
-      document.getElementById("viewPort").style.height = "calc(100vh - 40px)";
-      document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px)";
+      document.getElementById("viewPort").style.height = "calc(100vh - 40px - 100px)"; 
+      document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px)";
 
-      document.getElementById("smallNotification").style.bottom = "calc( -100px)";
+
+      document.getElementById("smallNotiText").innerText = "You are scrolling down.";
+
+      if (clickedArticle == 0) {
+        setTimeout(function () {
+          document.getElementById("smallNotiText").innerText = "Place cursor over any tile and see!";
+          
+        }, 0);
+      } 
+      else {
+        setTimeout(function () {
+          document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+          
+        }, 1);
+        
+      }
+
+     
+
+
+      // document.getElementById("smallNotification").style.bottom = "calc( -100px)";
 
       // document.getElementById("viewPort").style.transitionDuration = "500ms";
       // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";

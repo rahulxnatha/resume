@@ -185,6 +185,9 @@ for (let i = 0; i < articles.length; i++) {
         console.log(i + " is the key");
         removeActive(i);
         clickedArticleIs = i;
+
+        document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+
     });
 
     function removeActive(j) {
@@ -262,9 +265,23 @@ for (let i = 0; i < articles.length; i++) {
                 document.getElementById("color_inversion_notice_box").style.display = "none";
             }
 
+            setTimeout(function () {
+                document.getElementById("smallNotiText").innerText = "Great! Click it to read about it.";
+              }, 000);
+
         }
 
+        else {
+            setTimeout(function () {
+                document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+              }, 0);
+        }
         // document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
+
+        
+
+
+
     });
 
     articles[i].addEventListener("mouseout", () => {
@@ -288,6 +305,11 @@ for (let i = 0; i < articles.length; i++) {
             document.getElementById("color_inversion_notice_box").style.display = "none";
             document.getElementById("blurFocusScreen").style.display = "none";
 
+            document.getElementById("smallNotiText").innerText = "Place cursor over any tile and see!";
+        }
+
+        else {
+            document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
         }
     });
 
