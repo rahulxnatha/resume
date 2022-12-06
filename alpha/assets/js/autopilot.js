@@ -107,10 +107,10 @@ window.onscroll = function () {
     document.getElementById("viewPort").style.height = "calc(100vh - 100px - 100px)";
     document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
 
-    document.getElementById("smallNotiText").innerText = "You are scrolling up.";
+    document.getElementById("smallNotiText").innerText = "Scrolling up.";
 
     setTimeout(function () {
-      document.getElementById("smallNotiText").innerText = "Want to search anything, feel free to use the search box, or filters.";
+      document.getElementById("smallNotiText").innerText = "Use the search box to search things.";
     }, 000);
 
     document.getElementById("viewport").style.transitionDuration = "500ms";
@@ -154,7 +154,7 @@ window.onscroll = function () {
       document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px)";
 
 
-      document.getElementById("smallNotiText").innerText = "You are scrolling down.";
+      document.getElementById("smallNotiText").innerText = "Scrolling down.";
 
       if (clickedArticle == 0) {
         setTimeout(function () {
@@ -164,7 +164,7 @@ window.onscroll = function () {
       } 
       else {
         setTimeout(function () {
-          document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+          document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
           
         }, 1);
         

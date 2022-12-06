@@ -186,7 +186,7 @@ for (let i = 0; i < articles.length; i++) {
         removeActive(i);
         clickedArticleIs = i;
 
-        document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+        document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
 
     });
 
@@ -273,7 +273,7 @@ for (let i = 0; i < articles.length; i++) {
 
         else {
             setTimeout(function () {
-                document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+                document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
               }, 0);
         }
         // document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
@@ -309,7 +309,7 @@ for (let i = 0; i < articles.length; i++) {
         }
 
         else {
-            document.getElementById("smallNotiText").innerText = "You can use tabs on the above box to switch between things.";
+            document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
         }
     });
 
