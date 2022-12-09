@@ -133,12 +133,13 @@ header {
    body {
     background-image: url('../images/pexels-la-miko-3616764.jpg');
     background-image: url('../images/pexels-karolina-grabowska-5208871.jpg');
-    background-image: url('../images/pexels-ds-stories-9227220.jpg');
+    background-image: url('../images/pexels-justyna-serafin-10283580.jpg');
   } 
   @media screen and (min-width: 1300px) {
   #backgVideoLIGHT {display: block;}
   }
 }
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -159,7 +160,7 @@ header {
      body {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
-      background-image: url('../images/pexels-pixabay-247676.jpg');
+      background-image: url('../images/pexels-stein-egil-liland-1933316.jpg');
       
     } 
    
@@ -223,10 +224,35 @@ body {
   color: var(--font);
  
   background-repeat: no-repeat;
-  background-attachment: fixed;  
+  /* background-attachment: fixed;   */
   background-size: cover;
+  /* background-position: center; */
 
 }
+
+
+
+body {
+	/* background: linear-gradient(-45deg, #000000, #121212, #000000, #121212); */
+	background-size: 400% 400%;
+	animation: gradient 60s ease infinite;
+	/* height: 100vh; */
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
 /* 
 #backgroundVideo {
 
