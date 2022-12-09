@@ -110,6 +110,8 @@
 //    tab_bar.style.zIndex = 100;
 // });
 
+
+
 document.getElementById("default_focus").click();
 document.getElementById("focus_search_bar").addEventListener("click", () => {
     document.getElementById("search_bar").focus();

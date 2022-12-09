@@ -19,7 +19,8 @@
   <meta property="og:description" content="Engineer with a Portfolio Website" />
   <meta property="og:title" content="Portfolio Website of Rahul Natha" />
   <meta property="og:url" content="https://hey-rahul.github.io/portfolio" />
-  <meta property="og:image" content="https://drive.google.com/u/0/uc?id=1BOAtbL2PYMBsza9vJeMoTtc8h1Uu-bJW&export=download" />
+  <meta property="og:image"
+    content="https://drive.google.com/u/0/uc?id=1BOAtbL2PYMBsza9vJeMoTtc8h1Uu-bJW&export=download" />
 
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -164,6 +165,23 @@
           <!-- <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> -->
 
 
+          <span class="material-symbols-outlined" id="truedark" style="float:left; margin: -10px 0 0 0; color:#77777777;" onclick="hideBackground()" onMouseOver="this.style.color='var(--font)'" onMouseOut="this.style.color='#77777777'" title="Click to remove background" >
+            wallpaper
+          </span>
+          <script>
+
+            function hideBackground() {
+              var bhide = 0;
+              if (bhide == 0) {
+                document.getElementById("main_pageScroll-body").style.background = "none";
+                document.getElementById("truedark").style.display = "none";
+                bhide = 1;
+
+              }
+              
+            } </script>
+
+
           <a href="#education" onclick="removeAside()" text="Education">Education</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
@@ -285,9 +303,11 @@
 
 
         <p style="font-size:20px;">
-          <button id="continue_eyeBreakAlert" disabled="disabled" onclick="window.open('index.html', '_self')">Continue</button> after some time, lets say at least five minutes.
+          <button id="continue_eyeBreakAlert" disabled="disabled"
+            onclick="window.open('index.html', '_self')">Continue</button> after some time, lets say at least five
+          minutes.
         </p>
-        
+
       </div>
     </dialog>
 
