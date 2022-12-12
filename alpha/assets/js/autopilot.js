@@ -150,7 +150,7 @@ window.onscroll = function () {
 
       // document.getElementById("nav").style.top = "0px";
       document.getElementById("viewPort").style.top = "0px";
-      document.getElementById("viewPort").style.height = "calc(100vh - 40px - 100px)"; 
+      document.getElementById("viewPort").style.height = "calc(100vh - 40px - 100px)";
       document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px)";
 
 
@@ -159,18 +159,18 @@ window.onscroll = function () {
       if (clickedArticle == 0) {
         setTimeout(function () {
           document.getElementById("smallNotiText").innerText = "Place cursor over any tile and see!";
-          
+
         }, 0);
-      } 
+      }
       else {
         setTimeout(function () {
           document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
-          
+
         }, 1);
-        
+
       }
 
-     
+
 
 
       // document.getElementById("smallNotification").style.bottom = "calc( -100px)";
@@ -374,3 +374,21 @@ setTimeout(function () {
   document.getElementById("splashScreen").style.display = "none";
 }, 0);
 
+var cursorBlurEffect = document.getElementById("cursorBlurEffect");
+
+function findCoords(event) {
+  var x = event.clientX;
+  var y = event.clientY;
+  // var coor = "X coords: " + x + ", Y coords: " + y;
+  // document.getElementById("demo").innerHTML = coor;
+
+  var xPXnum = x - 150;
+  var yPXnum = y - 150;
+
+  var xPX = xPXnum + "px";
+  var yPX = yPXnum + "px";
+
+  cursorBlurEffect.style.top = yPX;
+  cursorBlurEffect.style.left = xPX;
+
+}

@@ -170,6 +170,14 @@ aside {
   transition-duration:  500ms;
 }
 
+#cursorBlurEffect {
+  /* background-color: ; */
+  /* -webkit-backdrop-filter: blur(13px); */
+  /* backdrop-filter: blur(13px); */
+  filter: blur(30px);
+  background: radial-gradient(circle at 50% 50%, var(--base), rgba(76, 0, 255, 0));
+}
+
 @media (prefers-color-scheme: light) {
   aside {
     background-color: var(--windowBackground);

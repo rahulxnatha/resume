@@ -93,7 +93,7 @@
 
 </head>
 
-<body id="main_pageScroll-body" class="module">
+<body id="main_pageScroll-body" class="module" onmousemove="findCoords(event)">
 
   <div id="main_pageScroll-off">
 
@@ -119,6 +119,11 @@
 
     <div id="blurFocusScreen" style="position:fixed;top:0;left:0;display: none; z-index: 2; background-color: none; height: 100vh; width: 100vw; padding: 30px;-webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);"></div>
+
+
+    <div id="cursorBlurEffect"
+      style="position:fixed;top:0;left:0;z-index: -2;  height: 300px; width: 300px; border-radius: 50vmin;"></div>
+
 
     <header class="select_disabled">
 
@@ -165,7 +170,10 @@
           <!-- <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> -->
 
 
-          <span class="material-symbols-outlined" id="truedark" style="float:left; margin: -10px 0 0 0; color:#77777777;" onclick="hideBackground()" onMouseOver="this.style.color='var(--font)'" onMouseOut="this.style.color='#77777777'" title="Click to remove background" >
+          <span class="material-symbols-outlined" id="truedark"
+            style="float:left; margin: -10px 0 0 0; color:#77777777;" onclick="hideBackground()"
+            onMouseOver="this.style.color='var(--font)'" onMouseOut="this.style.color='#77777777'"
+            title="Click to remove background">
             wallpaper
           </span>
           <script>
@@ -178,7 +186,7 @@
                 bhide = 1;
 
               }
-              
+
             } </script>
 
 

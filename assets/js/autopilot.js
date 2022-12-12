@@ -90,7 +90,24 @@
 //   el.style.backgroundPositionX = (-e.offsetX)/2000 + "px";
 //   el.style.backgroundPositionY = (-e.offsetY)/2000 + "px";
 // });
+var cursorBlurEffect = document.getElementById("cursorBlurEffect");
 
+function findCoords(event) {
+  var x = event.clientX;
+  var y = event.clientY;
+  // var coor = "X coords: " + x + ", Y coords: " + y;
+  // document.getElementById("demo").innerHTML = coor;
+
+  var xPXnum = x - 150;
+  var yPXnum = y - 150;
+
+  var xPX = xPXnum + "px";
+  var yPX = yPXnum + "px";
+
+  cursorBlurEffect.style.top = yPX;
+  cursorBlurEffect.style.left = xPX;
+
+}
 
 
 setTimeout(function () {
