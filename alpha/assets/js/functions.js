@@ -123,19 +123,7 @@ const briefblock = document.getElementsByClassName("briefblock");
 
 
 
-for (let i = 0; i < briefblock.length; i++) {
 
-
-    document.getElementsByClassName("elemtab")[i].addEventListener("click", () => {
-
-        for (let i = 0; i < briefblock.length; i++) {
-            briefblock[i].style.display = "none";
-        }
-        briefblock[i].style.display = "block";
-    });
-
-
-}
 
 
 
@@ -153,11 +141,46 @@ elemtabs[elemtabs.length - 1].style.display = "inline";
 
 elemtabs[0].style.display = "inline";
 
+var tab_close_clicked = 0;
+var closed_tab_is = 0; 
+
 for (let j = 0; j < tab_close.length; j++) {
+
+
 
     tab_close[j].addEventListener("click", () => {
         elemtabs[j].style.display = "none";
+        tab_close_clicked = 1;
+        closed_tab_is = j;
     });
+
+
+    // setTimeout(function () { tab_close_clicked = 0; }, 0);
+
+
+}
+
+
+
+for (let i = 0; i < briefblock.length; i++) {
+
+    document.getElementsByClassName("elemtab")[i].addEventListener("click", () => {
+        setTimeout(function () {
+            if (tab_close_clicked == 0) {
+
+                for (let i = 0; i < briefblock.length; i++) {
+                    briefblock[i].style.display = "none";
+                }
+                briefblock[i].style.display = "block";
+
+            }
+            tab_close_clicked = 0;
+        }, 0);
+
+    });
+
+
+
 }
 
 var clickedArticle = false;
@@ -167,7 +190,10 @@ for (let i = 0; i < articles.length; i++) {
 
     articles[i].addEventListener("click", () => {
 
-        elemtabs[i].style.display = "inline";
+        // if (clickedArticleIs == closed_tab_is) {
+            elemtabs[i].style.display = "inline";
+        // }
+
         clickedArticle = true;
         if (clickedArticleIs == i) {
             clickedArticle = false;
@@ -277,18 +303,18 @@ for (let i = 0; i < articles.length; i++) {
 
             setTimeout(function () {
                 document.getElementById("smallNotiText").innerText = "Great! Click it to read about it.";
-              }, 000);
+            }, 000);
 
         }
 
         else {
             setTimeout(function () {
                 document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
-              }, 0);
+            }, 0);
         }
         // document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
 
-        
+
 
 
 
