@@ -143,14 +143,22 @@ for (let i = 0; i < briefblock.length; i++) {
 
 const elemtabs = document.getElementsByClassName("elemtab");
 
+const tab_close = document.getElementsByClassName("tab_close");
+
 for (let i = 0; i < elemtabs.length; i++) {
     elemtabs[i].style.display = "none";
-
 }
+
 elemtabs[elemtabs.length - 1].style.display = "inline";
 
+elemtabs[0].style.display = "inline";
 
+for (let j = 0; j < tab_close.length; j++) {
 
+    tab_close[j].addEventListener("click", () => {
+        elemtabs[j].style.display = "none";
+    });
+}
 
 var clickedArticle = false;
 var clickedArticleIs = 0;

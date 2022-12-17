@@ -1,7 +1,29 @@
 button {
-  outline: none;
-  cursor: pointer;
+  /* outline: none; */
+  /* cursor: pointer; */
+
+  /* border: 2px solid grey; */
+  /* line-height: 2.5; */
+  /* padding: 0 20px; */
+  /* font-size: 1rem; */
+  text-align: center;
+  
+  min-width: 72px;
+  min-height: 72px;
+  /* border-radius: 7px; */
+  
+  /* background-color: rgb(0, 0, 0); */
+  
 }
+/* button:hover {
+  background-color: rgb(83, 83, 83);
+}
+
+button:active {
+  background-color: rgb(46, 94, 103);
+} */
+
+
 
 header button {
   float: right;

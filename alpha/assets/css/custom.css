@@ -441,10 +441,10 @@ input:checked + .slider:before {
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
 
-  transition-duration:  0.5s;
-  
-font-size: 20px;
-font-weight: 600;
+  transition-duration: 0.5s;
+
+  font-size: 20px;
+  font-weight: 600;
 
 }
 
@@ -456,11 +456,23 @@ main>#mainSettings>label {
 }
 
 main>#mainSettings>label:hover {
-  
+
   background-color: var(--base);
- 
+
 }
 
 #mainSettings {
   overflow: visible;
+}
+
+
+.tab_close {
+  /* margin: -5px 0px 0px 0px; */
+  padding: 2px 2px;
+  position: relative;
+  top: -5px;
+  display: inline-block;
+  border: 2px solid var(--base50i);
+  border-radius: 5px;
+  height: 25px;
 }
