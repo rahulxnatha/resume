@@ -98,8 +98,8 @@ function findCoords(event) {
   // var coor = "X coords: " + x + ", Y coords: " + y;
   // document.getElementById("demo").innerHTML = coor;
 
-  var xPXnum = x - 300;
-  var yPXnum = y - 300;
+  var xPXnum = x - 400;
+  var yPXnum = y - 400;
 
   var xPX = xPXnum + "px";
   var yPX = yPXnum + "px";

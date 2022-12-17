@@ -306,11 +306,13 @@ input:checked + .slider:before {
   grid-column-start: 1;
   grid-column-end: 5;
   /* display: none; */
-  /* background-image: url(../images/rahul.jpg); */
+  background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../alpha/assets/images/IMG_20220128_105131_2.jpg");
+
+  /* /images/IMG_20220128_105131_2.jpg */
 
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
-  background-size: contain;
+  background-size: cover;
   margin-top: 20px;
   /**/
 
