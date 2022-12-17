@@ -468,11 +468,12 @@ main>#mainSettings>label:hover {
 
 .tab_close {
   /* margin: -5px 0px 0px 0px; */
-  padding: 2px 2px;
+  padding: 0px 6px;
   position: relative;
-  top: -5px;
+  top: 0px;
   display: inline-block;
   border: 2px solid var(--base50i);
-  border-radius: 5px;
+  border-radius: 7px;
   height: 25px;
+  width: 25px;
 }
