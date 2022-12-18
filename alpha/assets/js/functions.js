@@ -115,6 +115,11 @@
 document.getElementById("default_focus").click();
 document.getElementById("focus_search_bar").addEventListener("click", () => {
     document.getElementById("search_bar").focus();
+    document.getElementById("header_message").style.display = "block";
+    setTimeout(function () { document.getElementById("header_message").style.display = "none"; }, 2000);
+    window.scrollTo(0,0);
+
+
 
 });
 

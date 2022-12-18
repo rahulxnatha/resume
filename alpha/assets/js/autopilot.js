@@ -372,7 +372,14 @@ document.getElementById("JSregulated74545").style.display = "inline";
 
 setTimeout(function () {
   document.getElementById("splashScreen").style.display = "none";
+  // document.getElementById("header_message").style.display = "none";
 }, 0);
+
+
+setTimeout(function () {
+  // document.getElementById("splashScreen").style.display = "none";
+  document.getElementById("header_message").style.display = "none";
+}, 2000);
 
 var cursorBlurEffect = document.getElementById("cursorBlurEffect");
 

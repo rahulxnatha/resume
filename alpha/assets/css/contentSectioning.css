@@ -13,7 +13,15 @@ header {
   overflow-x: auto;
   overflow-y: hidden;
   transition-duration:  0.5s;
+
+  
+  
 }
+
+/* header:hover {
+ 
+  animation: focus_element 2s;
+} */
 
 header > div {
   min-width: 1300px;

@@ -468,12 +468,52 @@ main>#mainSettings>label:hover {
 
 .tab_close {
   /* margin: -5px 0px 0px 0px; */
-  padding: 0px 6px;
+  padding: 1px 2px 2px 5px;
   position: relative;
-  top: 0px;
-  display: inline-block;
+  top: -2px;
+  display: none;
   border: 2px solid var(--base50i);
-  border-radius: 7px;
-  height: 25px;
-  width: 25px;
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.elemtab:hover>.tab_close {
+  display: inline-block;
+}
+
+
+.header_message {
+  position: fixed;
+  left: 25vw;
+  top: 60px;
+  z-index: 6;
+  width: 50vw;
+  height: 250px;
+  background-color: var(--base);
+  color: var(--basei);
+  text-align: center;
+  padding: 90px 50px 0px 50px;
+  font-size: 50px;
+
+  border-radius: 50vmin;
+
+  position: fixed;
+  left: 37.5vw;
+  width: 25vw;
+  height: 50px;
+  background-color: var(--base);
+  color: var(--basei);
+  text-align: center;
+  padding: 10px 50px 0px 50px;
+  font-size: 20px;
+ 
+  border-radius: 50vmin;
+  
+  box-shadow: 0 0 600px 130px rgb(0, 0, 0), 0 0 600px 130px rgb(0, 0, 0);
+
+  animation: header_message 1s;
+ 
 }
