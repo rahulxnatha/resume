@@ -116,7 +116,12 @@ document.getElementById("default_focus").click();
 document.getElementById("focus_search_bar").addEventListener("click", () => {
     document.getElementById("search_bar").focus();
     document.getElementById("header_message").style.display = "block";
-    setTimeout(function () { document.getElementById("header_message").style.display = "none"; }, 2000);
+    document.getElementById("header_message2").style.display = "block";
+    setTimeout(function () { 
+        document.getElementById("header_message").style.display = "none";
+        document.getElementById("header_message2").style.display = "none";
+
+}, 1000);
     window.scrollTo(0,0);
 
 
@@ -142,9 +147,9 @@ for (let i = 0; i < elemtabs.length; i++) {
     elemtabs[i].style.display = "none";
 }
 
-elemtabs[elemtabs.length - 1].style.display = "inline";
+elemtabs[elemtabs.length - 1].style.display = "inline-block";
 
-elemtabs[0].style.display = "inline";
+elemtabs[0].style.display = "inline-block";
 
 var tab_close_clicked = 0;
 var closed_tab_is = 0; 
@@ -157,6 +162,8 @@ for (let j = 0; j < tab_close.length; j++) {
         elemtabs[j].style.display = "none";
         tab_close_clicked = 1;
         closed_tab_is = j;
+
+        
     });
 
 
@@ -165,6 +172,13 @@ for (let j = 0; j < tab_close.length; j++) {
 
 }
 
+
+function ActivateElemTab(which_tab) {
+    elemtabs[which_tab].style.background = "var(--ai)";
+}
+function DEActivateElemTab(which_tab) {
+    elemtabs[which_tab].style.background = "var(--windowBackground)";
+}
 
 
 for (let i = 0; i < briefblock.length; i++) {
@@ -175,8 +189,10 @@ for (let i = 0; i < briefblock.length; i++) {
 
                 for (let i = 0; i < briefblock.length; i++) {
                     briefblock[i].style.display = "none";
+                    DEActivateElemTab(i);
                 }
                 briefblock[i].style.display = "block";
+                ActivateElemTab(i);
 
             }
             tab_close_clicked = 0;
@@ -196,7 +212,7 @@ for (let i = 0; i < articles.length; i++) {
     articles[i].addEventListener("click", () => {
 
         // if (clickedArticleIs == closed_tab_is) {
-            elemtabs[i].style.display = "inline";
+            elemtabs[i].style.display = "inline-block";
         // }
 
         clickedArticle = true;

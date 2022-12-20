@@ -1,4 +1,27 @@
+// $( document ).ready(function() {
+//   adaptColor('.elemtab_active');
+// });
 
+// function adaptColor(selector) {
+// var rgb = $(selector).css("background-color");
+
+// if (rgb.match(/^rgb/)) {
+//   var a = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/),
+//     r = a[1],
+//     g = a[2],
+//     b = a[3];
+// }
+// var hsp = Math.sqrt(
+//   0.299 * (r * r) +
+//   0.587 * (g * g) +
+//   0.114 * (b * b)
+// );
+// if (hsp > 127.5) {
+//   $(selector).addClass('dark-color-for-text');
+// } else {
+//   $(selector).addClass('light-color-for-text');
+// }
+// };
 
 // setTimeout(function () {
 //     var hour = new Date().getHours();
@@ -379,7 +402,8 @@ setTimeout(function () {
 setTimeout(function () {
   // document.getElementById("splashScreen").style.display = "none";
   document.getElementById("header_message").style.display = "none";
-}, 2000);
+  document.getElementById("header_message2").style.display = "none";
+}, 0);
 
 var cursorBlurEffect = document.getElementById("cursorBlurEffect");
 
@@ -399,3 +423,9 @@ function findCoords(event) {
   cursorBlurEffect.style.left = xPX;
 
 }
+
+
+// text color decider 
+
+
+

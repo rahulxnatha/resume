@@ -333,30 +333,35 @@ input:checked + .slider:before {
 
 /* tabs */
 .elemtab {
-  border-right: 1px solid grey;
-  margin: 0px;
-  padding: 0 10px;
-  border-radius: 0px;
+  /* border-right: 1px solid grey; */
+  margin: 0px 20px 0 0px;
+  padding: 20px 10px;
+  border-radius: 7px;
   cursor: pointer;
+  display: inline-block;
+  background-color: var(--windowBackground);
+  font-size: 16px;
 
 }
 
 .elemtab_active {
-  background-color: rgba(119, 119, 119, 0.337);
-  border-right: 1px solid rgba(128, 128, 128, 0);
+  background-color: var(--ai);
+  /* color: var(--base); */
+  /* backdrop-filter: blur(13px); */
+  /* border: 1px solid grey; */
 }
 
-.elemtab_add {
+/* .elemtab_add {
   border: 0px solid transparent;
 
   margin-left: -10px;
   margin-top: -10px;
-}
+} */
 
 .viewPortMenu {
   margin: 0px 20px 20px 20px;
-  padding-bottom: 0;
-  height: calc(40px);
+  padding: 0 0 0 0;
+  height: calc(80px);
   background-color: transparent;
   overflow: hidden;
 
@@ -366,8 +371,8 @@ input:checked + .slider:before {
 .tabbar {
 
   /* background-color: green; */
-  overflow: hidden;
-  height: calc(30px);
+
+  height: calc(68px);
   width: calc(100% - 0px - 130px);
   overflow-x: auto;
   overflow-y: hidden;
@@ -378,6 +383,8 @@ input:checked + .slider:before {
 .tabbar>div {
   width: fit-content;
   white-space: nowrap;
+  height: 60px;
+  /* background-color: #f15c4f; */
 }
 
 .controlButtons {
@@ -389,6 +396,7 @@ input:checked + .slider:before {
   float: right;
   /* background-color: blue; */
   border-radius: 7px;
+  margin: 20px 0 0 0;
 
 }
 
@@ -467,21 +475,34 @@ main>#mainSettings>label:hover {
 
 
 .tab_close {
+
   /* margin: -5px 0px 0px 0px; */
-  padding: 1px 2px 2px 5px;
-  position: relative;
-  top: -2px;
+  padding: 0 5px 2px 5px;
+
+  /* top: 0; */
   display: none;
-  border: 2px solid var(--base50i);
-  border-radius: 10px;
-  height: 20px;
-  width: 20px;
-  font-size: 10px;
-  font-weight: 900;
+  border: 2px solid var(--font);
+
+  background-color: var(--base);
+  border-radius: 7px;
+  /* height: 20px; */
+  /* width: 20px; */
+  /* font-size: 10px; */
+  /* font-weight: 700; */
+}
+
+.elemtab:hover {
+  padding: 18px 10px 16px 10px;
+}
+
+.elemtab_add:hover {
+  padding: 20px 10px 20px 10px;
 }
 
 .elemtab:hover>.tab_close {
   display: inline-block;
+ transition-delay: 1s;
+  
 }
 
 
@@ -509,11 +530,54 @@ main>#mainSettings>label:hover {
   text-align: center;
   padding: 10px 50px 0px 50px;
   font-size: 20px;
- 
+
   border-radius: 50vmin;
-  
-  box-shadow: 0 0 600px 130px rgb(0, 0, 0), 0 0 600px 130px rgb(0, 0, 0);
+
+  box-shadow: 0 0 600px 130px var(--base), 0 0 600px 130px var(--base);
 
   animation: header_message 1s;
- 
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.header_message2 {
+
+  top: 60px;
+  z-index: 7;
+  width: 50vw;
+  height: 250px;
+  background-color: transparent;
+  color: blur(13px);
+  text-shadow: 1px 1px 2px var(--base), 0 0 1em var(--base), 0 0 0.2em var(--base);
+  text-align: center;
+  padding: 90px 50px 0px 50px;
+  font-size: 50px;
+  /* backdrop-filter: ; */
+  border-radius: 50vmin;
+
+  position: fixed;
+  left: 37.5vw;
+  width: 25vw;
+  height: 50px;
+
+  text-align: center;
+  padding: 10px 50px 0px 50px;
+  font-size: 50px;
+  font-weight: 700;
+  border-radius: 50vmin;
+
+
+
+
+  position: fixed;
+  left: 25vw;
+  width: 50vw;
+  height: 250px;
+
+
+  padding: 90px 50px 0px 50px;
+  font-size: 50px;
+
+  border-radius: 50vmin;
+  /* animation: header_message 1s; */
+  transition: visibility 0s 2s, opacity 2s linear;
 }
