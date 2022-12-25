@@ -161,6 +161,7 @@ header {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
       background-image: url('../images/pexels-stein-egil-liland-1933316.jpg');
+      background-image: url('../images/pexels-pixabay-247676.jpg');
       
     } 
    
@@ -235,7 +236,7 @@ body {
 body {
 	/* background: linear-gradient(-45deg, #000000, #121212, #000000, #121212); */
 	background-size: 400% 400%;
-	animation: gradient 60s ease infinite;
+	animation: gradient 150s ease infinite;
 	/* height: 100vh; */
 }
 

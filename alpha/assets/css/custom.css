@@ -480,11 +480,14 @@ main>#mainSettings>label:hover {
   padding: 0 5px 2px 5px;
 
   /* top: 0; */
-  display: none;
+  display: inline-block;
   border: 2px solid var(--font);
-
+  width: 0;
+  overflow: hidden;
   background-color: var(--base);
   border-radius: 7px;
+  transition-duration: 6s;
+  transition-property: all;
   /* height: 20px; */
   /* width: 20px; */
   /* font-size: 10px; */
@@ -501,8 +504,9 @@ main>#mainSettings>label:hover {
 
 .elemtab:hover>.tab_close {
   display: inline-block;
- transition-delay: 1s;
-  
+  /* transition-delay: 1s; */
+  width: auto;
+
 }
 
 
