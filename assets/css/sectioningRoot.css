@@ -235,7 +235,7 @@ body {
 
 body {
 	/* background: linear-gradient(-45deg, #000000, #121212, #000000, #121212); */
-	background-size: 400% 400%;
+	background-size: 400%;
 	animation: gradient 150s ease infinite;
 	/* height: 100vh; */
 }
