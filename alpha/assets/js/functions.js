@@ -117,12 +117,12 @@ document.getElementById("focus_search_bar").addEventListener("click", () => {
     document.getElementById("search_bar").focus();
     document.getElementById("header_message").style.display = "block";
     document.getElementById("header_message2").style.display = "block";
-    setTimeout(function () { 
+    setTimeout(function () {
         document.getElementById("header_message").style.display = "none";
         document.getElementById("header_message2").style.display = "none";
 
-}, 1000);
-    window.scrollTo(0,0);
+    }, 1000);
+    window.scrollTo(0, 0);
 
 
 
@@ -152,7 +152,7 @@ elemtabs[elemtabs.length - 1].style.display = "inline-block";
 elemtabs[0].style.display = "inline-block";
 
 var tab_close_clicked = 0;
-var closed_tab_is = 0; 
+var closed_tab_is = 0;
 
 for (let j = 0; j < tab_close.length; j++) {
 
@@ -163,7 +163,7 @@ for (let j = 0; j < tab_close.length; j++) {
         tab_close_clicked = 1;
         closed_tab_is = j;
 
-        
+
     });
 
 
@@ -207,12 +207,14 @@ for (let i = 0; i < briefblock.length; i++) {
 var clickedArticle = false;
 var clickedArticleIs = 0;
 
+
+
 for (let i = 0; i < articles.length; i++) {
 
     articles[i].addEventListener("click", () => {
 
         // if (clickedArticleIs == closed_tab_is) {
-            elemtabs[i].style.display = "inline-block";
+        elemtabs[i].style.display = "inline-block";
         // }
 
         clickedArticle = true;
@@ -231,6 +233,11 @@ for (let i = 0; i < articles.length; i++) {
 
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
+
+
+
+
+
         } else {
             document.getElementById("color_inversion_notice_box").style.display = "none";
         }
@@ -495,6 +502,59 @@ document.getElementById("color_inversion_for_viewport_embedded_content_toggle").
         }
     }
 });
+
+
+function activateDarkMode() {
+
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+        for (let embed = 0; embed < document.getElementsByClassName("embedded_in_lighttheme").length; embed++) {
+            document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(0%)";
+
+        }
+        document.getElementById("color_inversion_notice_box").style.display = "none";
+
+        // for (embed = 0; embed < embedded_in_lighttheme.length; embed++) {
+        //     document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
+        // }
+
+
+        // document.getElementById("color_inversion_alert").innerHTML = "<p>The dark theme is achieved on the above embedded content by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.</p> ";
+
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        for (let embed = 0; embed < document.getElementsByClassName("embedded_in_lighttheme").length; embed++) {
+            document.getElementsByClassName("embedded_in_lighttheme")[embed].style.filter = "invert(92%)";
+        }
+        document.getElementById("color_inversion_notice_box").style.display = "block";
+    }
+
+
+    else {
+        document.getElementById("color_inversion_notice_box").style.display = "block";
+    }
+
+}
+
+// MediaQueryList
+const darkModePreference = window.matchMedia("(prefers-color-scheme: light)");
+const darkModePreference2 = window.matchMedia("(prefers-color-scheme: dark)");
+
+// recommended method for newer browsers: specify event-type as first argument
+darkModePreference.addEventListener("change", e => e.matches && activateDarkMode());
+darkModePreference2.addEventListener("change", e2 => e2.matches && activateDarkMode());
+
+// deprecated method for backward compatibility
+darkModePreference.addListener(e => e.matches && activateDarkMode());
+darkModePreference2.addListener(e2 => e2.matches && activateDarkMode());
+
+
+
+
+
+
+
+
+
+
 
 // // function removeAside() {
 // //     document.getElementById("viewPort").style.display = "none";

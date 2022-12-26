@@ -555,3 +555,21 @@ main {
     
   }
 }
+
+
+@keyframes tabclose {
+  0% {
+    
+    width: 0px;
+    /* margin: 0px 0px 0px 0px; */
+    padding: 20px 10px 20px 10px;
+  }
+
+
+
+  100% {
+   width: 60px;
+   margin: 0px 0px 0px 5px;
+   padding: 20px 10px 20px 10px;
+  }
+}

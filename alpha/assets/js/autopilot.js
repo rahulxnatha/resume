@@ -427,5 +427,15 @@ function findCoords(event) {
 
 // text color decider 
 
+const closeTabText = document.getElementsByClassName("tab_close");
+
+for (let i = 0; i < closeTabText.length; i++) {
+
+  closeTabText[i].innerHTML = "close";
+
+  }
+
+
+
 
 

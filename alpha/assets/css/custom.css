@@ -335,7 +335,7 @@ input:checked + .slider:before {
 .elemtab {
   /* border-right: 1px solid grey; */
   margin: 0px 20px 0 0px;
-  padding: 20px 10px;
+  padding: 0;
   border-radius: 7px;
   cursor: pointer;
   display: inline-block;
@@ -373,7 +373,7 @@ input:checked + .slider:before {
   /* background-color: green; */
 
   height: calc(68px);
-  width: calc(100% - 0px - 130px);
+  width: calc(100% - 0px - 200px);
   overflow-x: auto;
   overflow-y: hidden;
   float: left;
@@ -389,22 +389,23 @@ input:checked + .slider:before {
 
 .controlButtons {
   overflow: hidden;
-  height: 30px;
-  width: 130px;
+  height: 70px;
+  width: 170;
   overflow-x: auto;
   overflow-y: hidden;
   float: right;
-  /* background-color: blue; */
+  background-color: var(--articleBackground);
   border-radius: 7px;
-  margin: 20px 0 0 0;
+  margin: 0px 0 0 0;
+  padding: 18px 20px 0 0;
 
 }
 
 .controlButtons>span {
   background-color: rgba(119, 119, 119, 0.337);
-  font-size: 20px;
+  font-size: 30px;
 
-  margin: 0 0 0 17px;
+  margin: 0 0 0 20px;
   border-radius: 7px;
   padding: 2px;
   float: right;
@@ -476,16 +477,17 @@ main>#mainSettings>label:hover {
 
 .tab_close {
 
-  /* margin: -5px 0px 0px 0px; */
-  padding: 0 5px 2px 5px;
+  margin: 0px 0px 0px 5px;
+  padding: 20px 10px 20px 10px;
 
   /* top: 0; */
   display: inline-block;
-  border: 2px solid var(--font);
-  width: 0;
-  overflow: hidden;
-  background-color: var(--base);
-  border-radius: 7px;
+  display: none;
+  /* border: 2px solid var(--font); */
+  /* width: 0; */
+  /* overflow: hidden; */
+  background-color: var(--fonti);
+  border-radius: 0px;
   transition-duration: 6s;
   transition-property: all;
   /* height: 20px; */
@@ -494,8 +496,12 @@ main>#mainSettings>label:hover {
   /* font-weight: 700; */
 }
 
+.elemtab {
+  padding: 20px 10px 20px 10px;
+  overflow: hidden;
+}
 .elemtab:hover {
-  padding: 18px 10px 16px 10px;
+  padding: 0px 0px 0px 10px;
 }
 
 .elemtab_add:hover {
@@ -505,7 +511,16 @@ main>#mainSettings>label:hover {
 .elemtab:hover>.tab_close {
   display: inline-block;
   /* transition-delay: 1s; */
-  width: auto;
+  width: auto; 
+  
+ 
+
+  animation-name: tabclose;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  /* overflow: hidden; */
 
 }
 

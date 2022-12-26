@@ -92,12 +92,14 @@ header {
     --base50i:  hsla(0, 0%, 0%, 0.5);
     --background: var(--lightBackground);
     --font: var(--lightFont);
+    --fonti: var(--darkFont);
     --windowBackground: var(--lightWindowBackground);
     --articleBackground: var(--lightArticleBackground);
     --window: var(--lightWindow);
     --a: var(--lightAnchor);
     --ai: var(--darkAnchor);
     --selection: var(--lightSelection);
+    --selectioni: var(--darkSelection);
     --shadow: var(--lightShadow);
   }
 
@@ -120,12 +122,14 @@ header {
     --base50i: hsla(0, 0%, 100%, 0.5);
     --background: var(--darkBackground);
     --font: var(--darkFont);
+    --fonti: var(--lightFont);
     --windowBackground: var(--darkWindowBackground);
     --articleBackground: var(--darkArticleBackground);
     --window: var(--darkWindow); /* focus */
     --a: var(--darkAnchor);
     --ai: var(--lightAnchor);
     --selection: var(--darkSelection);
+    --selectioni: var(--lightSelection);
     --shadow:var(--darkShadow);
   }
      body {
