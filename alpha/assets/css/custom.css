@@ -600,3 +600,37 @@ main>#mainSettings>label:hover {
   /* animation: header_message 1s; */
   transition: visibility 0s 2s, opacity 2s linear;
 }
+
+
+.context-menu {
+  position: absolute;
+  text-align: left;
+  background: var(--fonti);
+  border: 0px solid black;
+  border-radius: 7px;
+  color:var(--font);
+}
+
+.context-menu ul {
+  padding: 0px;
+  margin: 0px;
+  min-width: 150px;
+  list-style: none;
+}
+
+.context-menu ul li {
+  padding-bottom: 7px;
+  padding-top: 7px;
+  border: 1px solid black;
+}
+
+.context-menu ul li a {
+  text-decoration: none;
+  color: black;
+  color:var(--font);
+  padding: 20px;
+}
+
+.context-menu ul li:hover {
+  background: darkgray;
+}

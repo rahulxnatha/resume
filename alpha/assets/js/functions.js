@@ -229,8 +229,15 @@ for (let i = 0; i < articles.length; i++) {
         briefblock[clickedArticleIs].style.display = "none";
 
         // briefblock[i].style.display = "block";
+       
+        
+        for (let ij = 0; ij < briefblock.length; ij++) {
+            briefblock[ij].style.display = "none";
+            DEActivateElemTab(ij);
+        }
+        
+        ActivateElemTab(i);
         showBriefBlock(i);
-
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             document.getElementById("color_inversion_notice_box").style.display = "block";
 
