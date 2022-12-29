@@ -117,7 +117,7 @@ var prevScrollpos = 0;
 
 
 // var prevScrollpos = window.pageYOffset;
-document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
+document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
 window.onscroll = function () {
   var currentScrollPos = window.pageYOffset;
 
@@ -128,7 +128,7 @@ window.onscroll = function () {
     // document.getElementById("nav").style.top = "60px";
     document.getElementById("viewPort").style.top = "60px";
     document.getElementById("viewPort").style.height = "calc(100vh - 100px - 100px)";
-    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px)";
+    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
 
     document.getElementById("smallNotiText").innerText = "Scrolling up.";
 
@@ -174,7 +174,7 @@ window.onscroll = function () {
       // document.getElementById("nav").style.top = "0px";
       document.getElementById("viewPort").style.top = "0px";
       document.getElementById("viewPort").style.height = "calc(100vh - 40px - 100px)";
-      document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px)";
+      document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px - 40px)";
 
 
       document.getElementById("smallNotiText").innerText = "Scrolling down.";

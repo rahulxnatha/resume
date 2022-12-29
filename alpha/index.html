@@ -475,9 +475,10 @@
             <!-- <span title="Toggle vertical tabs" class="material-symbols-outlined" style="cursor:pointer;margin-top:0px; background: #77777700;" id="vertical_tabs_switch">
               view_list
             </span> &nbsp;  -->
+        
 
-
-            <span class="elemtab elemtab_active" id="first_tab_test">About<span class="tab_close">close</span></span>
+            <span class="elemtab elemtab_active" id="first_tab_test" draggable="true">About<span
+                class="tab_close">close</span></span>
             <span class="elemtab ">BTech<span class="tab_close"></span></span>
             <span class="elemtab ">School (12)<span class="tab_close"></span></span>
             <span class="elemtab ">School (10)<span class="tab_close"></span></span>
@@ -723,47 +724,46 @@
             <span class="elemtab elemtab_add" id="focus_search_bar"> &nbsp; +&nbsp;&nbsp;</span>
 
 
-            
-            
-            
-           
-              
-            
-              <div id="contextMenu" class="context-menu"
-                style="display:none">
-                <ul>
-                  <li><a href="#">Close tabs to the right</a></li>
-                  <li><a href="#">Close all tabs</a></li>
-                  
-                </ul>
-              </div>
-            
-              <script>
-                document.onclick = hideMenu;
-                document.oncontextmenu = rightClick;
-            
-                function hideMenu() {
-                  document.getElementById(
-                    "contextMenu").style.display = "none"
+
+
+
+
+
+
+            <div id="contextMenu" class="context-menu" style="display:none">
+              <ul>
+                <li><a href="#">Close tabs to the right</a></li>
+                <li><a href="#">Close all tabs</a></li>
+
+              </ul>
+            </div>
+
+            <script>
+              document.onclick = hideMenu;
+              document.oncontextmenu = rightClick;
+
+              function hideMenu() {
+                document.getElementById(
+                  "contextMenu").style.display = "none"
+              }
+
+              function rightClick(e) {
+                e.preventDefault();
+
+                if (document.getElementById(
+                  "contextMenu").style.display == "block")
+                  hideMenu();
+                else {
+                  var menu = document
+                    .getElementById("contextMenu")
+
+                  menu.style.display = 'block';
+                  menu.style.left = e.pageX + "px";
+                  menu.style.top = e.pageY + "px";
                 }
-            
-                function rightClick(e) {
-                  e.preventDefault();
-            
-                  if (document.getElementById(
-                    "contextMenu").style.display == "block")
-                    hideMenu();
-                  else {
-                    var menu = document
-                      .getElementById("contextMenu")
-                      
-                    menu.style.display = 'block';
-                    menu.style.left = e.pageX + "px";
-                    menu.style.top = e.pageY + "px";
-                  }
-                }
-              </script>
-                         
+              }
+            </script>
+
 
 
 
@@ -989,7 +989,7 @@
 
 
         </div>
-        <div class="briefblock">29</div>
+        <div class="briefblock" style="text-align:center;padding: 25vmin 0;">Drop here</div>
         <div class="briefblock">30</div>
         <div class="briefblock">31</div>
         <div class="briefblock">32</div>
@@ -1154,7 +1154,7 @@
 
       <section class=" mainSection">
 
-        <article class="banner" style="float:right;" id="default_focus">
+        <article class="banner" style="float:right;" id="default_focus" draggable="true">
           <span class="name_brand_on_picture" style="float:right;">Rahul Natha at 2021</span>
           <br><br>
           <span class="name_brand_on_picture" style="float:right;">#CustomProfile</span>

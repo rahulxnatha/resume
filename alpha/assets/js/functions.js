@@ -129,6 +129,9 @@ document.getElementById("focus_search_bar").addEventListener("click", () => {
 });
 
 const articles = document.getElementsByTagName("article");
+
+
+
 const briefblock = document.getElementsByClassName("briefblock");
 
 
@@ -141,9 +144,14 @@ const briefblock = document.getElementsByClassName("briefblock");
 
 const elemtabs = document.getElementsByClassName("elemtab");
 
+
+
+
 const tab_close = document.getElementsByClassName("tab_close");
 
 for (let i = 0; i < elemtabs.length; i++) {
+    document.getElementsByClassName("elemtab")[i].setAttribute("draggable", true);
+
     elemtabs[i].style.display = "none";
 }
 
@@ -211,6 +219,9 @@ var clickedArticleIs = 0;
 
 for (let i = 0; i < articles.length; i++) {
 
+    articles[i].setAttribute("draggable", true);
+    articles[i].classList.add("article");
+
     articles[i].addEventListener("click", () => {
 
         // if (clickedArticleIs == closed_tab_is) {
@@ -229,13 +240,13 @@ for (let i = 0; i < articles.length; i++) {
         briefblock[clickedArticleIs].style.display = "none";
 
         // briefblock[i].style.display = "block";
-       
-        
+
+
         for (let ij = 0; ij < briefblock.length; ij++) {
             briefblock[ij].style.display = "none";
             DEActivateElemTab(ij);
         }
-        
+
         ActivateElemTab(i);
         showBriefBlock(i);
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -674,3 +685,98 @@ function showBriefBlock(briefBlockNumber) {
 
 
 
+function handleDragStart(e) {
+    this.style.opacity = '0.4';
+  
+    dragSrcEl = this;
+  
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+  }
+
+function handleDragEnd(e) {
+    this.style.opacity = '1';
+
+    items.forEach(function (item) {
+        item.classList.remove('over');
+    });
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    return false;
+}
+
+function handleDragEnter(e) {
+    this.classList.add('over');
+}
+
+function handleDragLeave(e) {
+    this.classList.remove('over');
+}
+
+function handleDrop(e) {
+    e.stopPropagation();
+  
+    if (dragSrcEl !== this) {
+      dragSrcEl.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getData('text/html');
+    }
+  
+    return false;
+  }
+
+let items = document.querySelectorAll('.elemtab, .article');
+items.forEach(function (item) {
+    item.addEventListener('dragstart', handleDragStart);
+    item.addEventListener('dragend', handleDragEnd);
+    item.addEventListener('dragover', handleDragOver);
+    item.addEventListener('dragenter', handleDragEnter);
+    item.addEventListener('dragleave', handleDragLeave);
+    item.addEventListener('drop', handleDrop);
+
+});
+
+
+
+
+// document.addEventListener('DOMContentLoaded', (event) => {
+
+// function handleDragStart(e) {
+//     this.style.opacity = '0.4';
+// }
+
+
+
+// function handleDragOver(e) {
+//     e.preventDefault();
+//     return false;
+// }
+
+// function handleDragEnter(e) {
+//     this.classList.add('over');
+// }
+
+// function handleDragLeave(e) {
+//     this.classList.remove('over');
+// }
+
+// let items = document.querySelectorAll('.elemtab, .article');
+
+// items.forEach(function (item) {
+//     item.addEventListener('dragstart', handleDragStart);
+//     item.addEventListener('dragover', handleDragOver);
+//     item.addEventListener('dragenter', handleDragEnter);
+//     item.addEventListener('dragleave', handleDragLeave);
+//     item.addEventListener('dragend', handleDragEnd);
+//     item.addEventListener('drop', handleDrop);
+// });
+
+// function handleDragEnd(e) {
+//     this.style.opacity = '1';
+
+//     items.forEach(function (item) {
+//         item.classList.remove('over');
+//     });
+// }
+//   });

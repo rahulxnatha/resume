@@ -375,15 +375,16 @@ input:checked + .slider:before {
   height: calc(68px);
   width: calc(100% - 0px - 200px);
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   float: left;
   /* border: 0.5px dashed #77777715; */
 }
 
 .tabbar>div {
-  width: fit-content;
+  width: fit-content; 
   white-space: nowrap;
-  height: 60px;
+  height: 56px;
+  margin:2px;
   /* background-color: #f15c4f; */
 }
 
@@ -497,15 +498,23 @@ main>#mainSettings>label:hover {
 }
 
 .elemtab {
-  padding: 20px 10px 20px 10px;
-  overflow: hidden;
+  padding: 18px 10px 18px 10px;
+  overflow: hidden;  
+  
 }
+
+.over {
+  outline: 2px solid #aaa;
+  outline-offset: 0px;
+  
+}
+
 .elemtab:hover {
   padding: 0px 0px 0px 10px;
 }
 
 .elemtab_add:hover {
-  padding: 20px 10px 20px 10px;
+  padding: 18px 10px 18px 10px;
 }
 
 .elemtab:hover>.tab_close {
