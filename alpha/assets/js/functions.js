@@ -147,12 +147,17 @@ const elemtabs = document.getElementsByClassName("elemtab");
 
 
 
+
+
 const tab_close = document.getElementsByClassName("tab_close");
 
 for (let i = 0; i < elemtabs.length; i++) {
     document.getElementsByClassName("elemtab")[i].setAttribute("draggable", true);
 
     elemtabs[i].style.display = "none";
+
+    elemtabs[i].innerHTML = "Tab" + i + "<span class=\"tab_close\"></span>";
+
 }
 
 elemtabs[elemtabs.length - 1].style.display = "inline-block";
@@ -780,3 +785,4 @@ items.forEach(function (item) {
 //     });
 // }
 //   });
+
