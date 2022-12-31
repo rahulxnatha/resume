@@ -102,7 +102,13 @@
 //     }
 // }, true);
 
-
+document.getElementById("outputhEight").addEventListener("click", () => { 
+    document.getElementById("releaseNotes").style.display = "block";
+ });
+ document.getElementById("outputhEightC").addEventListener("click", () => { 
+    document.getElementById("releaseNotes").style.display = "none";
+ });
+ 
 
 const articles = document.getElementsByTagName("article");
 const briefblock = document.getElementsByClassName("briefblock");

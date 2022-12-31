@@ -139,3 +139,21 @@ dialog p, #alertUI p {
   width: calc(60% - 8px);
 }
 
+dialog > div > div > h1, 
+dialog > div > div > h2, 
+dialog > div > div > h3 {
+  margin-top: 20px;
+}
+
+dialog > div > div > h1
+ {
+  font-size: 40px;
+}
+dialog > div > div > h2
+ {
+  font-size: 25px;
+}
+dialog > div > div > h3
+ {
+  font-size: 20px;
+}

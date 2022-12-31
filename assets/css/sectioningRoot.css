@@ -131,11 +131,11 @@ header {
     --shadow: var(--lightShadow);
   }
 
-   body {
+   /* body {
     background-image: url('../images/pexels-la-miko-3616764.jpg');
     background-image: url('../images/pexels-karolina-grabowska-5208871.jpg');
     background-image: url('../images/pexels-justyna-serafin-10283580.jpg');
-  } 
+  }  */
   @media screen and (min-width: 1300px) {
   #backgVideoLIGHT {display: block;}
   }
@@ -159,13 +159,13 @@ header {
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
   }
-     body {
+     /* body {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
       background-image: url('../images/pexels-stein-egil-liland-1933316.jpg');
       background-image: url('../images/pexels-pixabay-247676.jpg');
       
-    } 
+    }  */
    
     @media screen and (min-width: 1300px) {
     #backgVideoDARK {display: block;}
@@ -221,28 +221,28 @@ header {
   background: #888888;
 }
 
-body {
+/* body { */
 
-  background-color: var(--background);
-  color: var(--font);
+  /* background-color: var(--background);
+  color: var(--font); */
  
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   /* background-attachment: fixed;   */
-  background-size: cover;
+  /* background-size: cover; */
   /* background-position: center; */
 
-}
+/* } */
 
 
 
-body {
+/* body { */
 	/* background: linear-gradient(-45deg, #000000, #121212, #000000, #121212); */
-	background-size: 400%;
-	animation: gradient 150s ease infinite;
+	/* background-size: 400%; */
+	/* animation: gradient 150s ease infinite; */
 	/* height: 100vh; */
-}
+/* } */
 
-@keyframes gradient {
+/* @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
 	}
@@ -252,7 +252,7 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
-}
+} */
 
 
 
