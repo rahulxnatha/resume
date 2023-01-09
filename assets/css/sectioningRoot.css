@@ -39,6 +39,33 @@
   --lightShadow: hsla(0, 0%, 0%, 0.14);
   --darkShadow: rgba(0,0,0, 0.86);
 
+  color-scheme: light dark;
+
+  --lightBackground: #f7f7f7;
+
+  --darkBackground: #030303;
+
+  --lightWindowBackground: #ffffff80;
+  --darkWindowBackground: #343a4050;
+
+
+  --darkArticleBackground: #102d4950;
+
+  --lightWindow: #ffffff18;
+  --darkWindow: #343a4018;
+
+  --lightFont: #272727;
+  --darkFont: #f1faee;
+
+  --lightAnchor: #234e97;
+  --darkAnchor: #5fbcbf;
+
+  --lightSelection: #457b9d50;
+  --darkSelection: #a8dadc50;
+
+  --lightShadow: hsla(0, 0%, 0%, 0.14);
+  --darkShadow: rgba(0,0,0, 0.86);
+
 /* border-radius  */
  --container-border-radius: 8px;
  --item-border-radius: 4px;
@@ -65,8 +92,8 @@ body {
   margin: 0px;
   padding:0;
   /* overflow: hidden; */
-  background-color: #121212;
-  color: #fff;
+  /* background-color: #121212;
+  color: #fff; */
   font-weight: 400;
   
 
@@ -158,7 +185,26 @@ header {
     --a: var(--darkAnchor);
     --selection: var(--darkSelection);
     --shadow:var(--darkShadow);
+
+    --base: #000000;
+    --basei: #fff;
+    --base80: hsla(0, 0%, 0%, 0.8);
+    --base60: hsla(0, 0%, 0%, 0.6);
+    --base50i: hsla(0, 0%, 100%, 0.5);
+    --background: var(--darkBackground);
+    --font: var(--darkFont);
+    --fonti: var(--lightFont);
+    --windowBackground: var(--darkWindowBackground);
+    --articleBackground: var(--darkArticleBackground);
+    --window: var(--darkWindow); /* focus */
+    --a: var(--darkAnchor);
+    --ai: var(--lightAnchor);
+    --selection: var(--darkSelection);
+    --selectioni: var(--lightSelection);
+    --shadow:var(--darkShadow);
   }
+
+
      /* body {
       background-image: url('../images/pexels-cottonbro-7181899.jpg');
       background-image: url('../images/pexels-alex-andrews-816608.jpg');
@@ -167,9 +213,6 @@ header {
       
     }  */
    
-    @media screen and (min-width: 1300px) {
-    #backgVideoDARK {display: block;}
-    }
 }
 
 ::-moz-selection {
@@ -274,4 +317,15 @@ header {
   main div {
     float: right;
   }
+}
+
+body {
+
+  background-color: var(--background);
+  color: var(--font);
+ 
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+
 }

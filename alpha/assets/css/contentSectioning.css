@@ -246,9 +246,23 @@ aside section::-webkit-scrollbar-thumb {
   border: 8px solid var(--background);
 }
 
+
+
 aside section::-webkit-scrollbar-thumb:hover {
   background: #888888;
 } */
+aside section::-webkit-scrollbar {
+  width: 8px;
+}
+aside section::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 50vmin;
+  
+  border: 0px solid var(--background);
+  /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
+  /* border: 200px solid transparent; */
+
+}
 
 .article {
   overflow: hidden;
@@ -536,3 +550,19 @@ address {
 
 
 }
+
+/* a {
+  position: relative;
+  display: inline-block;
+  margin-top: 0px;
+  border: 1px solid black;
+}
+
+a[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: pink;
+  
+} */
