@@ -188,6 +188,7 @@ aside:hover {
   -webkit-backdrop-filter: blur(30px);
   backdrop-filter: blur(30px);
   transition-duration: 500ms;
+  border-radius: 7px;
 }
 
 #cursorBlurEffect {
@@ -334,7 +335,10 @@ article:hover,
   -webkit-transform: scale(1); 
   transform: scale(1); */
   z-index: 3;
-  transition: transform 0.2s;
+  
+  /* transition-duration: 2s; */
+  border-radius: 7px;
+
 }
 
 aside section a:hover {
