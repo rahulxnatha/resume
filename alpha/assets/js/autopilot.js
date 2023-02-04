@@ -464,7 +464,7 @@ setTimeout(function () {
   document.getElementById("header_message2").style.display = "none";
 }, 0);
 
-var cursorBlurEffect = document.getElementById("cursorBlurEffect");
+var cursorBlurEffect = document.getElementById("cursor-effect");
 
 function findCoords(event) {
   var x = event.clientX;

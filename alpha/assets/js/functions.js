@@ -265,7 +265,7 @@ for (let i = 0; i < articles.length; i++) {
             document.getElementById("color_inversion_notice_box").style.display = "none";
         }
 
-        document.getElementById("blurFocusScreen").style.display = "none";
+        document.getElementById("blur-layer").style.display = "none";
 
         // articles[i].className = 'microinteraction';
 
@@ -317,7 +317,7 @@ for (let i = 0; i < articles.length; i++) {
 
             document.getElementById("viewPort").style.zIndex = 5;
 
-            document.getElementById("blurFocusScreen").style.display = "block";
+            document.getElementById("blur-layer").style.display = "block";
 
             // document.getElementsByTagName("viewportContent")[i].style.display = "block";
 
@@ -390,7 +390,7 @@ for (let i = 0; i < articles.length; i++) {
             // briefblock[0].style.display = "inline";
 
             document.getElementById("color_inversion_notice_box").style.display = "none";
-            document.getElementById("blurFocusScreen").style.display = "none";
+            document.getElementById("blur-layer").style.display = "none";
 
             document.getElementById("smallNotiText").innerText = "Place cursor over any tile and see!";
         }

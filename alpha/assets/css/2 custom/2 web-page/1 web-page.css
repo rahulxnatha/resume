@@ -2,8 +2,10 @@
     /* This is required to make webpage show from below the header */
     margin-top: 60px;
     display: none;
+    z-index: 1;
 }
 
 #web-page.loaded {
     margin-top: 60px;
 }
+
