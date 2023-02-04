@@ -18,11 +18,6 @@ header {
 
 }
 
-/* header:hover {
- 
-  animation: focus_element 2s;
-} */
-
 header>div {
   min-width: 1300px;
 
@@ -64,7 +59,7 @@ main {
   transition-duration: 50ms;
   margin: 0;
   padding: 20px 50px 0 0;
-
+z-index: 1;
   border: 0px solid grey;
   /* background-color: var(--windowBackground);
   -webkit-backdrop-filter: blur(13px);
@@ -96,11 +91,12 @@ main section {
   border-bottom: 2px solid rgb(128, 128, 128);
   border-top: 2px solid rgb(128, 128, 128); */
   /* transition-duration: 0s; */
-  border-radius: 7px;
+  border-radius: var(--border-radius);
 
   /* max-height: 500px; */
-  overflow: hidden;
+  /* overflow: hidden; */
   overflow-y: auto;
+  overflow: visible;
   /* background-color: none;
   -webkit-backdrop-filter: blur(0px);
   backdrop-filter: blur(0px);  */
@@ -144,15 +140,7 @@ main section:hover {
   transition-duration: 0ms;
 } */
 
-#main_pageScroll-off {
-  /* height: calc(100vh - 80px); */
-  /* overflow: visible; */
-  /* overflow-x: hidden; */
-  /* overflow-y: hidden; */
-  margin-top: 60px;
-  /* padding: 40px 0 20px 0; */
-  /* transition-duration: 0ms; */
-}
+
 
 .asideMoveOut {
   left: -50%;
@@ -170,13 +158,18 @@ aside {
   height: calc(100vh - 200px);
   padding: 20px 0px 20px 0px;
   border: 2px solid grey;
-  border-radius: 7px;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease-in-out;
   overflow-y: hidden;
   overflow: hidden;
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   transition-duration: 500ms;
+}
+
+aside:hover {
+  border-radius: var(--border-radius-on-hover);
 }
 
 #cursorBlurEffect {
@@ -254,10 +247,11 @@ aside section::-webkit-scrollbar-thumb:hover {
 aside section::-webkit-scrollbar {
   width: 8px;
 }
+
 aside section::-webkit-scrollbar-thumb {
   background: #888888;
   border-radius: 50vmin;
-  
+
   border: 0px solid var(--background);
   /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
   /* border: 200px solid transparent; */
@@ -286,7 +280,8 @@ aside section a,
   /* background-color: var(--articleBackground); */
   overflow: hidden;
 
-  border-radius: 7px;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease-in-out, transform 0.5s ease;
 
   outline-color: #aaaaaa;
   outline-width: 2px;
@@ -297,6 +292,39 @@ aside section a,
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
+
+
+}
+
+
+
+@keyframes border-animation-article {
+  0% {
+    transform: translateX(0px);
+  }
+
+  25% {
+    transform: translateX(-1px);
+  }
+
+
+  75% {
+    transform: translateX(1px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+
+article:hover {
+  
+  transform: rotate(0deg) scale(1.01);
+  border-radius: var(--border-radius-on-hover);
+  /* transition-delay: 1s; */
+  /* animation: border-animation-article 0.3s linear infinite; */
+  box-shadow: 10px 10px 5px rgba(135, 137, 83, 0.5);
 }
 
 aside section a,
@@ -437,7 +465,7 @@ address {
     height: calc(20vh - 40px);
     padding: 20px 0px 20px 0px;
     border: 2px solid grey;
-    border-radius: 7px;
+    border-radius: var(--border-radius);
 
     top: calc(80vh);
   }
@@ -513,7 +541,7 @@ address {
     height: calc(100vh - 100px);
     padding: 20px 0px 20px 0px;
     border: 2px solid grey;
-    border-radius: 7px;
+    border-radius: var(--border-radius);
   }
 
   aside h1 {

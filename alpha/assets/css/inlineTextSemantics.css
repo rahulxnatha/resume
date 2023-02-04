@@ -39,3 +39,13 @@ nav > span {
   cursor: pointer;
   text-decoration: none;
 }
+
+
+li, fieldset {
+  line-height: 200%;
+}
+
+fieldset {
+  margin: 0 20px 20px 20px;
+}
+

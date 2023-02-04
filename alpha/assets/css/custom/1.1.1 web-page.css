@@ -1,0 +1,9 @@
+#web-page {
+    /* This is required to make webpage show from below the header */
+    margin-top: 60px;
+    display: none;
+}
+
+#web-page.loaded {
+    margin-top: 60px;
+}

@@ -9,24 +9,32 @@ button {
   text-align: center;
   
   min-width: 72px;
-  min-height: 72px;
+  min-height: 36px;
+  border-radius: var(--border-radius);
+  border: 2px solid grey;
   /* border-radius: 7px; */
   
   /* background-color: rgb(0, 0, 0); */
   
 }
-/* button:hover {
-  background-color: rgb(83, 83, 83);
+button:hover {
+  outline-offset: 4px ;
+  /* outline: 4px solid grey; */
+  
 }
 
 button:active {
-  background-color: rgb(46, 94, 103);
-} */
-
-
+  /* background-color: rgb(46, 94, 103); */
+  border-radius: 7px;
+  
+}
 
 header button {
   float: right;
+}
+
+.mainSection button {
+  margin-top: 10px;
 }
 
 input[type="text"] {

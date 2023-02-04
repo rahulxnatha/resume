@@ -1,0 +1,19 @@
+#backg-video-light {
+    display: none;
+}
+
+#backg-video-dark {
+    display: none;
+}
+
+@media screen and (min-width: 1300px) and (prefers-color-scheme: light) {
+    #backg-video-light {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1300px) and (prefers-color-scheme: dark) {
+    #backg-video-dark {
+        display: block;
+    }
+}

@@ -336,7 +336,7 @@ article:hover,
   transform: scale(1); */
   z-index: 3;
   
-  /* transition-duration: 2s; */
+  /* transition-duration: 0.5s; */
   border-radius: 7px;
 
 }
@@ -348,7 +348,6 @@ aside section a:hover {
   z-index: 4;
   transition: transform 0.2s;
 }
-
 
 #contact a {
   display: inline-block;

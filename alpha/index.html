@@ -44,35 +44,39 @@
 
   <!-- stylesheet  -->
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/sectioningRoot.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff"
-    href="assets/css/contentSectioning.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/sectioningRoot.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/contentSectioning.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/textContent.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/inlineTextSemantics.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/imageAndMultimedia.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/embeddedContent.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/svgAndMathML.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/scripting.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/demarcatingEdits.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/tableContent.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/forms.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/interactiveElements.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/webComponents.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/animations.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/textContent.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff"
-    href="assets/css/inlineTextSemantics.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff"
-    href="assets/css/imageAndMultimedia.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff"
-    href="assets/css/embeddedContent.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/Custom/1.0.0 body.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/Custom/1.1.0 splash-screen.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/Custom/1.1.1 web-page.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/Custom/1.1.2 background-video.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/svgAndMathML.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/scripting.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff"
-    href="assets/css/demarcatingEdits.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/tableContent.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/forms.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff"
-    href="assets/css/interactiveElements.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/webComponents.css">
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/custom.css">
 
-  <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/animations.css">
-  <!-- <link rel="stylesheet" type="text/css" content="X-Content-Type-Options: nosniff" href="assets/css/cursor.css"> -->
+
+
+
+
+
+
+
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
@@ -100,40 +104,67 @@
 
 </head>
 
-<body id="main_pageScroll-body" onmousemove="findCoords(event)">
+<body onmousemove="findCoords(event)">
 
-
-  <div id="main_pageScroll-off">
-
-    <div id="splashScreen"
-      style="position:fixed;top:0;left:0; z-index: 60; background-color: var(--background); height: 100%; width: 100%; padding: 30px; font-size:xx-large; line-height: 200%; text-align: center; overflow: auto; padding-top: 10%; display: none;">
-      <p style="font-size:xx-large; line-height: 200%; ">Loading.</p>
-
-
-      <p style="font-size:xx-large; line-height: 200%;">If you are here too long, click "Ctrl + F5" or refresh the
-        browser.</p>
-
+  <div id="splash-screen">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
     </div>
+  </div>
 
-    <!-- <video autoplay muted loop class="backgVideo" id="backgVideoLIGHT">
+  <noscript>
+    <dialog open id="JavaScriptNeeded">
 
-      <source src="assets/images/pexels-rostislav-uzunov-8252781.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
+      <div>
+        <p>Alert</p>
+
+        <div>
+          <details open>
+
+            <summary>
+              <h1>JavaScript needed!</h1>
+            </summary>
+
+            <ul>
+              <li>It looks like JavaScript is disabled. </li>
+
+              <li>Some functionalities in this website that require JavaScript are hidden. </li>
+
+              <!-- <li>If your browser doesn't allow you to enable JavaScript, consider using <a
+                  href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>.</li>
+              <li> If you are already on Microsoft Edge, make sure JavaScript is enabled at
+                <i>edge://settings/content/javascript</i>.
+              </li> -->
+
+            </ul>
+
+          </details>
+        </div>
+
+        <p>This window will be closed after few seconds.</p>
+      </div>
+
+    </dialog>
+  </noscript>
+
+
+  <div id="web-page">
+
+
+
+    <video autoplay muted loop class="backgVideo" id="backg-video-light" role="presentation" aria-hidden="true">
+      <source src="assets/images/video.mp4" type="video/mp4">
+      <!-- Your browser does not support HTML5 video. -->
     </video>
 
-    <video autoplay muted loop class="backgVideo" id="backgVideoDARK">
-      <source src="assets/images/Pexels Videos 3867.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
+    <video autoplay muted loop class="backgVideo" id="backg-video-dark" role="presentation" aria-hidden="true">
+      <source src="assets/images/1video.mp4" type="video/mp4">
+      <!-- Your browser does not support HTML5 video. -->
     </video>
 
-      <video autoplay muted loop id="backgroundVideo">
-        <source src="../resume/assets/images/pexels-mr-borys-9860821.mp4" type="video/mp4">
-      </video>  -->
-
-
-
-    <div id="blurFocusScreen" style="position:fixed;top:0;left:0;display: none; z-index: 2; background-color: none; height: 100vh; width: 100vw; padding: 30px;-webkit-backdrop-filter: blur(0px);
-    backdrop-filter: blur(0px);"></div>
+    <div id="blurFocusScreen"></div>
 
     <div id="cursorBlurEffect"
       style="position:fixed;top:0;left:0;z-index: -2;  height: 600px; width: 600px; border-radius: 50vmin;"></div>
@@ -146,11 +177,12 @@
             Testing
             Stage: Somewhat Unstable&nbsp;</span> </h1> -->
 
+        <!-- id="outputhEight" -->
         <h1 style="cursor: pointer; ">Rahul Natha &nbsp;
-          <span class="grade-out-text" id="outputhEight"
+          <span class="grade-out-text" id="time"
             title="This version of the website is highly unstable and contains newest features">
 
-            &nbsp;Alpha: Highly Unstable&nbsp; </span>
+          </span>
 
         </h1>
 
@@ -174,7 +206,7 @@
           <input type="search" name="" id="search_bar" placeholder="Looking for..."
             style=" width: 300px;height: 30px;margin: -5px 0 0 4%;">
 
-          <input type="button" value="Search" style="  height: 30px; margin: -5px 0 0 0">
+          <input type="button" value="Search" style="  height: 30px; margin: -5px 0 0 0;">
         </span>
 
 
@@ -213,6 +245,8 @@
 
 
     </header>
+
+
     <div class="header_message" id="header_message"></div>
     <div class="header_message2" id="header_message2">Type in search bar</div>
     <!-- <div class="assistant">
@@ -223,40 +257,7 @@
     <div class="space"></div>
     <div class="space"></div> -->
 
-    <noscript>
-      <dialog open id="JavaScriptNeeded">
 
-        <div>
-          <p>Alert</p>
-
-          <div>
-            <details open>
-
-              <summary>
-                <h1>JavaScript needed!</h1>
-              </summary>
-
-              <ul>
-                <li>It looks like JavaScript is disabled. </li>
-
-                <li>Some functionalities in this website that require JavaScript are hidden. </li>
-
-                <!-- <li>If your browser doesn't allow you to enable JavaScript, consider using <a
-                  href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>.</li>
-              <li> If you are already on Microsoft Edge, make sure JavaScript is enabled at
-                <i>edge://settings/content/javascript</i>.
-              </li> -->
-
-              </ul>
-
-            </details>
-          </div>
-
-          <p>This window will be closed after few seconds.</p>
-        </div>
-
-      </dialog>
-    </noscript>
 
     <dialog open id="offlineAlert" style="display:none;">
 
@@ -319,138 +320,172 @@
             <span>&times; <span class="close_button_suggestion"> Close</span> </span>
           </span>
 
+          <fieldset>
+            <legend>Color theme preference</legend>
+            <input type="radio" id="" name="" value="" aria-checked="true" checked>
+            <label for="">Inherit from browser settings (default)</label>
+            <br>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Based on sunrise and sunset times</label>
+            <br>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Let me control manually</label>
+          </fieldset>
 
-          <div style="display: none;">
-            <details>
+          <div style="display:none;">
+            <fieldset>
 
-              <summary>
-                <h1 id="alertUser">Change color theme</h1>
-              </summary>
+              <legend>Color theme preference</legend>
 
-              <ul id="themeDescription">
-                <li>This website adapts to the color theme settings of your browser. To change color theme on this
-                  website
-                  to dark or light, consider changing it on your browser settings.</li>
-                <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you
-                  can
-                  change the theme at <i>edge://settings/appearance</i>.</li>
+              <input type="radio" id="" name="" value="">
+              <label for="">Inherit from browser settings (default)</label>
 
-              </ul>
+              <br>
+              <input type="radio" id="" name="" value="">
+              <label for="">Based on sunrise and sunset times</label>
 
-            </details>
+              <br>
+
+              <input type="radio" id="" name="" value="">
+              <label for="">Let me control manually</label>
+
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Dark theme manual control</legend>
+
+              <input type="radio" id="" name="" value="">
+              <label for="">Never</label>
+              <br>
+              <input type="radio" id="" name="" value="">
+              <label for="">Always</label>
+              <br>
+              <input type="radio" id="" name="" value="">
+              <label for="">Custom time</label>
+
+            </fieldset>
+            <fieldset>
+              <legend>Dark theme manual control custom time</legend>
+
+              <label for="">Between</label>
+
+              <input type="time" id="" name="" value="">
+
+              <label for="">and</label>
+
+              <input type="time" id="" name="" value="">
+
+              next day.
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Time preference</legend>
+
+              <input type="radio" id="" name="" value="">
+              <label for="">Take time from server</label>
+              <br>
+              <input type="radio" id="" name="" value="">
+              <label for="">Take time from OS settings</label>
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Time zone</legend>
+
+              <input type="radio" id="" name="" value="">
+              <label for="">Grant location permission</label>
+              <br>
+              <input type="radio" id="" name="" value="">
+              <label for="">Manually select time zone</label>
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Time zone manual selection</legend>
+
+              <select id="timezone-select">
+                <option value="UTC-11">UTC-11</option>
+                <option value="UTC-10">UTC-10</option>
+                <option value="UTC-9">UTC-9</option>
+                <!-- add more options for other timezones -->
+              </select>
+
+
+            </fieldset>
+
+
           </div>
 
-          <div>
-            <details>
 
-              <summary>
-                <h1 id="alertUser">Manual override color theme (not yet enabled)</h1>
-              </summary>
+          <fieldset>
 
-              <ul id="themeDescription">
-                <li>You can override the default color theme manually.</li>
-                <li>This feature will be available for you in future.</li>
+            <legend>Font</legend>
 
-              </ul>
+            <input type="radio" id="" name="" value="" aria-checked="true" checked>
+            <label for="">Work Sans (default)</label>
 
-            </details>
-          </div>
+            <br>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Inherit from browser settings</label>
 
-          <div>
-            <details>
+          </fieldset>
 
-              <summary>
-                <h1>Change font (not yet enabled)</h1>
-              </summary>
+          <fieldset>
 
-              <ul>
-                <li>You can change the default fonts in your browser and the same will be followed here.</li>
-                <!-- <br> -->
-                <!-- <label for=""> Enable dark theme <input type="checkbox" name="" id=""></label> -->
-                <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you
-                  can
-                  change the fonts at <i>edge://settings/fonts</i>.</li>
-              </ul>
+            <legend>Background preference</legend>
 
-            </details>
-          </div>
+            <input type="radio" id="" name="" value="" aria-checked="true" checked>
+            <label for="">Disabled (default)</label>
 
-          <div>
-            <details>
+            <br>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Enable</label>
 
-              <summary>
-                <h1>Change the background (not yet enabled)</h1>
-              </summary>
+          </fieldset>
 
-              <ul>
-                <li>You can change the default fonts in your browser and the same will be followed here.</li>
-                <!-- <br> -->
-                <!-- <label for=""> Enable dark theme <input type="checkbox" name="" id=""></label> -->
-                <li>If you use <a href="https://www.microsoft.com/en-us/edge" target="_blank">Microsoft Edge</a>, you
-                  can
-                  change the fonts at <i>edge://settings/fonts</i>.</li>
-              </ul>
+          <fieldset>
 
-            </details>
-          </div>
+            <legend>Travel to</legend>
 
-          <div>
-            <details>
+            <input type="radio" id="" name="" value="" aria-checked="true" checked>
+            <label for="">Today (default)</label>
 
-              <summary>
-                <h1>Go to different time (not yet enabled)</h1>
-              </summary>
-
-              <ul style="text-align: center;">
-                <li style="text-align: left;">You can view any past or future version of my resume.
-
-                  Select the date and there you go.</li>
+            <br>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Date I select</label>
 
 
-                <input style="text-align: center;" type="date" name="" id="">
-                <br><br>
+            <input style="text-align: center;" type="date" name="" id="" disabled="disabled">
 
-                <input style="text-align: center;" type="button" value="Go">
+            <br>
 
-              </ul>
+          </fieldset>
 
+          <fieldset>
 
+            <legend>Data saver</legend>
 
+            <input type="radio" id="" name="" value="" aria-checked="true" checked>
+            <label for="">When low internet speeds detected (default)</label>
 
-            </details>
-          </div>
+            <br>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Never</label>
 
-          <div>
-            <details>
+            <br>
 
-              <summary>
-                <h1>Data saver mode (not yet enabled)</h1>
-              </summary>
-
-              <ul style="text-align: center;">
-                <li style="text-align: left;">Turning this on will reduce the amount of data downloaded.</li>
-
-
-                <input style="text-align: center;" type="date" name="" id="">
-                <br><br>
-
-                <input style="text-align: center;" type="button" value="Go">
-
-              </ul>
+            <input type="radio" id="" name="" value="" disabled="disabled">
+            <label for="">Always</label>
 
 
-
-
-            </details>
-          </div>
+          </fieldset>
 
           <span style=" margin: 0 0 0px 45px;">Version: Alpha 2.0008 </span> <br><br>
           <span style="margin-left: 45px;">Last updated: December 30, 2022 </span> <br><br>
-          <span style="margin-left: 45px;">The development is paused until June 30, 2023.</span>
 
           <br><br><br>
-
-
 
         </div>
       </div>
@@ -493,105 +528,102 @@
             <span class="elemtab" id="tab3"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab4"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab5"><span class="tab_close"></span></span>
-            <span class="elemtab" id="tab6"><span
-                class="tab_close"></span></span><span class="elemtab" id="tab7">
-                  <span
-                class="tab_close"></span></span><span class="elemtab" id="tab8"><span
+            <span class="elemtab" id="tab6"><span class="tab_close"></span></span><span class="elemtab" id="tab7">
+              <span class="tab_close"></span></span><span class="elemtab" id="tab8"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab9"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab10"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab11"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab12"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab13"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab14"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab15"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab16"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab17"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab18"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab19"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab20"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab21"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab22"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab23"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab24"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab25"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab26"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab27"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab28"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab29"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab30"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab31"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab32"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab33"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab34"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab35"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab36"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab37"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab38"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab39"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab40"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab41"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab42"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab43"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab44"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab45"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab46"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab47"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab48"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab49"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab50"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab51"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab52"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab53"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab54"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab55"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab56"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab57"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab58"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab59"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab60"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab61"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab62"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab63"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab64"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab65"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab66"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab67"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab68"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab69"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab70"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab71"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab72"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab73"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab74"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab75"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab76"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab77"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab78"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab79"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab80"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab81"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab82"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab83"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab84"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab85"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab86"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab87"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab88"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab89"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab90"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab91"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab92"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab93"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab94"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab95"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab96"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab97"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab98"><span class="tab_close"></span></span>
-                  <span class="elemtab" id="tab99"><span class="tab_close"></span></span>
-                  
-                  <span class="elemtab" id="tab100"><span
-                class="tab_close"></span></span><span class="elemtab" id="tab101"><span
-                class="tab_close"></span></span><span class="elemtab" id="tab102"><span
+            <span class="elemtab" id="tab11"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab12"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab13"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab14"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab15"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab16"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab17"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab18"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab19"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab20"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab21"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab22"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab23"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab24"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab25"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab26"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab27"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab28"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab29"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab30"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab31"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab32"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab33"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab34"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab35"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab36"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab37"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab38"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab39"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab40"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab41"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab42"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab43"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab44"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab45"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab46"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab47"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab48"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab49"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab50"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab51"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab52"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab53"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab54"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab55"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab56"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab57"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab58"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab59"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab60"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab61"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab62"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab63"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab64"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab65"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab66"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab67"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab68"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab69"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab70"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab71"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab72"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab73"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab74"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab75"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab76"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab77"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab78"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab79"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab80"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab81"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab82"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab83"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab84"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab85"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab86"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab87"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab88"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab89"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab90"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab91"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab92"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab93"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab94"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab95"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab96"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab97"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab98"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab99"><span class="tab_close"></span></span>
+
+            <span class="elemtab" id="tab100"><span class="tab_close"></span></span><span class="elemtab"
+              id="tab101"><span class="tab_close"></span></span><span class="elemtab" id="tab102"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab103"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab104"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab105"><span
@@ -1169,11 +1201,11 @@
       <section style="display:inherit;">
         <button style="margin-top: 20px;">👈 Back</button>
         <span>
-          <h1>You are now in 2025!</h1>
+          <h1>Everything that connects to my BTech</h1>
           <!-- <h1>Showing 5 of 5 search results</h1> -->
         </span>
         <span>
-          <h2>Showing results for "<span id="searchQuery">Portfolio as of 2025</span>"</h2>
+          <h2>Showing results for "<span id="searchQuery">#BTech</span>"</h2>
         </span>
       </section>
 
@@ -1200,26 +1232,33 @@
         <span>
           <h2>School and degree</h2>
         </span>
+        <div>
+          <article tabindex="0" class="cmrcet">
 
-        <article tabindex="0" class="cmrcet">
-
-          <h1>Bachelor of Technology in Mechanical Engineering</h1>
-          <p>2020 &#8226; CMR College of Engineering &amp; Technology, Hyderabad</p>
-          <p>8.91 GPA</p>
+            <h1>Bachelor of Technology in Mechanical Engineering</h1>
+            <p>2020 &#8226; CMR College of Engineering &amp; Technology, Hyderabad</p>
+            <p>8.91 GPA</p>
 
 
-        </article>
+          </article>
+          <button onclick="window.open('https://cmrcet.ac.in', '_blank')">College website</button>
+          <button onclick="window.open('https://sites.google.com/view/rahuldocs', '_blank')">DOCS from Rahul</button>
+        </div>
 
-        <article tabindex="0">
+        <div>
+          <article tabindex="0">
 
-          <h1>Higher Secondary School Education</h1>
-          <p>2016 &#8226; Sri SanJEEvni Junior College &amp; IIT Academy, Hyderabad </p>
-
-          <!-- <p>I have completed the eleventh and twelfth standard in 2016. I have chosen mathematics, physics and chemistry
+            <h1>Higher Secondary School Education</h1>
+            <p>2016 &#8226; Sri SanJEEvni Junior College &amp; IIT Academy, Hyderabad </p>
+            <p> 71.5%</p>
+            <!-- <p>I have completed the eleventh and twelfth standard in 2016. I have chosen mathematics, physics and chemistry
           as the main subjects for the academic exams. I studied at Sri SanJEEvni Junior College & IIT Academy between
           2014 and 2016.</p> -->
 
-        </article>
+          </article>
+          <button onclick="window.open('https://google.com', '_blank')">College website</button>
+        </div>
+
         <article tabindex="0">
 
           <h1>Secondary School Education, Andhra Pradesh State Board</h1>

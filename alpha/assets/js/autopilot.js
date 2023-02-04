@@ -102,7 +102,45 @@
 
 // const scroller = document.querySelector("#main_pageScroll");
 // const scroller = document.querySelector("#main_pageScroll-body");
-const outputhEight = document.querySelector("#outputhEight");
+
+
+// fetch('http://worldtimeapi.org/api/timezone/UTC')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data);
+//     // Extract the time from the API response
+//     let time = data.datetime;
+//     // Display the time on the HTML page
+//     document.getElementById("time").innerHTML = time;
+//   });
+
+
+let select = document.getElementById("timezone-select");
+select.addEventListener("change", function () {
+  let selectedTimezone = select.value;
+  console.log("Selected timezone: " + selectedTimezone);
+  // you can use the selectedTimezone variable to set the timezone for your application
+});
+
+
+
+
+// window.onload = function() {
+fetch('http://worldtimeapi.org/api/timezone/Asia/Kolkata')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // Extract the time from the API response
+    let time = data.datetime;
+    // Display the time on the HTML page
+    // document.getElementById("time").innerHTML = time;
+    document.getElementById("time").innerHTML = "&nbsp;2023 Alpha channel&nbsp; ";
+  });
+// }
+
+
+
+// const outputhEight = document.querySelector("#outputhEight");
 var prevScrollpos = 0;
 // var prevScrollpos = scroller.scrollTop;
 
@@ -287,6 +325,8 @@ function alertUI(show) {
 
     document.getElementById("alertUI").style.display = "block";
     document.getElementById("alertUI").classList.toggle("slide_from_above");
+    document.getElementById("blurFocusScreen").style.display = "block";
+    document.getElementById("blurFocusScreen").style.zIndex = "5";
 
     setTimeout(function () {
       document.getElementById("alertUI").classList.toggle("slide_from_above");
@@ -296,6 +336,8 @@ function alertUI(show) {
     document.getElementById("themeDescription").style.display = "block";
   } else {
     document.getElementById("alertUI").classList.toggle("close_slide_down");
+    document.getElementById("blurFocusScreen").style.display = "none";
+    document.getElementById("blurFocusScreen").style.zIndex = "5";
     setTimeout(function () {
       document.getElementById("alertUI").classList.toggle("close_slide_down");
       document.getElementById("alertUI").style.display = "none";
@@ -391,12 +433,29 @@ document.getElementById("JSregulated74545").style.display = "inline";
 // window.location.replace("/index.html");
 
 
+document.addEventListener("DOMContentLoaded", function () {
 
 
-setTimeout(function () {
-  document.getElementById("splashScreen").style.display = "none";
-  // document.getElementById("header_message").style.display = "none";
-}, 0);
+  const splashScreen = document.getElementById("splash-screen");
+
+  setTimeout(function () {
+    document.getElementsByClassName("spinner")[0].classList.add("loaded");
+  }, 0000);
+  
+  setTimeout(function () {
+    splashScreen.style.display = "none";
+    document.getElementById("web-page").style.display = "block";
+    
+  }, 2000);
+});
+
+
+
+
+
+
+
+
 
 
 setTimeout(function () {
@@ -433,7 +492,7 @@ for (let i = 0; i < closeTabText.length; i++) {
 
   closeTabText[i].innerHTML = "close";
 
-  }
+}
 
 
 
