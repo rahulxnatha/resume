@@ -574,3 +574,9 @@ main {
    padding: 18px 10px 18px 10px;
   }
 }
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

@@ -356,6 +356,11 @@ for (let i = 0; i < articles.length; i++) {
                 document.getElementById("smallNotiText").innerText = "Great! Click it to read about it.";
             }, 000);
 
+
+
+
+
+
         }
 
         else {
@@ -692,12 +697,12 @@ function showBriefBlock(briefBlockNumber) {
 
 function handleDragStart(e) {
     this.style.opacity = '0.4';
-  
+
     dragSrcEl = this;
-  
+
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this.innerHTML);
-  }
+}
 
 function handleDragEnd(e) {
     this.style.opacity = '1';
@@ -722,14 +727,14 @@ function handleDragLeave(e) {
 
 function handleDrop(e) {
     e.stopPropagation();
-  
+
     if (dragSrcEl !== this) {
-      dragSrcEl.innerHTML = this.innerHTML;
-      this.innerHTML = e.dataTransfer.getData('text/html');
+        dragSrcEl.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
     }
-  
+
     return false;
-  }
+}
 
 let items = document.querySelectorAll('.elemtab, .article');
 items.forEach(function (item) {
