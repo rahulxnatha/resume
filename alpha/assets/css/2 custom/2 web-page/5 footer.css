@@ -1,0 +1,10 @@
+footer {
+  width: 100%;
+  min-height: 200px;
+  float: left;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+  padding: 20px 40px 20px 40px;
+
+  background-color: var(--windowBackground);
+}

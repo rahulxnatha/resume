@@ -1,0 +1,27 @@
+
+.status2 {
+    float: right;
+    margin-left: -3px;
+    padding: 0;
+  }
+  
+  .status {
+    padding: 0px;
+    text-align: center;
+    display: inline;
+    float: right;
+    margin: 0;
+    font-size: 36px;
+    line-height: 0.65em;
+    color: transparent;
+  }
+  
+  .status.online {
+    border: 0px solid #41a700;
+    color: #41a700;
+  }
+  
+  .status.offline {
+    border: 0px solid #f15c4f;
+    color: #f15c4f;
+  }

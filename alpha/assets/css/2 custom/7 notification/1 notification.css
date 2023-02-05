@@ -1,0 +1,30 @@
+
+
+.smallNotification {
+    position: fixed;
+    bottom: 0px;
+  
+    left: 0px;
+    border-radius: var(--border-radius);
+    background: var(--articleBackground);
+    padding: 20px 20px 20px 20px;
+    z-index: 2;
+  
+    width: calc(50% - 150px);
+    margin: 20px 20px 20px 100px;
+    height: calc(80px);
+  
+    border: 2px solid grey;
+    border-radius: var(--border-radius);
+    overflow-y: hidden;
+    overflow: hidden;
+  
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+  
+    transition-duration: 0.5s;
+  
+    font-size: 20px;
+    font-weight: 600;
+  
+  }

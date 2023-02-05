@@ -1,0 +1,57 @@
+main {
+    float: right;
+    /* max-width: calc(100% - 660px - 100px); */
+    width: calc(50%);
+    transition-duration: 50ms;
+    margin: 0;
+    padding: 20px 50px 0 0;
+    z-index: 1;
+    border: 0px solid grey;
+    /* background-color: var(--windowBackground);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px); */
+}
+
+
+#main {
+    background-color: transparent;
+  }
+  
+
+.mainOnAsideClose {
+    width: 100%;
+    padding-left: 50px;
+}
+
+@media only screen and (max-width: 1230px) {
+
+
+    main {
+        float: left;
+        width: calc(100% - 50px);
+        margin-left: 50px;
+        position: relative;
+        top: calc(0px);
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+
+
+
+
+    main {
+        width: calc(100% - 40px);
+        float: left;
+        margin: 0 20px 0 20px;
+        padding: 0;
+        border: 0px solid grey;
+    }
+}
+
+@supports not (display: grid) {
+    main div {
+        float: right;
+    }
+}

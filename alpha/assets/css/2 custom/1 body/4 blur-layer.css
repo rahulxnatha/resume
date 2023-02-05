@@ -7,3 +7,17 @@
     width: 600px;
     border-radius: 50vmin;
 }
+#blurFocusScreen {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
+    background-color: none;
+    height: 100vh;
+    width: 100vw;
+    padding: 30px;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+  }

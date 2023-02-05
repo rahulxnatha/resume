@@ -5,12 +5,7 @@ p {
  
 }
 
-article p {
-  font-size: 14px;
-  padding:0;
-  margin: 10px 0 0 0;
-  line-height: 20px;
-}
+
 
 blockquote p::before {
   content: "\201C";

@@ -1,0 +1,135 @@
+aside section {
+    display: block;
+    /* height: calc(100vh - 100px - 40px - 40px - 60px);
+    height: calc(100vh - 100px - 40px - 60px );
+    height: 0; */
+    /* width: calc(100% - 16px); */
+    overflow: hidden;
+    padding: 0 20px;
+    /* margin-right: 12px; */
+    overflow-y: auto;
+    margin: 0 20px 0 0px;
+    /* margin-right: 8px; */
+    /* border: 2px solid var(--basei); */
+    /* background-color: #2a1e42; */
+    /* border-radius: 7px; */
+  
+  }
+  
+  
+  
+  aside section:hover {
+    overflow-y: auto;
+    /* margin-right: 8px; */
+  }
+  
+  
+
+
+/* 
+aside section::-webkit-scrollbar {
+  width: 20px;
+}
+
+aside section::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px none;
+  background-color: var(--background);
+}
+
+aside section::-webkit-scrollbar-thumb {
+  background: #88888888;
+  border-radius: 50vmin;
+  border: 8px solid var(--background);
+}
+
+
+
+aside section::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+} */
+aside section::-webkit-scrollbar {
+  width: 8px;
+}
+
+aside section::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 50vmin;
+
+  border: 0px solid var(--background);
+  /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
+  /* border: 200px solid transparent; */
+
+}
+
+aside section div {
+  margin: 0;
+  transition-duration: 0.5s;
+}
+
+
+
+#online_what {
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  height: 1.2em;
+}
+
+#contain_online_what {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  height: 1.2em;
+  overflow: hidden;
+  position: relative;
+  top: 0.25em;
+
+  /* background-color: #aaa; */
+}
+
+#online_what_was {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: none;
+
+  height: 1.2em;
+}
+
+
+
+#color_inversion_notice_box {
+  display: none;
+
+  border: 1px solid #777;
+  padding: 0 20px 20px 20px;
+  border-radius: var(--border-radius);
+  margin-top: 20px;
+}
+
+
+
+
+.viewPortMenu {
+  margin: 0px 20px 20px 20px;
+  padding: 0 0 0 0;
+  height: calc(80px);
+  background-color: transparent;
+  overflow: hidden;
+
+  border-bottom: 1px solid grey;
+}
+
+
+.briefblock {
+  overflow: hidden;
+  display: none;
+  transition: 1s;
+
+}
+
+#briefblock0 {
+  display: block;
+}

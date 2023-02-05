@@ -1,0 +1,7 @@
+.theme_selector {
+    color: #77777780;
+  }
+  
+  .theme_selector:hover {
+    color: inherit;
+  }

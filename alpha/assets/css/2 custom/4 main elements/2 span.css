@@ -1,0 +1,49 @@
+main span {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-top: 0px;
+}
+
+.mainSpanOnAsideClose {
+    grid-column-end: 5;
+}
+
+main span h1 {
+    font-size: 35px;
+    margin: 0 0 0 0;
+    padding: 0;
+    padding-top: 20px;
+}
+
+main span h2 {
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 1230px) {
+    main span {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    main span {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+ 
+
+    main span {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      margin-top: 0px;
+      margin: 0;
+    }}
