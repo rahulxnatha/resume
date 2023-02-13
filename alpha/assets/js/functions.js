@@ -111,6 +111,90 @@
 // });
 
 
+// Settings 
+document.getElementById("backg-video-light").style.display = "none";
+document.getElementById("backg-video-dark").style.display = "none";
+
+// Get all radio inputs
+const radioInputs = document.querySelectorAll('input[type="radio"]');
+
+// Loop through each radio input
+radioInputs.forEach((radio) => {
+    // Add a "change" event listener to each input
+    radio.addEventListener('change', (event) => {
+        // Check which input is selected
+        if (event.target.value === 'background-video-disable') {
+            // Perform some action if Option 1 is selected
+            document.getElementById("backg-video-light").style.display = "none";
+            document.getElementById("backg-video-dark").style.display = "none";
+            console.log('Option 1 is selected');
+
+        } else if (event.target.value === 'background-video-enable') {
+            // Perform some action if Option 2 is selected
+
+
+            // Get the user's preferred color scheme
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+            // Check if the user's preferred color scheme is dark
+            if (prefersDark.matches) {
+                // Perform some action if the preferred color scheme is dark
+                document.getElementById("backg-video-light").style.display = "none";
+                document.getElementById("backg-video-dark").style.display = "block";
+
+
+                console.log('Dark color scheme detected');
+            } else {
+                // Perform some action if the preferred color scheme is light
+                document.getElementById("backg-video-light").style.display = "block";
+                document.getElementById("backg-video-dark").style.display = "none";
+                console.log('Light color scheme detected');
+            }
+
+
+
+            // Add a change event listener to the MediaQueryList object
+            prefersDark.addEventListener('change', (event) => {
+
+                if (document.getElementById("background-video-disable").checked == true) {
+                    // Perform some action if Option 1 is selected
+                    document.getElementById("backg-video-light").style.display = "none";
+                    document.getElementById("backg-video-dark").style.display = "none";
+                    console.log('Option 1 is selected');
+                }
+                // Check if the user's preferred color scheme changed to dark
+                else if (event.matches) {
+                    // Perform some action if the preferred color scheme changed to dark
+                    document.getElementById("backg-video-light").style.display = "none";
+                    document.getElementById("backg-video-dark").style.display = "block";
+                    console.log('Switched to dark color scheme');
+                } else {
+                    // Perform some action if the preferred color scheme changed to light
+                    document.getElementById("backg-video-light").style.display = "block";
+                    document.getElementById("backg-video-dark").style.display = "none";
+                    console.log('Switched to light color scheme');
+                }
+            });
+
+
+
+
+
+
+            console.log('Option 2 is selected');
+        } else if (event.target.value === 'option-3') {
+            // Perform some action if Option 3 is selected
+            console.log('Option 3 is selected');
+        }
+    });
+});
+
+
+
+
+
+
+
 
 document.getElementById("default_focus").click();
 document.getElementById("focus_search_bar").addEventListener("click", () => {

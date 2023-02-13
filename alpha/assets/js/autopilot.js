@@ -1,3 +1,6 @@
+document.getElementById("version-of-website").innerText = "Version: Alpha 2.0010";
+document.getElementById("last-updated-on-date").innerText = "Last updated: 12 Feb, 2023 ";
+
 // $( document ).ready(function() {
 //   adaptColor('.elemtab_active');
 // });

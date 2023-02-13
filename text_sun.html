@@ -1,0 +1,76 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h1>Is it sun time or non-sun time?</h1>
+    <p>Select your timezone:</p>
+    <select id="timezone"></select>
+    <p id="result">it is</p>
+  </div>
+  <script>
+    // Get the select element
+    var select = document.getElementById("timezone");
+    // Get the result element
+    var result = document.getElementById("result");
+    // Get the current date
+    var date = new Date();
+    // Get the array of timezones
+    var timezones = moment.tz.names();
+    // Loop through the timezones and create options
+    for (var i = 0; i < timezones.length; i++) {
+      var timezone = timezones[i];
+      var option = document.createElement("option");
+      option.value = timezone;
+      option.textContent = timezone;
+      select.appendChild(option);
+    }
+    // Set the default value to the browser's timezone
+    select.value = moment.tz.guess();
+    // Define a function to check the sun time
+    function checkSunTime() {
+      // Get the selected timezone
+      var timezone = select.value;
+      // Get the date in the selected timezone
+      var dateInTimezone = moment(date).tz(timezone).toDate();
+      // Get the latitude and longitude of the selected timezone
+      var latlng = moment.tz.zone(timezone).parseLatLon();
+      // Get the sun times for the date and location
+      var sunTimes = SunCalc.getTimes(dateInTimezone, latlng.lat, latlng.lng);
+      // Get the sunrise and sunset times
+      var sunrise = sunTimes.sunrise;
+      var sunset = sunTimes.sunset;
+      // Compare the date with the sunrise and sunset times
+      if (dateInTimezone >= sunrise && dateInTimezone <= sunset) {
+        // It is sun time
+        result.textContent = "It is sun time!";
+        // Do some action
+        // ...
+      } else {
+        // It is non-sun time
+        result.textContent = "It is non-sun time!";
+        // Do some other action
+        // ...
+      }
+    }
+    // Call the function initially
+    checkSunTime();
+    // Add a change event listener to the select element
+    select.addEventListener("change", function() {
+      // Call the function again
+      checkSunTime();
+    });
+    // Set an interval to check the sun time every minute
+    setInterval(function() {
+      // Update the date
+      date = new Date();
+      // Call the function again
+      checkSunTime();
+    }, 60000); // 60000 milliseconds = 1 minute
+  </script>
+</body>
+</html>

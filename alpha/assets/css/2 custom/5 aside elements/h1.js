@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let intro_text = document.getElementById("intro-text");
         
-            typewritingEffect(intro_text, 10);
+            typewritingEffect(intro_text, 50);
         
 
     }, 2000);
