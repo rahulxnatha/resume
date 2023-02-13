@@ -441,15 +441,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const splashScreen = document.getElementById("splash-screen");
 
-  setTimeout(function () {
-    document.getElementsByClassName("spinner")[0].classList.add("loaded");
-  }, 0000);
+  // setTimeout(function () {
+  //   document.getElementsByClassName("spinner")[0].classList.add("loaded");
+  // }, 0000);
   
-  setTimeout(function () {
+  // setTimeout(function () {
     splashScreen.style.display = "none";
     document.getElementById("web-page").style.display = "block";
     
-  }, 2000);
+  // }, 1);
 });
 
 
