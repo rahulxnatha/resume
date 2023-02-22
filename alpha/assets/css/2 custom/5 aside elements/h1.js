@@ -90,3 +90,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+var isRotating = false;
+var startX, startY;
+var currentX = 0, currentY = 0;
+
+function startRotate(event) {
+  isRotating = true;
+  startX = event.clientX;
+  startY = event.clientY;
+}
+
+function stopRotate(event) {
+  isRotating = false;
+}
+
+function rotateCube(event) {
+  if (!isRotating) {
+    return;
+  }
+  
+  var deltaX = event.clientX - startX;
+  var deltaY = event.clientY - startY;
+  
+  currentX += deltaY;
+  currentY += deltaX;
+  
+  var cube = document.querySelector('.cube');
+  cube.style.transform = 'rotateX(' + currentX + 'deg) rotateY(' + currentY + 'deg)';
+}
+
+

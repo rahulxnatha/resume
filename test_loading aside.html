@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Define the div element with a fixed width and height, and a border */
+    div {
+      width: 300px;
+      height: 200px;
+      border: 1px solid black;
+      position: relative;
+    }
+
+    /* Define the loading text with a font size and color, and center it in the div element */
+    .loading-text {
+      font-size: 24px;
+      color: blue;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Define the loading animation with a keyframes rule that changes the opacity of the loading text */
+    @keyframes loading {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* Apply the loading animation to the loading text with a duration and an infinite iteration count */
+    .loading-text {
+      animation: loading 2s infinite;
+    }
+
+    /* Hide the loading text when the div element is updated with content by JavaScript */
+    div.updated .loading-text {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Define the div element with an id and a class -->
+  <div id="content" class="loading">
+    <!-- Define the loading text with a class -->
+    <p class="loading-text">Loading...</p>
+  </div>
+</body>
+</html>
