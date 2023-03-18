@@ -10,13 +10,16 @@ main {
     /* background-color: var(--windowBackground);
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px); */
+    
+    position: relative;
+
 }
 
 
 #main {
     background-color: transparent;
-  }
-  
+}
+
 
 .mainOnAsideClose {
     width: 100%;
@@ -24,8 +27,6 @@ main {
 }
 
 @media only screen and (max-width: 1230px) {
-
-
     main {
         float: left;
         width: calc(100% - 50px);
@@ -37,10 +38,6 @@ main {
 
 
 @media only screen and (max-width: 700px) {
-
-
-
-
     main {
         width: calc(100% - 40px);
         float: left;
@@ -53,5 +50,66 @@ main {
 @supports not (display: grid) {
     main div {
         float: right;
+    }
+}
+
+main {
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 300ms;
+    animation-name: animatebottom;
+    animation-duration: 300ms;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    
+}
+
+@-webkit-keyframes animatebottom {
+    0% {
+        top: 100vh;
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {
+        top: 0vh;
+    }
+}
+
+@keyframes animatebottom {
+    0% {
+        top: 100vh;
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {
+        top: 0vh;
     }
 }

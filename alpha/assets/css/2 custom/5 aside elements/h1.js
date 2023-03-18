@@ -84,39 +84,399 @@ document.addEventListener("DOMContentLoaded", function () {
             typewritingEffect(intro_text, 50);
         
 
-    }, 2000);
+    }, 0);
 });
 
 
+// rotation of the cube starts
 
 
-var isRotating = false;
-var startX, startY;
-var currentX = 0, currentY = 0;
 
-function startRotate(event) {
-  isRotating = true;
-  startX = event.clientX;
-  startY = event.clientY;
-}
+// var isRotating = false;
+// var startX, startY;
+// var currentX = 0, currentY = 0;
 
-function stopRotate(event) {
-  isRotating = false;
-}
+// function startRotate(event) {
+//   isRotating = true;
+//   startX = event.clientX;
+//   startY = event.clientY;
+// }
 
-function rotateCube(event) {
-  if (!isRotating) {
-    return;
+// function stopRotate(event) {
+//   isRotating = false;
+// }
+
+// function rotateCube(event) {
+//   if (!isRotating) {
+//     return;
+//   }
+  
+//   var deltaX = event.clientX - startX;
+//   var deltaY = event.clientY - startY;
+  
+//   currentX += deltaY;
+//   currentY += deltaX;
+  
+//   var cube = document.querySelector('.cube');
+//   cube.style.transform = 'rotateX(' + currentX + 'deg) rotateY(' + currentY + 'deg)';
+// }
+
+// function applyLighting() {
+//     const lightX = 1;
+//     const lightY = -1;
+//     const lightZ = 1;
+//     const ambientLight = 0.2;
+//     const directionalLight = 0.8;
+//     const lightDistance = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2));
+//     const faces = document.querySelectorAll('.face');
+
+    
+//     faces.forEach((face) => {
+//       const faceBounds = face.getBoundingClientRect();
+//       const faceCenterX = faceBounds.left + faceBounds.width / 2;
+//       const faceCenterY = faceBounds.top + faceBounds.height / 2;
+//       const vectorX = faceCenterX - window.innerWidth;
+//       const vectorY = faceCenterY;
+//       const vectorZ = lightDistance;
+//       const distance = Math.sqrt(Math.pow(vectorX, 2) + Math.pow(vectorY, 2) + Math.pow(vectorZ, 2));
+//       const dotProduct = (vectorX * lightX + vectorY * lightY + vectorZ * lightZ) / distance;
+//       const lightIntensity = ambientLight + Math.max(0, dotProduct) * directionalLight;
+//       face.style.background = `rgba(255, 255, 255, ${lightIntensity})`;
+//     });
+//   }
+  
+  
+// one of the codes
+// --------------------------------
+
+// var isDragging = false;
+// var lastX, lastY;
+
+// document.getElementById("cube").addEventListener("mousedown", function(e) {
+//   if (e.button === 1) {
+//     isDragging = true;
+//     lastX = e.clientX;
+//     lastY = e.clientY;
+//   }
+// });
+
+// document.addEventListener("mousemove", function(e) {
+//   if (isDragging) {
+//     var deltaX = e.clientX - lastX;
+//     var deltaY = e.clientY - lastY;
+
+//     var rotationX = "rotateX(" + deltaY + "deg)";
+//     var rotationY = "rotateY(" + deltaX + "deg)";
+
+//     document.getElementById("cube").style.transform = rotationX + " " + rotationY;
+//   }
+
+//   lastX = e.clientX;
+//   lastY = e.clientY;
+// });
+
+// document.addEventListener("mouseup", function(e) {
+//   isDragging = false;
+// });
+
+// document.addEventListener("wheel", function(e) {
+//   e.preventDefault();
+
+//   var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+
+//   document.getElementById("cube").style.transform += " " + scale;
+// });
+
+// document.getElementById("cube").addEventListener("mousedown", function(e) {
+//   if (e.button === 0 || e.button === 2) {
+//     e.preventDefault();
+//   }
+// });
+
+
+
+
+// new one 
+//----------------------------------------
+
+// var isDragging = false;
+// var lastX, lastY;
+
+// var myDiv = document.getElementById("cube");
+
+// myDiv.addEventListener("mousedown", function(e) {
+//   if (e.button === 1 && myDiv.matches(":hover")) {
+//     isDragging = true;
+//     lastX = e.clientX;
+//     lastY = e.clientY;
+//   }
+// });
+
+// document.addEventListener("mousemove", function(e) {
+//   if (isDragging && myDiv.matches(":hover")) {
+//     var deltaX = e.clientX - lastX;
+//     var deltaY = e.clientY - lastY;
+
+//     var rotationX = "rotateX(" + deltaY + "deg)";
+//     var rotationY = "rotateY(" + deltaX + "deg)";
+
+//     myDiv.style.transform = rotationX + " " + rotationY;
+//   }
+
+//   lastX = e.clientX;
+//   lastY = e.clientY;
+// });
+
+// document.addEventListener("mouseup", function(e) {
+//   isDragging = false;
+// });
+
+// document.addEventListener("wheel", function(e) {
+//   if (myDiv.matches(":hover")) {
+//     e.preventDefault();
+
+//     var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+
+//     myDiv.style.transform += " " + scale;
+//   }
+// });
+
+// myDiv.addEventListener("mouseenter", function(e) {
+//   myDiv.style.transition = "transform 0.5s ease-out";
+// });
+
+// myDiv.addEventListener("mouseleave", function(e) {
+//   myDiv.style.transition = "";
+// });
+
+
+
+//another new one
+
+// var isDragging = false;
+// var lastX, lastY;
+
+// var myDiv = document.getElementById("cube");
+
+// myDiv.addEventListener("mousedown", function(e) {
+//   if (e.button === 1) {
+//     e.preventDefault();
+//     isDragging = true;
+//     lastX = e.clientX;
+//     lastY = e.clientY;
+//   }
+// });
+
+// document.addEventListener("mousemove", function(e) {
+//   if (isDragging) {
+//     var deltaX = e.clientX - lastX;
+//     var deltaY = e.clientY - lastY;
+
+//     var rotationX = "rotateX(" + deltaY + "deg)";
+//     var rotationY = "rotateY(" + deltaX + "deg)";
+
+//     myDiv.style.transform = rotationX + " " + rotationY;
+//   }
+
+//   lastX = e.clientX;
+//   lastY = e.clientY;
+// });
+
+// document.addEventListener("mouseup", function(e) {
+//   isDragging = false;
+// });
+
+// myDiv.addEventListener("wheel", function(e) {
+//   e.preventDefault();
+
+//   var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+
+//   myDiv.style.transform += " " + scale;
+// });
+
+
+//new --- 
+
+
+// var isDragging = false;
+// var lastX, lastY;
+// var currentX = 0;
+// var currentY = 0;
+// var targetX = 0;
+// var targetY = 0;
+// var easing = 0.1;
+
+// var myDiv = document.getElementById("cube");
+
+// myDiv.addEventListener("mousedown", function(e) {
+//   if (e.button === 1) {
+//     e.preventDefault();
+//     isDragging = true;
+//     lastX = e.clientX;
+//     lastY = e.clientY;
+//   }
+// });
+
+// document.addEventListener("mousemove", function(e) {
+//   if (isDragging) {
+//     var deltaX = e.clientX - lastX;
+//     var deltaY = e.clientY - lastY;
+
+//     targetY += deltaY;
+//     targetX += deltaX;
+//   }
+
+//   lastX = e.clientX;
+//   lastY = e.clientY;
+// });
+
+// document.addEventListener("mouseup", function(e) {
+//   isDragging = false;
+// });
+
+// myDiv.addEventListener("wheel", function(e) {
+//   e.preventDefault();
+
+//   var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+
+//   myDiv.style.transform += " " + scale;
+// });
+
+// function updateRotation() {
+//   currentX += (targetX - currentX) * easing;
+//   currentY += (targetY - currentY) * easing;
+
+//   var rotationX = "rotateX(" + currentY + "deg)";
+//   var rotationY = "rotateY(" + currentX + "deg)";
+
+//   myDiv.style.transform = rotationX + " " + rotationY;
+
+//   requestAnimationFrame(updateRotation);
+// }
+
+// requestAnimationFrame(updateRotation);
+
+
+//new ----------------
+var isDragging = false;
+var lastX, lastY;
+var currentX = 0;
+var currentY = 0;
+var targetX = 0;
+var targetY = 0;
+var easing = 0.1;
+
+var myDiv = document.getElementById("rotate-scale-cube");
+
+
+
+myDiv.addEventListener("mousedown", function(e) {
+  if (e.button === 1) {
+    e.preventDefault();
+    isDragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
   }
-  
-  var deltaX = event.clientX - startX;
-  var deltaY = event.clientY - startY;
-  
-  currentX += deltaY;
-  currentY += deltaX;
-  
-  var cube = document.querySelector('.cube');
-  cube.style.transform = 'rotateX(' + currentX + 'deg) rotateY(' + currentY + 'deg)';
+});
+
+document.addEventListener("mousemove", function(e) {
+  if (isDragging) {
+    var deltaX = e.clientX - lastX;
+    var deltaY = e.clientY - lastY;
+
+    targetY += deltaY;
+    targetX += deltaX;
+  }
+
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+
+document.addEventListener("mouseup", function(e) {
+  isDragging = false;
+});
+
+myDiv.addEventListener("wheel", function(e) {
+  e.preventDefault();
+
+  if (e.target === myDiv) {
+    var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+    myDiv.style.transform += " " + scale;
+  }
+});
+
+function updateRotation() {
+  currentX += (targetX - currentX) * easing;
+  currentY += (targetY - currentY) * easing;
+
+  var rotationX = "rotateX(" + currentY + "deg)";
+  var rotationY = "rotateY(" + currentX + "deg)";
+
+  myDiv.style.transform = rotationX + " " + rotationY;
+
+  requestAnimationFrame(updateRotation);
 }
 
+requestAnimationFrame(updateRotation);
+// myDiv.style.transform = 'rotateY(45deg) rotateX(31deg)';
+
+//----------------------------------------------------
+
+// var isDragging = false;
+// var lastX, lastY;
+// var currentX = 0;
+// var currentY = 0;
+// var targetX = 0;
+// var targetY = 0;
+// var easing = 0.1;
+
+// var myDiv = document.getElementById("rotate-scale-cube");
+
+// myDiv.addEventListener("mousedown", function(e) {
+//   if (e.button === 1) {
+//     e.preventDefault();
+//     isDragging = true;
+//     lastX = e.clientX;
+//     lastY = e.clientY;
+//   }
+// });
+
+// document.addEventListener("mousemove", function(e) {
+//   if (isDragging) {
+//     var deltaX = e.clientX - lastX;
+//     var deltaY = e.clientY - lastY;
+
+//     targetY += deltaX * 0.1;
+//     targetX += deltaY * 0.1;
+//   }
+
+//   lastX = e.clientX;
+//   lastY = e.clientY;
+// });
+
+// document.addEventListener("mouseup", function(e) {
+//   isDragging = false;
+// });
+
+// myDiv.addEventListener("wheel", function(e) {
+//   if (e.target === myDiv) {
+//     e.preventDefault();
+//     var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+//     myDiv.style.transform += " " + scale;
+//   }
+// });
+
+// function updateRotation() {
+//   currentX += (targetX - currentX) * easing;
+//   currentY += (targetY - currentY) * easing;
+
+//   var rotationX = "rotateX(" + currentY + "deg)";
+//   var rotationY = "rotateY(" + currentX + "deg)";
+
+//   myDiv.style.transform = rotationX + " " + rotationY;
+
+//   requestAnimationFrame(updateRotation);
+// }
+
+// requestAnimationFrame(updateRotation);
 

@@ -132,3 +132,107 @@ aside h2 {
 .context-menu ul li:hover {
     background: darkgray;
 }
+
+
+aside {
+    -webkit-animation-name: aside_animatebottom;
+    -webkit-animation-duration: 3s;
+    animation-name: aside_animatebottom;
+    animation-duration: 3s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    
+}
+
+@-webkit-keyframes aside_animatebottom {
+    0% {
+        top: 100vw;
+        height: calc(100vh - 200px);
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {
+        
+    }
+}
+
+@keyframes aside_animatebottom {
+    0% {
+        left: -100vw;
+        height: calc(100vh - 100px);
+    }
+
+    10% {
+        left: -0vw;
+    }
+
+    
+    
+
+    50% {
+        height: calc(100vh - 100px);
+    }
+    
+    100% {
+        height: calc(100vh - 200px);
+    }
+
+
+}
+
+#viewport {
+    -webkit-animation-name: viewport_animatebottom;
+    -webkit-animation-duration: 3s;
+    animation-name: viewport_animatebottom;
+    animation-duration: 3s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    
+}
+
+@keyframes viewport_animatebottom {
+    0% {
+       
+        height: calc(100vh - 100px - 40px - 60px  - 40px);
+    }
+
+   
+
+    
+    
+
+    50% {
+        height: calc(100vh - 100px - 40px - 60px  - 40px);
+    }
+    
+    100% {
+        height: calc(100vh - 100px - 40px - 60px - 100px - 40px);
+    }
+
+
+}

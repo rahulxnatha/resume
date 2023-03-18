@@ -873,19 +873,7 @@
 
           </h2>
 
-
-
-
-          <div class="cube" onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
-            onmousemove="rotateCube(event)">
-            <div class="face front">Rahul</div>
-            <div class="face back">Natha</div>
-            <div class="face right">Rahul</div>
-            <div class="face left">Natha</div>
-            <div class="face top">Rahul</div>
-            <div class="face bottom">Natha</div>
-          </div>
-          <p>Click on this cube and drag to rotate as you like.</p>
+          <!-- <p>Click on this cube and drag to rotate as you like.</p> -->
 
 
           <p id="intro-text">
@@ -1164,7 +1152,27 @@
     <!-- --------------------------------------------------------------------------------------- -->
     <main id="main">
 
+      <section>
 
+
+        <!-- 
+          onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
+          onmousemove="rotateCube(event)" -->
+
+        <div class="cube" id="rotate-scale-cube">
+          <div class="face front"><img src="assets/images/001.jpeg" alt="front"></div>
+          <div class="face back"> <img src="assets/images/002.jpeg" alt="back"></div>
+          <div class="face right"> <img src="assets/images/003.jpg" alt="right"></div>
+          <div class="face left"> <img src="assets/images/004.jpeg" alt="left"></div>
+          <div class="face top"> <img src="assets/images/005.jpeg" alt="top"></div>
+          <div class="face bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
+        </div>
+
+
+        <p>Use the scroll wheel on the mouse to rotate the cube. Click on the cube and drag.</p>
+
+
+      </section>
 
       <section id="mainSettings" style="display:grid;">
         <span style="margin-top: 20px;">
@@ -1242,6 +1250,7 @@
       <section class=" mainSection">
 
         <article class="banner" style="float:right;" id="default_focus" draggable="true">
+
           <span class="name_brand_on_picture" style="float:right;">Rahul Natha at 2021</span>
           <br><br>
           <span class="name_brand_on_picture" style="float:right;">#CustomProfile</span>

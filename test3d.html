@@ -1,26 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
     <style>
-
-        * {
-            font-family: sans-serif;
-        }
         
-     
-    </style>
+        .cube {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+}
 
+.cubeFace {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+.cubeFace:nth-child(1) {
+  background-color: red;
+}
+
+.cubeFace:nth-child(2) {
+  background-color: blue;
+}
+
+.face2 {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+
+
+
+
+
+    </style>
 </head>
 
 <body>
-    <div class="cube">
-        <div class="face front">Front</div>
-        <div class="face back">Back</div>
-        <div class="face right">Right</div>
-        <div class="face left">Left</div>
-        <div class="face top">Top</div>
-        <div class="face bottom">Bottom</div>
-    </div>
-
-
-
+  <div class="cube">
+    <div class="cubeFace"></div>
+    <div class="cubeFace face2"></div>
+  </div>
+      
 
 </body>
+
+</html>

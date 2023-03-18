@@ -28,3 +28,59 @@
     font-weight: 600;
   
   }
+
+  
+.smallNotification {
+  -webkit-animation-name: smallNotification_animatebottom;
+  -webkit-animation-duration: 3s;
+  animation-name: smallNotification_animatebottom;
+  animation-duration: 3s;
+
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+  
+}
+
+@-webkit-keyframes smallNotification_animatebottom {
+  0% {
+    top: -100vh;
+  }
+
+  /* 90% {
+      top: -3vh;
+  }
+
+  93% {
+      top: 1vh;
+  }
+
+  96% {
+      top: -1vh;
+  } */
+
+  100% {
+      
+  }
+}
+
+@keyframes smallNotification_animatebottom {
+  0% {
+      bottom: -100vh;
+  }
+
+  
+/* 
+  97% {
+      left: -1vw;
+  } */
+
+  100% {
+     
+  }
+}
