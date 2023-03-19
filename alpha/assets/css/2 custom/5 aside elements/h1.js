@@ -2,32 +2,32 @@ const h1s = document.querySelectorAll("aside h1");
 
 
 for (let i = 0; i < h1s.length; i++) {
-    const h1 = h1s[i];
-    const text = h1.textContent;
-    if (text.length <= 15) {
-        h1.style.fontSize = "5em";
-    } else if (text.length >= 30) {
-        h1.style.fontSize = "2em";
-    } else {
-        const fontSize = 5 - (text.length - 15) * (5 - 2) / (30 - 15);
-        h1.style.fontSize = `${fontSize}em`;
-    }
+  const h1 = h1s[i];
+  const text = h1.textContent;
+  if (text.length <= 15) {
+    h1.style.fontSize = "5em";
+  } else if (text.length >= 30) {
+    h1.style.fontSize = "2em";
+  } else {
+    const fontSize = 5 - (text.length - 15) * (5 - 2) / (30 - 15);
+    h1.style.fontSize = `${fontSize}em`;
+  }
 }
 
 // This code will set the font size of all h1 tags inside an aside tag to 5em if the length of the text (characters) in the tag is less than or equal to 15, and linearly vary the font size from 5em to 2em when the length of the text increases from 15 to 30 characters.
 
 function typewritingEffect(element, speed) {
-    const text = element.textContent;
-    let index = 0;
+  const text = element.textContent;
+  let index = 0;
 
-    const type = () => {
-        if (index < text.length) {
-            element.textContent = text.slice(0, ++index);
-            setTimeout(type, speed);
-        }
-    };
+  const type = () => {
+    if (index < text.length) {
+      element.textContent = text.slice(0, ++index);
+      setTimeout(type, speed);
+    }
+  };
 
-    type();
+  type();
 }
 
 
@@ -45,7 +45,7 @@ function typewritingEffect(element, speed) {
 //     cursor.style.fontSize = element.style.fontSize;
 //     element.textContent = "";
 //     element.appendChild(cursor);
-    
+
 //     const type = () => {
 //       if (index < text.length) {
 //         element.innerHTML += text.charAt(index);
@@ -57,7 +57,7 @@ function typewritingEffect(element, speed) {
 //     };
 //     type();
 //   }
-  
+
 
 
 
@@ -69,22 +69,22 @@ const article_h1s = document.querySelectorAll(".typewrite, article h1");
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    setTimeout(function () {
-        
-    }, 0000);
+  setTimeout(function () {
 
-    setTimeout(function () {
+  }, 0000);
 
-        for (let i = 0; i < article_h1s.length; i++) {
-            typewritingEffect(article_h1s[i], 100);
-        }
+  setTimeout(function () {
 
-        let intro_text = document.getElementById("intro-text");
-        
-            typewritingEffect(intro_text, 50);
-        
+    for (let i = 0; i < article_h1s.length; i++) {
+      typewritingEffect(article_h1s[i], 100);
+    }
 
-    }, 0);
+    let intro_text = document.getElementById("intro-text");
+
+    typewritingEffect(intro_text, 50);
+
+
+  }, 0);
 });
 
 
@@ -110,13 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
 //   if (!isRotating) {
 //     return;
 //   }
-  
+
 //   var deltaX = event.clientX - startX;
 //   var deltaY = event.clientY - startY;
-  
+
 //   currentX += deltaY;
 //   currentY += deltaX;
-  
+
 //   var cube = document.querySelector('.cube');
 //   cube.style.transform = 'rotateX(' + currentX + 'deg) rotateY(' + currentY + 'deg)';
 // }
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //     const lightDistance = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2));
 //     const faces = document.querySelectorAll('.face');
 
-    
+
 //     faces.forEach((face) => {
 //       const faceBounds = face.getBoundingClientRect();
 //       const faceCenterX = faceBounds.left + faceBounds.width / 2;
@@ -144,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
 //       face.style.background = `rgba(255, 255, 255, ${lightIntensity})`;
 //     });
 //   }
-  
-  
+
+
 // one of the codes
 // --------------------------------
 
@@ -365,59 +365,134 @@ var currentY = 0;
 var targetX = 0;
 var targetY = 0;
 var easing = 0.1;
+var clicked_face_of_cube = 0;
+var face = "none";
 
 var myDiv = document.getElementById("rotate-scale-cube");
 
 
 
-myDiv.addEventListener("mousedown", function(e) {
+myDiv.addEventListener("mousedown", function (e) {
   if (e.button === 1) {
     e.preventDefault();
     isDragging = true;
     lastX = e.clientX;
     lastY = e.clientY;
-  }
+
+  } clicked_face_of_cube = 0;
+
 });
 
-document.addEventListener("mousemove", function(e) {
+document.addEventListener("mousemove", function (e) {
   if (isDragging) {
     var deltaX = e.clientX - lastX;
     var deltaY = e.clientY - lastY;
 
     targetY += deltaY;
     targetX += deltaX;
+
+    clicked_face_of_cube = 0;
   }
 
   lastX = e.clientX;
   lastY = e.clientY;
+
+  clicked_face_of_cube = 0;
 });
 
-document.addEventListener("mouseup", function(e) {
+document.addEventListener("mouseup", function (e) {
   isDragging = false;
+
+  clicked_face_of_cube = 0;
 });
 
-myDiv.addEventListener("wheel", function(e) {
+myDiv.addEventListener("wheel", function (e) {
   e.preventDefault();
 
   if (e.target === myDiv) {
     var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
     myDiv.style.transform += " " + scale;
+    clicked_face_of_cube = 0;
   }
 });
 
+
 function updateRotation() {
-  currentX += (targetX - currentX) * easing;
-  currentY += (targetY - currentY) * easing;
 
-  var rotationX = "rotateX(" + currentY + "deg)";
-  var rotationY = "rotateY(" + currentX + "deg)";
+  if (clicked_face_of_cube == 1 && face == "front") {
+   
+  } else {
 
-  myDiv.style.transform = rotationX + " " + rotationY;
+    currentX += (targetX - currentX) * easing;
+    currentY += (targetY - currentY) * easing;
+
+    var rotationX = "rotateX(" + currentY + "deg)";
+    var rotationY = "rotateY(" + currentX + "deg)";
+
+    myDiv.style.transform = rotationX + " " + rotationY;
+
+    requestAnimationFrame(updateRotation);
+  }
+}
+
+
+
+
+document.getElementById("rotate-scale-cube-front").addEventListener("click", function (e) {
+  myDiv.style.transform = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
+
+  clicked_face_of_cube = 1;
+
+  setTimeout(function () {
+    clicked_face_of_cube = 0;
+    call_rotation_again();
+  }, 1000);
+  
+  face = "front";
+});
+
+
+document.getElementById("rotate-scale-cube-back").addEventListener("click", function (e) {
+  myDiv.style.transform = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
+
+  clicked_face_of_cube = 1;
+
+  setTimeout(function () {
+    clicked_face_of_cube = 0;
+    call_rotation_again();
+  }, 1000);
+  
+  face = "back";
+});
+
+
+document.getElementById("rotate-scale-cube-right").addEventListener("click", function (e) {
+  clicked_face_of_cube = 1;
+  face = "right";
+});
+document.getElementById("rotate-scale-cube-left").addEventListener("click", function (e) {
+  clicked_face_of_cube = 1;
+  face = "left";
+});
+document.getElementById("rotate-scale-cube-top").addEventListener("click", function (e) {
+  clicked_face_of_cube = 1;
+  face = "top";
+});
+document.getElementById("rotate-scale-cube-bottom").addEventListener("click", function (e) {
+  clicked_face_of_cube = 1;
+  face = "bottom";
+});
+
+
+if (clicked_face_of_cube == 0) {
 
   requestAnimationFrame(updateRotation);
 }
 
-requestAnimationFrame(updateRotation);
+function call_rotation_again() {
+  requestAnimationFrame(updateRotation);
+}
+
 // myDiv.style.transform = 'rotateY(45deg) rotateX(31deg)';
 
 //----------------------------------------------------

@@ -1152,27 +1152,6 @@
     <!-- --------------------------------------------------------------------------------------- -->
     <main id="main">
 
-      <section>
-
-
-        <!-- 
-          onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
-          onmousemove="rotateCube(event)" -->
-
-        <div class="cube" id="rotate-scale-cube">
-          <div class="face front"><img src="assets/images/001.jpeg" alt="front"></div>
-          <div class="face back"> <img src="assets/images/002.jpeg" alt="back"></div>
-          <div class="face right"> <img src="assets/images/003.jpg" alt="right"></div>
-          <div class="face left"> <img src="assets/images/004.jpeg" alt="left"></div>
-          <div class="face top"> <img src="assets/images/005.jpeg" alt="top"></div>
-          <div class="face bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
-        </div>
-
-
-        <p>Use the scroll wheel on the mouse to rotate the cube. Click on the cube and drag.</p>
-
-
-      </section>
 
       <section id="mainSettings" style="display:grid;">
         <span style="margin-top: 20px;">
@@ -1180,7 +1159,7 @@
         </span>
 
 
-        <label for="expandAll">
+        <label for="expandAll" style="display: none;">
           <input type="checkbox" name="expandAll" id="expandAll" style="margin-top: 20px;" checked>&nbsp;Expand all
         </label>
 
@@ -1196,8 +1175,41 @@
         </label>
 
 
+
+        <label title="Show or hide the cube.">
+          <input id="showCube" type="checkbox" style="margin-top: 20px;" unchecked>&nbsp;<span>Cube</span>
+        </label>
+
+
       </section>
 
+
+      <section id="cubeSection" style="  display:none;">
+
+        <span>
+          <h1 class="typewrite">The cube</h1>
+          <!-- <h1>Showing 5 of 5 search results</h1> -->
+        </span>
+        <!-- 
+          onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
+          onmousemove="rotateCube(event)" -->
+
+        <div class="cube" id="rotate-scale-cube">
+          <div class="face front" id="rotate-scale-cube-front"><img src="assets/images/001.jpeg" alt="front"></div>
+          <div class="face back" id="rotate-scale-cube-back"> <img src="assets/images/002.jpeg" alt="back"></div>
+          <div class="face right" id="rotate-scale-cube-right"> <img src="assets/images/003.jpg" alt="right"></div>
+          <div class="face left" id="rotate-scale-cube-left"> <img src="assets/images/004.jpeg" alt="left"></div>
+          <div class="face top" id="rotate-scale-cube-top"> <img src="assets/images/005.jpeg" alt="top"></div>
+          <div class="face bottom" id="rotate-scale-cube-bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
+        </div>
+
+
+        <p>Use the scroll wheel on the mouse to rotate the cube.
+        <br>
+          Click on any face to view its details.</p>
+
+
+      </section>
 
       <section id="filtersSection" style="padding-top: 20px;  display:none;">
         <span>

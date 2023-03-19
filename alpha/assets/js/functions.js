@@ -595,6 +595,26 @@ document.getElementById("showFilters").addEventListener("click", () => {
 }
 );
 
+document.getElementById("showCube").addEventListener("click", () => {
+
+
+
+
+    if (
+        document.getElementById("showCube").checked == 1
+    ) {
+        // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "auto";
+        document.getElementById("cubeSection").style.display = "grid";
+        // document.getElementById("showCubeCap").innerText = "Cube";
+    }
+    else {
+        // document.getElementsByClassName("embedded_in_lighttheme")[embed].style.height = "500px";
+        document.getElementById("cubeSection").style.display = "none";
+        // document.getElementById("showCubeCap").innerText = "Cube";
+    }
+
+}
+);
 
 
 

@@ -98,6 +98,7 @@ input:checked + .slider:before {
 
 
 
+
 .cube:hover {
   width: calc(0.9*var(--cube-edge));
   height: calc(0.9*var(--cube-edge));
