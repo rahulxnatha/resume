@@ -528,15 +528,16 @@
 
 
 
-            <span class="elemtab elemtab_active" id="tab1"><span class="tab_close"></span></span>
-            <span class="elemtab" id="tab2"></span>
+            <span class="elemtab elemtab_active" id="tab1">Intro<span class="tab_close"></span></span>
+            <span class="elemtab" id="tab2">BTech<span class="tab_close"></span></span>
             <span class="elemtab" id="tab3"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab4"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab5"><span class="tab_close"></span></span>
-            <span class="elemtab" id="tab6"><span class="tab_close"></span></span><span class="elemtab" id="tab7">
-              <span class="tab_close"></span></span><span class="elemtab" id="tab8"><span
-                class="tab_close"></span></span><span class="elemtab" id="tab9"><span
-                class="tab_close"></span></span><span class="elemtab" id="tab10"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab6"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab7"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab8"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab9"><span class="tab_close"></span></span>
+            <span class="elemtab" id="tab10"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab11"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab12"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab13"><span class="tab_close"></span></span>
@@ -627,8 +628,10 @@
             <span class="elemtab" id="tab98"><span class="tab_close"></span></span>
             <span class="elemtab" id="tab99"><span class="tab_close"></span></span>
 
-            <span class="elemtab" id="tab100"><span class="tab_close"></span></span><span class="elemtab"
-              id="tab101"><span class="tab_close"></span></span><span class="elemtab" id="tab102"><span
+            <span class="elemtab" id="tab100"><span class="tab_close"></span></span>
+            <span class="elemtab"
+              id="tab101"><span class="tab_close"></span></span>
+              <span class="elemtab" id="tab102"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab103"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab104"><span
                 class="tab_close"></span></span><span class="elemtab" id="tab105"><span
@@ -891,14 +894,19 @@
           </p>
 
           <p>Connect with me.</p>
-          <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
-          <a href="#contact" id="contact_focus_trigger">Email or IM</a>
-          <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
-          <a href="https://g.dev/rah" target="_blank">Google Developers</a>
-          <a href="https://docs.microsoft.com/en-us/users/rahulnatha/" target="_blank">Microsoft Learn</a>
-          <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
-          <a href="https://instagram.com/rahul.natha" target="_blank">Instagram</a>
 
+          <div class="nojustify">
+            <a href="https://www.linkedin.com/in/rahulnatha/" target="_blank">LinkedIn</a>
+
+
+
+            <a href="#contact" id="contact_focus_trigger">Email or IM</a>
+            <a href="https://github.com/hey-rahul/" target="_blank">GitHub</a>
+            <a href="https://g.dev/rah" target="_blank">Google Developers</a>
+            <a href="https://docs.microsoft.com/en-us/users/rahulnatha/" target="_blank">Microsoft Learn</a>
+            <a href="https://twitter.com/rahul_natha" target="_blank">Twitter</a>
+            <a href="https://instagram.com/rahul.natha" target="_blank">Instagram</a>
+          </div>
 
         </div>
 
@@ -1204,9 +1212,25 @@
         </div>
 
 
-        <p>Use the scroll wheel on the mouse to rotate the cube.
-        <br>
-          Click on any face to view its details.</p>
+        <p>Use the scroll wheel on the mouse to rotate (click + drag), zoom (scroll) the cube.
+          <br>
+          Click on any face to view its details.
+
+
+          <label title="Toggle normal view">
+            <span style=" border: 2px solid #777777;">Normal</span>
+          </label>
+          <br>
+          <span style=" border: 2px solid #777777;">Left</span>
+          <span style=" border: 2px solid #777777;">Front</span>
+          <span style=" border: 2px solid #777777;">Right</span>
+          <span style=" border: 2px solid #777777;">Top</span>
+          <span style=" border: 2px solid #777777;">Bottom</span>
+          <span style=" border: 2px solid #777777;">Back</span>
+
+
+
+        </p>
 
 
       </section>
@@ -1261,15 +1285,37 @@
 
       <section class=" mainSection">
 
-        <article class="banner" style="float:right;" id="default_focus" draggable="true">
 
-          <span class="name_brand_on_picture" style="float:right;">Rahul Natha at 2021</span>
-          <br><br>
-          <span class="name_brand_on_picture" style="float:right;">#CustomProfile</span>
-          <br><br>
-          <span style="float:right; width: 350px;">Welcome to my website. Here you can view what all I have for
-            you.</span>
-        </article>
+        <div class="banner" style="float:right;" id="default_focus" draggable="true">
+          <article class="banner_background">
+
+            <span class="name_brand_on_picture" style="float:right;">Rahul Natha at 2021</span>
+            <br><br>
+            <span class="name_brand_on_picture" style="float:right;">#CustomProfile</span>
+            <br><br>
+            <span style="float:right; width: 350px;">Welcome to my website. Here you can view what all I have for
+              you.</span>
+
+
+          </article>
+          <!-- <div style="margin-top: 10px;">Follow on</div> -->
+          <div class="nojustify">
+           
+            <button
+              onclick="window.open('https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=rahulnatha', '_blank')">LinkedIn</button>
+            <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Instagram</button>
+            <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Twitter</button>
+            <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">YouTube</button>
+            <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">GitHub</button>
+            <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Google Maps</button>
+
+
+          </div>
+
+        </div>
+
+
+
 
       </section>
 
@@ -1282,6 +1328,8 @@
         <span>
           <h2>School and degree</h2>
         </span>
+
+
         <div>
           <article tabindex="0" class="cmrcet">
 
@@ -1294,6 +1342,8 @@
           <button onclick="window.open('https://cmrcet.ac.in', '_blank')">College website</button>
           <button onclick="window.open('https://sites.google.com/view/rahuldocs', '_blank')">DOCS from Rahul</button>
         </div>
+
+
 
         <div>
           <article tabindex="0">

@@ -152,15 +152,20 @@ article.active {
     grid-column-start: 1;
     grid-column-end: 5;
     /* display: none; */
+  
+    margin-top: 20px;
+    /**/
+
+    /* animation: mymove 5s infinite; */
+}
+
+.banner_background {
     background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
 
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     background-size: cover;
-    margin-top: 20px;
-    /**/
-
-    /* animation: mymove 5s infinite; */
+    min-height: 250px;
 }
 
 /* for banner  */

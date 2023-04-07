@@ -240,7 +240,7 @@ for (let i = 0; i < elemtabs.length; i++) {
 
     elemtabs[i].style.display = "none";
 
-    elemtabs[i].innerHTML = "Tab" + i + "<span class=\"tab_close\"></span>";
+    // elemtabs[i].innerHTML = "Tab" + i + "<span class=\"tab_close\"></span>";
 
 }
 

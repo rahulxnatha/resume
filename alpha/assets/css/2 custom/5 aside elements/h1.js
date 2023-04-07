@@ -357,7 +357,32 @@ document.addEventListener("DOMContentLoaded", function () {
 // requestAnimationFrame(updateRotation);
 
 
-//new ----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// new ----------------
 var isDragging = false;
 var lastX, lastY;
 var currentX = 0;
@@ -369,6 +394,14 @@ var clicked_face_of_cube = 0;
 var face = "none";
 
 var myDiv = document.getElementById("rotate-scale-cube");
+const cube = document.getElementById("rotate-scale-cube");
+
+var myDivFront = document.getElementById("rotate-scale-cube-front");
+var myDivBack = document.getElementById("rotate-scale-cube-back");
+var myDivRight = document.getElementById("rotate-scale-cube-right");
+var myDivLeft = document.getElementById("rotate-scale-cube-left");
+var myDivBottom = document.getElementById("rotate-scale-cube-bottom");
+var myDivTop = document.getElementById("rotate-scale-cube-top");
 
 
 
@@ -406,21 +439,70 @@ document.addEventListener("mouseup", function (e) {
   clicked_face_of_cube = 0;
 });
 
-myDiv.addEventListener("wheel", function (e) {
-  e.preventDefault();
+// myDiv.addEventListener("wheel", function (e) {
+//   e.preventDefault();
 
-  if (e.target === myDiv) {
-    var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
-    myDiv.style.transform += " " + scale;
-    clicked_face_of_cube = 0;
-  }
-});
+//   // if (e.target === myDiv) {
+//     var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
+//     myDiv.style.transform += " " + scale;
+//     console.log("Hi");
 
+//   // }
+// });
+
+
+var scale = "scale(" + 1 + ")";
+scale_level = 1;
+var widthNum = 200;
+var width = 200;
+
+function updateScale() {
+  cube.addEventListener("wheel", function (e) {
+    e.preventDefault();
+
+    // if (e.target === cube) {
+
+    // scale = "scale(" + (e.deltaY > 0 ? 0.6 : 1.4) + ")";
+    // myDiv.style.transform += " " + scale;
+    // console.log("Hi");
+
+
+    // const scaleAmount = e.deltaY > 0 ? scale_level -= 0.0001 : scale_level+= 0.0001;
+    const scaleAmount = 1;
+
+
+    widthNum = e.deltaY > 0 ? widthNum -= 0.01 : widthNum += 0.01;
+
+
+    const myElement = document.querySelector('.cube');
+    myElement.style.width  = (e.deltaY > 0 ? width -= 0.01 : width += 0.01).toString() + "px";
+    myElement.style.height = (e.deltaY > 0 ? width -= 0.01 : width += 0.01).toString() + "px";
+
+
+    // const currentTransform = cube.style.transform;
+    // const currentScale = currentTransform.match(/scale\(([^\)]+)\)/);
+    // scale = currentScale ? `scale(${currentScale[1]})` : '';
+
+    // scale = currentTransform ? `${currentTransform} scale(${scaleAmount})` : `scale(${scaleAmount})`;
+
+
+
+    scale = `scale(${scaleAmount})`;
+
+
+    // scale = currentScale ? `scale(${scaleAmount})` : `scale(${scaleAmount})`;
+    // cube.style.transform = newTransform;
+
+
+
+    // }
+  });
+}
 
 function updateRotation() {
 
   if (clicked_face_of_cube == 1 && face == "front") {
-   
+
   } else {
 
     currentX += (targetX - currentX) * easing;
@@ -431,7 +513,28 @@ function updateRotation() {
 
     myDiv.style.transform = rotationX + " " + rotationY;
 
+
+
+    var cube_edge_upon_2 = (widthNum / 2).toString() + "px";
+    var minus_cube_edge_upon_2 = (-widthNum / 2).toString() + "px";
+
+    myDivFront.style.transform = "translateZ(" + cube_edge_upon_2 + ")";
+    myDivBack.style.transform = "translateZ(" + minus_cube_edge_upon_2 + ") rotateY(180deg)";
+    myDivRight.style.transform = "translateX(" + cube_edge_upon_2 + ") rotateY(90deg)";
+
+    myDivLeft.style.transform = "translateX(" + minus_cube_edge_upon_2 + ") rotateY(-90deg)";
+
+
+    myDivBottom.style.transform = "translateY(" + cube_edge_upon_2 + ") rotateX(-90deg)";
+    myDivTop.style.transform = "translateY(" + minus_cube_edge_upon_2 + ") rotateX(90deg)";
+
+
+
+
+
+
     requestAnimationFrame(updateRotation);
+    // requestAnimationFrame(updateScale);
   }
 }
 
@@ -447,7 +550,7 @@ document.getElementById("rotate-scale-cube-front").addEventListener("click", fun
     clicked_face_of_cube = 0;
     call_rotation_again();
   }, 1000);
-  
+
   face = "front";
 });
 
@@ -461,7 +564,7 @@ document.getElementById("rotate-scale-cube-back").addEventListener("click", func
     clicked_face_of_cube = 0;
     call_rotation_again();
   }, 1000);
-  
+
   face = "back";
 });
 
@@ -493,65 +596,12 @@ function call_rotation_again() {
   requestAnimationFrame(updateRotation);
 }
 
-// myDiv.style.transform = 'rotateY(45deg) rotateX(31deg)';
 
-//----------------------------------------------------
 
-// var isDragging = false;
-// var lastX, lastY;
-// var currentX = 0;
-// var currentY = 0;
-// var targetX = 0;
-// var targetY = 0;
-// var easing = 0.1;
 
-// var myDiv = document.getElementById("rotate-scale-cube");
 
-// myDiv.addEventListener("mousedown", function(e) {
-//   if (e.button === 1) {
-//     e.preventDefault();
-//     isDragging = true;
-//     lastX = e.clientX;
-//     lastY = e.clientY;
-//   }
-// });
 
-// document.addEventListener("mousemove", function(e) {
-//   if (isDragging) {
-//     var deltaX = e.clientX - lastX;
-//     var deltaY = e.clientY - lastY;
 
-//     targetY += deltaX * 0.1;
-//     targetX += deltaY * 0.1;
-//   }
 
-//   lastX = e.clientX;
-//   lastY = e.clientY;
-// });
 
-// document.addEventListener("mouseup", function(e) {
-//   isDragging = false;
-// });
-
-// myDiv.addEventListener("wheel", function(e) {
-//   if (e.target === myDiv) {
-//     e.preventDefault();
-//     var scale = "scale(" + (e.deltaY > 0 ? 0.9 : 1.1) + ")";
-//     myDiv.style.transform += " " + scale;
-//   }
-// });
-
-// function updateRotation() {
-//   currentX += (targetX - currentX) * easing;
-//   currentY += (targetY - currentY) * easing;
-
-//   var rotationX = "rotateX(" + currentY + "deg)";
-//   var rotationY = "rotateY(" + currentX + "deg)";
-
-//   myDiv.style.transform = rotationX + " " + rotationY;
-
-//   requestAnimationFrame(updateRotation);
-// }
-
-// requestAnimationFrame(updateRotation);
 
