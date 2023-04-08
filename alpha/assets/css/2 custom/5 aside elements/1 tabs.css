@@ -128,3 +128,20 @@
     animation-fill-mode: forwards;
     /* overflow: hidden; */
 }
+
+
+
+.tabbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .tabbar::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 50vmin;
+  
+    border: 0px solid var(--background);
+    /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
+    /* border: 200px solid transparent; */
+  
+  }
