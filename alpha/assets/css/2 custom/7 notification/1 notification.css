@@ -1,21 +1,22 @@
-
-
 .smallNotification {
     position: fixed;
     bottom: 0px;
   
     left: 0px;
-    border-radius: var(--border-radius);
-    background: var(--articleBackground);
-    padding: 20px 20px 20px 20px;
+    /* border-radius: var(--border-radius); */
+    /* background: var(--articleBackground); */
+    /* padding: 0px 20px 20px 0px; */
     z-index: 2;
   
     width: calc(50% - 150px);
-    margin: 20px 20px 20px 100px;
-    height: calc(80px);
+    --width_status_bar: 200px;
+    width: var(--width_status_bar);
+
+    margin: 40px 20px 40px calc(100px + calc(0.5*(50% - 150px - var(--width_status_bar))));
+    height: calc(40px);
   
-    border: 2px solid grey;
-    border-radius: var(--border-radius);
+    /* border: 2px solid grey; */
+    /* border-radius: var(--border-radius); */
     overflow-y: hidden;
     overflow: hidden;
   
@@ -24,8 +25,10 @@
   
     transition-duration: 0.5s;
   
-    font-size: 20px;
-    font-weight: 600;
+    /* font-size: 16px; */
+    /* font-weight: 600; */
+    align-items: center;
+    text-align: center;
   
   }
 
@@ -84,3 +87,4 @@
      
   }
 }
+

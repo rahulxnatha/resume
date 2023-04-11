@@ -496,15 +496,13 @@
       </div>
     </div>
 
-    <div class="smallNotification" id="smallNotification">
 
-      <span id="smallNotiText">
-        Hi there. Good afternoon.
+    <button class="smallNotification" id="smallNotification" onclick="window.open('#', '_self')">
+      <span id="smallNotiText">Hi there. Good afternoon.</span>
+    </button>
 
 
-      </span>
 
-    </div>
 
     <aside id="viewPort">
       <div class="viewPortMenu" style="display:block;">
@@ -1159,7 +1157,8 @@
     <main id="main">
 
 
-      <section id="mainSettings" style="display:grid;">
+      <!-- <section id="mainSettings" style="display:grid;"> -->
+      <section id="mainSettings" style="display:none;">
         <span style="margin-top: 20px;">
           <h3>Display style</h3>
         </span>
@@ -1268,8 +1267,8 @@
 
 
       </section>
-
-      <section style="display:inherit;">
+      <!-- display:inherit; -->
+      <section style="display:none;">
         <button style="margin-top: 20px;">👈 Back</button>
         <span>
           <h1 class="typewrite">Everything that connects to my BTech</h1>

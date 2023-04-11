@@ -174,7 +174,7 @@ window.onscroll = function () {
     document.getElementById("smallNotiText").innerText = "Scrolling up.";
 
     setTimeout(function () {
-      document.getElementById("smallNotiText").innerText = "Use the search box to search things.";
+      document.getElementById("smallNotiText").innerText = "Try search box.";
     }, 000);
 
     document.getElementById("viewport").style.transitionDuration = "500ms";
@@ -222,13 +222,13 @@ window.onscroll = function () {
 
       if (clickedArticle == 0) {
         setTimeout(function () {
-          document.getElementById("smallNotiText").innerText = "Place cursor over any tile and see!";
+          document.getElementById("smallNotiText").innerText = "Hover any tile!";
 
         }, 0);
       }
       else {
         setTimeout(function () {
-          document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
+          document.getElementById("smallNotiText").innerText = "Try tabs.";
 
         }, 1);
 
