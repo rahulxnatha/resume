@@ -10,9 +10,48 @@ main {
     /* background-color: var(--windowBackground);
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px); */
-    
-    position: relative;
 
+    position: relative;
+    transform: rotateY(00deg);
+   
+
+
+
+    -webkit-animation-name: animation_main_rotate_on_load;
+    -webkit-animation-duration: 2s;
+    animation-name: animation_main_rotate_on_load;
+    animation-duration: 10s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    transform-origin: 0%;
+}
+
+@-webkit-keyframes animation_main_rotate_on_load {
+    0% {
+        transform: rotateY(90deg);
+    }
+
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes animation_main_rotate_on_load {
+    0% {
+        transform: rotateY(90deg);
+    }
+
+    100% {
+        transform: rotateY(00deg);
+    }
 }
 
 
@@ -67,7 +106,7 @@ main {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 
-    
+
 }
 
 @-webkit-keyframes animatebottom {

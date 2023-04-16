@@ -357,7 +357,7 @@ for (let i = 0; i < articles.length; i++) {
         removeActive(i);
         clickedArticleIs = i;
 
-        document.getElementById("smallNotiText").innerText = "Try tabs!";
+        document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
 
     });
 
@@ -437,7 +437,7 @@ for (let i = 0; i < articles.length; i++) {
             }
 
             setTimeout(function () {
-                document.getElementById("smallNotiText").innerText = "Great! Click it.";
+                document.getElementById("smallNotiText").innerText = "Great! Click it to read about it.";
             }, 000);
 
 
@@ -449,7 +449,7 @@ for (let i = 0; i < articles.length; i++) {
 
         else {
             setTimeout(function () {
-                document.getElementById("smallNotiText").innerText = "Try using tabs!";
+                document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
             }, 0);
         }
         // document.getElementById("linkedin_post").src = "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6830070522202718208";
@@ -481,11 +481,11 @@ for (let i = 0; i < articles.length; i++) {
             document.getElementById("color_inversion_notice_box").style.display = "none";
             document.getElementById("blur-layer").style.display = "none";
 
-            document.getElementById("smallNotiText").innerText = "Hover any tile.";
+            document.getElementById("smallNotiText").innerText = "Place cursor over any tile and see!";
         }
 
         else {
-            document.getElementById("smallNotiText").innerText = "Try tabs.";
+            document.getElementById("smallNotiText").innerText = "Use tabs on the above box to switch between things.";
         }
     });
 

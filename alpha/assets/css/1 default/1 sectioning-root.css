@@ -89,6 +89,7 @@
     --articleBackground: var(--lightArticleBackground);
     --window: var(--lightWindow);
     --a: var(--lightAnchor);
+    --accentColor: var(--lightAnchor);
     --ai: var(--darkAnchor);
     --selection: var(--lightSelection);
     --selectioni: var(--darkSelection);
@@ -111,6 +112,7 @@
     --window: var(--darkWindow);
     /* focus */
     --a: var(--darkAnchor);
+    --accentColor: var(--darkAnchor);
     --ai: var(--lightAnchor);
     --selection: var(--darkSelection);
     --selectioni: var(--lightSelection);

@@ -1,6 +1,6 @@
 /* tabs */
 .elemtab {
-    /* border-right: 1px solid grey; */
+    border: 2px solid grey;
     margin: 0px 20px 0 0px;
     padding: 0;
     border-radius: var(--border-radius-capsule);
@@ -8,7 +8,8 @@
     display: inline-block;
     background-color: var(--windowBackground);
     font-size: 16px;
-
+    height: calc(36px);
+    /* max-width: 12ch; */
 }
 
 .elemtab_active {
@@ -30,7 +31,8 @@
 
     /* background-color: green; */
 
-    height: calc(68px);
+
+    height: calc(56px);
     width: calc(100% - 0px - 200px);
     overflow-x: auto;
     overflow-y: visible;
@@ -41,7 +43,7 @@
 .tabbar>div {
     width: fit-content;
     white-space: nowrap;
-    height: 56px;
+    height: 36px;
     margin: 2px;
     /* background-color: #f15c4f; */
 }
@@ -49,7 +51,7 @@
 .controlButtons {
     overflow: hidden;
     height: 70px;
-    width: 170;
+    /* width: 170px; */
     overflow-x: auto;
     overflow-y: hidden;
     float: right;
@@ -76,8 +78,8 @@
 
 .tab_close {
 
-    margin: 0px 0px 0px 5px;
-    padding: 20px 10px 20px 10px;
+    margin: 10px 0px 0px 0px;
+    padding: 0px 10px 0px 10px;
 
     /* top: 0; */
     display: inline-block;
@@ -90,31 +92,29 @@
     transition-duration: 6s;
     transition-property: all;
     /* height: 20px; */
+    height: calc(38px);
     /* width: 20px; */
     /* font-size: 10px; */
     /* font-weight: 700; */
 }
 
 .elemtab {
-    padding: 18px 10px 18px 10px;
+    padding: 7px 10px 0px 10px;
     overflow: hidden;
 
 }
 
-
-
-
 .over {
-    outline: 2px solid #aaa;
-    outline-offset: 0px;
+    outline: 4px solid #aaa;
+    outline-offset: -2px;
 }
 
 .elemtab:hover {
-    padding: 0px 0px 0px 10px;
+    padding: 7px 0px 0px 10px;
 }
 
 .elemtab_add:hover {
-    padding: 18px 10px 18px 10px;
+    padding: 0px 10px 0px 10px;
 }
 
 .elemtab:hover>.tab_close {
@@ -129,19 +129,71 @@
     /* overflow: hidden; */
 }
 
+@keyframes tabclose {
+    0% {
+      
+      width: 0px;
+      margin: 0px 0px 0px 10px;
+      padding: 8px 10px 8px 10px;
+      background: transparent;
+      transform: translateY(100%);
+    }
+  
+  
+  
+    100% {
+     width: 60px;
+     margin: 0px 0px 0px 10px;
+     padding: 8px 10px 8px 10px;
+     transform: translateY(-8px);
+    }
+  }
 
 
 .tabbar::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  
-  .tabbar::-webkit-scrollbar-thumb {
+    width: 8px;
+    height: 8px;
+}
+
+.tabbar::-webkit-scrollbar-thumb {
     background: #888888;
     border-radius: 50vmin;
-  
+
     border: 0px solid var(--background);
     /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
     /* border: 200px solid transparent; */
-  
-  }
+
+}
+
+.elemtab > span:first-child {
+    display: inline-block;
+    max-width: 80px;
+    overflow: hidden;
+}
+
+.tab_text {
+    display: inline-block;
+    /* width: 8ch; */
+}
+
+.elemtab:hover  .tab_text {
+    display: inline-block;
+    
+    overflow: hidden;
+    animation: text_scroll 4s linear infinite;
+    scroll-behavior: smooth;
+}
+
+@keyframes text_scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
