@@ -1,5 +1,7 @@
-document.getElementById("version-of-website").innerText = "Version: Alpha 2.0010";
-document.getElementById("last-updated-on-date").innerText = "Last updated: 12 Feb, 2023 ";
+document.getElementById("version-of-website").innerText = "Version: 2.0421 Alpha";
+document.getElementById("last-updated-on-date").innerText = "Last updated: 21 April, 2023 ";
+document.getElementById("time").innerHTML = "&nbsp;2024 Alpha Preview&nbsp; ";
+
 
 // $( document ).ready(function() {
 //   adaptColor('.elemtab_active');
@@ -128,18 +130,18 @@ select.addEventListener("change", function () {
 
 
 
-// window.onload = function() {
-fetch('http://worldtimeapi.org/api/timezone/Asia/Kolkata')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // Extract the time from the API response
-    let time = data.datetime;
-    // Display the time on the HTML page
-    // document.getElementById("time").innerHTML = time;
-    document.getElementById("time").innerHTML = "&nbsp;2023 Alpha channel&nbsp; ";
-  });
-// }
+// // window.onload = function() {
+// fetch('http://worldtimeapi.org/api/timezone/Asia/Kolkata')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data);
+//     // Extract the time from the API response
+//     let time = data.datetime;
+//     // Display the time on the HTML page
+//     // document.getElementById("time").innerHTML = time;
+    
+//   });
+// // }
 
 
 
