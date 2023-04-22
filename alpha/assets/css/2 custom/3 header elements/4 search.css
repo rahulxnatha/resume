@@ -1,9 +1,33 @@
 @media only screen and (max-width: 1230px) {
-  
 
 
 
-    .search_bar {
-      display: none;
-    }
+
+  .search_bar {
+    display: none;
   }
+}
+
+#search_bar {
+
+  width: 300px;
+  height: 36px;
+  margin: -11px 0 0 10%;
+
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-left: 2px solid grey;
+  border-top: 2px solid grey;
+  border-bottom: 2px solid grey;
+  border-right: 0px solid grey;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+#search_button_action {
+  height: 36px;
+  width: 100px;
+  margin: -11px 0 0 -7px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

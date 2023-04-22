@@ -1,4 +1,4 @@
-button {
+button, input[type="button"] {
   /* outline: none; */
   /* cursor: pointer; */
 
@@ -18,13 +18,14 @@ button {
   margin: 0 10px 0 0;
   
 }
-button:hover {
+button:hover, input[type="button"]:hover {
   outline-offset: 4px ;
+  background-color: var(--ai);
   /* outline: 4px solid grey; */
   
 }
 
-button:active {
+button:active, input[type="button"]:active {
   /* background-color: rgb(46, 94, 103); */
   border-radius: 7px;
   

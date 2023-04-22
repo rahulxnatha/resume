@@ -41,7 +41,11 @@
   --darkFont: #f1faee;
 
   --lightAnchor: #234e97;
+  --lightAnchor20: hsla(218, 62%, 36%, 0.2);
+  --lightAnchorHover: #123b83;
   --darkAnchor: #5fbcbf;
+  --darkAnchor20: hsla(182, 43%, 56%, 0.2);
+  --darkAnchorHover: #75ebef;
 
   --lightSelection: #457b9d50;
   --darkSelection: #a8dadc50;
@@ -60,6 +64,7 @@
   --font: var(--lightFont);
   --windowBackground: var(--lightWindowBackground);
   --a: var(--lightAnchor);
+  
   --selection: var(--lightSelection);
 }
 
@@ -89,8 +94,11 @@
     --articleBackground: var(--lightArticleBackground);
     --window: var(--lightWindow);
     --a: var(--lightAnchor);
+    --a-hover: var(--lightAnchorHover);
     --accentColor: var(--lightAnchor);
+    --accentColor20: var(--lightAnchor20);
     --ai: var(--darkAnchor);
+    --ai20: var(--darkAnchor20);
     --selection: var(--lightSelection);
     --selectioni: var(--darkSelection);
     --shadow: var(--lightShadow);
@@ -112,8 +120,11 @@
     --window: var(--darkWindow);
     /* focus */
     --a: var(--darkAnchor);
+    --a-hover: var(--darkAnchorHover);
     --accentColor: var(--darkAnchor);
+    --accentColor20: var(--darkAnchor20);
     --ai: var(--lightAnchor);
+    --ai20: var(--lightAnchor20);
     --selection: var(--darkSelection);
     --selectioni: var(--lightSelection);
     --shadow: var(--darkShadow);

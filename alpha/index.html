@@ -191,10 +191,14 @@
 
         </h1>
 
-        <span class="grade-out-text" id="time"
-          title="This version of the website is highly unstable and contains newest features.">
-
-        </span>
+      
+        <select  title="This version of the website is highly unstable and contains newest features." onchange="window.open(this.value,'_blank')">
+          <option value="#">2024 Alpha</option>
+          <option value="../index.html">Stable</option>
+          <!-- <option value="#">2024 Beta</option> -->
+          
+          </select>
+        
 
         <span id="JSregulated74545" style="display:inline;">
           <span class="status2"></span>
@@ -214,9 +218,9 @@
 
         <span class="search_bar" style="float: inherit; ">
           <input type="search" name="" id="search_bar" placeholder="Looking for..."
-            style=" width: 300px;height: 30px;margin: -5px 0 0 4%;">
+            >
 
-          <input type="button" value="Search" style="  height: 30px; margin: -5px 0 0 0;">
+          <input type="button" value="Search" id="search_button_action">
         </span>
 
 
@@ -246,8 +250,8 @@
 
         </nav> -->
 
-        <nav style="float:left; margin-left: 20px;"><a href="../index.html" title="Switch to stable version.">
-            Stable version</a></nav>
+        <!-- <nav style="float:left; margin-left: 20px;"><a href="../index.html" title="Switch to stable version.">
+            Stable version</a></nav> -->
 
       </div>
 
@@ -1196,7 +1200,7 @@
           </label>
         </label>
 
-        <label title="Show or hide preview pane" class="switch_indicate" style="padding-top: 20px;"> <span>Preview pane</span> 
+        <label title="Show or hide preview pane." class="switch_indicate" style="padding-top: 20px;"> <span>Preview pane</span> 
           
             <label class="fluent-toggle-switch " style="margin-top: -6px;">
               <input id="asideOpenCheckbox" class="asideCloseClass" type="checkbox" style="margin-top: 20px; "

@@ -1,6 +1,6 @@
 document.getElementById("version-of-website").innerText = "Version: 2.0421 Alpha";
 document.getElementById("last-updated-on-date").innerText = "Last updated: 21 April, 2023 ";
-document.getElementById("time").innerHTML = "&nbsp;2024 Alpha Preview&nbsp; ";
+// document.getElementById("time").innerHTML = "&nbsp;2024 Alpha Preview&nbsp; ";
 
 
 // $( document ).ready(function() {
@@ -501,4 +501,42 @@ for (let i = 0; i < closeTabText.length; i++) {
 
 
 
+// Get the div element with id "tab_bar"
+var tab_bar = document.getElementById("tab_bar90");
 
+// Define a function to scroll horizontally by a given amount
+function scrollHorizontally(amount) {
+  // Get the current scroll position
+  var scrollLeft = tab_bar.scrollLeft;
+
+  // Add the amount to the scroll position
+  scrollLeft += amount;
+
+  // Set the new scroll position
+  tab_bar.scrollLeft = scrollLeft;
+}
+
+// Define a function to handle the mouse wheel event
+function handleMouseWheel(e) {
+  // Get the wheel delta (positive for up, negative for down)
+  var delta = e.wheelDelta || -e.detail;
+
+  // Multiply the delta by a factor to adjust the scrolling speed
+  var scrollAmount = delta * -0.1;
+
+  // Call the scroll function with the scroll amount
+  scrollHorizontally(scrollAmount);
+
+  // Prevent the default behavior of scrolling vertically
+  e.preventDefault();
+}
+
+// Add an event listener for the mouse wheel event
+if (tab_bar.addEventListener) {
+  // For modern browsers
+  tab_bar.addEventListener("mousewheel", handleMouseWheel, false);
+  tab_bar.addEventListener("DOMMouseScroll", handleMouseWheel, false);
+} else {
+  // For IE 6/7/8
+  tab_bar.attachEvent("onmousewheel", handleMouseWheel);
+}

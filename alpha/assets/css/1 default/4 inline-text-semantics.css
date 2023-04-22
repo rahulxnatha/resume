@@ -7,8 +7,10 @@ a:visited {
   color: var(--a);
 }
 a:hover {
-  text-decoration: none;
-  color: var(--a);
+  text-decoration:none;
+  color: var(--a-hover);
+  
+  
 }
 a:active {
   text-decoration: none;

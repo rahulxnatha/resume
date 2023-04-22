@@ -29,3 +29,21 @@ body {
         display: none;
     }
 }
+
+body {
+    /* Use two colors with 20% opacity */
+    /* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
+    background-size: 200% 200%;
+
+    /* Use animation to move the colors at an angle */
+    animation: AnimationName 10s ease infinite;
+    /* Repeat the animation 3 times only */
+    /* animation-iteration-count: 3; */
+}
+
+@keyframes AnimationName {
+    /* Start from the top right corner */
+    0%{background-position:100% 0%}
+    /* Move to the bottom left corner */
+    100%{background-position:0% 100%}
+}
