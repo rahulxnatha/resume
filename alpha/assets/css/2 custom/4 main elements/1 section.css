@@ -72,7 +72,7 @@ main section:hover {
     }
 }
 /* var(--base60), */
-main section:hover {
+main section:hover, .aside2:hover {
     background: linear-gradient(59deg, );
     background: linear-gradient(59deg, var(--accentColor20),  var(--ai20), var(--base60) );
     background: linear-gradient(59deg, rgba(255, 0, 0, 0.1), rgba(255, 165, 0, 0.1), rgba(255, 255, 0, 0.1), rgba(0, 128, 0, 0.1), rgba(0, 0, 255, 0.1), rgba(128, 0, 128, 0.1));
