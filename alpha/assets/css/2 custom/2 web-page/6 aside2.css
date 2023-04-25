@@ -1,6 +1,5 @@
 .aside2 {
     z-index: 10;
-
     position: fixed;
     top: 60px;
     left: 0px;
@@ -14,37 +13,32 @@
     border-bottom-right-radius: var(--border-radius);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    
     transition: border-radius 0.5s ease-in-out;
     overflow-y: hidden;
     overflow: hidden;
-
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
-
-
     transition: width 2s;
     transition-duration: 2s;
     transition-delay: 0s;
 }
+
 .aside2:hover {
     z-index: 10;
-
     position: fixed;
     top: 60px;
     left: 0px;
-    width: calc(100% - 20px);
-   
+    width: calc(500px);
     margin: 20px 20px 20px 0px;
     height: calc(100vh - 100px);
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0px 20px 10px;
     border: 2px solid rgb(128, 128, 128);
     border-left: 0px solid;
     border-top-right-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    
+
     transition: border-radius 0.5s ease-in-out;
     overflow-y: hidden;
     overflow: hidden;
@@ -53,30 +47,27 @@
     backdrop-filter: blur(13px);
     transition-duration: 500ms;
 
-    
+
     transition: width 2s;
     transition-duration: 2s;
-    transition-delay: 2s;
+    transition-delay: 0.5s;
 }
-.aside2:hover > h1 {
-margin-left: 10px;
-    margin-bottom: 20px;
-   visibility: visible;
 
-   transition: visibility 2s;
-    transition-duration: 2s;
-    transition-delay: 2s;
+.aside2:hover>h1 {
+    margin: 0 0 20px 20px;
+    float: none;
+    transform: none;
 }
-.aside2 > h1 {
-    margin-left: 10px;
-    margin-bottom: 20px;
-    visibility: hidden;
-    transition: visibility 1s;
-    transition-duration: 1s;
-    transition-delay: 0s;
+
+.aside2>h1 {
+    display: block;
+  margin: 0 100px 20px 0;
+    /* visibility: hidden; */
+    transform: rotateZ(270deg);
+    float: left;
 }
 
 
-.aside2:hover > .show_on_hover {
-display: block;
+.aside2:hover>.show_on_hover {
+    display: block;
 }

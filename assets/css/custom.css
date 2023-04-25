@@ -305,11 +305,11 @@ input:checked + .slider:before {
   min-width: 100%;
   grid-column-start: 1;
   grid-column-end: 5;
+  
   /* display: none; */
-  background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../alpha/assets/images/IMG_20220128_105131_2.jpg");
+  /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../alpha/assets/images/IMG_20220128_105131_2.jpg"); */
 
   /* /images/IMG_20220128_105131_2.jpg */
-
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-size: cover;
@@ -317,6 +317,14 @@ input:checked + .slider:before {
   /**/
 
   /* animation: mymove 5s infinite; */
+
+  background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../alpha/assets/images/banner/banner.jpg");
+
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    min-height: 250px;
+
 }
 
 @keyframes mymove {
