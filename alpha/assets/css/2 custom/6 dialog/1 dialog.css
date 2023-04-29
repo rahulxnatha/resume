@@ -48,6 +48,7 @@ details[open] summary {
     top: 100px;
     background-color: transparent;
     border: 0px solid grey;
+    border-radius: var(--border-radius);
 
     z-index: 6;
 
@@ -89,12 +90,12 @@ dialog>div>div,
     justify-content: center;
     margin-left: 5%;
     border: 2px solid grey;
-    border-radius: 7px;
+    border-radius: var(--border-radius);
     margin-bottom: 20px;
 
     padding: 10px 10px 0 10px;
 
-    border-radius: 7px;
+    
 }
 
 dialog>div,
@@ -106,7 +107,7 @@ dialog>div,
     justify-content: center;
     margin-left: 17%;
     border: 2px solid grey;
-    border-radius: 7px;
+    border-radius: var(--border-radius);
     margin-bottom: 20px;
 
     padding-top: 10px;
@@ -115,7 +116,7 @@ dialog>div,
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     box-shadow: 0 4px 8px rgb(0 0 0 / 14%);
-    border-radius: 7px;
+    
 
     overflow-y: auto;
 

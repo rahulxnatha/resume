@@ -1,5 +1,6 @@
 /* tabs */
-.elemtab {
+.elemtab,
+.controlButtons span {
     border: 2px solid grey;
     margin: 0px 20px 0 0px;
     padding: 0;
@@ -14,6 +15,7 @@
 
 .elemtab_active {
     background-color: var(--ai);
+    background-color: var(--fonti);
     /* color: var(--base); */
     /* backdrop-filter: blur(13px); */
     /* border: 1px solid grey; */
@@ -26,8 +28,10 @@
     margin-top: -10px;
   } */
 
+ 
 
-.tabbar {
+.tabbar,
+.controlButtons {
 
     /* background-color: green; */
 
@@ -40,7 +44,11 @@
     /* border: 0.5px dashed #77777715; */
 }
 
-.tabbar>div {
+
+
+
+.tabbar>div,
+.controlButtons>div {
     width: fit-content;
     white-space: nowrap;
     height: 36px;
@@ -49,28 +57,39 @@
 }
 
 .controlButtons {
-    overflow: hidden;
-    height: 70px;
-    /* width: 170px; */
-    overflow-x: auto;
-    overflow-y: hidden;
+
     float: right;
-    background-color: var(--articleBackground);
-    border-radius: var(--border-radius);
-    margin: 0px 0 0 0;
-    padding: 18px 20px 0 0;
+    width: 170px;
+    border-left: 1px solid grey;
+    margin-right: 0px;
+    padding-left: 20px;
 
 }
 
-.controlButtons>span {
-    background-color: rgba(119, 119, 119, 0.337);
-    font-size: 30px;
+.controlButtons>div {
 
-    margin: 0 0 0 20px;
+    /* background-color: aqua; */
+    /* width: 300px; */
+    float: left;
+
+
+}
+
+
+
+
+.controlButtons span {
+   
+
+    margin: 0 0 0 5px;
     border-radius: var(--border-radius);
-    padding: 2px;
-    float: right;
+    padding: 9px 0 0 0;
+    text-align: center;
+   max-width: 50px;
+   width: 40px;
+   overflow: hidden;
     cursor: pointer;
+    background-color: var(--fonti);
 }
 
 
@@ -87,7 +106,7 @@
     /* border: 2px solid var(--font); */
     /* width: 0; */
     /* overflow: hidden; */
-    background-color: var(--fonti);
+    background-color: rgba(128, 128, 128, 0.381);
     border-radius: 0px;
     transition-duration: 6s;
     transition-property: all;
@@ -131,23 +150,23 @@
 
 @keyframes tabclose {
     0% {
-      
-      width: 0px;
-      margin: 0px 0px 0px 10px;
-      padding: 8px 10px 8px 10px;
-      background: transparent;
-      transform: translateY(100%);
+
+        width: 0px;
+        margin: 0px 0px 0px 10px;
+        padding: 8px 10px 8px 10px;
+        background: transparent;
+        transform: translateY(100%);
     }
-  
-  
-  
+
+
+
     100% {
-     width: 60px;
-     margin: 0px 0px 0px 10px;
-     padding: 8px 10px 8px 10px;
-     transform: translateY(-8px);
+        width: 60px;
+        margin: 0px 0px 0px 10px;
+        padding: 8px 10px 8px 10px;
+        transform: translateY(-8px);
     }
-  }
+}
 
 
 .tabbar::-webkit-scrollbar {
@@ -165,7 +184,7 @@
 
 }
 
-.elemtab > span:first-child {
+.elemtab>span:first-child {
     display: inline-block;
     max-width: 80px;
     overflow: hidden;
@@ -176,9 +195,9 @@
     /* width: 8ch; */
 }
 
-.elemtab:hover  .tab_text {
+.elemtab:hover .tab_text {
     display: inline-block;
-    
+
     overflow: hidden;
     animation: text_scroll 4s linear infinite;
     scroll-behavior: smooth;

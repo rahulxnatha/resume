@@ -271,7 +271,7 @@ for (let j = 0; j < tab_close.length; j++) {
 
 
 function ActivateElemTab(which_tab) {
-    elemtabs[which_tab].style.background = "var(--ai)";
+    elemtabs[which_tab].style.background = "var(--fonti)";
 }
 function DEActivateElemTab(which_tab) {
     elemtabs[which_tab].style.background = "var(--windowBackground)";

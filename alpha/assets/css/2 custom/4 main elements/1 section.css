@@ -13,7 +13,7 @@ main section {
     border-bottom: 2px solid rgb(128, 128, 128);
     border-top: 2px solid rgb(128, 128, 128); */
     /* transition-duration: 0s; */
- 
+
 
     /* max-height: 500px; */
     /* overflow: hidden; */
@@ -44,7 +44,7 @@ main section:hover {
 
 #contact_section {
     box-shadow: 0 0px 0px #00000024;
-  }
+}
 
 @media only screen and (max-width: 1230px) {
 
@@ -71,38 +71,77 @@ main section:hover {
         margin: 0;
     }
 }
+
 /* var(--base60), */
-main section:hover, .aside2:hover {
-    background: linear-gradient(59deg, );
-    background: linear-gradient(59deg, var(--accentColor20),  var(--ai20), var(--base60) );
-    background: linear-gradient(59deg, rgba(255, 0, 0, 0.1), rgba(255, 165, 0, 0.1), rgba(255, 255, 0, 0.1), rgba(0, 128, 0, 0.1), rgba(0, 0, 255, 0.1), rgba(128, 0, 128, 0.1));
-    background-size: 600% 600%;
+main section:hover,
+.aside2:hover {
+   
+    /* background: linear-gradient(59deg, rgba(255, 0, 0, 0.1), rgba(255, 165, 0, 0.1), rgba(255, 255, 0, 0.1), rgba(0, 128, 0, 0.1), rgba(0, 0, 255, 0.1), rgba(128, 0, 128, 0.1)); */
+    /* background-size: 600% 600%; */
 
     -webkit-animation: AnimationName 30s ease infinite;
     -moz-animation: AnimationName 30s ease infinite;
     -o-animation: AnimationName 30s ease infinite;
     animation: AnimationName 30s ease infinite;
+
+    /* filter: blur(30px); */
+    /* background: radial-gradient(square at 50% 50%, white, rgba(76, 0, 255, 0)); */
 }
 
 @-webkit-keyframes AnimationName {
-    0%{background-position:93% 0%}
-    50%{background-position:0% 100%}
-    100%{background-position:93% 0%}
+    0% {
+        background-position: 93% 0%
+    }
+
+    50% {
+        background-position: 0% 100%
+    }
+
+    100% {
+        background-position: 93% 0%
+    }
 }
+
 @-moz-keyframes AnimationName {
-    0%{background-position:93% 0%}
-    50%{background-position:0% 100%}
-    100%{background-position:93% 0%}
+    0% {
+        background-position: 93% 0%
+    }
+
+    50% {
+        background-position: 0% 100%
+    }
+
+    100% {
+        background-position: 93% 0%
+    }
 }
+
 @-o-keyframes AnimationName {
-    0%{background-position:93% 0%}
-    50%{background-position:0% 100%}
-    100%{background-position:93% 0%}
+    0% {
+        background-position: 93% 0%
+    }
+
+    50% {
+        background-position: 0% 100%
+    }
+
+    100% {
+        background-position: 93% 0%
+    }
 }
+
 @keyframes AnimationName {
-    0%{background-position:93% 0%}
-    50%{background-position:0% 100%}
-    100%{background-position:93% 0%}
+    0% {
+        background-position: 93% 0%
+    }
+
+    50% {
+        background-position: 0% 100%
+    }
+
+    100% {
+        background-position: 93% 0%
+    }
 }
 
 
@@ -112,25 +151,25 @@ main section:hover, .aside2:hover {
     syntax: '<angle>';
     initial-value: 0deg;
     inherits: false;
-  }
-  
-  /* Apply the custom property to the div element */
-  main section {
+}
+
+/* Apply the custom property to the div element */
+main section {
     --angle: 0deg;
-   
-    border: 2px solid rgba(128, 128, 128, 0.2);
+
+    border: 0px solid rgba(128, 128, 128, 0.2);
     border-radius: var(--border-radius);
     /* Use a linear gradient with six colors for the border image */
     /* border-image: linear-gradient(var(--angle), #12c2e9, #c471ed, #f64f59, #12c2e9, #c471ed, #f64f59) 1; */
-  
+
     /* Animate the angle using keyframes */
     animation: 10s rotate linear infinite;
     border-image-outset: 0.5rem;
-  }
-  
-  /* Define the keyframes for the rotation */
-  @keyframes rotate {
+}
+
+/* Define the keyframes for the rotation */
+@keyframes rotate {
     to {
-      --angle: 360deg;
+        --angle: 360deg;
     }
-  }
+}

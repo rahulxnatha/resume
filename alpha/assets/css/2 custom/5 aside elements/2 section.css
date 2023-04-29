@@ -134,3 +134,16 @@ aside section div {
   display: block;
 }
 
+aside section a {
+
+  border: 2px solid grey;
+  margin: 0px 10px 20px 0px;
+  padding: 9px 7px;
+  border-radius: var(--border-radius-capsule);
+  cursor: pointer;
+  display: inline-block;
+  background-color: var(--fonti);
+  font-size: 13.3333px;
+  height: calc(36px);
+  
+}

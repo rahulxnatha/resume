@@ -21,6 +21,7 @@
     transition: width 2s;
     transition-duration: 2s;
     transition-delay: 0s;
+    display: none;
 }
 
 .aside2:hover {
