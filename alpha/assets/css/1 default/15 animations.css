@@ -177,7 +177,7 @@
 
   animation-name: microinteraction;
   animation-duration: 0.3s;
-  
+
   animation-iteration-count: 1;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
@@ -448,12 +448,13 @@
     height: 250px;
     background-color: var(--base60);
     color: var(--basei);
-    
+
     padding: 90px 50px 0px 50px;
     font-size: 50px;
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     border-radius: 50vmin;
+    border-radius: var(--border-radius);
   }
 
   100% {
@@ -462,13 +463,14 @@
     height: 250px;
     background-color: var(--base60);
     color: var(--basei);
-    
+
     padding: 90px 50px 0px 50px;
     font-size: 50px;
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     border-radius: 50vmin;
-    display:none;
+    border-radius: var(--border-radius);
+    display: none;
   }
 }
 
@@ -480,11 +482,11 @@
     height: 250px;
     background-color: var(--base);
     color: var(--basei);
-    
+
     padding: 90px 50px 0px 50px;
     font-size: 50px;
-  
-    border-radius: 50vmin;
+
+    border-radius: var(--border-radius);
   }
 
   100% {
@@ -498,8 +500,8 @@
     padding: 10px 50px 0px 50px;
     font-size: 20px;
 
-    border-radius: 50vmin;
-    
+    border-radius: var(--border-radius);
+
   }
 }
 
