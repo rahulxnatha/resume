@@ -61,18 +61,18 @@ details[open] summary {
 
 
 dialog {
-  width: 100%;
+ 
 
   display: block;
-  position: fixed;
+  
 
-  top: 100px;
-  background-color: transparent; 
+  
+
   border: 0px solid grey;
 
-  z-index:6;
+  /* z-index:6; */
 
-  padding: 1px;
+  /* padding: 1px; */
 }
 
 dialog > div > div, #alertUI > div > div > div {

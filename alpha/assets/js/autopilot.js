@@ -319,7 +319,7 @@ window.addEventListener("load", () => {
 
 // document.getElementById("main").classList.toggle("main_animate");
 // document.getElementById("viewPort").classList.toggle("aside_animate");
-
+// const modal = document.querySelector("[data-modal]");
 function alertUI(show) {
 
   if (
@@ -328,24 +328,27 @@ function alertUI(show) {
     1
     && show) {
 
-    document.getElementById("alertUI").style.display = "block";
-    document.getElementById("alertUI").classList.toggle("slide_from_above");
+    // document.getElementById("alertUI").style.display = "block";
+
+    // modal.showModal();
+
+    // document.getElementById("alertUI").classList.toggle("slide_from_above");
     document.getElementById("blurFocusScreen").style.display = "block";
     document.getElementById("blurFocusScreen").style.zIndex = "5";
 
     setTimeout(function () {
-      document.getElementById("alertUI").classList.toggle("slide_from_above");
+      // document.getElementById("alertUI").classList.toggle("slide_from_above");
     }, 500);
 
     document.getElementById("alertUser").innerText = "Wanna change color theme?";
     document.getElementById("themeDescription").style.display = "block";
   } else {
-    document.getElementById("alertUI").classList.toggle("close_slide_down");
+    // document.getElementById("alertUI").classList.toggle("close_slide_down");
     document.getElementById("blurFocusScreen").style.display = "none";
     document.getElementById("blurFocusScreen").style.zIndex = "5";
     setTimeout(function () {
-      document.getElementById("alertUI").classList.toggle("close_slide_down");
-      document.getElementById("alertUI").style.display = "none";
+      // document.getElementById("alertUI").classList.toggle("close_slide_down");
+      // document.getElementById("alertUI").style.display = "none";
     }, 500);
   }
 }

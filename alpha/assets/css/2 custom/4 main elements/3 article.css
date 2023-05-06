@@ -168,8 +168,9 @@ article.active {
 
 /* for banner  */
 .name_brand_on_picture {
-    padding: 5px;
+    padding: 7px;
     background-color: #88888888;
+    border-radius: var(--border-radius);
 }
 
 .cmrcet {
