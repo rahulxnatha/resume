@@ -1,5 +1,58 @@
 document.getElementById("version-of-website").innerText = "Version: 2.0421 Alpha";
 document.getElementById("last-updated-on-date").innerText = "Last updated: 21 April, 2023 ";
+
+
+
+function updateSearchBarWidth() {
+  var searchBar = document.getElementById("search_bar");
+  var charCount = searchBar.value.length;
+  var maxSearchBarWidth = 0.5; // vw
+  var initialWidth = 150;
+  var additionalWidth = (charCount - 10) * 6.001;
+
+  if (additionalWidth >= 0) {
+    var updatedWidth = initialWidth + additionalWidth;
+    if (updatedWidth > window.innerWidth * maxSearchBarWidth) {
+      updatedWidth = window.innerWidth * maxSearchBarWidth;
+      // searchBar.style.height = "auto";
+    }
+  } else {
+    updatedWidth = initialWidth;
+    // searchBar.style.height = "auto";
+  }
+
+  searchBar.style.width = updatedWidth + "px";
+  searchBar.style.marginLeft = "calc((100% - 700px - " + updatedWidth + "px)/2)"  ;
+  // searchBar.style.marginLeft = 0 + "px";
+
+
+  // var searchBar = document.getElementById("search_bar");
+  // var charCount = searchBar.value.length;
+
+  // var initialWidth = 150; 
+
+  // var additionalWidth = (charCount - 10) * 6.001; 
+  // if (additionalWidth >= 0) {
+  // var updatedWidth = initialWidth + additionalWidth; 
+  // } else {updatedWidth = initialWidth;}
+
+
+  // searchBar.style.width = updatedWidth + "px";
+
+  // if (charCount >= 10 && charCount < 15) {
+  //   searchBar.style.width = "200px";
+  // } else if (charCount >= 15 && charCount < 20) {
+  //   searchBar.style.width = "250px";
+  // } else if (charCount >= 20 && charCount < 25) {
+  //   searchBar.style.width = "300px";
+  // } else if (charCount >= 25) {
+  //   searchBar.style.width = "350px";
+  // } else {
+  //   searchBar.style.width = "150px";
+  // }
+}
+
+
 // document.getElementById("time").innerHTML = "&nbsp;2024 Alpha Preview&nbsp; ";
 
 
@@ -139,7 +192,7 @@ select.addEventListener("change", function () {
 //     let time = data.datetime;
 //     // Display the time on the HTML page
 //     // document.getElementById("time").innerHTML = time;
-    
+
 //   });
 // // }
 
@@ -449,11 +502,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // setTimeout(function () {
   //   document.getElementsByClassName("spinner")[0].classList.add("loaded");
   // }, 0000);
-  
+
   // setTimeout(function () {
-    splashScreen.style.display = "none";
-    document.getElementById("web-page").style.display = "block";
-    
+  splashScreen.style.display = "none";
+  document.getElementById("web-page").style.display = "block";
+
   // }, 1);
 });
 
