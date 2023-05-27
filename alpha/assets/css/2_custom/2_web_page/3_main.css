@@ -6,7 +6,7 @@ main {
     margin: 0;
     padding: 20px 50px 0 0;
     z-index: 1;
-    border: 0px solid grey;
+    border: 0px solid var(--border-color);
     /* background-color: var(--windowBackground);
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px); */
@@ -82,7 +82,7 @@ main {
         float: left;
         margin: 0 20px 0 20px;
         padding: 0;
-        border: 0px solid grey;
+        border: 0px solid var(--border-color);
     }
 }
 

@@ -53,6 +53,8 @@
   --lightShadow: hsla(0, 0%, 0%, 0.14);
   --darkShadow: rgba(0, 0, 0, 0.86);
 
+  --light-border-color: #777777;
+  --dark-border-color: #999999;
 
   --border-radius-capsule: 50vmin;
   /* --border-radius-capsule: 0vmin; */
@@ -105,6 +107,7 @@
     --selection: var(--lightSelection);
     --selectioni: var(--darkSelection);
     --shadow: var(--lightShadow);
+    --border-color: var(--light-border-color);
   }
 }
 
@@ -131,6 +134,7 @@
     --selection: var(--darkSelection);
     --selectioni: var(--lightSelection);
     --shadow: var(--darkShadow);
+    --border-color: var(--dark-border-color);
   }
 }
 

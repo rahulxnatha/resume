@@ -431,11 +431,11 @@
 @keyframes article_hover {
   0% {
     /* box-shadow: 0cm 0.5cm 0.5cm 0cm var(--windowBackground); */
-    border: 2px solid var(--basei);
+    border: 2px solid var(--border-color);
   }
 
   100% {
-    border: 2px solid var(--basei);
+    border: 2px solid var(--border-color);
 
   }
 }

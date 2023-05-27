@@ -8,7 +8,7 @@ aside {
     margin: 20px 20px 20px 100px;
     height: calc(100vh - 200px);
     padding: 20px 0px 20px 0px;
-    border: 2px solid grey;
+    border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     transition: border-radius 0.5s ease-in-out;
     overflow-y: hidden;
@@ -17,6 +17,11 @@ aside {
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     transition-duration: 500ms;
+
+    box-shadow: 0 4px 8px var(--shadow);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
 }
 
 aside:hover {
@@ -65,7 +70,7 @@ aside h2 {
         margin: 20px 0px 20px 20px;
         height: calc(20vh - 40px);
         padding: 20px 0px 20px 0px;
-        border: 2px solid grey;
+        border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
 
         top: calc(80vh);
@@ -85,7 +90,7 @@ aside h2 {
         margin: 20px 20px 20px 40px;
         height: calc(100vh - 100px);
         padding: 20px 0px 20px 0px;
-        border: 2px solid grey;
+        border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
     }
 
@@ -104,7 +109,7 @@ aside h2 {
     position: absolute;
     text-align: left;
     background: var(--fonti);
-    border: 0px solid black;
+    border: 0px solid var(--border-color);
     border-radius: var(--border-radius);
     color: var(--font);
 }
@@ -119,7 +124,7 @@ aside h2 {
 .context-menu ul li {
     padding-bottom: 7px;
     padding-top: 7px;
-    border: 1px solid black;
+    border: 1px solid var(--border-color);
 }
 
 .context-menu ul li a {

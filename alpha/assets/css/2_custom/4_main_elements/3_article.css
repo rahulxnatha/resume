@@ -7,7 +7,7 @@ article,
     margin: 0;
     padding: 20px 20px 20px 20px;
 
-    border: 2px solid grey;
+    border: 2px solid var(--border-color);
     /* border: 2px solid transparent; */
     cursor: pointer;
 
@@ -65,7 +65,7 @@ article:hover {
 
 
 #contact a {
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     box-shadow: none;
 }
 
@@ -140,7 +140,7 @@ article p {
 article.active {
     outline: 4px solid #aaa;
     outline-offset: 6px;
-    border: 2px solid #00000000;
+    border: 2px solid var(--border-color);
 }
 
 
@@ -158,12 +158,30 @@ article.active {
 }
 
 .banner_background {
+    /*  */
     background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
 
+
+    /* color: white; */
+    
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
-    background-size: cover;
+    background-size:cover;
     min-height: 250px;
+    /* border-radius: 0%; */
+    /* height: 100%; */
+    /* width: 100%; */
+}
+
+
+
+.banner_text {
+    position: absolute;
+    bottom:0;
+    padding: 0 20px 20px 0;
+    margin-left: 40%;
+    font-weight: 900;
+    font-size: 70px;
 }
 
 /* for banner  */

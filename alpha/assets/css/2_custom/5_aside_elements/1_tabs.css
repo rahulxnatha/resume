@@ -1,7 +1,9 @@
+
+
 /* tabs */
 .elemtab,
 .controlButtons span {
-    border: 2px solid grey;
+    border: 2px solid var(--border-color);
     margin: 0px 20px 0 0px;
     padding: 0;
     border-radius: var(--border-radius-capsule);
@@ -11,6 +13,11 @@
     font-size: 16px;
     height: calc(36px);
     /* max-width: 12ch; */
+
+    box-shadow: 0 2px 4px var(--shadow);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
 }
 
 .elemtab_active {
@@ -34,10 +41,13 @@
 .controlButtons {
 
     /* background-color: green; */
+    margin: 0px;
+    padding: 20px 0 0 20px;
+    /* background-color: rgb(75, 135, 188); */
+    width: calc(100% - 0px);
 
-
-    height: calc(56px);
-    width: calc(100% - 0px - 200px);
+    height: calc(56px + 20px);
+   
     overflow-x: auto;
     overflow-y: visible;
     float: left;
@@ -60,10 +70,10 @@
 
     float: right;
     width: 200px;
-    border-left: 1px solid grey;
+    border-left: 1px solid var(--border-color);
     margin-right: 0px;
     padding-left: 20px;
-
+display:none;
 }
 
 .controlButtons>div {
@@ -172,14 +182,14 @@
 
 .tabbar::-webkit-scrollbar {
     width: 8px;
-    height: 8px;
+    height: 0px;
 }
 
 .tabbar::-webkit-scrollbar-thumb {
     background: #888888;
     border-radius: 50vmin;
 
-    border: 0px solid var(--background);
+    border: 0px solid var(--border-color);
     /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
     /* border: 200px solid transparent; */
 

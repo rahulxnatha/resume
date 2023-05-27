@@ -8,7 +8,7 @@ aside section {
     padding: 0 20px;
     /* margin-right: 12px; */
     overflow-y: auto;
-    margin: 0 20px 0 0px;
+    margin: 60px 20px 0 0px;
     /* margin-right: 8px; */
     /* border: 2px solid var(--basei); */
     /* background-color: #2a1e42; */
@@ -55,7 +55,7 @@ aside section::-webkit-scrollbar-thumb {
   background: #888888;
   border-radius: 50vmin;
 
-  border: 0px solid var(--background);
+  border: 0px solid var(--border-color);
   /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
   /* border: 200px solid transparent; */
 
@@ -103,23 +103,34 @@ aside section div {
 #color_inversion_notice_box {
   display: none;
 
-  border: 1px solid #777;
+  border: 1px solid var(--border-color);
   padding: 0 20px 20px 20px;
   border-radius: var(--border-radius);
   margin-top: 20px;
 }
 
 
+aside:hover .viewPortMenu:hover {
+  background-color: var(--base60);
+  box-shadow: 0 4px 8px var(--shadow);
 
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+}
 
 .viewPortMenu {
-  margin: 0px 20px 20px 20px;
+  margin: 0;
   padding: 0 0 0 0;
   height: calc(76px);
-  background-color: transparent;
+  position:absolute;
+  width: calc(100%);
+  top:0;
+  background-color: rgba(255, 192, 203, 0);
   overflow: hidden;
 
-  border-bottom: 1px solid grey;
+ 
+
+  /* border-bottom: 1px solid var(--border-color); */
 }
 
 
@@ -136,7 +147,7 @@ aside section div {
 
 aside section a {
 
-  border: 2px solid grey;
+  border: 2px solid var(--border-color);
   margin: 0px 10px 20px 0px;
   padding: 9px 7px;
   border-radius: var(--border-radius-capsule);
@@ -146,4 +157,16 @@ aside section a {
   font-size: 13.3333px;
   height: calc(36px);
   
+}
+
+aside {
+  /*  */
+  background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+
+
+  /* color: white; */
+  
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
 }

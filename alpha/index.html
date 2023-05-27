@@ -229,16 +229,16 @@
 
           <!-- <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> -->
           <select title="This version of the website is highly unstable and contains newest features."
-          onchange="window.open(this.value,'_self')">
-          <option value="#education" onclick="removeAside()" text="Education">Education</option>
-          <option value="#skills" text="Skills">Skills</option>
-          <option value="#projects" text="Projects">Projects</option>
-          <option value="#work" text="Experience">Experience</option>
-          <option value="#recommendations" text="Professional references">References</option>
+            onchange="window.open(this.value,'_self')">
+            <option value="#education" onclick="removeAside()" text="Education">Education</option>
+            <option value="#skills" text="Skills">Skills</option>
+            <option value="#projects" text="Projects">Projects</option>
+            <option value="#work" text="Experience">Experience</option>
+            <option value="#recommendations" text="Professional references">References</option>
 
-          <!-- <option value="#">2024 Beta</option> -->
+            <!-- <option value="#">2024 Beta</option> -->
 
-        </select>
+          </select>
 
           <!-- <a href="#education" onclick="removeAside()" text="Education">Education</a> -->
           <!-- <a href="#skills">Skills</a> -->
@@ -308,10 +308,16 @@
             </summary>
 
             <ul>
-              <li>It looks like you're disconnected from the internet.</li>
-              <li>Try checking your network cables, modem, and routers, or reconnecting to your wireless network.</li>
-              <li>If you continue to use this website being offline, note that no new content gets updated on the canvas
-                except which've been already downloaded.</li>
+
+              <li>You are currently disconnected from the internet.</li>
+              <li> To reconnect, please check your network cables, modem, and router, or reconnect to your wireless
+                network.</li>
+              <li>If you continue to use this website while offline, you will not be able to see any new content that
+                has been posted since you last connected to the internet. Only content that was already loaded on your
+                device will be visible.
+              </li>
+
+             
 
             </ul>
 
@@ -324,191 +330,191 @@
     <!-- id="alertUI" -->
     <dialog data-modal style="display: none;">
 
-      
-        <div id="forscrollbarpadding">
-          <p>Settings</p>
 
-          <span onclick="alertUI(0)" class="close_alert_button"
-            style="position: absolute; top: 20px;right:40px;cursor: pointer;  height: 25px; padding:  0 0 18px 4px;">
-            <span>&times; <span class="close_button_suggestion"> Close</span> </span>
-          </span>
+      <div id="forscrollbarpadding">
+        <p>Settings</p>
 
+        <span onclick="alertUI(0)" class="close_alert_button"
+          style="position: absolute; top: 20px;right:40px;cursor: pointer;  height: 25px; padding:  0 0 18px 4px;">
+          <span>&times; <span class="close_button_suggestion"> Close</span> </span>
+        </span>
+
+        <fieldset>
+          <legend>Color theme preference</legend>
+          <input type="radio" id="" name="" value="" aria-checked="true" checked>
+          <label for="">Inherit from browser settings (default)</label>
+          <br>
+          <input type="radio" id="" name="" value="" disabled="disabled">
+          <label for="">Based on sunrise and sunset times</label>
+          <br>
+          <input type="radio" id="" name="" value="" disabled="disabled">
+          <label for="">Let me control manually</label>
+        </fieldset>
+
+        <div style="display:none;">
           <fieldset>
+
             <legend>Color theme preference</legend>
-            <input type="radio" id="" name="" value="" aria-checked="true" checked>
+
+            <input type="radio" id="" name="" value="">
             <label for="">Inherit from browser settings (default)</label>
+
             <br>
-            <input type="radio" id="" name="" value="" disabled="disabled">
+            <input type="radio" id="" name="" value="">
             <label for="">Based on sunrise and sunset times</label>
+
             <br>
-            <input type="radio" id="" name="" value="" disabled="disabled">
+
+            <input type="radio" id="" name="" value="">
             <label for="">Let me control manually</label>
-          </fieldset>
-
-          <div style="display:none;">
-            <fieldset>
-
-              <legend>Color theme preference</legend>
-
-              <input type="radio" id="" name="" value="">
-              <label for="">Inherit from browser settings (default)</label>
-
-              <br>
-              <input type="radio" id="" name="" value="">
-              <label for="">Based on sunrise and sunset times</label>
-
-              <br>
-
-              <input type="radio" id="" name="" value="">
-              <label for="">Let me control manually</label>
-
-
-            </fieldset>
-
-            <fieldset>
-              <legend>Dark theme manual control</legend>
-
-              <input type="radio" id="" name="" value="">
-              <label for="">Never</label>
-              <br>
-              <input type="radio" id="" name="" value="">
-              <label for="">Always</label>
-              <br>
-              <input type="radio" id="" name="" value="">
-              <label for="">Custom time</label>
-
-            </fieldset>
-            <fieldset>
-              <legend>Dark theme manual control custom time</legend>
-
-              <label for="">Between</label>
-
-              <input type="time" id="" name="" value="">
-
-              <label for="">and</label>
-
-              <input type="time" id="" name="" value="">
-
-              next day.
-
-            </fieldset>
-
-            <fieldset>
-              <legend>Time preference</legend>
-
-              <input type="radio" id="" name="" value="">
-              <label for="">Take time from server</label>
-              <br>
-              <input type="radio" id="" name="" value="">
-              <label for="">Take time from OS settings</label>
-
-            </fieldset>
-
-            <fieldset>
-              <legend>Time zone</legend>
-
-              <input type="radio" id="" name="" value="">
-              <label for="">Grant location permission</label>
-              <br>
-              <input type="radio" id="" name="" value="">
-              <label for="">Manually select time zone</label>
-
-            </fieldset>
-
-            <fieldset>
-              <legend>Time zone manual selection</legend>
-
-              <select id="timezone-select">
-                <option value="UTC-11">UTC-11</option>
-                <option value="UTC-10">UTC-10</option>
-                <option value="UTC-9">UTC-9</option>
-                <!-- add more options for other timezones -->
-              </select>
-
-
-            </fieldset>
-
-
-          </div>
-
-
-          <fieldset>
-
-            <legend>Font</legend>
-
-            <input type="radio" id="" name="" value="" aria-checked="true" checked>
-            <label for="">Work Sans (default)</label>
-
-            <br>
-            <input type="radio" id="" name="" value="" disabled="disabled">
-            <label for="">Inherit from browser settings</label>
-
-          </fieldset>
-
-          <fieldset>
-
-            <legend>Background preference</legend>
-
-            <input type="radio" name="radio-group-background-video" value="background-video-disable"
-              id="background-video-disable" checked>
-            <label for="background-video-disable">Disable (default)</label>
-
-            <br>
-            <input type="radio" name="radio-group-background-video" value="background-video-enable"
-              id="background-video-enable">
-            <label for="background-video-enable">Enable</label>
-
-
-
-
 
 
           </fieldset>
 
           <fieldset>
+            <legend>Dark theme manual control</legend>
 
-            <legend>Travel to</legend>
-
-            <input type="radio" id="" name="" value="" aria-checked="true" checked>
-            <label for="">Today (default)</label>
-
-            <br>
-            <input type="radio" id="" name="" value="" disabled="disabled">
-            <label for="">Date I select</label>
-
-
-            <input style="text-align: center;" type="date" name="" id="" disabled="disabled">
-
-            <br>
-
-          </fieldset>
-
-          <fieldset>
-
-            <legend>Data saver</legend>
-
-            <input type="radio" id="" name="" value="" aria-checked="true" checked>
-            <label for="">When low internet speeds detected (default)</label>
-
-            <br>
-            <input type="radio" id="" name="" value="" disabled="disabled">
+            <input type="radio" id="" name="" value="">
             <label for="">Never</label>
-
             <br>
-
-            <input type="radio" id="" name="" value="" disabled="disabled">
+            <input type="radio" id="" name="" value="">
             <label for="">Always</label>
+            <br>
+            <input type="radio" id="" name="" value="">
+            <label for="">Custom time</label>
 
+          </fieldset>
+          <fieldset>
+            <legend>Dark theme manual control custom time</legend>
+
+            <label for="">Between</label>
+
+            <input type="time" id="" name="" value="">
+
+            <label for="">and</label>
+
+            <input type="time" id="" name="" value="">
+
+            next day.
 
           </fieldset>
 
-          <span style=" margin: 0 0 0px 45px;" id="version-of-website"></span> <br><br>
-          <span style="margin-left: 45px;" id="last-updated-on-date"></span> <br><br>
+          <fieldset>
+            <legend>Time preference</legend>
 
+            <input type="radio" id="" name="" value="">
+            <label for="">Take time from server</label>
+            <br>
+            <input type="radio" id="" name="" value="">
+            <label for="">Take time from OS settings</label>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Time zone</legend>
+
+            <input type="radio" id="" name="" value="">
+            <label for="">Grant location permission</label>
+            <br>
+            <input type="radio" id="" name="" value="">
+            <label for="">Manually select time zone</label>
+
+          </fieldset>
+
+          <fieldset>
+            <legend>Time zone manual selection</legend>
+
+            <select id="timezone-select">
+              <option value="UTC-11">UTC-11</option>
+              <option value="UTC-10">UTC-10</option>
+              <option value="UTC-9">UTC-9</option>
+              <!-- add more options for other timezones -->
+            </select>
+
+
+          </fieldset>
 
 
         </div>
-      
+
+
+        <fieldset>
+
+          <legend>Font</legend>
+
+          <input type="radio" id="" name="" value="" aria-checked="true" checked>
+          <label for="">Work Sans (default)</label>
+
+          <br>
+          <input type="radio" id="" name="" value="" disabled="disabled">
+          <label for="">Inherit from browser settings</label>
+
+        </fieldset>
+
+        <fieldset>
+
+          <legend>Background preference</legend>
+
+          <input type="radio" name="radio-group-background-video" value="background-video-disable"
+            id="background-video-disable" checked>
+          <label for="background-video-disable">Disable (default)</label>
+
+          <br>
+          <input type="radio" name="radio-group-background-video" value="background-video-enable"
+            id="background-video-enable">
+          <label for="background-video-enable">Enable</label>
+
+
+
+
+
+
+        </fieldset>
+
+        <fieldset>
+
+          <legend>Travel to</legend>
+
+          <input type="radio" id="" name="" value="" aria-checked="true" checked>
+          <label for="">Today (default)</label>
+
+          <br>
+          <input type="radio" id="" name="" value="" disabled="disabled">
+          <label for="">Date I select</label>
+
+
+          <input style="text-align: center;" type="date" name="" id="" disabled="disabled">
+
+          <br>
+
+        </fieldset>
+
+        <fieldset>
+
+          <legend>Data saver</legend>
+
+          <input type="radio" id="" name="" value="" aria-checked="true" checked>
+          <label for="">When low internet speeds detected (default)</label>
+
+          <br>
+          <input type="radio" id="" name="" value="" disabled="disabled">
+          <label for="">Never</label>
+
+          <br>
+
+          <input type="radio" id="" name="" value="" disabled="disabled">
+          <label for="">Always</label>
+
+
+        </fieldset>
+
+        <span style=" margin: 0 0 0px 45px;" id="version-of-website"></span> <br><br>
+        <span style="margin-left: 45px;" id="last-updated-on-date"></span> <br><br>
+
+
+
+      </div>
+
     </dialog>
 
     <div class="smallNotification_div" id="smallNotification">
@@ -1117,19 +1123,20 @@
 
         <div class="controlButtons">
           <div>
-          <!--  -->
-          <span class="material-symbols-outlined asideCloseClass" id="asideClose" title="Close">close</span>
+            <!--  -->
+            <span class="material-symbols-outlined asideCloseClass" id="asideClose" title="Close">close</span>
 
 
-          <span class="material-symbols-outlined asideCloseClass" id="fsenterclick" title="Fullscreen">fullscreen</span>
-          <span class="material-symbols-outlined asideCloseClass" id="fsexitclick" style="display:none;" title="Exit fullscreen">fullscreen_exit</span>
+            <span class="material-symbols-outlined asideCloseClass" id="fsenterclick"
+              title="Fullscreen">fullscreen</span>
+            <span class="material-symbols-outlined asideCloseClass" id="fsexitclick" style="display:none;"
+              title="Exit fullscreen">fullscreen_exit</span>
 
 
 
-          <span  class="material-symbols-outlined asideCloseClass"
-            title="Unfold more">unfold_more</span>
-          <span  style=" display:none;" class="material-symbols-outlined asideCloseClass"
-            title="Unfold less">unfold_less</span>
+            <span class="material-symbols-outlined asideCloseClass" title="Unfold more">unfold_more</span>
+            <span style=" display:none;" class="material-symbols-outlined asideCloseClass"
+              title="Unfold less">unfold_less</span>
 
           </div>
 
@@ -1451,7 +1458,7 @@
 
 
       <!-- <section id="mainSettings" style="display:grid;"> -->
-        <section id="mainSettings" style="display:none;">
+      <section id="mainSettings" style="display:none;">
         <span style="margin-top: 20px;">
           <h3>Display style</h3>
         </span>
@@ -1524,15 +1531,15 @@
 
 
           <label title="Toggle normal view">
-            <span style=" border: 2px solid #777777;">Normal</span>
+            <span style=" border: 2px solid var(--border-color);">Normal</span>
           </label>
           <br>
-          <span style=" border: 2px solid #777777;">Left</span>
-          <span style=" border: 2px solid #777777;">Front</span>
-          <span style=" border: 2px solid #777777;">Right</span>
-          <span style=" border: 2px solid #777777;">Top</span>
-          <span style=" border: 2px solid #777777;">Bottom</span>
-          <span style=" border: 2px solid #777777;">Back</span>
+          <span style=" border: 2px solid var(--border-color);">Left</span>
+          <span style=" border: 2px solid var(--border-color);">Front</span>
+          <span style=" border: 2px solid var(--border-color);">Right</span>
+          <span style=" border: 2px solid var(--border-color);">Top</span>
+          <span style=" border: 2px solid var(--border-color);">Bottom</span>
+          <span style=" border: 2px solid var(--border-color);">Back</span>
 
 
 
@@ -1595,12 +1602,10 @@
         <div class="banner" style="float:right;" id="default_focus" draggable="true">
           <article class="banner_background">
 
-            <span class="name_brand_on_picture" style="float:right;">Rahul Natha at 2021</span>
+            <span class="name_brand_on_picture" style="float:right;">2023</span>
             <br><br>
-            <span class="name_brand_on_picture" style="float:right;">#CustomProfile</span>
-            <br><br>
-            <span style="float:right;">Welcome to my website. Here you can view what all I have for
-              you.</span>
+            
+            <span style="float:right"; class="banner_text typewrite";>Welcome</span>
 
 
           </article>

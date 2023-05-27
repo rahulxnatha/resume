@@ -35,7 +35,7 @@ select {
 
 
   border-radius: 7px;
-  border: 2px solid grey;
+  border: 2px solid var(--border-color);
   /* border-radius: 7px; */
 
   background-color: var(--fonti);

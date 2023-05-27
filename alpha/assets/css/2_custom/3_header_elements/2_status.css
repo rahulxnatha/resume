@@ -17,11 +17,11 @@
   }
   
   .status.online {
-    border: 0px solid #41a700;
+    border: 0px solid var(--border-color);
     color: #41a700;
   }
   
   .status.offline {
-    border: 0px solid #f15c4f;
+    border: 0px solid var(--border-color);
     color: #f15c4f;
   }

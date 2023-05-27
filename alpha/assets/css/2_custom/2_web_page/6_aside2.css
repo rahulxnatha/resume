@@ -7,7 +7,7 @@
     margin: 20px 20px 20px 0px;
     height: calc(100vh - 100px);
     padding: 20px 0px 20px 0px;
-    border: 2px solid rgba(128, 128, 128, 0.2);
+    border: 2px solid var(--border-color);
     border-left: 0px solid;
     border-top-right-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
@@ -33,7 +33,7 @@
     margin: 20px 20px 20px 0px;
     height: calc(100vh - 100px);
     padding: 20px 0px 20px 10px;
-    border: 2px solid rgb(128, 128, 128);
+    border: 2px solid var(--border-color);
     border-left: 0px solid;
     border-top-right-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
