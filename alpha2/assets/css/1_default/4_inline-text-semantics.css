@@ -1,0 +1,46 @@
+a:link {
+  text-decoration: none;
+  color: var(--a);
+}
+a:visited {
+  text-decoration: none;
+  color: var(--a);
+}
+a:hover {
+  text-decoration:none;
+  color: var(--a-hover);
+  
+  
+}
+a:active {
+  text-decoration: none;
+  color: var(--a);
+}
+
+a[href^="mailto"]::before {
+  content: "📧 ";
+}
+
+a[href^="tel"]::before {
+  content: "📞 ";
+}
+
+a[href^="http"]::before {
+  content: "";
+}
+
+i {
+  color: var(--a);
+}
+
+
+
+
+li, fieldset {
+  line-height: 200%;
+}
+
+fieldset {
+  margin: 0 20px 20px 20px;
+}
+

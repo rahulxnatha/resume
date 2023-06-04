@@ -1,0 +1,228 @@
+article,
+
+#contact a {
+
+    position: relative;
+
+    margin: 0;
+    padding: 20px 20px 20px 20px;
+
+    border: 2px solid var(--border-color);
+    /* border: 2px solid transparent; */
+    cursor: pointer;
+
+    max-width: 600px;
+    background-color: var(--windowBackground);
+    /* background-color: var(--articleBackground); */
+    overflow: hidden;
+
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease-in-out, transform 0.5s ease;
+
+    outline-color: #aaaaaa;
+    outline-width: 2px;
+    outline-style: hidden;
+    outline-offset: 6px;
+
+    box-shadow: 0 4px 8px var(--shadow);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+
+
+}
+
+
+
+@keyframes border-animation-article {
+    0% {
+        transform: translateX(0px);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+
+    75% {
+        transform: translateX(1px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+
+article:hover {
+
+    transform: rotate(0deg) scale(1.01);
+    border-radius: var(--border-radius-on-hover);
+    /* transition-delay: 1s; */
+    /* animation: border-animation-article 0.3s linear infinite; */
+    box-shadow: 10px 10px 5px rgba(135, 137, 83, 0.5);
+}
+
+
+#contact a {
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+
+.skillBase {
+    background-color: var(--base);
+    margin: 5px -20px 0 -20px;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+article:hover,
+#contact a:hover {
+    z-index: 3;
+}
+
+.article_hovered {
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition-duration: 200ms;
+
+    /* transition: transform 0.2s; */
+}
+
+/* aside section a:hover {
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    z-index: 4;
+   
+} */
+
+/* aside section a, */
+#contact a {
+    display: inline-block;
+    margin: 0 20px 20px 0;
+}
+
+/* aside section a:hover  */
+article:hover,
+#contact a:hover {
+    /* background-color: var(--base); */
+
+    box-shadow: 0px var(--shadow);
+
+    background-color: var(--base80);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+
+    /* animation: article_hover 3s ease 1; */
+}
+
+
+
+
+
+article h1 {
+    font-size: 18px;
+}
+
+article p {
+    font-size: 14px;
+    padding: 0;
+    margin: 10px 0 0 0;
+    line-height: 20px;
+}
+
+
+article.active {
+    outline: 4px solid #aaa;
+    outline-offset: 6px;
+    border: 2px solid var(--border-color);
+}
+
+
+.banner {
+    min-height: 30vmin;
+    min-width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    /* display: none; */
+
+    margin-top: 20px;
+    /**/
+
+    /* animation: mymove 5s infinite; */
+}
+
+.banner_background {
+    /*  */
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+
+
+    /* color: white; */
+    
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size:cover;
+    min-height: 250px;
+    /* border-radius: 0%; */
+    /* height: 100%; */
+    /* width: 100%; */
+}
+
+
+
+.banner_text {
+    position: absolute;
+    bottom:0;
+    padding: 0 20px 20px 0;
+    margin-left: 40%;
+    font-weight: 900;
+    font-size: 70px;
+}
+
+/* for banner  */
+.name_brand_on_picture {
+    padding: 7px;
+    background-color: #88888888;
+    border-radius: var(--border-radius);
+}
+
+.cmrcet {
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/tile\ backg/CMRCET.jpg");
+
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: cover;
+}
+
+
+
+main>#mainSettings>label {
+    padding: 0px 20px 20px 20px;
+    border-radius: var(--border-radius);
+    background-color: var(--windowBackground);
+    cursor: pointer;
+}
+
+main>#mainSettings>label:hover {
+
+    background-color: var(--base);
+
+}
+
+#mainSettings {
+    overflow: visible;
+}
+
+
+.article {
+    overflow: hidden;
+    transform: rotateX(10deg) rotateY(0deg);
+    transform-style: preserve-3d;
+
+
+}

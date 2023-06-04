@@ -1,0 +1,154 @@
+main {
+    float: right;
+    /* max-width: calc(100% - 660px - 100px); */
+    width: calc(50%);
+    transition-duration: 50ms;
+    margin: 0;
+    padding: 20px 50px 0 0;
+    z-index: 1;
+    border: 0px solid var(--border-color);
+    /* background-color: var(--windowBackground);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px); */
+
+    position: relative;
+    transform: rotateY(00deg);
+   
+
+
+
+    -webkit-animation-name: animation_main_rotate_on_load;
+    -webkit-animation-duration: 2s;
+    animation-name: animation_main_rotate_on_load;
+    animation-duration: 10s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    transform-origin: 0%;
+}
+
+@-webkit-keyframes animation_main_rotate_on_load {
+    0% {
+        transform: rotateY(90deg);
+    }
+
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes animation_main_rotate_on_load {
+    0% {
+        transform: rotateY(90deg);
+    }
+
+    100% {
+        transform: rotateY(00deg);
+    }
+}
+
+
+#main {
+    background-color: transparent;
+}
+
+
+.mainOnAsideClose {
+    width: 100%;
+    padding-left: 50px;
+}
+
+@media only screen and (max-width: 1230px) {
+    main {
+        float: left;
+        width: calc(100% - 50px);
+        margin-left: 50px;
+        position: relative;
+        top: calc(0px);
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    main {
+        width: calc(100% - 40px);
+        float: left;
+        margin: 0 20px 0 20px;
+        padding: 0;
+        border: 0px solid var(--border-color);
+    }
+}
+
+@supports not (display: grid) {
+    main div {
+        float: right;
+    }
+}
+
+main {
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 300ms;
+    animation-name: animatebottom;
+    animation-duration: 300ms;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+
+}
+
+@-webkit-keyframes animatebottom {
+    0% {
+        top: 100vh;
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {
+        top: 0vh;
+    }
+}
+
+@keyframes animatebottom {
+    0% {
+        top: 100vh;
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {
+        top: 0vh;
+    }
+}

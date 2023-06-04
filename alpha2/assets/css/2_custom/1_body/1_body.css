@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* if CSS Variables aren't supported */
+    background-color: #f8f9fa;
+    background-color: var(--background);
+    /* if CSS Variables aren't supported */
+    color: #34252f;
+    color: var(--font);
+    font-weight: 400;
+    font-family: 'Work Sans', sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: url('../images/pexels-eberhard-grossgasteiger-1421903.jpg');
+        background-image: url('../images/pexels-pixabay-247676m.jpg');
+    }
+}
+
+@media print {
+
+    html,
+    body {
+        /* hide whole page while printing */
+        display: none;
+    }
+}
+
+body {
+    /* Use two colors with 20% opacity */
+    /* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
+    background-size: 200% 200%;
+
+    /* Use animation to move the colors at an angle */
+    animation: AnimationName 10s ease infinite;
+    /* Repeat the animation 3 times only */
+    /* animation-iteration-count: 3; */
+}
+
+@keyframes AnimationName {
+    /* Start from the top right corner */
+    0%{background-position:100% 0%}
+    /* Move to the bottom left corner */
+    100%{background-position:0% 100%}
+}

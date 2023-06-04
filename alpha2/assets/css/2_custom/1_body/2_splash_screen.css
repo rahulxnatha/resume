@@ -1,0 +1,71 @@
+#splash-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--background);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+
+
+.spinner {
+  width: 50vh;
+  height: 50vh;
+  position: relative;
+  /* transition: filter 2s ease-in-out, background 2s ease-in-out; */
+  transition: width 2s ease-in-out, height 2s ease-in-out;
+}
+
+.spinner .bounce1,
+.spinner .bounce2,
+.spinner .bounce3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  background-color: var(--base50i);
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.spinner .bounce2 {
+  animation-delay: -1s;
+}
+
+.spinner .bounce3 {
+  animation-delay: -0.5s;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+
+.spinner.loaded {
+
+  width: 200vh;
+  height: 200vh;
+
+  /* filter: blur(30px);
+  background: radial-gradient(circle at 50% 50%, var(--base), rgba(76, 0, 255, 0)); */
+
+}

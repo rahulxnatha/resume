@@ -1,0 +1,197 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  z-index: 1;
+  font-family: 'Work Sans', sans-serif;
+  
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+
+  
+}
+
+:root {
+  color-scheme: light dark;
+
+  --lightBackground: #f7f7f7;
+  --darkBackground: #121212;
+  --darkBackground: #030303;
+
+  --lightWindowBackground: #ffffff80;
+  --darkWindowBackground: #343a4050;
+
+
+  --darkArticleBackground: #102d4950;
+
+  --lightWindow: #ffffff18;
+  --darkWindow: #343a4018;
+
+  --lightFont: #272727;
+  --darkFont: #f1faee;
+
+  --lightAnchor: #234e97;
+  --lightAnchor20: hsla(218, 62%, 36%, 0.2);
+  --lightAnchorHover: #123b83;
+  --darkAnchor: #5fbcbf;
+  --darkAnchor20: hsla(182, 43%, 56%, 0.2);
+  --darkAnchorHover: #75ebef;
+
+  --lightSelection: #457b9d50;
+  --darkSelection: #a8dadc50;
+
+  --lightShadow: hsla(0, 0%, 0%, 0.14);
+  --darkShadow: rgba(0, 0, 0, 0.86);
+
+  --light-border-color: #777777;
+  --dark-border-color: #999999;
+
+  --border-radius-capsule: 50vmin;
+  /* --border-radius-capsule: 0vmin; */
+  --border-radius: 24px;
+  /* --border-radius: 0px; */
+  --border-radius-on-hover: 24px;
+  /* --border-radius-on-hover: 0px; */
+}
+
+:root {
+  --background: var(--lightBackground);
+  --font: var(--lightFont);
+  --windowBackground: var(--lightWindowBackground);
+  --a: var(--lightAnchor);
+  
+  --selection: var(--lightSelection);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Work+Sans:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');
+
+
+
+
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --base: #ffffff;
+    --basei: #000;
+    --base80: hsla(0, 0%, 100%, 0.8);
+    --base60: hsla(0, 0%, 100%, 0.6);
+    --base50i: hsla(0, 0%, 0%, 0.5);
+    --background: var(--lightBackground);
+    --font: var(--lightFont);
+    --fonti: var(--darkFont);
+    --windowBackground: var(--lightWindowBackground);
+    --articleBackground: var(--lightArticleBackground);
+    --window: var(--lightWindow);
+    --a: var(--lightAnchor);
+    --a-hover: var(--lightAnchorHover);
+    --accentColor: var(--lightAnchor);
+    --accentColor20: var(--lightAnchor20);
+    --ai: var(--darkAnchor);
+    --ai20: var(--darkAnchor20);
+    --selection: var(--lightSelection);
+    --selectioni: var(--darkSelection);
+    --shadow: var(--lightShadow);
+    --border-color: var(--light-border-color);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base: #000000;
+    --basei: #fff;
+    --base80: hsla(0, 0%, 0%, 0.8);
+    --base60: hsla(0, 0%, 0%, 0.6);
+    --base50i: hsla(0, 0%, 100%, 0.5);
+    --background: var(--darkBackground);
+    --font: var(--darkFont);
+    --fonti: var(--lightFont);
+    --windowBackground: var(--darkWindowBackground);
+    --articleBackground: var(--darkArticleBackground);
+    --window: var(--darkWindow);
+    /* focus */
+    --a: var(--darkAnchor);
+    --a-hover: var(--darkAnchorHover);
+    --accentColor: var(--darkAnchor);
+    --accentColor20: var(--darkAnchor20);
+    --ai: var(--lightAnchor);
+    --ai20: var(--lightAnchor20);
+    --selection: var(--darkSelection);
+    --selectioni: var(--lightSelection);
+    --shadow: var(--darkShadow);
+    --border-color: var(--dark-border-color);
+  }
+}
+
+::-moz-selection {
+  background: var(--selection);
+}
+
+::selection {
+  background: var(--selection);
+}
+
+/* ::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px none;
+  background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #88888888;
+  border-radius: 50vmin;
+  border: 4px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+} */
+
+
+/* using this */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px none;
+  background-color: var(--background);
+  background-color: #00000000;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888888;
+  /* border-radius: 50vmin; */
+  border-radius: var(--border-radius);
+
+  border: 4px solid var(--background);
+  /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
+  /* border: 200px solid transparent; */
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #88888888;
+}
+

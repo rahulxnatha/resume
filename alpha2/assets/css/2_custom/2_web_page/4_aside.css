@@ -1,0 +1,243 @@
+aside {
+    z-index: 2;
+
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    width: calc(50% - 150px);
+    margin: 20px 20px 20px 100px;
+    height: calc(100vh - 200px);
+    padding: 20px 0px 20px 0px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease-in-out;
+    overflow-y: hidden;
+    overflow: hidden;
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    transition-duration: 500ms;
+
+    box-shadow: 0 4px 8px var(--shadow);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+}
+
+aside:hover {
+    border-radius: var(--border-radius-on-hover);
+}
+
+.asideMoveOut {
+    left: -50%;
+    transition-duration: 25ms;
+}
+
+@media (prefers-color-scheme: light) {
+    aside {
+        background-color: var(--windowBackground);
+    }
+}
+
+aside,
+.viewPortMenu,
+.viewport,
+.viewPort,
+.briefblock,
+.tabbar,
+.tabbar>div {
+    transition-duration: 0.5s;
+}
+
+
+
+
+
+
+
+
+aside h2 {
+    font-size: 2em;
+}
+
+@media only screen and (max-width: 1230px) {
+    aside {
+        z-index: 7;
+        transition-duration: 500ms;
+        position: fixed;
+
+        width: calc(100% - 2 * 20px);
+        margin: 20px 0px 20px 20px;
+        height: calc(20vh - 40px);
+        padding: 20px 0px 20px 0px;
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+
+        top: calc(80vh);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+
+
+
+    aside {
+        z-index: inherit;
+        transition-duration: 500ms;
+        position: inherit;
+        width: calc(100% - 80px);
+        margin: 20px 20px 20px 40px;
+        height: calc(100vh - 100px);
+        padding: 20px 0px 20px 0px;
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+    }
+
+    aside h1 {
+        font-size: 3em;
+        /* font-family: "Montserrat", sans-serif; */
+    }
+}
+
+
+
+
+
+
+.context-menu {
+    position: absolute;
+    text-align: left;
+    background: var(--fonti);
+    border: 0px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--font);
+}
+
+.context-menu ul {
+    padding: 0px;
+    margin: 0px;
+    min-width: 150px;
+    list-style: none;
+}
+
+.context-menu ul li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border: 1px solid var(--border-color);
+}
+
+.context-menu ul li a {
+    text-decoration: none;
+    color: black;
+    color: var(--font);
+    padding: 20px;
+}
+
+.context-menu ul li:hover {
+    background: darkgray;
+}
+
+
+aside {
+    -webkit-animation-name: aside_animatebottom;
+    -webkit-animation-duration: 3s;
+    animation-name: aside_animatebottom;
+    animation-duration: 3s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    
+}
+
+@-webkit-keyframes aside_animatebottom {
+    0% {
+        top: 100vw;
+        height: calc(100vh - 200px);
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {
+        
+    }
+}
+
+@keyframes aside_animatebottom {
+    0% {
+        left: -100vw;
+        height: calc(100vh - 100px);
+    }
+
+    10% {
+        left: -0vw;
+    }
+
+    
+    
+
+    50% {
+        height: calc(100vh - 100px);
+    }
+    
+    100% {
+        height: calc(100vh - 200px);
+    }
+
+
+}
+
+#viewport {
+    -webkit-animation-name: viewport_animatebottom;
+    -webkit-animation-duration: 3s;
+    animation-name: viewport_animatebottom;
+    animation-duration: 3s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+    
+}
+
+@keyframes viewport_animatebottom {
+    0% {
+       
+        height: calc(100vh - 100px - 40px - 60px  - 40px);
+    }
+
+   
+
+    
+    
+
+    50% {
+        height: calc(100vh - 100px - 40px - 60px  - 40px);
+    }
+    
+    100% {
+        height: calc(100vh - 100px - 40px - 60px - 100px - 40px);
+    }
+
+
+}
