@@ -7,7 +7,7 @@ article,
     margin: 0;
     padding: 20px 20px 20px 20px;
 
-    border: 2px solid var(--border-color);
+    border: 0px solid var(--border-color);
     /* border: 2px solid transparent; */
     cursor: pointer;
 
@@ -24,7 +24,7 @@ article,
     outline-style: hidden;
     outline-offset: 6px;
 
-    box-shadow: 0 4px 8px var(--shadow);
+    box-shadow: 0 1px 2px var(--shadow);
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
@@ -60,7 +60,8 @@ article:hover {
     border-radius: var(--border-radius-on-hover);
     /* transition-delay: 1s; */
     /* animation: border-animation-article 0.3s linear infinite; */
-    box-shadow: 10px 10px 5px rgba(135, 137, 83, 0.5);
+    /* box-shadow: 0px 1px 2px rgba(135, 137, 83, 0.5); */
+    box-shadow: 0 1px 4px var(--shadow);
 }
 
 
@@ -111,7 +112,7 @@ article:hover,
 #contact a:hover {
     /* background-color: var(--base); */
 
-    box-shadow: 0px var(--shadow);
+    /* box-shadow: 0px var(--shadow); */
 
     background-color: var(--base80);
 

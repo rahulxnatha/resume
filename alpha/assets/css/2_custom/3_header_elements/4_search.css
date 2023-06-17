@@ -25,7 +25,7 @@
   transition: width 1s ease, margin 1s ease;
 
 
-  box-shadow: 0 2px 4px var(--shadow);
+  box-shadow: 0 1px 2px var(--shadow);
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);

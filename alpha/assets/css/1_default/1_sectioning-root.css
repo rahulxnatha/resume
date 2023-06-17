@@ -23,6 +23,7 @@
 
 :root {
   color-scheme: light dark;
+  transition: background-color 1s;
 
   --lightBackground: #f7f7f7;
   --darkBackground: #121212;
@@ -60,7 +61,7 @@
   /* --border-radius-capsule: 0vmin; */
   --border-radius: 24px;
   /* --border-radius: 0px; */
-  --border-radius-on-hover: 24px;
+  --border-radius-on-hover: 7px;
   /* --border-radius-on-hover: 0px; */
 }
 
@@ -146,24 +147,7 @@
   background: var(--selection);
 }
 
-/* ::-webkit-scrollbar {
-  width: 18px;
-}
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0px none;
-  background-color: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #88888888;
-  border-radius: 50vmin;
-  border: 4px solid var(--background);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #888888;
-} */
 
 
 /* using this */
@@ -181,17 +165,44 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888888;
-  /* border-radius: 50vmin; */
+  background: #77777777;
+ 
+  border: 0px solid var(--background);
+ 
   border-radius: var(--border-radius);
-
   border: 4px solid var(--background);
-  /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
-  /* border: 200px solid transparent; */
-
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #88888888;
+  
+  background-color: #88888888;
+  background-color: var(--accentColor);
 }
+
+
+/* -------------------------------------------------------- */
+
+
+
+/* Scrollbar Styles for Firefox */
+/* Note: Firefox does not support border-radius on scrollbar thumb */
+/* @-moz-document url-prefix() {
+  scrollbar-width: thin;
+  scrollbar-color: #888888 var(--background);
+} */
+
+/* Scrollbar Styles for Microsoft Edge and IE */
+/* Note: Edge and IE do not support customizing scrollbar styles */
+@supports (-ms-overflow-style: none) {
+  /* Hide default scrollbar */
+  ::-ms-scrollbar {
+    display: none;
+  }
+
+  /* Show custom scrollbar track */
+  ::-ms-scrollbar-track {
+    background-color: var(--background);
+  }
+}
+
 
