@@ -69,9 +69,9 @@ const article_h1s = document.querySelectorAll(".typewrite, article h1");
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  setTimeout(function () {
+  // setTimeout(function () {
 
-  }, 0000);
+  // }, 0000);
 
   setTimeout(function () {
 

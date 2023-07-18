@@ -391,14 +391,14 @@ for (let i = 0; i < articles.length; i++) {
 
 
 
-            setTimeout(function () {
+            // setTimeout(function () {
 
                 briefblock[clickedArticleIs].style.display = "none";
                 briefblock[0].style.display = "none";
 
 
                 briefblock[i].style.display = "inline";
-            }, 000);
+            // }, 000);
 
             // briefblock[i].style.display = "inline";
 
@@ -440,9 +440,9 @@ for (let i = 0; i < articles.length; i++) {
                 document.getElementById("color_inversion_notice_box").style.display = "none";
             }
 
-            setTimeout(function () {
+            // setTimeout(function () {
                 document.getElementById("smallNotiText").innerText = "Great! Click it to read about it.";
-            }, 000);
+            // }, 000);
 
 
 
@@ -472,13 +472,13 @@ for (let i = 0; i < articles.length; i++) {
 
 
 
-            setTimeout(function () {
+            // setTimeout(function () {
 
                 briefblock[i].style.display = "none";
                 briefblock[clickedArticleIs].style.display = "none";
                 briefblock[0].style.display = "inline";
 
-            }, 00);
+            // }, 00);
 
             // briefblock[0].style.display = "inline";
 

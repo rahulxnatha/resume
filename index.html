@@ -194,9 +194,22 @@
           <a href="#work" title="Work experience"> Experience</a>
 
         </nav>
-        <nav style="float:left; margin-left: 20px; ">
-          <a style="color:#77777731;" href="alpha/index.html" title="Switch to Alpha Testing Version"
-            onMouseOver="this.style.color='var(--font)'" onMouseOut="this.style.color='#77777731'">Alpha</a>
+        <nav style="float:left; margin-left: 20px; color:#77777731;" onMouseOver="this.style.color='var(--font)'" onMouseOut="this.style.color='#77777731'">
+
+          <select title="This version of the website is highly unstable and contains newest features."
+            onchange="window.open(this.value,'_self')">
+            <option value="#">Stable</option>
+
+            <option value="alpha/index.html">Alpha</option>
+            <option value="canary/index.html">Canary</option>
+
+            <!-- <option value="#">2024 Beta</option> -->
+
+          </select>
+
+
+          <!-- <a href="alpha/index.html" title="Switch to Alpha Testing Version"
+            >Alpha</a> -->
         </nav>
         <!-- <nav style="float:left; margin-left: 20px; ">
           <a style="color:#77777777;" href="../resource-manager/docs/index.html" title="Highlights"
@@ -332,21 +345,22 @@
 
           <h2>Before you continue..</h2>
 
-        
+
           <h3>The Body</h3>
 
           <ol>
             <li>
-              The most prominent element is the preview box. 
-              It can be found at the left side on the desktop screen, or at the centre when viewed on smaller size screens.
+              The most prominent element is the preview box.
+              It can be found at the left side on the desktop screen, or at the centre when viewed on smaller size
+              screens.
               This preview box shows the content related to the tile which is hovered or clicked by the curser.
             </li>
             <li>
-              At the right pane, a series of headings and tiles will be shown. 
+              At the right pane, a series of headings and tiles will be shown.
               Each tile indicates some specific topic.
             </li>
             <li>
-              In order to read more about a tile, 
+              In order to read more about a tile,
               the user needs to click on the tile,
               and then unhide the preview box if it is not already in the view,
               by clicking the hamburger icon in the header bar.</li>
@@ -367,9 +381,9 @@
           <ol>
             <li> Supported browsers: Latest chromium-based browsers such as Microsoft Edge, Google Chrome, etc., HTML
               based Microsoft Edge, and Mozilla Firefox.</li>
-            
+
           </ol>
-        
+
 
         </div>
 
@@ -500,7 +514,7 @@
               <div id="online_what">résumé</div>
               <div style="visibility: hidden;">portfolio</div>
             </div>
-            
+
 
             <!-- <iframe width="100%" style="min-height:315px ; border-radius: 7px;"
               src="https://www.youtube.com/embed/b_dHWoMlMzI" title="YouTube video player" frameborder="0"

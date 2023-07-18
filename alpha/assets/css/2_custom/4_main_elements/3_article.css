@@ -20,9 +20,9 @@ article,
     transition: border-radius 0.5s ease-in-out, transform 0.5s ease;
 
     outline-color: #aaaaaa;
-    outline-width: 2px;
+    outline-width: 1px;
     outline-style: hidden;
-    outline-offset: 6px;
+    outline-offset: 3px;
 
     box-shadow: 0 1px 2px var(--shadow);
 
@@ -72,11 +72,26 @@ article:hover {
 
 .skillBase {
     background-color: var(--base);
-    margin: 5px -20px 0 -20px;
+    margin: 5px -20px -20px -20px;
     padding: 10px 20px;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+    /* position: absolute; */
+    /* bottom: 0px; */
+    width: calc(100% + 40px);
+    min-height: 40px;
+}
+
+.skillBaseIcon {
+
+    background-color: #77777777;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+.number_of_skillbase {
+    padding-bottom: 0px;
+    /* display: block; */
 }
 
 article:hover,
@@ -114,7 +129,7 @@ article:hover,
 
     /* box-shadow: 0px var(--shadow); */
 
-    background-color: var(--base80);
+    background-color: var(--windowBackground);
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
@@ -139,9 +154,10 @@ article p {
 
 
 article.active {
-    outline: 4px solid #aaa;
-    outline-offset: 6px;
-    border: 2px solid var(--border-color);
+    /* outline: 2px solid #aaa; */
+    outline: 2px solid var(--border-color);
+    outline-offset: 3px;
+    border: 0px solid var(--border-color);
 }
 
 
@@ -227,3 +243,4 @@ main>#mainSettings>label:hover {
 
 
 }
+

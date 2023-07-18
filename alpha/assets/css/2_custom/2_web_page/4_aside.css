@@ -10,18 +10,20 @@ aside {
     padding: 20px 0px 20px 0px;
     border: 0px solid var(--border-color);
     border-radius: var(--border-radius);
-    transition: border-radius 0.5s ease-in-out;
+    transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
     overflow-y: hidden;
     overflow: hidden;
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
-    transition-duration: 500ms;
+    transition-duration: 5s;
 
     box-shadow: 0 1px 2px var(--shadow);
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
+
+    
 }
 
 aside:hover {
@@ -41,7 +43,7 @@ aside:hover {
     }
 }
 
-aside,
+
 .viewPortMenu,
 .viewport,
 .viewPort,

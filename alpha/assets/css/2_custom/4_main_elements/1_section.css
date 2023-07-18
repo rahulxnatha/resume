@@ -31,6 +31,7 @@ main section {
 
 main section:hover {
     background-color: var(--windowBackground);
+    background-color: transparent;
     /* -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px); */
 

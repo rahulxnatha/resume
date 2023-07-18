@@ -19,9 +19,9 @@ header {
 
 
 header>div {
-  min-width: 1300px;
+  min-width: 1000px;
   /* height: 60px; */
-  overflow-y:unset;
+  overflow-y: unset;
 }
 
 
@@ -62,4 +62,27 @@ header span {
   }
 
 
+}
+
+@media only screen and (max-width: 1230px) {
+
+#JSregulated74545, .hide_on_mobile,
+
+  header nav,
+
+  .status,
+  .status2,
+  .status.online,
+  .status.offline,
+
+  .search_bar {
+    display: none;
+  }
+
+
+  header>div {
+    min-width: 30px;
+    /* height: 60px; */
+    overflow-y: unset;
+  }
 }

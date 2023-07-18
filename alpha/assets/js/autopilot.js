@@ -3,6 +3,42 @@ document.getElementById("last-updated-on-date").innerText = "Last updated: 21 Ap
 
 
 
+
+// var inputs = document.querySelectorAll('input');
+
+// for (var i = 0; i < inputs.length; i++) {
+//   inputs[i].style.appearance = 'none';
+// }
+var screenWidth = screen.width;
+
+var width_aside_increase = 0;
+
+function changeWidth_aside() {
+  width_aside_increase = 200;
+
+
+  document.getElementsByTagName("main")[0].style.width = "calc(" + screenWidth/2 + " - " + width_aside_increase + "px)";
+  document.getElementsByTagName("aside")[0].style.width = "calc(50% - 150px + " + width_aside_increase + "px)";
+}
+
+function changeWidth_aside2() {
+  width_aside_increase = 0;
+
+
+  document.getElementsByTagName("main")[0].style.width = "calc(50% - " + width_aside_increase + "px)";
+  document.getElementsByTagName("aside")[0].style.width = "calc(50% - 150px + " + width_aside_increase + "px)";
+}
+
+setTimeout(changeWidth_aside, 2000);
+setTimeout(changeWidth_aside2, 4000);
+
+
+
+
+document.getElementsByTagName("main")[0].style.width = "calc(50% - " + width_aside_increase + "px)";
+document.getElementsByTagName("aside")[0].style.width = "calc(50% - 150px + " + width_aside_increase + "px)";
+
+
 function updateSearchBarWidth() {
   var searchBar = document.getElementById("search_bar");
   var charCount = searchBar.value.length;
@@ -22,7 +58,7 @@ function updateSearchBarWidth() {
   }
 
   searchBar.style.width = updatedWidth + "px";
-  searchBar.style.marginLeft = "calc((100% - 700px - " + updatedWidth + "px)/2)"  ;
+  searchBar.style.marginLeft = "calc((100% - 700px - " + updatedWidth + "px)/2)";
   // searchBar.style.marginLeft = 0 + "px";
 
 
@@ -228,9 +264,9 @@ window.onscroll = function () {
 
     document.getElementById("smallNotiText").innerText = "Scrolling up.";
 
-    setTimeout(function () {
-      document.getElementById("smallNotiText").innerText = "Use the search box to search things.";
-    }, 000);
+    // setTimeout(function () {
+    document.getElementById("smallNotiText").innerText = "Use the search box to search things.";
+    // }, 001);
 
     document.getElementById("viewport").style.transitionDuration = "500ms";
     // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";

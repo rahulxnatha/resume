@@ -27,7 +27,7 @@
 
   --lightBackground: #f7f7f7;
   --darkBackground: #121212;
-  --darkBackground: #030303;
+  --darkBackground: #121212;
 
   --lightWindowBackground: #ffffff80;
   --darkWindowBackground: #343a4050;
@@ -59,7 +59,7 @@
 
   --border-radius-capsule: 50vmin;
   /* --border-radius-capsule: 0vmin; */
-  --border-radius: 24px;
+  --border-radius: 34px;
   /* --border-radius: 0px; */
   --border-radius-on-hover: 7px;
   /* --border-radius-on-hover: 0px; */

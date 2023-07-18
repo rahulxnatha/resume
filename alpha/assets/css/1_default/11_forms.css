@@ -1,3 +1,9 @@
+input {
+  appearance: none;
+}
+
+
+
 button, input[type="button"] {
   /* outline: none; */
   /* cursor: pointer; */
@@ -11,13 +17,14 @@ button, input[type="button"] {
   min-width: 72px;
   min-height: 36px;
   border-radius: var(--border-radius);
-  border: 2px solid var(--border-color);
+  border: 0px solid var(--border-color);
   /* border-radius: 7px; */
   
   background-color: var(--fonti);
+  background-color: rgba(5, 74, 72, 0.185);
   margin: 0 10px 0 0;
 
-  box-shadow: 0 2px 4px var(--shadow);
+  box-shadow: 0 1px 2px var(--shadow);
 
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
@@ -72,9 +79,68 @@ textarea {
 }
 
 
-select {
-  box-shadow: 0 2px 4px var(--shadow);
 
-  -webkit-backdrop-filter: blur(13px);
-  backdrop-filter: blur(13px);
+/* Styling <select> element */
+select {
+ 
+ 
+ 
+ 
+  border-radius: 4px;
+  /* appearance: none;  */
+  /* Hide default dropdown arrow */
+  padding: 5px; /* Padding may not work in all browsers */
+}
+
+/* Styling <option> elements */
+select option {
+  font-size: 14px;
+ 
+}
+
+/* Styling the selected <option> element */
+select option:checked {
+ 
+  font-weight: bold;
+}
+
+
+/* Styling the custom select container */
+.custom-select {
+  position: relative;
+  width: 200px;
+}
+
+/* Styling the select trigger */
+.select-trigger {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styling the options container */
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Styling the individual options */
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Styling the selected option */
+.option.active {
+  background-color: #e6e6e6;
 }
