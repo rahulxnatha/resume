@@ -33,15 +33,23 @@ updateWindowSize();
 var screenWidth = 0;
 
 var increase_width_aside_by = 0;
-
+var aside_enlarged = 0;
 
 function changeWidth_aside() {
-  increase_width_aside_by = 200;
 
-  var windowWidth_half = windowWidth/2;
+
+  if (aside_enlarged) {
+    increase_width_aside_by = 0;
+    aside_enlarged = 0;
+  } else {
+    increase_width_aside_by = 200;
+    aside_enlarged = 1;
+  }
+  
+  var windowWidth_half = windowWidth / 2;
 
   var main_pane_width = windowWidth_half - increase_width_aside_by;
-  var aside_pane_width = (windowWidth_half -  150) + increase_width_aside_by;
+  var aside_pane_width = (windowWidth_half - 150) + increase_width_aside_by;
 
 
   document.getElementsByTagName("main")[0].style.width = "calc(" + main_pane_width + "px)";
