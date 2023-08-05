@@ -16,7 +16,7 @@ aside {
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
-    transition-duration: 5s;
+    transition-duration: 0.5s;
 
     box-shadow: 0 1px 2px var(--shadow);
 

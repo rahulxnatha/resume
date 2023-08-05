@@ -2,7 +2,7 @@ main {
     float: right;
     /* max-width: calc(100% - 660px - 100px); */
     width: calc(50% );
-    transition-duration: 5s;
+    transition-duration: 0.5s;
     margin: 0;
     padding: 20px 50px 0 0;
     z-index: 1;
