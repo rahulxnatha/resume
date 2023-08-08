@@ -18,18 +18,27 @@ aside {
     backdrop-filter: blur(13px);
     transition-duration: 0.5s;
 
-    box-shadow: 0 1px 2px var(--shadow);
+    /* box-shadow: 0 1px 2px var(--shadow); */
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
 
-    
+    /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
+
+    background-color: transparent;
+    /* color: white; */
+
+    /* background-repeat: no-repeat; */
+    /* background-attachment: fixed; */
+    /* background-size: cover; */
+
 }
 
 aside:hover {
     border-radius: var(--border-radius-on-hover);
     box-shadow: 0 1px 4px var(--shadow);
-    
+    background-color: var(--windowBackground);
+
 }
 
 .asideMoveOut {
@@ -157,7 +166,7 @@ aside {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 
-    
+
 }
 
 @-webkit-keyframes aside_animatebottom {
@@ -178,9 +187,7 @@ aside {
         top: -1vh;
     } */
 
-    100% {
-        
-    }
+    100% {}
 }
 
 @keyframes aside_animatebottom {
@@ -193,13 +200,13 @@ aside {
         left: -0vw;
     }
 
-    
-    
+
+
 
     50% {
         height: calc(100vh - 100px);
     }
-    
+
     100% {
         height: calc(100vh - 200px);
     }
@@ -221,24 +228,24 @@ aside {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 
-    
+
 }
 
 @keyframes viewport_animatebottom {
     0% {
-       
-        height: calc(100vh - 100px - 40px - 60px  - 40px);
+
+        height: calc(100vh - 100px - 40px - 60px - 40px);
     }
 
-   
 
-    
-    
+
+
+
 
     50% {
-        height: calc(100vh - 100px - 40px - 60px  - 40px);
+        height: calc(100vh - 100px - 40px - 60px - 40px);
     }
-    
+
     100% {
         height: calc(100vh - 100px - 40px - 60px - 100px - 40px);
     }

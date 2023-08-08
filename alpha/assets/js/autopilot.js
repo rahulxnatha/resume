@@ -37,7 +37,7 @@ var aside_enlarged = 0;
 
 function changeWidth_aside() {
 
-
+  // document.getElementById("default_focus").style.display = "none";
   if (aside_enlarged) {
     increase_width_aside_by = 0;
     aside_enlarged = 0;
@@ -55,6 +55,18 @@ function changeWidth_aside() {
   document.getElementsByTagName("main")[0].style.width = "calc(" + main_pane_width + "px)";
   document.getElementsByTagName("aside")[0].style.width = "calc(" + aside_pane_width + "px)";
 
+  let mainSections = document.querySelectorAll('main section');
+        for (let index = 0; index < mainSections.length; index++) {
+            mainSections[index].classList.toggle("mainSectionsOnDynamicLayoutTest");
+        }
+
+  let mainSpans = document.querySelectorAll('main span');
+        for (let index = 0; index < mainSpans.length; index++) {
+            mainSpans[index].classList.toggle("mainSpansOnDynamicLayoutTest");
+        }
+        
+        document.getElementById("default_focus").classList.toggle("bannerOnDynamicLayoutTest");
+     
   // document.getElementsByTagName("main")[0].style.width = "calc(" + 100 + "px)";
   // document.getElementsByTagName("aside")[0].style.width = "calc(" + 300 + "px)";
 }

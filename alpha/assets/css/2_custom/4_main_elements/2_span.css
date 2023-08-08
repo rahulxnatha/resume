@@ -48,3 +48,11 @@ main span h2 {
       margin-top: 0px;
       margin: 0;
     }}
+
+
+    .mainSpansOnDynamicLayoutTest {
+
+        grid-column-start: 1;
+      grid-column-end: 2;
+      
+    }

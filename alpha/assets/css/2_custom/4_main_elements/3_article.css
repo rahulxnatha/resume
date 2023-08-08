@@ -11,8 +11,8 @@ article,
     /* border: 2px solid transparent; */
     cursor: pointer;
 
-    max-width: 600px;
-    background-color: var(--windowBackground);
+    /* max-width: 600px; */
+    /* background-color: var(--windowBackground); */
     /* background-color: var(--articleBackground); */
     overflow: hidden;
 
@@ -24,7 +24,7 @@ article,
     outline-style: hidden;
     outline-offset: 3px;
 
-    box-shadow: 0 1px 2px var(--shadow);
+    /* box-shadow: 0 1px 2px var(--shadow); */
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
@@ -76,7 +76,7 @@ article:hover {
     padding: 10px 20px;
     /* position: absolute; */
     /* bottom: 0px; */
-    width: calc(100% + 40px);
+    /* width: calc(100% + 40px); */
     min-height: 40px;
 }
 
@@ -163,7 +163,7 @@ article.active {
 
 .banner {
     min-height: 30vmin;
-    min-width: 100%;
+    /* min-width: 100%; */
     grid-column-start: 1;
     grid-column-end: 5;
     /* display: none; */
@@ -173,6 +173,15 @@ article.active {
 
     /* animation: mymove 5s infinite; */
 }
+
+.bannerOnDynamicLayoutTest {
+    margin-top: 20px;
+    grid-column-start: auto;
+    grid-column-end: auto;
+
+}
+
+
 
 .banner_background {
     /*  */
@@ -208,8 +217,8 @@ article.active {
     border-radius: var(--border-radius);
 }
 
-.cmrcet {
-    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/tile\ backg/CMRCET.jpg");
+.cmrcet:hover {
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/tile_backg/CMRCET.jpg");
 
     background-repeat: no-repeat;
     /* background-attachment: fixed; */

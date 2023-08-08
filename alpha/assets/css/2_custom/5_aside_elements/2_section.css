@@ -104,9 +104,11 @@ aside section div {
   display: none;
 
   border: 1px solid var(--border-color);
-  padding: 0 20px 20px 20px;
+  padding: 0 20px 0px 20px;
   border-radius: var(--border-radius);
   margin-top: 20px;
+  background-color: transparent;
+  font-weight: 100;
 }
 
 
@@ -159,14 +161,3 @@ aside section a {
   
 }
 
-aside {
-  /*  */
-  background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
-
-
-  /* color: white; */
-  
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; */
-  background-size: cover;
-}

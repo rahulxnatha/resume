@@ -24,6 +24,13 @@ main section {
     backdrop-filter: blur(0px);  */
 }
 
+.mainSectionsOnDynamicLayoutTest {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* background-color: rgb(18, 50, 50); */
+
+
+}
 .mainSectionOnAsideClose {
     grid-template-columns: repeat(4, 1fr);
 
@@ -43,9 +50,9 @@ main section:hover {
 }
 
 
-#contact_section {
+/* #contact_section {
     box-shadow: 0 0px 0px #00000024;
-}
+} */
 
 @media only screen and (max-width: 1230px) {
 

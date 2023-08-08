@@ -52,9 +52,13 @@
     overflow-y: visible;
     float: left;
     /* border: 0.5px dashed #77777715; */
+
+    visibility: hidden;
 }
 
-
+aside:hover .tabbar, .controlButtons {
+    visibility:visible;
+}
 
 
 .tabbar>div,
