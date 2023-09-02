@@ -4,9 +4,11 @@ aside {
     position: fixed;
     top: 60px;
     left: 0px;
+    /* width: calc(50% - 30px);
+    width: calc(50% - 150px); */
     width: calc(50% - 150px);
-    margin: 20px 20px 20px 100px;
-    height: calc(100vh - 200px);
+    margin: 0px 20px 20px 0px;
+    height: calc(100vh - 100px);
     padding: 20px 0px 20px 0px;
     border: 0px solid var(--border-color);
     border-radius: var(--border-radius);
@@ -14,18 +16,22 @@ aside {
     overflow-y: hidden;
     overflow: hidden;
 
+    /* opacity: 0%; */
+/* display: none; */
+
+
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
-    transition-duration: 0.5s;
+    transition-duration: 5s;
 
     /* box-shadow: 0 1px 2px var(--shadow); */
 
-    -webkit-backdrop-filter: blur(13px);
-    backdrop-filter: blur(13px);
+    /* -webkit-backdrop-filter: blur(13px); */
+    /* backdrop-filter: blur(13px); */
 
     /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
 
-    background-color: transparent;
+    background-color: green;
     /* color: white; */
 
     /* background-repeat: no-repeat; */
@@ -38,6 +44,8 @@ aside:hover {
     border-radius: var(--border-radius-on-hover);
     box-shadow: 0 1px 4px var(--shadow);
     background-color: var(--windowBackground);
+    opacity: 100%;
+    backdrop-filter: blur(radial(50%, 50%, 0px, 300px));
 
 }
 
@@ -64,7 +72,17 @@ aside:hover {
 
 
 
-
+aside h1,
+aside h2,
+aside h3,
+aside h4,
+aside h5,
+aside h6 {
+  /* font-family: Serif; */
+  margin: 0px;
+  /* font-size: 20px; */
+  /* font-weight: 400; */
+}
 
 
 

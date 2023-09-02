@@ -5,6 +5,56 @@
 //   inputs[i].style.appearance = 'none';
 // }
 
+var isDragging = false;
+var initialX;
+var initialY;
+var offsetX = 0;
+var offsetY = 0;
+
+const viewport = document.getElementById('viewPort');
+
+viewport.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    initialX = e.clientX - offsetX;
+    initialY = e.clientY - offsetY;
+    viewport.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    
+    const currentX = e.clientX - initialX;
+    const currentY = e.clientY - initialY;
+    
+    offsetX = currentX;
+    offsetY = currentY;
+
+    viewport.style.transform = `translate(${currentX}px, ${currentY}px)`;
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+    viewport.style.cursor = 'grab';
+});
+
+
+
+  // document.getElementById("width_px_aside").innerText = event.clientX + "px" ;
+
+  
+
+ 
+
+
+// draggableDiv.addEventListener("mouseup", function() {
+// });
+
+
+
+
+
+
+
 
 let windowWidth = window.innerWidth; // Initialize with the initial window width
 let windowHeight = window.innerHeight; // Initialize with the initial window height
@@ -19,7 +69,7 @@ function updateWindowSize() {
   // console.log("Updated window width:", windowWidth);
   // console.log("Updated window height:", windowHeight);
 
-  document.getElementById("width_px_aside").innerText = "Width: " + windowWidth + " Height: " + windowHeight;
+  // document.getElementById("width_px_aside").innerText = "Width: " + windowWidth + " Height: " + windowHeight;
 }
 
 // Add a resize event listener to call the function when the window is resized
@@ -35,27 +85,27 @@ var screenWidth = 0;
 var increase_width_aside_by = 0;
 var aside_enlarged = 0;
 
-function changeWidth_aside() {
+function changeWidth_aside(width) {
 
   // document.getElementById("default_focus").style.display = "none";
-  if (aside_enlarged) {
+  // if (aside_enlarged) {
+  //   increase_width_aside_by = 0;
+  //   aside_enlarged = 0;
+  // } else {
+  //   increase_width_aside_by = 200;
+  //   aside_enlarged = 1;
+  // }
+  if (width == "main_mouseout" || width == "aside_mouseout" || width == "main_mouseover" ) {
     increase_width_aside_by = 0;
     aside_enlarged = 0;
   } else {
-    increase_width_aside_by = 200;
-    aside_enlarged = 1;
-  }
-  
-  var windowWidth_half = windowWidth / 2;
-
-  var main_pane_width = windowWidth_half - increase_width_aside_by;
-  var aside_pane_width = (windowWidth_half - 150) + increase_width_aside_by;
-
-
-  document.getElementsByTagName("main")[0].style.width = "calc(" + main_pane_width + "px)";
-  document.getElementsByTagName("aside")[0].style.width = "calc(" + aside_pane_width + "px)";
-
-  let mainSections = document.querySelectorAll('main section');
+    
+    
+    // increase_width_aside_by = 200;
+    increase_width_aside_by = 0;
+    aside_enlarged = 1; 
+    
+    let mainSections = document.querySelectorAll('main section');
         for (let index = 0; index < mainSections.length; index++) {
             mainSections[index].classList.toggle("mainSectionsOnDynamicLayoutTest");
         }
@@ -66,10 +116,63 @@ function changeWidth_aside() {
         }
         
         document.getElementById("default_focus").classList.toggle("bannerOnDynamicLayoutTest");
+
+
+  }
+  
+  var windowWidth_half = windowWidth / 2;
+
+  var main_pane_width = windowWidth_half - increase_width_aside_by;
+  var aside_pane_width = (windowWidth_half - 150) + increase_width_aside_by;
+
+
+
+ if(width == "main_mouseover") {
+  main_pane_width = windowWidth_half + increase_width_aside_by;
+  aside_pane_width = (windowWidth_half - 150) - increase_width_aside_by;
+ }
+
+
+  document.getElementsByTagName("main")[0].style.width = "calc(" + main_pane_width + "px)";
+  document.getElementsByTagName("aside")[0].style.width = "calc(" + aside_pane_width + "px)";
+
+
      
   // document.getElementsByTagName("main")[0].style.width = "calc(" + 100 + "px)";
   // document.getElementsByTagName("aside")[0].style.width = "calc(" + 300 + "px)";
 }
+
+// document.getElementById("viewPort").addEventListener("mouseover", () => {
+
+//   setTimeout(function () {
+//     changeWidth_aside("aside_mouseover");
+//   }, 0);
+// });
+
+// document.getElementById("viewPort").addEventListener("mouseout", () => {
+
+//   setTimeout(function () {
+//     changeWidth_aside("aside_mouseout");
+//   }, 0);
+// });
+
+// document.getElementById("main").addEventListener("mouseover", () => {
+
+//   setTimeout(function () {
+//     changeWidth_aside("main_mouseover");
+//   }, 0);
+// });
+
+// document.getElementById("main").addEventListener("mouseout", () => {
+
+//   setTimeout(function () {
+//     changeWidth_aside("main_mouseout");
+//   }, 0);
+// });
+
+
+
+
 
 // function changeWidth_aside2() {
 //   width_aside_increase = 0;
@@ -308,9 +411,10 @@ window.onscroll = function () {
     document.getElementsByTagName("header")[0].style.top = "0";
 
     // document.getElementById("nav").style.top = "60px";
-    document.getElementById("viewPort").style.top = "60px";
-    document.getElementById("viewPort").style.height = "calc(100vh - 100px - 100px)";
-    document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
+
+
+   
+    // document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
 
     document.getElementById("smallNotiText").innerText = "Scrolling up.";
 
@@ -318,7 +422,7 @@ window.onscroll = function () {
     document.getElementById("smallNotiText").innerText = "Use the search box to search things.";
     // }, 001);
 
-    document.getElementById("viewport").style.transitionDuration = "500ms";
+    // document.getElementById("viewport").style.transitionDuration = "500ms";
     // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
     // document.getElementById("smallNotification").style.bottom = "calc( 0px)";
@@ -354,9 +458,8 @@ window.onscroll = function () {
       // document.getElementById("main_pageScroll").style.transitionDuration = "500ms";
 
       // document.getElementById("nav").style.top = "0px";
-      document.getElementById("viewPort").style.top = "0px";
-      document.getElementById("viewPort").style.height = "calc(100vh - 40px - 100px)";
-      document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px - 40px)";
+     
+      // document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px - 40px)";
 
 
       document.getElementById("smallNotiText").innerText = "Scrolling down.";
@@ -467,27 +570,27 @@ function alertUI(show) {
     1
     && show) {
 
-    // document.getElementById("alertUI").style.display = "block";
+    document.getElementById("alertUI").style.display = "block";
 
     // modal.showModal();
 
-    // document.getElementById("alertUI").classList.toggle("slide_from_above");
+    document.getElementById("alertUI").classList.toggle("slide_from_above");
     document.getElementById("blurFocusScreen").style.display = "block";
     document.getElementById("blurFocusScreen").style.zIndex = "5";
 
     setTimeout(function () {
-      // document.getElementById("alertUI").classList.toggle("slide_from_above");
+      document.getElementById("alertUI").classList.toggle("slide_from_above");
     }, 500);
 
     document.getElementById("alertUser").innerText = "Wanna change color theme?";
     document.getElementById("themeDescription").style.display = "block";
   } else {
-    // document.getElementById("alertUI").classList.toggle("close_slide_down");
+    document.getElementById("alertUI").classList.toggle("close_slide_down");
     document.getElementById("blurFocusScreen").style.display = "none";
     document.getElementById("blurFocusScreen").style.zIndex = "5";
     setTimeout(function () {
-      // document.getElementById("alertUI").classList.toggle("close_slide_down");
-      // document.getElementById("alertUI").style.display = "none";
+      document.getElementById("alertUI").classList.toggle("close_slide_down");
+      document.getElementById("alertUI").style.display = "none";
     }, 500);
   }
 }
@@ -564,7 +667,8 @@ var i = setInterval(function () {
 
 // document.getElementById("splashScreen").innerText = "Loading";
 // document.getElementById("my_age_in_year").innerText = year - 1999;
-document.getElementById("JSregulated74545").style.display = "inline";
+// document.getElementById("JSregulated74545").style.display = "inline";
+document.getElementById("JSregulated74545").style.display = "none";
 
 
 // document.getElementById("main_pageScroll-off").style.display = "none";

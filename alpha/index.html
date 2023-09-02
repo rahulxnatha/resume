@@ -208,7 +208,7 @@
 
 
 
-        <span id="JSregulated74545" style="display:inline;">
+        <span id="JSregulated74545" style="display:none;">
           <span class="status2"></span>
 
           <span class="status">&#8226;</span><span class="status25" style="margin-right:-2px;"></span>
@@ -216,15 +216,15 @@
           <span class="hide_on_mobile"
             style="color:#77777780; visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-          <span class="status2 theme_selector" style="cursor: pointer;" onclick="alertUI(1)">
+          <span class="status2 theme_selector" style="cursor: pointer; display: none;" onclick="alertUI(1)" >
             <span class="material-symbols-outlined" title="Settings">
               settings_suggest
             </span>&nbsp;&nbsp;</span>
 
-          <span class="hide_on_mobile" style="color:#77777780">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
+          <span class="hide_on_mobile" style="color:#77777780;display: none;">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
         </span>
 
-        <span class="search_bar" style="float: inherit; ">
+        <span class="search_bar" style="float: inherit; display: none; ">
           <input type="search" oninput="updateSearchBarWidth()" name="" id="search_bar" placeholder="Looking for...">
 
           <input type="button" value="Search" id="search_button_action">
@@ -331,7 +331,7 @@
 
     </dialog>
     <!-- id="alertUI" -->
-    <dialog data-modal style="display: none;">
+    <dialog data-modal style="display: none;" id="alertUI">
 
 
       <div id="forscrollbarpadding">
@@ -445,11 +445,11 @@
 
           <legend>Font</legend>
 
-          <input type="radio" id="" name="" value="" aria-checked="true" checked>
-          <label for="">Work Sans (default)</label>
+          <!-- <input type="radio" id="" name="" value="" aria-checked="true" checked>
+          <label for="">Work Sans (default)</label> -->
 
           <br>
-          <input type="radio" id="" name="" value="" disabled="disabled">
+          <input type="radio" id="" name="" value="" disabled="disabled" aria-checked="true">
           <label for="">Inherit from browser settings</label>
 
         </fieldset>
@@ -520,7 +520,7 @@
 
     </dialog>
 
-    <div class="smallNotification_div" id="smallNotification">
+    <div class="smallNotification_div" id="smallNotification" style="visibility: hidden;">
       <button class="smallNotification" onclick="window.open('#', '_self')"><span id="smallNotiText">Hi there. Good
           afternoon.</span></button>
 
@@ -541,7 +541,7 @@
     </div>
 
 
-    <aside id="viewPort">
+    <aside id="viewPort" >
       <div class="viewPortMenu" style="display:block;">
 
         <div class="tabbar" id="tab_bar90">
@@ -1070,7 +1070,7 @@
 
 
             <!-- <span class="elemtab elemtab_add" id="focus_search_bar"> &nbsp; +&nbsp;&nbsp;</span> -->
-            <span class="elemtab " id="focus_search_bar"> &nbsp; +&nbsp;&nbsp;</span>
+            <span class="elemtab " id="focus_search_bar" style="visibility: hidden;"> &nbsp; +&nbsp;&nbsp;</span>
 
 
 
@@ -1450,7 +1450,8 @@
         
       </section>
       
-      <button onclick="changeWidth_aside()">Change width</button> <span id="width_px_aside">hi</span>
+      <!-- <button onclick="changeWidth_aside()">Change width</button>  -->
+      <div id="width_px_aside" style="margin: 20px 0 0 20px; background-color: rgba(0, 0, 0, 0);">Some info</div>
 
     </aside>
 
@@ -2041,9 +2042,9 @@
 
       </section>
 
-      <!-- <section id="contact_section" class=" mainSection"> -->
+      <section id="contact_section" class=" mainSection">
 
-        <!-- <span id="contact">
+        <span id="contact">
 
           <h1>Contact details</h1>
 
@@ -2054,10 +2055,10 @@
 
           </address>
 
-        </span> -->
+        </span>
 
 
-      <!-- </section> -->
+      </section>
 
     </main>
   </div>

@@ -40,6 +40,8 @@
 .tabbar,
 .controlButtons {
 
+
+    font-family: sans-serif;
     /* background-color: green; */
     margin: 0px;
     padding: 20px 0 0 20px;

@@ -165,7 +165,7 @@ article.active {
     min-height: 30vmin;
     /* min-width: 100%; */
     grid-column-start: 1;
-    grid-column-end: 5;
+    grid-column-end: 6;
     /* display: none; */
 
     margin-top: 20px;
@@ -193,7 +193,7 @@ article.active {
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     background-size:cover;
-    min-height: 250px;
+    min-height: calc(100vmin - 200px);
     /* border-radius: 0%; */
     /* height: 100%; */
     /* width: 100%; */

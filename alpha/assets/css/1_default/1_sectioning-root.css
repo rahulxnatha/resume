@@ -3,7 +3,7 @@
 *:after {
   box-sizing: border-box;
   z-index: 1;
-  font-family: 'Work Sans', sans-serif;
+  /* font-family: 'Work Sans', sans-serif; */
   
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -74,12 +74,12 @@
   --selection: var(--lightSelection);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Work+Sans:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Work+Sans:wght@300&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap'); */
 
 
 
