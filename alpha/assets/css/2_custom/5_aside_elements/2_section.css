@@ -1,14 +1,14 @@
 aside section {
     display: block;
     /* height: calc(100vh - 100px - 40px - 40px - 60px);
-    height: calc(100vh - 100px - 40px - 60px );
-    height: 0; */
+    height: calc(100vh - 100px - 40px - 60px );*/
+    height: calc( 100% - 80px); 
     /* width: calc(100% - 16px); */
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 20px 0 20px;
     /* margin-right: 12px; */
     overflow-y: auto;
-    margin: 60px 20px 0 0px;
+    margin: 80px 00px 0 0px;
     /* margin-right: 8px; */
     /* border: 2px solid var(--basei); */
     /* background-color: #2a1e42; */
@@ -106,7 +106,7 @@ aside section div {
   border: 1px solid var(--border-color);
   padding: 0 20px 0px 20px;
   border-radius: var(--border-radius);
-  margin-top: 20px;
+  margin: 20px 0;
   background-color: transparent;
   font-weight: 100;
 }
@@ -161,3 +161,13 @@ aside section a {
   
 }
 
+#resize-handle {
+  width: 10px;
+  height: 10px;
+  background-color: #cc3434;
+  position: absolute; 
+   bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+  display: none;
+}

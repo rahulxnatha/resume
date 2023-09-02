@@ -4,7 +4,7 @@
 // for (var i = 0; i < inputs.length; i++) {
 //   inputs[i].style.appearance = 'none';
 // }
-
+// ------------------------------------------------------------------------------
 var isDragging = false;
 var initialX;
 var initialY;
@@ -14,13 +14,34 @@ var offsetY = 0;
 const viewport = document.getElementById('viewPort');
 
 viewport.addEventListener('mousedown', (e) => {
+
+
+  const resizeHandleWidth = 10; // Adjust this value as needed
+  const isResizeClick = 
+      e.clientX >= viewport.offsetWidth - resizeHandleWidth && 
+      e.clientY >= viewport.offsetHeight - resizeHandleWidth;
+
+  if (!isResizeClick) {
     isDragging = true;
     initialX = e.clientX - offsetX;
     initialY = e.clientY - offsetY;
     viewport.style.cursor = 'grabbing';
+  }
+
+
+
+
+   
 });
 
 document.addEventListener('mousemove', (e) => {
+
+
+
+
+
+
+  
     if (!isDragging) return;
     
     const currentX = e.clientX - initialX;
@@ -37,7 +58,7 @@ document.addEventListener('mouseup', () => {
     viewport.style.cursor = 'grab';
 });
 
-
+/////////////////////////////////////////////////////////////////////
 
   // document.getElementById("width_px_aside").innerText = event.clientX + "px" ;
 
@@ -402,7 +423,7 @@ var prevScrollpos = 0;
 
 
 // var prevScrollpos = window.pageYOffset;
-document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
+// document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
 window.onscroll = function () {
   var currentScrollPos = window.pageYOffset;
 

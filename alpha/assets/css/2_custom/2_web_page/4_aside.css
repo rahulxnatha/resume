@@ -3,25 +3,26 @@ aside {
 
     position: fixed;
     top: 80px;
-    right: 100px;
+    left: 700px;
     /* width: calc(50% - 30px);
     width: calc(50% - 150px); */
     width: calc(50% - 150px);
-    margin: 0px 20px 20px 0px;
-    height: calc(100vh - 100px);
-    padding: 20px 0px 20px 0px;
+    margin: 0;
+    height: calc(400px);
+    padding: 0;
     border: 0px solid var(--border-color);
     border-radius: var(--border-radius);
+    border-radius: var(--border-radius-on-hover);
     transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
     overflow-y: hidden;
     overflow: hidden;
-
+    resize: both; /* Enable both horizontal and vertical resizing */
     /* opacity: 0%; */
 /* display: none; */
 
-background-color: transparent;
+/* background-color: green; */
   
-    transition-duration: 5s;
+    transition-duration: 0s;
 
     /* box-shadow: 0 1px 2px var(--shadow); */
 
@@ -55,18 +56,19 @@ aside:hover > #viewport {
     background-color: transparent;
     -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
-
+    border-radius: 0;
 }
 
 #viewport {
     background-color: var(--windowBackground);
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
+    border-radius: var(--border-radius-on-hover);
 }
 
 .asideMoveOut {
     left: -50%;
-    transition-duration: 25ms;
+    transition-duration: 0;
 }
 
 @media (prefers-color-scheme: light) {
@@ -111,12 +113,12 @@ aside h2 {
 @media only screen and (max-width: 1230px) {
     aside {
         z-index: 7;
-        transition-duration: 500ms;
+        transition-duration: 0;
         position: fixed;
 
         width: calc(100% - 2 * 20px);
         margin: 20px 0px 20px 20px;
-        height: calc(20vh - 40px);
+        /* height: calc(20vh - 40px); */
         padding: 20px 0px 20px 0px;
         border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
@@ -132,12 +134,12 @@ aside h2 {
 
     aside {
         z-index: inherit;
-        transition-duration: 500ms;
+        transition-duration: 0;
         position: inherit;
         width: calc(100% - 80px);
         margin: 20px 20px 20px 40px;
-        height: calc(100vh - 100px);
-        padding: 20px 0px 20px 0px;
+        /* height: calc(100vh - 100px); */
+        /* padding: 20px 0px 20px 0px; */
         border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
     }
@@ -189,9 +191,9 @@ aside h2 {
 
 aside {
     -webkit-animation-name: aside_animatebottom;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 0;
     animation-name: aside_animatebottom;
-    animation-duration: 3s;
+    animation-duration: 0;
 
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: ease;
@@ -207,7 +209,7 @@ aside {
 @-webkit-keyframes aside_animatebottom {
     0% {
         top: 100vw;
-        height: calc(100vh - 200px);
+        /* height: calc(100vh - 200px); */
     }
 
     /* 90% {
@@ -228,7 +230,7 @@ aside {
 @keyframes aside_animatebottom {
     0% {
         left: -100vw;
-        height: calc(100vh - 100px);
+        /* height: calc(100vh - 100px); */
     }
 
     10% {
@@ -239,11 +241,11 @@ aside {
 
 
     50% {
-        height: calc(100vh - 100px);
+        /* height: calc(100vh - 100px); */
     }
 
     100% {
-        height: calc(100vh - 200px);
+        /* height: calc(100vh - 200px); */
     }
 
 
@@ -251,9 +253,9 @@ aside {
 
 #viewport {
     -webkit-animation-name: viewport_animatebottom;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 0s;
     animation-name: viewport_animatebottom;
-    animation-duration: 3s;
+    animation-duration: 0s;
 
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: ease;
@@ -269,7 +271,7 @@ aside {
 @keyframes viewport_animatebottom {
     0% {
 
-        height: calc(100vh - 100px - 40px - 60px - 40px);
+        /* height: calc(100vh - 100px - 40px - 60px - 40px); */
     }
 
 
@@ -278,11 +280,11 @@ aside {
 
 
     50% {
-        height: calc(100vh - 100px - 40px - 60px - 40px);
+        /* height: calc(100vh - 100px - 40px - 60px - 40px); */
     }
 
     100% {
-        height: calc(100vh - 100px - 40px - 60px - 100px - 40px);
+        /* height: calc(100vh - 100px - 40px - 60px - 100px - 40px); */
     }
 
 
