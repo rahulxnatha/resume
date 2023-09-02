@@ -2,8 +2,8 @@ aside {
     z-index: 2;
 
     position: fixed;
-    top: 60px;
-    left: 0px;
+    top: 80px;
+    right: 100px;
     /* width: calc(50% - 30px);
     width: calc(50% - 150px); */
     width: calc(50% - 150px);
@@ -19,9 +19,8 @@ aside {
     /* opacity: 0%; */
 /* display: none; */
 
-
-    -webkit-backdrop-filter: blur(13px);
-    backdrop-filter: blur(13px);
+background-color: transparent;
+  
     transition-duration: 5s;
 
     /* box-shadow: 0 1px 2px var(--shadow); */
@@ -31,7 +30,7 @@ aside {
 
     /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
 
-    background-color: green;
+    /* background-color: green; */
     /* color: white; */
 
     /* background-repeat: no-repeat; */
@@ -43,10 +42,26 @@ aside {
 aside:hover {
     border-radius: var(--border-radius-on-hover);
     box-shadow: 0 1px 4px var(--shadow);
-    background-color: var(--windowBackground);
+    /* background-color: var(--windowBackground); */
     opacity: 100%;
     backdrop-filter: blur(radial(50%, 50%, 0px, 300px));
+    background-color: var(--windowBackground);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
 
+}
+
+aside:hover > #viewport {
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+
+}
+
+#viewport {
+    background-color: var(--windowBackground);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
 }
 
 .asideMoveOut {
@@ -57,6 +72,8 @@ aside:hover {
 @media (prefers-color-scheme: light) {
     aside {
         background-color: var(--windowBackground);
+        background-color: transparent;
+
     }
 }
 
