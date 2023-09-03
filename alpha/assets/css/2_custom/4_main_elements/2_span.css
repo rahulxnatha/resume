@@ -1,6 +1,11 @@
+.span_all_cols {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
 main span {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 4;
     margin-top: 0px;
 }
 
@@ -56,3 +61,7 @@ main span h2 {
       grid-column-end: 2;
       
     }
+
+
+
+ 

@@ -1,8 +1,8 @@
 main {
-    float: right;
+    /* float: right; */
     /* max-width: calc(100% - 660px - 100px); */
     width: calc(50% );
-    width: calc(100% );
+    width: calc(60% );
     transition-duration: 5s;
     margin: 0;
     padding: 20px 0px 0 0;

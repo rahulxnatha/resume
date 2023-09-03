@@ -13,7 +13,7 @@ article,
 
     /* max-width: 600px; */
     /* background-color: var(--windowBackground); */
-    /* background-color: var(--articleBackground); */
+    background-color: var(--articleBackground);
     overflow: hidden;
 
     border-radius: var(--border-radius);
@@ -130,6 +130,7 @@ article:hover,
     /* box-shadow: 0px var(--shadow); */
 
     background-color: var(--windowBackground);
+    background-color: var(--articleBackground);
 
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
@@ -142,7 +143,8 @@ article:hover,
 
 
 article h1 {
-    font-size: 18px;
+    margin-top: 0;
+    font-size: 24px;
 }
 
 article p {
@@ -160,62 +162,6 @@ article.active {
     border: 0px solid var(--border-color);
 }
 
-
-.banner {
-    min-height: 30vmin;
-    /* min-width: 100%; */
-    grid-column-start: 1;
-    grid-column-end: 6;
-    /* display: none; */
-
-    margin-top: 20px;
-    /**/
-
-    /* animation: mymove 5s infinite; */
-}
-
-.bannerOnDynamicLayoutTest {
-    margin-top: 20px;
-    grid-column-start: auto;
-    grid-column-end: auto;
-
-}
-
-
-
-.banner_background {
-    /*  */
-    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
-
-
-    /* color: white; */
-    
-    background-repeat: no-repeat;
-    /* background-attachment: fixed; */
-    background-size:cover;
-    min-height: calc(100vmin - 200px);
-    /* border-radius: 0%; */
-    /* height: 100%; */
-    /* width: 100%; */
-}
-
-
-
-.banner_text {
-    position: absolute;
-    bottom:0;
-    padding: 0 20px 20px 0;
-    margin-left: 40%;
-    font-weight: 900;
-    font-size: 50px;
-}
-
-/* for banner  */
-.name_brand_on_picture {
-    padding: 7px;
-    background-color: #88888888;
-    border-radius: var(--border-radius);
-}
 
 .cmrcet:hover {
     background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/tile_backg/CMRCET.jpg");

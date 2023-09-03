@@ -3,10 +3,10 @@ aside {
 
     position: fixed;
     top: 80px;
-    left: 700px;
+    left: calc(60% );
     /* width: calc(50% - 30px);
     width: calc(50% - 150px); */
-    width: calc(50% - 150px);
+    width: calc(40% - 40px);
     margin: 0;
     height: calc(400px);
     padding: 0;
@@ -82,11 +82,11 @@ aside:hover > #viewport {
 
 .viewPortMenu,
 .viewport,
-.viewPort,
+#viewPort,
 .briefblock,
 .tabbar,
 .tabbar>div {
-    transition-duration: 0.5s;
+    transition-duration: 0s;
 }
 
 
@@ -113,7 +113,7 @@ aside h2 {
 @media only screen and (max-width: 1230px) {
     aside {
         z-index: 7;
-        transition-duration: 0;
+        transition-duration: 0s;
         position: fixed;
 
         width: calc(100% - 2 * 20px);

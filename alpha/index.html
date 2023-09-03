@@ -72,6 +72,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/2_web_page/4_aside.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/2_web_page/5_footer.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/2_web_page/6_aside2.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/2_custom/2_web_page/banner.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/3_header_elements/1_branding.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/3_header_elements/2_status.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/3_header_elements/3_nav_icons.css">
@@ -1458,6 +1459,45 @@
     </aside>
 
 
+    <div class="banner_section" >
+
+
+      <div class="banner" id="default_focus" draggable="true">
+        <article class="banner_background">
+
+          <span class="name_brand_on_picture" style="float:right;">2023</span>
+          <br><br>
+
+          <span style="float:right" ; class="banner_text typewrite" ;>Welcome</span>
+
+
+        </article>
+        <!-- <div style="margin-top: 10px;">Follow on</div> -->
+        <div class="nojustify">
+
+          <button
+            onclick="window.open('https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=rahulnatha', '_blank')">LinkedIn</button>
+          <button
+            onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Instagram</button>
+          <button
+            onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Twitter</button>
+          <button
+            onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">YouTube</button>
+          <button
+            onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">GitHub</button>
+          <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Google
+            Maps</button>
+
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
 
 
     <!-- --------------------------------------------------------------------------------------- -->
@@ -1512,48 +1552,7 @@
       </section>
 
 
-      <section id="cubeSection" style="  display:none;">
 
-        <span>
-          <h1 class="typewrite">The cube</h1>
-          <!-- <h1>Showing 5 of 5 search results</h1> -->
-        </span>
-        <!-- 
-          onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
-          onmousemove="rotateCube(event)" -->
-
-        <div class="cube" id="rotate-scale-cube">
-          <div class="face front" id="rotate-scale-cube-front"><img src="assets/images/001.jpeg" alt="front"></div>
-          <div class="face back" id="rotate-scale-cube-back"> <img src="assets/images/002.jpeg" alt="back"></div>
-          <div class="face right" id="rotate-scale-cube-right"> <img src="assets/images/003.jpg" alt="right"></div>
-          <div class="face left" id="rotate-scale-cube-left"> <img src="assets/images/004.jpeg" alt="left"></div>
-          <div class="face top" id="rotate-scale-cube-top"> <img src="assets/images/005.jpeg" alt="top"></div>
-          <div class="face bottom" id="rotate-scale-cube-bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
-        </div>
-
-
-        <p>Use the scroll wheel on the mouse to rotate (click + drag), zoom (scroll) the cube.
-          <br>
-          Click on any face to view its details.
-
-
-          <label title="Toggle normal view">
-            <span style=" border: 2px solid var(--border-color);">Normal</span>
-          </label>
-          <br>
-          <span style=" border: 2px solid var(--border-color);">Left</span>
-          <span style=" border: 2px solid var(--border-color);">Front</span>
-          <span style=" border: 2px solid var(--border-color);">Right</span>
-          <span style=" border: 2px solid var(--border-color);">Top</span>
-          <span style=" border: 2px solid var(--border-color);">Bottom</span>
-          <span style=" border: 2px solid var(--border-color);">Back</span>
-
-
-
-        </p>
-
-
-      </section>
 
       <section id="filtersSection" style="padding-top: 20px;  display:none;">
         <span>
@@ -1603,44 +1602,55 @@
       </section>
 
 
-      <section class=" mainSection" >
+      
 
 
-        <div class="banner" style="float:right;" id="default_focus" draggable="true">
-          <article class="banner_background">
+      <!-- <section id="cubeSection" style="  display:none;"> -->
+        <section id="cubeSection" >
 
-            <span class="name_brand_on_picture" style="float:right;">2023</span>
-            <br><br>
-
-            <span style="float:right" ; class="banner_text typewrite" ;>Welcome</span>
-
-
-          </article>
-          <!-- <div style="margin-top: 10px;">Follow on</div> -->
-          <div class="nojustify">
-
-            <button
-              onclick="window.open('https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=rahulnatha', '_blank')">LinkedIn</button>
-            <button
-              onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Instagram</button>
-            <button
-              onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Twitter</button>
-            <button
-              onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">YouTube</button>
-            <button
-              onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">GitHub</button>
-            <button onclick="window.open('https://www.instagram.com/rahul.natha/?action=follow', '_blank')">Google
-              Maps</button>
-
-
+          <span>
+            <h1 class="typewrite">The cube</h1>
+            <!-- <h1>Showing 5 of 5 search results</h1> -->
+          </span>
+          <!-- 
+            onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
+            onmousemove="rotateCube(event)" -->
+  
+          <div class="cube span_all_cols" id="rotate-scale-cube">
+            <div class="face front" id="rotate-scale-cube-front"><img src="assets/images/001.jpeg" alt="front"></div>
+            <div class="face back" id="rotate-scale-cube-back"> <img src="assets/images/002.jpeg" alt="back"></div>
+            <div class="face right" id="rotate-scale-cube-right"> <img src="assets/images/003.jpg" alt="right"></div>
+            <div class="face left" id="rotate-scale-cube-left"> <img src="assets/images/004.jpeg" alt="left"></div>
+            <div class="face top" id="rotate-scale-cube-top"> <img src="assets/images/005.jpeg" alt="top"></div>
+            <div class="face bottom" id="rotate-scale-cube-bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
           </div>
+  
+  
+          <p class="span_all_cols">Use the scroll wheel on the mouse to rotate (click + drag), zoom (scroll) the cube.
+            <br>
+            Click on any face to view its details.
+  
+  
+            <label title="Toggle normal view">
+              <span style=" border: 2px solid var(--border-color);">Normal</span>
+            </label>
+            <br>
+            <span style=" border: 2px solid var(--border-color);">Left</span>
+            <span style=" border: 2px solid var(--border-color);">Front</span>
+            <span style=" border: 2px solid var(--border-color);">Right</span>
+            <span style=" border: 2px solid var(--border-color);">Top</span>
+            <span style=" border: 2px solid var(--border-color);">Bottom</span>
+            <span style=" border: 2px solid var(--border-color);">Back</span>
+  
+  
+  
+          </p>
+  
+  
+        </section>
 
-        </div>
 
 
-
-
-      </section>
 
       <section class="backgroundHover mainSection" id="testtgb" >
 

@@ -1,39 +1,39 @@
-// let isDragging = false;
-// let initialX;
-// let initialY;
-// let offsetX = 0;
-// let offsetY = 0;
 
-// const viewport = document.getElementById('viewPort');
+var A_isDragging = false;
+var A_initialX;
+var A_initialY;
+var A_offsetX = 0;
+var A_offsetY = 0;
 
-// viewport.addEventListener('mousedown', (e) => {
-//     // Check if the click was on the resize handle (bottom right corner)
-//     const resizeHandleWidth = 10; // Adjust this value as needed
-//     const isResizeClick = 
-//         e.clientX >= viewport.offsetWidth - resizeHandleWidth && 
-//         e.clientY >= viewport.offsetHeight - resizeHandleWidth;
+const viewport = document.getElementById('viewPort');
 
-//     if (!isResizeClick) {
-//         isDragging = true;
-//         initialX = e.clientX - offsetX;
-//         initialY = e.clientY - offsetY;
-//         viewport.style.cursor = 'grabbing';
-//     }
-// });
+viewport.addEventListener('mousedown', (e) => {
+    const A_resizeHandleWidth = 10; // Adjust this value as needed
+    const A_isResizeClick =
+        e.clientX >= viewport.offsetWidth - A_resizeHandleWidth &&
+        e.clientY >= viewport.offsetHeight - A_resizeHandleWidth;
 
-// document.addEventListener('mousemove', (e) => {
-//     if (!isDragging) return;
-    
-//     const currentX = e.clientX - initialX;
-//     const currentY = e.clientY - initialY;
-    
-//     offsetX = currentX;
-//     offsetY = currentY;
+    if (!A_isResizeClick) {
+        A_isDragging = true;
+        A_initialX = e.clientX - A_offsetX;
+        A_initialY = e.clientY - A_offsetY;
+        viewport.style.cursor = 'grabbing';
+    }
+});
 
-//     viewport.style.transform = `translate(${currentX}px, ${currentY}px)`;
-// });
+document.addEventListener('mousemove', (e) => {
+    if (!A_isDragging) return;
 
-// document.addEventListener('mouseup', () => {
-//     isDragging = false;
-//     viewport.style.cursor = 'grab';
-// });
+    const A_currentX = e.clientX - A_initialX;
+    const A_currentY = e.clientY - A_initialY;
+    A_offsetX = A_currentX;
+    A_offsetY = A_currentY;
+
+    viewport.style.transform = `translate(${A_currentX}px, ${A_currentY}px)`;
+});
+
+document.addEventListener('mouseup', () => {
+    A_isDragging = false;
+    viewport.style.cursor = 'grab';
+});
+viewport.style.cursor = 'grab';

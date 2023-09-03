@@ -63,6 +63,8 @@
   /* --border-radius: 0px; */
   --border-radius-on-hover: 7px;
   /* --border-radius-on-hover: 0px; */
+
+  --number-of-cols: 1;
 }
 
 :root {

@@ -1,0 +1,66 @@
+.banner_section {
+
+/* background-color: aqua; */
+    width: calc(100vw - 100px);
+    margin: 100px  50px 0 50px;
+
+}
+
+
+.banner {
+    min-height: 30vmin;
+    /* min-width: 100%; */
+    grid-column-start: 1;
+    grid-column-end: 5;
+    /* display: none; */
+
+    margin: 20px 0;
+    /**/
+
+    /* animation: mymove 5s infinite; */
+}
+
+.bannerOnDynamicLayoutTest {
+    margin-top: 20px;
+    grid-column-start: auto;
+    grid-column-end: auto;
+
+}
+
+
+
+.banner_background {
+    /*  */
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+
+
+    /* color: white; */
+    
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size:cover;
+    /* min-height: calc(100vmin - 200px); */
+    min-height: calc(100vh - 200px);
+    margin: 20px 0;
+    /* border-radius: 0%; */
+    /* height: 100%; */
+    /* width: 100%; */
+}
+
+
+
+.banner_text {
+    position: absolute;
+    bottom:0;
+    padding: 0 20px 20px 0;
+    margin-left: 40%;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+/* for banner  */
+.name_brand_on_picture {
+    padding: 7px;
+    background-color: #88888888;
+    border-radius: var(--border-radius);
+}

@@ -5,58 +5,6 @@
 //   inputs[i].style.appearance = 'none';
 // }
 // ------------------------------------------------------------------------------
-var isDragging = false;
-var initialX;
-var initialY;
-var offsetX = 0;
-var offsetY = 0;
-
-const viewport = document.getElementById('viewPort');
-
-viewport.addEventListener('mousedown', (e) => {
-
-
-  const resizeHandleWidth = 10; // Adjust this value as needed
-  const isResizeClick = 
-      e.clientX >= viewport.offsetWidth - resizeHandleWidth && 
-      e.clientY >= viewport.offsetHeight - resizeHandleWidth;
-
-  if (!isResizeClick) {
-    isDragging = true;
-    initialX = e.clientX - offsetX;
-    initialY = e.clientY - offsetY;
-    viewport.style.cursor = 'grabbing';
-  }
-
-
-
-
-   
-});
-
-document.addEventListener('mousemove', (e) => {
-
-
-
-
-
-
-  
-    if (!isDragging) return;
-    
-    const currentX = e.clientX - initialX;
-    const currentY = e.clientY - initialY;
-    
-    offsetX = currentX;
-    offsetY = currentY;
-
-    viewport.style.transform = `translate(${currentX}px, ${currentY}px)`;
-});
-
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-    viewport.style.cursor = 'grab';
-});
 
 /////////////////////////////////////////////////////////////////////
 
@@ -443,7 +391,7 @@ window.onscroll = function () {
     document.getElementById("smallNotiText").innerText = "Use the search box to search things.";
     // }, 001);
 
-    // document.getElementById("viewport").style.transitionDuration = "500ms";
+    // document.getElementById("viewPort").style.transitionDuration = "500ms";
     // document.getElementsByTagName("header")[0].style.transitionDuration = "500ms";
 
     // document.getElementById("smallNotification").style.bottom = "calc( 0px)";
@@ -469,11 +417,20 @@ window.onscroll = function () {
     //   document.getElementById("status").innerHTML = "Dark theme was turned on.";
     // }
 
+    // document.getElementById("viewPort").style.height = "calc(80px)";
+    // document.getElementById("viewPort").style.width = "calc(600px)";
+
+    setTimeout(function () {
+      // document.getElementById("viewPort").style.height = "calc(400px)";
+      // document.getElementById("viewPort").style.width = "calc(600px)";
+    }, 50);
+
   } else {
 
     if (currentScrollPos > 60) {
       // while scrolling towards the bottom of the webpage
-      document.getElementsByTagName("header")[0].style.top = "-60px";
+      
+       document.getElementsByTagName("header")[0].style.top = "-60px";
       // document.getElementById("main_pageScroll").style.height = "calc(100vh - 0px)";
       // document.getElementById("main_pageScroll").style.marginTop = "0px";
       // document.getElementById("main_pageScroll").style.transitionDuration = "500ms";
@@ -482,6 +439,15 @@ window.onscroll = function () {
      
       // document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px - 40px)";
 
+      // document.getElementById("viewPort").style.transitionDuration = "500ms";
+
+      // document.getElementById("viewPort").style.height = "calc(80px)";
+      // document.getElementById("viewPort").style.width = "calc(600px)";
+
+      setTimeout(function () {
+        // document.getElementById("viewPort").style.height = "calc(400px)";
+        // document.getElementById("viewPort").style.width = "calc(600px)";
+      }, 50);
 
       document.getElementById("smallNotiText").innerText = "Scrolling down.";
 
