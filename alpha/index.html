@@ -125,6 +125,8 @@
 
 <body onmousemove="findCoords(event)">
 
+  <div class="background-image-courtesy"> <a href="https://earthobservatory.nasa.gov/images/85153/india-by-night-and-day" target="_blank">Background image courtesy of NASA</a>  </div>
+
   <div id="splash-screen">
     <div class="spinner">
       <div class="bounce1"></div>
@@ -193,10 +195,10 @@
             Stage: Somewhat Unstable&nbsp;</span> </h1> -->
 
         <!-- id="outputhEight" -->
-        <h1 style="cursor: pointer; ">Rahul Natha &nbsp;
+        <span style="cursor: pointer; float: left; margin: 0 20px 0 5px; ">Rahul Natha &nbsp;
 
 
-        </h1>
+        </span>
 
 
         <select title="This version of the website is highly unstable and contains newest features."
@@ -218,7 +220,7 @@
           <span class="hide_on_mobile"
             style="color:#77777780; visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-          <span class="status2 theme_selector" style="cursor: pointer; display: none;" onclick="alertUI(1)" >
+          <span class="status2 theme_selector" style="cursor: pointer; display: none;" onclick="alertUI(1)">
             <span class="material-symbols-outlined" title="Settings">
               settings_suggest
             </span>&nbsp;&nbsp;</span>
@@ -543,7 +545,7 @@
     </div>
 
 
-    <aside id="viewPort" >
+    <aside id="viewPort">
       <div id="resize-handle"></div>
       <div class="viewPortMenu" style="display:block;">
 
@@ -1450,16 +1452,16 @@
           </figure>
         </div>
 
-        
+
       </section>
-      
+
       <!-- <button onclick="changeWidth_aside()">Change width</button>  -->
       <!-- <div id="width_px_aside" style="margin: 20px 0 0 20px; background-color: rgba(0, 0, 0, 0);"></div> -->
 
     </aside>
 
 
-    <div class="banner_section" >
+    <div class="banner_section">
 
 
       <div class="banner" id="default_focus" draggable="true">
@@ -1498,7 +1500,7 @@
 
     </div>
 
-
+    
 
     <!-- --------------------------------------------------------------------------------------- -->
     <main id="main">
@@ -1602,57 +1604,57 @@
       </section>
 
 
-      
+
 
 
       <!-- <section id="cubeSection" style="  display:none;"> -->
-        <section id="cubeSection" >
+      <section id="cubeSection">
 
-          <span>
-            <h1 class="typewrite">The cube</h1>
-            <!-- <h1>Showing 5 of 5 search results</h1> -->
-          </span>
-          <!-- 
+        <span>
+          <h1 class="typewrite">The cube</h1>
+          <!-- <h1>Showing 5 of 5 search results</h1> -->
+        </span>
+        <!-- 
             onmousedown="startRotate(event)" onmouseup="stopRotate(event)"
             onmousemove="rotateCube(event)" -->
-  
-          <div class="cube span_all_cols" id="rotate-scale-cube">
-            <div class="face front" id="rotate-scale-cube-front"><img src="assets/images/001.jpeg" alt="front"></div>
-            <div class="face back" id="rotate-scale-cube-back"> <img src="assets/images/002.jpeg" alt="back"></div>
-            <div class="face right" id="rotate-scale-cube-right"> <img src="assets/images/003.jpg" alt="right"></div>
-            <div class="face left" id="rotate-scale-cube-left"> <img src="assets/images/004.jpeg" alt="left"></div>
-            <div class="face top" id="rotate-scale-cube-top"> <img src="assets/images/005.jpeg" alt="top"></div>
-            <div class="face bottom" id="rotate-scale-cube-bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
-          </div>
-  
-  
-          <p class="span_all_cols">Use the scroll wheel on the mouse to rotate (click + drag), zoom (scroll) the cube.
-            <br>
-            Click on any face to view its details.
-  
-  
-            <label title="Toggle normal view">
-              <span style=" border: 2px solid var(--border-color);">Normal</span>
-            </label>
-            <br>
-            <span style=" border: 2px solid var(--border-color);">Left</span>
-            <span style=" border: 2px solid var(--border-color);">Front</span>
-            <span style=" border: 2px solid var(--border-color);">Right</span>
-            <span style=" border: 2px solid var(--border-color);">Top</span>
-            <span style=" border: 2px solid var(--border-color);">Bottom</span>
-            <span style=" border: 2px solid var(--border-color);">Back</span>
-  
-  
-  
-          </p>
-  
-  
-        </section>
+
+        <div class="cube span_all_cols" id="rotate-scale-cube">
+          <div class="face front" id="rotate-scale-cube-front"><img src="assets/images/001.jpeg" alt="front"></div>
+          <div class="face back" id="rotate-scale-cube-back"> <img src="assets/images/002.jpeg" alt="back"></div>
+          <div class="face right" id="rotate-scale-cube-right"> <img src="assets/images/003.jpg" alt="right"></div>
+          <div class="face left" id="rotate-scale-cube-left"> <img src="assets/images/004.jpeg" alt="left"></div>
+          <div class="face top" id="rotate-scale-cube-top"> <img src="assets/images/005.jpeg" alt="top"></div>
+          <div class="face bottom" id="rotate-scale-cube-bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
+        </div>
+
+
+        <p class="span_all_cols">Use the scroll wheel on the mouse to rotate (click + drag), zoom (scroll) the cube.
+          <br>
+          Click on any face to view its details.
+
+
+          <label title="Toggle normal view">
+            <span style=" border: 2px solid var(--border-color);">Normal</span>
+          </label>
+          <br>
+          <span style=" border: 2px solid var(--border-color);">Left</span>
+          <span style=" border: 2px solid var(--border-color);">Front</span>
+          <span style=" border: 2px solid var(--border-color);">Right</span>
+          <span style=" border: 2px solid var(--border-color);">Top</span>
+          <span style=" border: 2px solid var(--border-color);">Bottom</span>
+          <span style=" border: 2px solid var(--border-color);">Back</span>
+
+
+
+        </p>
+
+
+      </section>
 
 
 
 
-      <section class="backgroundHover mainSection" id="testtgb" >
+      <section class="backgroundHover mainSection" id="testtgb">
 
         <span>
           <h1 id="education">Education</h1>
@@ -1874,7 +1876,7 @@
 
       </section>
 
-      <section class=" mainSection" >
+      <section class=" mainSection">
 
         <span>
           <h1 id="skills">Skills</h1>
@@ -1962,7 +1964,7 @@
 
 
       </section>
-      <section class=" mainSection " >
+      <section class=" mainSection ">
 
         <span>
           <h1 id="projects">Projects</h1>

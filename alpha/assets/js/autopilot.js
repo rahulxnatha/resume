@@ -21,10 +21,6 @@
 
 
 
-
-
-
-
 let windowWidth = window.innerWidth; // Initialize with the initial window width
 let windowHeight = window.innerHeight; // Initialize with the initial window height
 
