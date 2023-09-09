@@ -14,9 +14,11 @@ aside {
     border-radius: var(--border-radius);
     border-radius: var(--border-radius-on-hover);
     transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
-    overflow-y: hidden;
-    overflow: hidden;
+   
     resize: both; /* Enable both horizontal and vertical resizing */
+
+     /* overflow-x: hidden; */
+    /* overflow: hidden; */
     /* opacity: 0%; */
 /* display: none; */
 
@@ -37,8 +39,26 @@ aside {
     /* background-repeat: no-repeat; */
     /* background-attachment: fixed; */
     /* background-size: cover; */
-
-}
+/* 
+    animation-name: aside_load_animation;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+   
+    animation-duration: 2s;
+  }
+  
+  @keyframes aside_load_animation {
+      0% {
+          transform: translateX(100vw);
+      }
+    
+      100% {
+        transform: translateX(0);
+      }
+   */
+  
+  }
 
 aside:hover {
     border-radius: var(--border-radius-on-hover);

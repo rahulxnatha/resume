@@ -37,8 +37,7 @@
 
  
 
-.tabbar,
-.controlButtons {
+.tabbar {
 
 
     font-family: sans-serif;
@@ -46,7 +45,7 @@
     margin: 0px;
     padding: 20px 0 0 20px;
     /* background-color: rgb(75, 135, 188); */
-    width: calc(100% - 0px);
+    /* width: calc(100% - 100px); */
 
     height: calc(56px + 20px);
    
@@ -58,7 +57,7 @@
     visibility: hidden;
 }
 
-aside:hover .tabbar, .controlButtons {
+aside:hover .tabbar, aside:hover .controlButtons {
     visibility:visible;
 }
 
@@ -75,11 +74,12 @@ aside:hover .tabbar, .controlButtons {
 .controlButtons {
 
     float: right;
-    width: 200px;
+    width: 150px;
     border-left: 1px solid var(--border-color);
-    margin-right: 0px;
-    padding-left: 20px;
-display:none;
+    margin: 20px 5px 0 0;
+    padding-left: 00px;
+    visibility: hidden;
+/* display:none; */
 }
 
 .controlButtons>div {

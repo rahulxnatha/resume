@@ -9,14 +9,16 @@ body {
     color: var(--font);
     font-weight: 400;
     /* font-family: 'Work Sans', sans-serif; */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+
 }
 
 body {
     background-image: url('../../../images/pexels-anna-shvets-5324968.jpg');
-   
+
+}
+
+.background-image-courtesy {
+    display: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,14 +26,18 @@ body {
         background-image: url('../../../images/iss042e135100_lrg.jpg');
         /* background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/85000/85153/iss042e135100_lrg.jpg'); */
 
-        /* background-image: url('../../../images/pexels-pixabay-247676.jpg'); */
+        background-image: url('../../../images/pexels-pixabay-247676.jpg');
+    }
+
+    .background-image-courtesy {
+        display: block;
     }
 }
 
 .background-image-courtesy {
     position: fixed;
     bottom: 0;
-    right:0;
+    right: 0;
     /* height: 37px; */
     margin: 20px;
     background-color: rgba(0, 0, 0, 0.759);
@@ -51,24 +57,22 @@ body {
 body {
     /* Use two colors with 20% opacity */
     /* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
-    /* background-size: 100% 100%; */
-    background-position: 0px;
-    ;
-    /* Use animation to move the colors at an angle */
-    /* animation: AnimationName 10s ease infinite; */
-    /* Repeat the animation 3 times only */
-    /* animation-iteration-count: 3; */
-}
 
-@keyframes AnimationName {
-
-    /* Start from the top right corner */
+    background-size: cover; /* Scale the background image to cover the entire viewport */
+    background-attachment: fixed; /* Prevent the background image from scrolling with the page */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    background-position: center center; /* Center the background image within the viewport */
+    animation: scaleImage 6s ease infinite alternate; /* Create the animation with a 6-second duration, ease timing function, alternate direction, and infinite loop */
+  }
+  
+  @keyframes scaleImage {
     0% {
-        background-position: 100% 0%
+      background-size: 100%; /* Start with the image covering the viewport */
     }
-
-    /* Move to the bottom left corner */
+    50% {
+      background-size: 150%; /* Zoom in to 150% size */
+    }
     100% {
-        background-position: 0% 100%
+      background-size: 100%; /* Return to covering the viewport */
     }
-}
+  }

@@ -15,6 +15,24 @@ header {
   overflow-x: auto;
   overflow-y: hidden;
   transition-duration: 0.5s;
+
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-name: header_bar_load_animation;
+  animation-duration: 0.5s;
+}
+
+@keyframes header_bar_load_animation {
+    0% {
+        transform: translateX(-100vw);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+
+
 }
 
 

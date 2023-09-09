@@ -21,32 +21,33 @@
 
   /* font-size: 16px; */
   /* font-weight: 600; */
-  align-items: center;
-  text-align: center;
-  vertical-align: middle;
+  /* align-items: center; */
+  /* text-align: center; */
+  /* vertical-align: middle; */
 
 }
 
 .smallNotification_div {
 
   position: fixed;
-  bottom: 0px;
+  position: absolute;
+  bottom: -50px;
 
   left: 0px;
  
   z-index: 2;
 
-  margin: 40px 20px 40px calc(100px);
+  margin: 0px 00px 00px calc(00px);
   height: calc(40px);
 
-  overflow-y: hidden;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow: auto;
   transition-duration: 0.5s;
 
  
-  align-items: center;
-  text-align: center;
-  width: calc(50% - 150px);
+  /* align-items: center;
+  text-align: center; */
+  /* width: calc(50% - 150px); */
 
   /* border: 2px solid grey; */
   /* background-color: aqua; */

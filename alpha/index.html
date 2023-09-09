@@ -119,13 +119,16 @@
   <script src="assets/js/autopilot.js" defer></script>
   <script src="assets/js/typewritingEffect.js" defer></script>
   <script src="assets/js/resize_viewPort.js" defer></script>
+  <script src="assets/js/scrolling_effect.js" defer></script>
+
   <!-- <script src="assets/js/cursor.js" defer></script> -->
 
 </head>
 
 <body onmousemove="findCoords(event)">
 
-  <div class="background-image-courtesy"> <a href="https://earthobservatory.nasa.gov/images/85153/india-by-night-and-day" target="_blank">Background image courtesy of NASA</a>  </div>
+  <div class="background-image-courtesy"> <a
+      href="https://www.pexels.com/photo/low-angle-view-of-spiral-staircase-against-black-background-247676" target="_blank">Background photo by Pixabay</a> </div>
 
   <div id="splash-screen">
     <div class="spinner">
@@ -524,12 +527,7 @@
 
     </dialog>
 
-    <div class="smallNotification_div" id="smallNotification" style="visibility: hidden;">
-      <button class="smallNotification" onclick="window.open('#', '_self')"><span id="smallNotiText">Hi there. Good
-          afternoon.</span></button>
-
-
-    </div>
+   
 
     <div class="aside2">
 
@@ -1458,6 +1456,15 @@
       <!-- <button onclick="changeWidth_aside()">Change width</button>  -->
       <!-- <div id="width_px_aside" style="margin: 20px 0 0 20px; background-color: rgba(0, 0, 0, 0);"></div> -->
 
+
+      <div class="smallNotification_div" id="smallNotification" >
+        <button class="smallNotification" onclick="window.open('#', '_self')"><span id="smallNotiText">Hi there. Good
+            afternoon.</span></button>
+  
+  
+      </div>
+
+
     </aside>
 
 
@@ -1500,7 +1507,7 @@
 
     </div>
 
-    
+
 
     <!-- --------------------------------------------------------------------------------------- -->
     <main id="main">

@@ -678,18 +678,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // setTimeout(function () {
   splashScreen.style.display = "none";
-  document.getElementById("web-page").style.display = "block";
+  
+
+  setTimeout(function () {
+    document.getElementById("web-page").style.display = "block";
+  }, 100);
 
   // }, 1);
 });
-
-
-
-
-
-
-
-
 
 
 setTimeout(function () {
