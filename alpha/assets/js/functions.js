@@ -275,10 +275,12 @@ for (let j = 0; j < tab_close.length; j++) {
 
 
 function ActivateElemTab(which_tab) {
-    elemtabs[which_tab].style.background = "var(--fonti)";
+    elemtabs[which_tab].style.background = "var(--tabs-behind)";
+    elemtabs[which_tab].style.border = "2px solid var(--border-color)";
 }
 function DEActivateElemTab(which_tab) {
     elemtabs[which_tab].style.background = "var(--windowBackground)";
+    elemtabs[which_tab].style.border = "2px solid transparent";
 }
 
 

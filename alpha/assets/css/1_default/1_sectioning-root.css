@@ -65,6 +65,9 @@
   /* --border-radius-on-hover: 0px; */
 
   --number-of-cols: 1;
+  --tab-focused: #ffffff;
+  --tabs-behind: #ffffff8b;
+
 }
 
 :root {

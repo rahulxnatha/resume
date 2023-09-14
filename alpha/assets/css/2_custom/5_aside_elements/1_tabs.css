@@ -3,7 +3,7 @@
 /* tabs */
 .elemtab,
 .controlButtons span {
-    border: 2px solid var(--border-color);
+    border: 2px solid transparent;
     margin: 0px 20px 0 0px;
     padding: 0;
     border-radius: var(--border-radius-capsule);
@@ -22,7 +22,8 @@
 
 .elemtab_active {
     background-color: var(--ai);
-    background-color: var(--fonti);
+    background-color: var(--tabs-behind);
+    border: 2px solid var(--border-color);
     /* color: var(--base); */
     /* backdrop-filter: blur(13px); */
     /* border: 1px solid grey; */

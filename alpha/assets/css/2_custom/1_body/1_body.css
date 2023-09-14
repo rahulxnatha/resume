@@ -27,6 +27,12 @@ body {
         /* background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/85000/85153/iss042e135100_lrg.jpg'); */
 
         background-image: url('../../../images/pexels-pixabay-247676.jpg');
+        animation-name: scaleImage;
+        animation-duration: 30s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-delay: 0s;
     }
 
     .background-image-courtesy {
@@ -58,21 +64,31 @@ body {
     /* Use two colors with 20% opacity */
     /* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
 
-    background-size: cover; /* Scale the background image to cover the entire viewport */
-    background-attachment: fixed; /* Prevent the background image from scrolling with the page */
-    background-repeat: no-repeat; /* Prevent the background from repeating */
-    background-position: center center; /* Center the background image within the viewport */
-    animation: scaleImage 6s ease infinite alternate; /* Create the animation with a 6-second duration, ease timing function, alternate direction, and infinite loop */
-  }
-  
-  @keyframes scaleImage {
+    background-size: cover;
+    /* Scale the background image to cover the entire viewport */
+    background-attachment: fixed;
+    /* Prevent the background image from scrolling with the page */
+    background-repeat: no-repeat;
+    /* Prevent the background from repeating */
+    background-position: center center;
+    /* Center the background image within the viewport */
+
+    /* Delays the animation by 5 seconds */
+}
+
+@keyframes scaleImage {
     0% {
-      background-size: 100%; /* Start with the image covering the viewport */
+        background-size: 100%;
+        /* Start with the image covering the viewport */
     }
+
     50% {
-      background-size: 150%; /* Zoom in to 150% size */
+        background-size: 300%;
+        /* Zoom in to 150% size */
     }
+
     100% {
-      background-size: 100%; /* Return to covering the viewport */
+        background-size: 100%;
+        /* Return to covering the viewport */
     }
-  }
+}

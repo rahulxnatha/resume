@@ -3,4 +3,8 @@ img {
     cursor: pointer;
   }
 
+  audio {
+    display: none;
+  }
+  
 
