@@ -2,10 +2,8 @@
 <html lang="en-US" dir="ltr" data-color-scheme="light" dark="false">
 
 <head>
-
-  <base href="" target="_self" />
-
   <meta charset="utf-8" />
+  <base href="" target="_self" />
   <meta http-equiv="x-ua-compatible" content="ie=edge; charset=utf-8" />
   <!-- <meta http-equiv="refresh" content="...;url=..." /> -->
 
@@ -14,7 +12,7 @@
   <meta name="theme-color" content="#234e9700">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#234e9700">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#234e9700">
-  <link rel="icon" href="#" alt="" type="image/gif">
+
   <title>Rahul Natha</title>
 
   <meta property="og:description" content="" />
@@ -22,9 +20,8 @@
   <meta property="og:url" content="" />
   <meta property="og:image" content="" />
 
-  <link rel="icon" type="image/png"
-    href="https://docs.google.com/drawings/d/e/2PACX-1vS1KgWUu8Zg8OBlmPBqxNBJC_ux_GtlfJfTXUSjYUEgVOPph1OpC37FC6R7_ylI3SFrn4txXEBFyz9s/pub?w=96&amp;h=96"
-    sizes="96x96">
+  <link rel="icon" type="image/png" href="assets/images/favicon/RAHUL.png
+    " sizes="96x96">
 
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -82,8 +79,10 @@
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/1_section.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/2_span.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/3_article.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/4_grid_elements.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/5_aside_elements/1_tabs.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/5_aside_elements/2_section.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/2_custom/5_aside_elements/3_sub_tabs.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/6_dialog/1_dialog.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/7_notification/1_notification.css">
 
@@ -120,6 +119,7 @@
   <script src="assets/js/typewritingEffect.js" defer></script>
   <script src="assets/js/resize_viewPort.js" defer></script>
   <script src="assets/js/scrolling_effect.js" defer></script>
+  <script src="assets/js/sub-tabs.js" defer></script>
 
   <!-- <script src="assets/js/cursor.js" defer></script> -->
 
@@ -127,13 +127,13 @@
 
 <body onmousemove="findCoords(event)">
 
-  <audio id="background-music" src="assets/images/music/electronic-rock-king-around-here-15045.mp3" volume="0.2" autoplay></audio>
+  <!-- <audio id="background-music" src="assets/images/music/electronic-rock-king-around-here-15045.mp3" volume="0.2" autoplay></audio> -->
 
   <!-- <embed src="assets/images/music/electronic-rock-king-around-here-15045.mp3" autostart="1"></embed> -->
 
 
   <!-- <button id="toggle-music">Toggle Music</button> -->
-  
+
 
   <div class="background-image-courtesy"> <a
       href="https://www.pexels.com/photo/low-angle-view-of-spiral-staircase-against-black-background-247676"
@@ -577,15 +577,19 @@
 
             <span class="elemtab elemtab_active" id="tab1">
               <span><span class="tab_text">Introducing myself</span></span> <span class="tab_close"></span></span>
-            <span class="elemtab" id="tab2"> <span><span class="tab_text">Bachelor of Technology</span></span> <span
+
+
+
+
+            <span class="elemtab" id="tab2"> <span><span class="tab_text">RCI Research Fellowship</span></span> <span
                 class="tab_close"></span></span>
-            <span class="elemtab" id="tab3"> <span><span class="tab_text">Higher Secondary School
-                  Education</span></span> <span class="tab_close"></span></span>
-            <span class="elemtab" id="tab4"> <span><span class="tab_text">Secondary School Education</span></span><span
+            <span class="elemtab" id="tab3"> <span><span class="tab_text">Cyient Limited
+                  </span></span> <span class="tab_close"></span></span>
+            <span class="elemtab" id="tab4"> <span><span class="tab_text">Bachelor of Technology</span></span><span
                 class="tab_close"></span></span>
-            <span class="elemtab" id="tab5"> <span><span class="tab_text"></span></span><span
+            <span class="elemtab" id="tab5"> <span><span class="tab_text">Higher Secondary School</span></span><span
                 class="tab_close"></span></span>
-            <span class="elemtab" id="tab6"> <span><span class="tab_text"></span></span><span
+            <span class="elemtab" id="tab6"> <span><span class="tab_text">Secondary School Education</span></span><span
                 class="tab_close"></span></span>
             <span class="elemtab" id="tab7"> <span><span class="tab_text"></span></span><span
                 class="tab_close"></span></span>
@@ -1207,48 +1211,130 @@
 
         </div>
 
+
+
+        <div class="briefblock">
+          <h1 lang="en-IN">Research Fellowship at Research Centre Imarat</h1>
+
+          <!-- 
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'RCI-About')">Brief story</button>
+            <button class="tablinks" onclick="openCity(event, 'JRF')">JRF</button>
+            <button class="tablinks" onclick="openCity(event, 'SRF')">SRF</button>
+            <button class="tablinks" onclick="openCity(event, 'RCI-Publications')">Publications</button>
+          </div>
+
+          <div id="RCI-About" class="tabcontent">About
+          </div>
+          <div id="JRF" class="tabcontent">JRF
+          </div>
+          <div id="SRF" class="tabcontent">SRF
+          </div>
+          <div id="RCI-Publications" class="tabcontent">Pub
+          </div> -->
+        </div>
+
+        <div class="briefblock">47</div>
+
+
+
+
         <div class="briefblock">
           <h1>Bachelor of Technology in Mechanical Engineering</h1>
-          <p>
-            I'm proud to hold a Bachelor of Technology degree with first-class honors and distinction. Notably, I received a gold medal for my exceptional performance during my first year of study.
-        </p>
-        
-        <p>
-            My academic journey encompassed a comprehensive curriculum of 67 courses. I focused on my favorite subjects, such as Mathematics, Engineering Graphics, Theory of Machines, Machine Design, and Thermal Engineering. To broaden my knowledge, I also delved into elective courses in Robotics and Plant Layout and Material Handling.
-        </p>
-        
-        <p>
-            Complementing my academic achievements, I completed Campus Recruitment Training (CRT), where I honed valuable skills in Aptitude, English, and C language coding.
-        </p>
-        
-        <p>
-            Beyond the classroom, I actively participated in various activities and societies, including serving as the student head of Azura 2k18, contributing to the Telangana Ku Haritha Hāram (<span lang="te">తెలంగాణకు హరితహారం</span>) initiative, and volunteering at the Smart India Hackathon 2018.
-        </p>
-        
-        <p>
-            My dedication to academic excellence, combined with my extracurricular involvement, has equipped me with a well-rounded skill set and a passion for success in my chosen field.
-        </p>
-        
+
+
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'About')" id="showBTechBriefStory">Brief story</button>
+            <button class="tablinks" onclick="openCity(event, 'BTechSeminar')" id="showBTechSeminar">Seminar</button>
+            <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">Seminar</button> -->
+            <button class="tablinks" onclick="openCity(event, 'Project')" id="showBTechProject">Project</button>
+            <button class="tablinks" onclick="openCity(event, 'Extracurricular')"
+              id="showBTechExtra">Extracurricular</button>
+          </div>
+
+          <div id="About" class="tabcontent">
+
+            <p>
+              I'm proud to hold a Bachelor of Technology degree with first-class honors and distinction. Notably, I
+              received a gold medal for my exceptional performance during my first year of study.
+            </p>
+
+            <p>
+              My academic journey encompassed a comprehensive curriculum of 67 courses. I focused on my favorite
+              subjects, such as Mathematics, Engineering Graphics, Theory of Machines, Machine Design, and Thermal
+              Engineering. To broaden my knowledge, I also delved into elective courses in Robotics and Plant Layout and
+              Material Handling.
+            </p>
+
+            <p>
+              Complementing my academic achievements, I completed Campus Recruitment Training (CRT), where I honed
+              valuable skills in Aptitude, English, and C language coding.
+            </p>
+
+            <p>
+              Beyond the classroom, I actively participated in various activities and societies, including serving as
+              the student head of Azura 2k18, contributing to the Telangana Ku Haritha Hāram (<span lang="te">తెలంగాణకు
+                హరితహారం</span>) initiative, and volunteering at the Smart India Hackathon 2018.
+            </p>
+
+            <p>
+              My dedication to academic excellence, combined with my extracurricular involvement, has equipped me with a
+              well-rounded skill set and a passion for success in my chosen field.
+            </p>
+          </div>
+
+          <div id="Project" class="tabcontent">
+
+            <p>I have done my project on the machining behavior of wire electrical discharge machining process. More
+              info gets updated soon.</p>
+          </div>
+
+          <div id="BTechSeminar" class="tabcontent">
+
+            <p>My seminar is on space science and I have focused more on the space junk. More info gets updated soon.
+            </p>
+          </div>
+          <div id="Extracurricular" class="tabcontent">
+
+            <p>Organised various events at college. More info gets updated soon.</p>
+          </div>
+
+
+
+
+
         </div>
 
         <div class="briefblock">
           <h1>Higher Secondary School Education</h1>
           <p>
-            My Higher Secondary School Education, completed in 2016 at Sri SanJEEvni Junior College & IIT Academy in Hyderabad, holds a special place in my academic journey. During this period, I achieved a commendable score of 71.5%, an accomplishment I take great pride in.
-        </p>
-        
-        <p>
-            What sets my academic experience apart is my unwavering commitment to true learning. Despite the prevailing culture that encouraged rote memorization and the emphasis on "important questions," I chose a different path. The Telangana State Board of Intermediate Education (TSBIE) during my 11th and 12th years seemed to favor byheart-based learning, promoting textbooks that listed questions and answers as the primary source of knowledge.
-        </p>
-        
-        <p>
-            Contrary to the norm, I maintained my dedication to understanding the subjects deeply. I refused to rely on rote memorization and never succumbed to the pressure of simply reading from question-answer books. Instead, I diligently studied from textbooks, aiming to grasp the concepts and principles behind the topics I encountered.
-        </p>
-        
-        <p>
-            Importantly, I adhered to my principles of academic integrity. I never resorted to cheating or unethical practices, even when it meant receiving lower scores due to my commitment to true understanding rather than short-term gains. My journey through Higher Secondary School Education was marked by resilience and a steadfast pursuit of knowledge.
-        </p>
-        
+            My Higher Secondary School Education, completed in 2016 at Sri SanJEEvni Junior College & IIT Academy in
+            Hyderabad, holds a special place in my academic journey. During this period, I achieved a commendable score
+            of 71.5%, an accomplishment I take great pride in.
+          </p>
+
+          <p>
+            What sets my academic experience apart is my unwavering commitment to true learning. Despite the prevailing
+            culture that encouraged rote memorization and the emphasis on "important questions," I chose a different
+            path. The Telangana State Board of Intermediate Education (TSBIE) during my 11th and 12th years seemed to
+            favor byheart-based learning, promoting textbooks that listed questions and answers as the primary source of
+            knowledge.
+          </p>
+
+          <p>
+            Contrary to the norm, I maintained my dedication to understanding the subjects deeply. I refused to rely on
+            rote memorization and never succumbed to the pressure of simply reading from question-answer books. Instead,
+            I diligently studied from textbooks, aiming to grasp the concepts and principles behind the topics I
+            encountered.
+          </p>
+
+          <p>
+            Importantly, I adhered to my principles of academic integrity. I never resorted to cheating or unethical
+            practices, even when it meant receiving lower scores due to my commitment to true understanding rather than
+            short-term gains. My journey through Higher Secondary School Education was marked by resilience and a
+            steadfast pursuit of knowledge.
+          </p>
+
         </div>
 
         <div class="briefblock">
@@ -1434,10 +1520,7 @@
         <div class="briefblock">43</div>
         <div class="briefblock">44</div>
         <div class="briefblock">45</div>
-        <div class="briefblock">46</div>
-        <div class="briefblock">47</div>
-        <div class="briefblock">48</div>
-        <div class="briefblock">49</div>
+
 
 
         <!-- 
@@ -1695,7 +1778,23 @@
 
       </section>
 
+      <section class=" mainSection">
 
+        <span>
+          <h1 id="work">Experience of work</h1>
+        </span>
+
+        <article tabindex="0" class="Work">
+          <h1>Research Fellow</h1>
+          <p>Research Centre Imarat</p>
+        </article>
+
+        <article tabindex="0" class="Work">
+          <h1>Mechanical Design Engineer, Technical Writer & Illustrator</h1>
+          <p>Cyient Limited</p>
+        </article>
+
+      </section>
 
 
       <section class="backgroundHover mainSection" id="testtgb">
@@ -1709,12 +1808,20 @@
         </span>
 
 
-        <div>
+        <div id="cmrcet-id" class="main-grid-elements">
           <article tabindex="0" class="cmrcet">
 
             <h1>Bachelor of Technology in Mechanical Engineering</h1>
             <p>2020 &#8226; CMR College of Engineering &amp; Technology, Hyderabad</p>
             <p>8.91 GPA</p>
+            <p class="show-on-hover">
+              <button onclick="showSubTab('showBTechBriefStory')">Brief Story</button>
+              <button onclick="showSubTab('showBTechSeminar')">Seminar</button>
+              <button onclick="showSubTab('showBTechProject')">Project</button>
+              <button onclick="showSubTab('showBTechExtra')">Extracurricular</button>
+
+
+            </p>
 
 
           </article>
@@ -1724,7 +1831,7 @@
 
 
 
-        <div>
+        <div class="main-grid-elements">
           <article tabindex="0">
 
             <h1>Higher Secondary School Education</h1>
@@ -1738,15 +1845,17 @@
           <button onclick="window.open('https://google.com', '_blank')">College website</button>
         </div>
 
-        <article tabindex="0">
 
-          <h1>Secondary School Education, Andhra Pradesh State Board</h1>
-          <p>2014 &#8226; St. Augustine High School, Hyderabad</p>
-          <!-- <p>I have passed my secondary school education, also called as matriculation with GPA of 8.8 in the year 2014.
+        <div class="main-grid-elements">
+          <article tabindex="0">
+
+            <h1>Secondary School Education, Andhra Pradesh State Board</h1>
+            <p>2014 &#8226; St. Augustine High School, Hyderabad</p>
+            <!-- <p>I have passed my secondary school education, also called as matriculation with GPA of 8.8 in the year 2014.
         </p> -->
 
-        </article>
-
+          </article>
+        </div>
         <span>
           <h2>Certifications</h2>
         </span>
@@ -2074,31 +2183,7 @@
 
       </section>
 
-      <section class=" mainSection">
 
-        <span>
-          <h1 id="work">Experience of work</h1>
-        </span>
-
-        <article tabindex="0" class="Work">
-          <h1>Design Engineer</h1>
-          <p>Cyient Limited</p>
-        </article>
-        <article tabindex="0" class="Work">
-          <h1>Technical Illustrator</h1>
-          <p>Cyient Limited</p>
-        </article>
-        <article tabindex="0" class="Work">
-          <h1>Technical Writer</h1>
-          <p>Cyient Limited</p>
-        </article>
-        <article tabindex="0" class="Work">
-          <h1>Junior Research Fellow</h1>
-          <p>Research Centre Imarat</p>
-        </article>
-
-
-      </section>
 
       <section id="contact_section" class=" mainSection">
 

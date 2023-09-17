@@ -14,7 +14,8 @@ aside section {
     /* background-color: #2a1e42; */
     /* border-radius: 7px; */
   background-color: #888888;
-  }
+
+}
   
   
   
@@ -141,7 +142,61 @@ aside:hover .viewPortMenu:hover {
   display: none;
   transition: 1s;
 
+  -webkit-animation: LoadingAnimation 1s;
+  animation: LoadingAnimation 1s;
 }
+
+/* Loading animation */
+@-webkit-keyframes LoadingAnimation {
+  0% {opacity: 0;}
+  
+  100% {opacity: 1;}
+}
+
+@keyframes LoadingAnimation {
+  0% {opacity: 0;}
+ 
+  100% {opacity: 1;}
+}
+
+
+/* slideFromLeft */
+@-webkit-keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+/* slideFromRight */
+@-webkit-keyframes slideFromRight {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    transform: translateX(200%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 
 #briefblock0 {
   display: block;

@@ -9,6 +9,22 @@ main span {
     margin-top: 0px;
 }
 
+/* #cmrcet-id:hover {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    
+} */
+
+.show-on-hover {
+    display: none;
+    -webkit-animation: LoadingAnimation 1s;
+  animation: LoadingAnimation 1s;
+}
+
+#cmrcet-id:hover .show-on-hover {
+    display: block;
+}
+
 .mainSpanOnAsideClose {
     grid-column-end: 5;
 }

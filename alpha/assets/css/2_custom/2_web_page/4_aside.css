@@ -129,6 +129,9 @@ aside h6 {
 aside h2 {
     font-size: 2em;
 }
+aside h3 {
+    font-size: 1.5em;
+}
 
 @media only screen and (max-width: 1230px) {
     aside {

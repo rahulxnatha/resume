@@ -698,8 +698,8 @@ var cursorBlurEffect = document.getElementById("cursor-effect");
 
 function findCoords(event) {
 
-  document.getElementById("background-music").play();
-  document.getElementById("background-music").volume = 0.005;
+  // document.getElementById("background-music").play();
+  // document.getElementById("background-music").volume = 0.005;
 
   var x = event.clientX;
   var y = event.clientY;

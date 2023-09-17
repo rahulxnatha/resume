@@ -17,6 +17,8 @@
   /* -webkit-backdrop-filter: blur(13px); */
   /* backdrop-filter: blur(13px); */
 
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
   transition-duration: 0.5s;
 
   /* font-size: 16px; */
@@ -44,7 +46,7 @@
   overflow: auto;
   transition-duration: 0.5s;
 
- 
+  
   /* align-items: center;
   text-align: center; */
   /* width: calc(50% - 150px); */
@@ -53,6 +55,10 @@
   /* background-color: aqua; */
 }
 
+aside:hover .smallNotification_div > button {
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+}
 
 .smallNotification_div {
   -webkit-animation-name: smallNotification_animatebottom;
