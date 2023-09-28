@@ -1,15 +1,8 @@
 
-console.log("This is search.");
-
-
 let searchBar = document.getElementById('search_bar');
 let searchButton = document.getElementById('search_button_action');
 
-searchButton.addEventListener('click', function () {
-
-// if (searchBar.value.length
-
-// searchBar.addEventListener('oninput', function () {
+searchButton.addEventListener('click', function search() {
 
     // Get the text of the search query.
     let searchQuery = searchBar.value;
@@ -18,6 +11,7 @@ searchButton.addEventListener('click', function () {
 
     // For each article on the page, check if the article contains the search query.
     let articles = document.querySelectorAll('article');
+    let article_remove_count = 0;
     for (let article of articles) {
         // Check if the article contains the search query in the title, body, or any of the tags.
         let articleText = article.textContent;
@@ -30,6 +24,7 @@ searchButton.addEventListener('click', function () {
         // If the article does not contain the search query, hide the article.
         if (!articleText.includes(searchQuery) && !articleTagsText.includes(searchQuery)) {
             article.style.display = 'none';
+            article_remove_count++;
             console.log("If the article does not contain the search query, hide the article.");
 
         } else {
@@ -39,13 +34,36 @@ searchButton.addEventListener('click', function () {
         }
     }
 
-    document.getElementById('search_result_section').style.display = 'block';
+
+    
     document.getElementById('cubeSection').style.display = 'none';
     document.getElementById('banner').style.display = 'none';
 
+    document.getElementById('results_count').innerText = document.querySelector('body').getElementsByTagName('article').length - article_remove_count;
 
 
 
+    let spanElements = document.querySelectorAll('main > section > span');
+
+    for (let i = 4; i < spanElements.length; i++) {
+        spanElements[i].style.display = 'none';
+        console.log(i);
+    }
+
+    document.getElementById('search_result_section').style.display = 'block';
+});
+
+
+// let searchBar = document.getElementById('search_bar');
+searchBar.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        // Submit the search form.
+        // document.getElementById('search_form').submit();
+        document.getElementById('search_button_action').click();
+    }
 });
 
 document.getElementById('search_result_section').style.display = 'none';
+
+
+// Array.from(document.querySelectorAll('main section span')).style.display = 'none';

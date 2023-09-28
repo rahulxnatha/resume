@@ -122,6 +122,11 @@
   <script src="assets/js/sub-tabs.js" defer></script>
   <script src="assets/js/search.js" defer></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/spellchecker@0.8.0/spellchecker.min.js"></script>
+
   <!-- <script src="assets/js/cursor.js" defer></script> -->
 
 </head>
@@ -1721,10 +1726,10 @@
       <!-- </section> -->
       <!-- display:inherit; -->
       <section  id="search_result_section">
-        <button style="margin-top: 20px;">👈 Back</button>
+        <button style="margin-top: 20px;" onclick="window.location.href = 'https://rahulnatha.com/alpha'">👈 Back</button>
         <span>
-          <h1 class="typewrite">Search complete</h1>
-          <!-- <h1><span id="results_count"></span> search results found</h1> -->
+          <!-- <h1 class="typewrite">Search complete</h1> -->
+          <h1><span id="results_count"></span> search results found</h1>
           <p>Caution! The search engine is not smart. It is basic and case sensitive.</p>
         </span>
         <span>
@@ -1783,7 +1788,7 @@
       <section class=" mainSection">
 
         <span>
-          <h1 id="work">Experience of work</h1>
+          <h1 id="work" class="main_heading">Experience of work</h1>
         </span>
 
         <article tabindex="0" class="Work">
@@ -1802,16 +1807,16 @@
       <section class="backgroundHover mainSection" id="testtgb">
 
         <span>
-          <h1 id="education">Education</h1>
+          <h1 id="education" class="main_heading">Education</h1>
         </span>
 
         <span>
-          <h2>School and degree</h2>
+          <h2 class="main_heading2">School and degree</h2>
         </span>
 
 
-        <div id="cmrcet-id" class="main-grid-elements">
-          <article tabindex="0" class="cmrcet">
+        <!-- <div  class="main-grid-elements"> -->
+          <article tabindex="0" class="cmrcet" id="cmrcet-id">
 
             <h1>Bachelor of Technology in Mechanical Engineering</h1>
             <p>2020 &#8226; CMR College of Engineering &amp; Technology, Hyderabad</p>
@@ -1827,13 +1832,13 @@
 
 
           </article>
-          <button onclick="window.open('https://cmrcet.ac.in', '_blank')">College website</button>
-          <button onclick="window.open('https://sites.google.com/view/rahuldocs', '_blank')">DOCS from Rahul</button>
-        </div>
+          <!-- <button onclick="window.open('https://cmrcet.ac.in', '_blank')">College website</button> -->
+          <!-- <button onclick="window.open('https://sites.google.com/view/rahuldocs', '_blank')">DOCS from Rahul</button> -->
+        <!-- </div> -->
 
 
 
-        <div class="main-grid-elements">
+        <!-- <div class="main-grid-elements"> -->
           <article tabindex="0">
 
             <h1>Higher Secondary School Education</h1>
@@ -1844,11 +1849,11 @@
           2014 and 2016.</p> -->
 
           </article>
-          <button onclick="window.open('https://google.com', '_blank')">College website</button>
-        </div>
+          <!-- <button onclick="window.open('https://google.com', '_blank')">College website</button> -->
+        <!-- </div> -->
 
 
-        <div class="main-grid-elements">
+        <!-- <div class="main-grid-elements"> -->
           <article tabindex="0">
 
             <h1>Secondary School Education, Andhra Pradesh State Board</h1>
@@ -1857,7 +1862,7 @@
         </p> -->
 
           </article>
-        </div>
+        <!-- </div> -->
         <span>
           <h2>Certifications</h2>
         </span>
@@ -2034,11 +2039,11 @@
       <section class=" mainSection">
 
         <span>
-          <h1 id="skills">Skills</h1>
+          <h1 id="skills" class="main_heading">Skills</h1>
         </span>
 
         <span>
-          <h2>Tools &amp; Technologies</h2>
+          <h2 class="main_heading2">Tools &amp; Technologies</h2>
         </span>
 
         <article>
@@ -2121,8 +2126,8 @@
       </section>
       <section class=" mainSection ">
 
-        <span>
-          <h1 id="projects">Projects</h1>
+        <span class="main_heading">
+          <h1 id="projects" class="main_heading2">Projects</h1>
         </span>
 
         <article tabindex="0">
@@ -2191,7 +2196,7 @@
 
         <span id="contact">
 
-          <h1>Contact details</h1>
+          <h1 >Contact details</h1>
 
 
           <address>

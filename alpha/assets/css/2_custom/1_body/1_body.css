@@ -12,10 +12,10 @@ body {
 
 }
 
-body {
+/* body {
     background-image: url('../../../images/pexels-anna-shvets-5324968.jpg');
 
-}
+} */
 
 .background-image-courtesy {
     display: none;
@@ -23,10 +23,10 @@ body {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-image: url('../../../images/iss042e135100_lrg.jpg');
+        /* background-image: url('../../../images/iss042e135100_lrg.jpg'); */
         /* background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/85000/85153/iss042e135100_lrg.jpg'); */
 
-        background-image: url('../../../images/pexels-pixabay-247676.jpg');
+        /* background-image: url('../../../images/pexels-pixabay-247676.jpg'); */
         animation-name: scaleImage;
         animation-duration: 30s;
         animation-timing-function: ease;
