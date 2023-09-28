@@ -383,7 +383,18 @@ for (let i = 0; i < articles.length; i++) {
 
     }
 
+    
+
+
     articles[i].addEventListener("mouseover", () => {
+
+
+
+        const iframes = document.querySelectorAll('iframe');
+        for (const iframe of iframes) {
+            iframe.style.display = 'block';
+          }
+
 
         setTimeout(function () {
             articles[i].classList.add("article_hovered");

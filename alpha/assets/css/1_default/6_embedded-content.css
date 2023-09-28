@@ -11,3 +11,12 @@
 margin: 4px 2px 2px 2px;
 
 }
+
+iframe {
+  display: none;
+}
+
+
+.iframe_display {
+  display: block;
+}

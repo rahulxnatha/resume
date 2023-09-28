@@ -37,7 +37,7 @@ body {
     }
 
     .background-image-courtesy {
-        display: block;
+        display: none;
     }
 }
 
