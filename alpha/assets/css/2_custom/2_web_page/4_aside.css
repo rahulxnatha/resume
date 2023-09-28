@@ -31,7 +31,7 @@ aside {
     /* -webkit-backdrop-filter: blur(13px); */
     /* backdrop-filter: blur(13px); */
 
-    /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
+    
 
     /* background-color: green; */
     /* color: white; */
@@ -69,6 +69,7 @@ aside:hover {
     background-color: var(--windowBackground);
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
 
 }
 

@@ -56,6 +56,8 @@ article,
 
 article:hover {
 
+   
+
     transform: rotate(0deg) scale(1.01);
     border-radius: var(--border-radius-on-hover);
     /* transition-delay: 1s; */

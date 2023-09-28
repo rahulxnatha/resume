@@ -120,6 +120,7 @@
   <script src="assets/js/resize_viewPort.js" defer></script>
   <script src="assets/js/scrolling_effect.js" defer></script>
   <script src="assets/js/sub-tabs.js" defer></script>
+  <script src="assets/js/search.js" defer></script>
 
   <!-- <script src="assets/js/cursor.js" defer></script> -->
 
@@ -240,7 +241,7 @@
           <span class="hide_on_mobile" style="color:#77777780;display: none;">&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>
         </span>
 
-        <span class="search_bar" style="float: inherit; display: none; ">
+        <span class="search_bar" style="float: inherit; ">
           <input type="search" oninput="updateSearchBarWidth()" name="" id="search_bar" placeholder="Looking for...">
 
           <input type="button" value="Search" id="search_button_action">
@@ -1590,7 +1591,7 @@
     </aside>
 
 
-    <div class="banner_section">
+    <div class="banner_section" id="banner">
 
 
       <div class="banner" id="default_focus" draggable="true">
@@ -1719,11 +1720,12 @@
 
       <!-- </section> -->
       <!-- display:inherit; -->
-      <section style="display:none;">
+      <section  id="search_result_section">
         <button style="margin-top: 20px;">👈 Back</button>
         <span>
-          <h1 class="typewrite">Everything that connects to my BTech</h1>
-          <!-- <h1>Showing 5 of 5 search results</h1> -->
+          <h1 class="typewrite">Search complete</h1>
+          <!-- <h1><span id="results_count"></span> search results found</h1> -->
+          <p>Caution! The search engine is not smart. It is basic and case sensitive.</p>
         </span>
         <span>
           <h2>Showing results for "<span id="searchQuery">#BTech</span>"</h2>

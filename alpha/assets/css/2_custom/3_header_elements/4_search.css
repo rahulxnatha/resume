@@ -5,6 +5,7 @@
   /* height: 1000px; */
   margin: -11px 0 0 calc((100% - 850px)/2);
 
+  float: inherit;
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
   border-left: 0px solid var(--border-color);
@@ -24,9 +25,10 @@
 
 }
 
-/* #search_bar:focus {
-  width: 150px;
-} */
+#search_bar:focus {
+  outline: 2px solid var(--border-color);
+  outline-offset: 4px;
+}
 
 
 
