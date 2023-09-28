@@ -35,13 +35,18 @@ searchButton.addEventListener('click', function search() {
     }
 
 
-    
+
     document.getElementById('cubeSection').style.display = 'none';
     document.getElementById('banner').style.display = 'none';
 
     document.getElementById('results_count').innerText = document.querySelector('body').getElementsByTagName('article').length - article_remove_count;
 
+    if (document.querySelector('body').getElementsByTagName('article').length - article_remove_count < 1) {
+        document.getElementById('showing_search_results').style.display = "block";
+        document.getElementById('showing_search_results').innerText = "Can you please check the search query for typos or use other keywords? I am unable to get any results with this query. I am still under development, but I hope to be able to answer this query in the future.";
+        document.getElementById('whether_showing_search_results').innerText = "Sorry, can't show";
 
+    }
 
     let spanElements = document.querySelectorAll('main > section > span');
 
