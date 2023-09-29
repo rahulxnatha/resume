@@ -14,9 +14,9 @@ searchButton.addEventListener('click', function search() {
         const keywords = {
             // study: [],
             education: ['education', 'educational', 'qualifications', 'qualification', 'school', 'study', 'studied', 'studying'],
-            work: ['experience', 'work', 'internship','job','corporate','company','sector','profession','field']
-
-
+            work: ['experience', 'work', 'internship', 'job', 'corporate', 'company', 'sector', 'profession', 'field'],
+            course: ['passion', 'course', 'coursera', 'LinkedIn Learning'],
+            are_you_stupid: ['stupid', 'dumb', 'idiot', 'mean']
 
             // Add more keywords and corresponding mappings as needed
         };
@@ -98,6 +98,51 @@ searchButton.addEventListener('click', function search() {
     }
 
     document.getElementById('search_result_section').style.display = 'block';
+
+
+
+    let section1 = document.querySelector('#work_section');
+    let section2 = document.querySelector('#edu_section');
+    let section3 = document.querySelector('#skill_section');
+    let section4 = document.querySelector('#project_section');
+    let section5 = document.querySelector('#waste_section');
+
+    // // Append the contents of the second section tag to the first section tag.
+    // section1.appendChild(section2.childNodes);
+    // section1.appendChild(section3.childNodes);
+    // section1.appendChild(section4.childNodes);
+    // section1.appendChild(section5.childNodes);
+
+    // // Remove the second section tag from the DOM.
+    // section2.parentNode.removeChild(section2);
+    // section3.parentNode.removeChild(section3);
+    // section4.parentNode.removeChild(section4);
+    // section5.parentNode.removeChild(section5);
+
+
+   
+
+
+
+    // Get the HTML content of the two section tags.
+    let section1HTML = section1.innerHTML;
+    let section2HTML = section2.innerHTML;
+    let section3HTML = section3.innerHTML;
+    let section4HTML = section4.innerHTML;
+    let section5HTML = section5.innerHTML;
+
+    // Combine the HTML content of the two section tags into a single string.
+    const combinedHTML = section1HTML + section2HTML + section3HTML + section4HTML + section5HTML;
+
+    // Set the innerHTML property of the first section tag to the combined HTML string.
+    section1.innerHTML = combinedHTML;
+
+  // Remove the contents of the second section tag.
+     section2.innerHTML = '';
+     section3.innerHTML = '';
+     section4.innerHTML = '';
+     section5.innerHTML = '';
+
 });
 
 searchBar.addEventListener('keydown', function (event) {

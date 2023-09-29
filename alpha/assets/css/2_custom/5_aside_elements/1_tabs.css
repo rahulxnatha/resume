@@ -234,3 +234,7 @@ aside:hover .tabbar, aside:hover .controlButtons {
         transform: translateX(0);
     }
 }
+
+#focus_search_bar:hover {
+width: 50px;
+}
