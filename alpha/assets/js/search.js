@@ -135,13 +135,13 @@ searchButton.addEventListener('click', function search() {
     const combinedHTML = section1HTML + section2HTML + section3HTML + section4HTML + section5HTML;
 
     // Set the innerHTML property of the first section tag to the combined HTML string.
-    section1.innerHTML = combinedHTML;
+    // section1.innerHTML = combinedHTML;
 
   // Remove the contents of the second section tag.
-     section2.innerHTML = '';
-     section3.innerHTML = '';
-     section4.innerHTML = '';
-     section5.innerHTML = '';
+    //  section2.innerHTML = '';
+    //  section3.innerHTML = '';
+    //  section4.innerHTML = '';
+    //  section5.innerHTML = '';
 
 });
 

@@ -8,8 +8,8 @@ main section {
     column-gap: 20px;
     row-gap: 20px;
     transition-duration: 0ms;
-    padding: 0 50px 20px 50px;
-    margin: 0px 0 20px 0;
+    padding: 0 50px 0px 50px;
+    margin: 0px 0 00px 0;
     /* border-right: 2px solid rgb(128, 128, 128);
     border-bottom: 2px solid rgb(128, 128, 128);
     border-top: 2px solid rgb(128, 128, 128); */
@@ -20,7 +20,7 @@ main section {
     /* overflow: hidden; */
     overflow-y: auto;
     overflow: visible;
-    /* background-color: none;
+    /* background-color: green;
     -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);  */
 }
@@ -182,3 +182,8 @@ main section {
         --angle: 360deg;
     }
 }
+
+#whether_showing_search_results_h2, #showing_search_results {
+margin-bottom: 20px;
+}
+
