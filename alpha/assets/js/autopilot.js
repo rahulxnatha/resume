@@ -8,11 +8,11 @@
 
 /////////////////////////////////////////////////////////////////////
 
-  // document.getElementById("width_px_aside").innerText = event.clientX + "px" ;
+// document.getElementById("width_px_aside").innerText = event.clientX + "px" ;
 
-  
 
- 
+
+
 
 
 // draggableDiv.addEventListener("mouseup", function() {
@@ -60,31 +60,31 @@ function changeWidth_aside(width) {
   //   increase_width_aside_by = 200;
   //   aside_enlarged = 1;
   // }
-  if (width == "main_mouseout" || width == "aside_mouseout" || width == "main_mouseover" ) {
+  if (width == "main_mouseout" || width == "aside_mouseout" || width == "main_mouseover") {
     increase_width_aside_by = 0;
     aside_enlarged = 0;
   } else {
-    
-    
+
+
     // increase_width_aside_by = 200;
     increase_width_aside_by = 0;
-    aside_enlarged = 1; 
-    
-    let mainSections = document.querySelectorAll('main section');
-        for (let index = 0; index < mainSections.length; index++) {
-            mainSections[index].classList.toggle("mainSectionsOnDynamicLayoutTest");
-        }
+    aside_enlarged = 1;
 
-  let mainSpans = document.querySelectorAll('main span');
-        for (let index = 0; index < mainSpans.length; index++) {
-            mainSpans[index].classList.toggle("mainSpansOnDynamicLayoutTest");
-        }
-        
-        document.getElementById("default_focus").classList.toggle("bannerOnDynamicLayoutTest");
+    let mainSections = document.querySelectorAll('main section');
+    for (let index = 0; index < mainSections.length; index++) {
+      mainSections[index].classList.toggle("mainSectionsOnDynamicLayoutTest");
+    }
+
+    let mainSpans = document.querySelectorAll('main span');
+    for (let index = 0; index < mainSpans.length; index++) {
+      mainSpans[index].classList.toggle("mainSpansOnDynamicLayoutTest");
+    }
+
+    document.getElementById("default_focus").classList.toggle("bannerOnDynamicLayoutTest");
 
 
   }
-  
+
   var windowWidth_half = windowWidth / 2;
 
   var main_pane_width = windowWidth_half - increase_width_aside_by;
@@ -92,17 +92,17 @@ function changeWidth_aside(width) {
 
 
 
- if(width == "main_mouseover") {
-  main_pane_width = windowWidth_half + increase_width_aside_by;
-  aside_pane_width = (windowWidth_half - 150) - increase_width_aside_by;
- }
+  if (width == "main_mouseover") {
+    main_pane_width = windowWidth_half + increase_width_aside_by;
+    aside_pane_width = (windowWidth_half - 150) - increase_width_aside_by;
+  }
 
 
   document.getElementsByTagName("main")[0].style.width = "calc(" + main_pane_width + "px)";
   document.getElementsByTagName("aside")[0].style.width = "calc(" + aside_pane_width + "px)";
 
 
-     
+
   // document.getElementsByTagName("main")[0].style.width = "calc(" + 100 + "px)";
   // document.getElementsByTagName("aside")[0].style.width = "calc(" + 300 + "px)";
 }
@@ -365,11 +365,34 @@ var prevScrollpos = 0;
 // var currentScrollPos = document.getElementById("main_pageScroll").scrollTop();
 
 
-
+var banner_folded = false;
 // var prevScrollpos = window.pageYOffset;
 // document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
 window.onscroll = function () {
-  var currentScrollPos = window.pageYOffset;
+  // var currentScrollPos = window.pageYOffset;
+  var currentScrollPos = window.scrollY;
+
+if (currentScrollPos == 0) {
+  while (banner_folded == true) {
+    document.getElementById("banner_article").classList.toggle("banner_fold");
+    document.getElementById("banner").classList.toggle("banner_section_fold");
+    document.getElementById("viewPort").classList.toggle("aside_unfold");
+
+    banner_folded = false;
+
+  }
+
+} else {
+  while (banner_folded == false) {
+    document.getElementById("banner_article").classList.toggle("banner_fold");
+    document.getElementById("banner").classList.toggle("banner_section_fold");
+    document.getElementById("viewPort").classList.toggle("aside_unfold");
+    banner_folded = true;
+
+  }
+}
+
+
 
   if (prevScrollpos > currentScrollPos) {
     // while scrolling towards the top of the webpage
@@ -378,7 +401,7 @@ window.onscroll = function () {
     // document.getElementById("nav").style.top = "60px";
 
 
-   
+
     // document.getElementById("viewport").style.height = "calc(100vh - 100px - 40px - 60px - 100px - 40px)";
 
     document.getElementById("smallNotiText").innerText = "Scrolling up.";
@@ -425,14 +448,14 @@ window.onscroll = function () {
 
     if (currentScrollPos > 60) {
       // while scrolling towards the bottom of the webpage
-      
-       document.getElementsByTagName("header")[0].style.top = "-60px";
+
+      document.getElementsByTagName("header")[0].style.top = "-60px";
       // document.getElementById("main_pageScroll").style.height = "calc(100vh - 0px)";
       // document.getElementById("main_pageScroll").style.marginTop = "0px";
       // document.getElementById("main_pageScroll").style.transitionDuration = "500ms";
 
       // document.getElementById("nav").style.top = "0px";
-     
+
       // document.getElementById("viewport").style.height = "calc(100vh - 80px - 60px - 100px - 40px)";
 
       // document.getElementById("viewPort").style.transitionDuration = "500ms";
@@ -461,7 +484,7 @@ window.onscroll = function () {
 
       }
 
-
+     
 
 
       // document.getElementById("smallNotification").style.bottom = "calc( -100px)";
@@ -678,7 +701,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // setTimeout(function () {
   splashScreen.style.display = "none";
-  
+
 
   setTimeout(function () {
     document.getElementById("web-page").style.display = "block";

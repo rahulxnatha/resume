@@ -112,7 +112,7 @@ input:checked + .slider:before {
   border: 2px solid var(--border-color);
   text-align: center;
   line-height: var(--cube-edge);
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 24px;
   
   color: var(--font);
@@ -127,7 +127,7 @@ input:checked + .slider:before {
 
   text-align: center;
   line-height: var(--cube-edge);
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 24px;
  
   color: var(--font);

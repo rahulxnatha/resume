@@ -16,7 +16,7 @@ aside {
     transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
    
     resize: both; /* Enable both horizontal and vertical resizing */
-
+    /* transition: all 0.5s ease; */
      /* overflow-x: hidden; */
     /* overflow: hidden; */
     /* opacity: 0%; */
@@ -24,8 +24,8 @@ aside {
 
 /* background-color: green; */
   
-    transition-duration: 0s;
-
+    /* transition-duration: 0s; */
+    
     /* box-shadow: 0 1px 2px var(--shadow); */
 
     /* -webkit-backdrop-filter: blur(13px); */
@@ -69,7 +69,12 @@ aside:hover {
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
+    
+}
 
+.aside_unfold {
+    height: calc(100vh - 200px);
+    /* transition: all 0.5s ease; */
 }
 
 aside:hover > #viewport {
@@ -84,11 +89,14 @@ aside:hover > #viewport {
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     border-radius: var(--border-radius-on-hover);
+
+    /* transition: all 0.5s ease; */
 }
 
 .asideMoveOut {
     left: -50%;
     transition-duration: 0;
+    /* transition: all 0.5s ease; */
 }
 
 @media (prefers-color-scheme: light) {
@@ -107,6 +115,7 @@ aside:hover > #viewport {
 .tabbar,
 .tabbar>div {
     transition-duration: 0s;
+    transition: height 0.5s ease;
 }
 
 

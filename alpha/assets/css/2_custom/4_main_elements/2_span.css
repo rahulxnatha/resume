@@ -15,15 +15,7 @@ main span {
     
 } */
 
-.show-on-hover {
-    display: none;
-    -webkit-animation: LoadingAnimation 1s;
-  animation: LoadingAnimation 1s;
-}
 
-#cmrcet-id:hover .show-on-hover {
-    display: block;
-}
 
 .mainSpanOnAsideClose {
     grid-column-end: 5;

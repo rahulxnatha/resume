@@ -13,10 +13,11 @@ searchButton.addEventListener('click', function search() {
     function extractKeyword(sentence) {
         const keywords = {
             // study: [],
-            education: ['education', 'educational', 'qualifications', 'qualification', 'school', 'study', 'studied', 'studying'],
-            work: ['experience', 'work', 'internship', 'job', 'corporate', 'company', 'sector', 'profession', 'field'],
-            course: ['passion', 'course', 'coursera', 'LinkedIn Learning'],
-            are_you_stupid: ['stupid', 'dumb', 'idiot', 'mean']
+            education: ['education', 'educational', 'qualifications', 'qualification', 'school', 'study', 'studied', 'studying', 'graduation', 'graduated', 'graduate'],
+            work: ['experience', 'work', 'internship', 'job', 'corporate', 'company', 'sector', 'profession', 'field', 'recent'],
+            course: ['passion', 'course', 'coursera', 'LinkedIn Learning', 'training'],
+            certification: ['certified', 'certification', 'expert', 'certificate'],
+           earning: ['living', 'earn','earning','earnings','pay','paid','stipend','salary', 'salaried'],
 
             // Add more keywords and corresponding mappings as needed
         };
@@ -105,7 +106,7 @@ searchButton.addEventListener('click', function search() {
     let section2 = document.querySelector('#edu_section');
     let section3 = document.querySelector('#skill_section');
     let section4 = document.querySelector('#project_section');
-    let section5 = document.querySelector('#waste_section');
+    
 
     // // Append the contents of the second section tag to the first section tag.
     // section1.appendChild(section2.childNodes);
@@ -129,10 +130,10 @@ searchButton.addEventListener('click', function search() {
     let section2HTML = section2.innerHTML;
     let section3HTML = section3.innerHTML;
     let section4HTML = section4.innerHTML;
-    let section5HTML = section5.innerHTML;
+   
 
     // Combine the HTML content of the two section tags into a single string.
-    const combinedHTML = section1HTML + section2HTML + section3HTML + section4HTML + section5HTML;
+    const combinedHTML = section1HTML + section2HTML + section3HTML + section4HTML ;
 
     // Set the innerHTML property of the first section tag to the combined HTML string.
     // section1.innerHTML = combinedHTML;
@@ -141,7 +142,7 @@ searchButton.addEventListener('click', function search() {
     //  section2.innerHTML = '';
     //  section3.innerHTML = '';
     //  section4.innerHTML = '';
-    //  section5.innerHTML = '';
+   
 
 });
 
@@ -152,3 +153,5 @@ searchBar.addEventListener('keydown', function (event) {
 });
 
 document.getElementById('search_result_section').style.display = 'none';
+
+

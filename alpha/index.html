@@ -122,6 +122,7 @@
   <script src="assets/js/sub-tabs.js" defer></script>
   <script src="assets/js/search.js" defer></script>
   <script src="assets/js/greeting.js" defer></script>
+  <script src="assets/js/bionic-mode.js" defer></script>
 
 
   <!-- <script src="assets/js/cursor.js" defer></script> -->
@@ -1089,7 +1090,7 @@
 
 
             <!-- <span class="elemtab elemtab_add" id="focus_search_bar"> &nbsp; +&nbsp;&nbsp;</span> -->
-            <span class="elemtab " id="focus_search_bar" > &nbsp; +&nbsp;&nbsp;</span>
+            <span class="elemtab " id="focus_search_bar"> &nbsp; +&nbsp;&nbsp;</span>
 
 
 
@@ -1180,7 +1181,7 @@
 
           </h2>
 
-          <!-- <p>Click on this cube and drag to rotate as you like.</p> -->
+
 
 
           <p id="intro-text">
@@ -1212,13 +1213,45 @@
             <a href="https://instagram.com/rahul.natha" target="_blank">Instagram</a>
           </div>
 
+          <div id="calculator">
+            <input type="text" id="inputExpression" placeholder="Enter expression (e.g., 10+9.81*6.986)">
+            <button onclick="calculate()">Calculate</button>
+            <button onclick="clearInput()">Clear</button>
+            <p id="result"></p>
+        </div>
+    
+        <script>
+            function calculate() {
+                const expression = document.getElementById("inputExpression").value;
+                if (!expression) {
+                    return;
+                }
+    
+                try {
+                    const result = eval(expression);
+                    document.getElementById("result").textContent = `Result: ${result}`;
+                } catch (error) {
+                    document.getElementById("result").textContent = "Invalid input";
+                }
+            }
+    
+            function clearInput() {
+                document.getElementById("inputExpression").value = "";
+                document.getElementById("result").textContent = "";
+            }
+        </script>
+
+
         </div>
 
 
 
         <div class="briefblock">
-          <h1 lang="en-IN">Research Fellowship at Research Centre Imarat</h1>
-
+          <h1 lang="en-IN">Research Fellowship at RCI lab</h1>
+          <p>Innovative Engineering Design Professional with a passion for creating precision components that meet the
+            highest standards of quality. Skilled in utilizing advanced tools such as Microsoft Excel and MATLAB for
+            precise calculations, and SOLIDWORKS 3D CAD for both part and assembly modeling, production drawings.
+            Proficient in Ansys Mechanical: Structural Analysis Application Software.</p>
           <!-- 
           <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'RCI-About')">Brief story</button>
@@ -1237,7 +1270,16 @@
           </div> -->
         </div>
 
-        <div class="briefblock">47</div>
+        <div class="briefblock">
+          <h1>Mechanical Engineer at Cyient Limited</h1>
+          <h3>Technical Writer & Illustrator</h3>
+          <p>Experienced in automating workflows to increase productivity, utilizing Microsoft Excel to generate syntactical code for HTML-based publications for an automotive industry client. This resulted in a 55% productivity increase as measured by the team.
+
+            Skilled in creating technical illustrations and publications for the railway industry, including detailed assembly diagrams of engineered components and user-friendly vehicle maintenance instructions. Trained in effectively communicating complex technical information to a non-technical audience.</p>
+
+            <h3>Design Engineer</h3>
+            <p>Self-taught in Creo Parametric through utilizing various resources provided by the company and completed a couple of weeks of formal training. Despite the challenges posed by the 2021 lockdown, I was able to continue my learning by utilizing the resources provided by the company. However, the lack of hands-on practice opportunities due to unavailability of required assets and remote working during the lockdown did restrict the level of training I was able to receive.</p>
+        </div>
 
 
 
@@ -1594,7 +1636,7 @@
 
 
       <div class="banner" id="default_focus" draggable="true">
-        <article class="banner_background">
+        <article class="banner_background" id="banner_article" >
 
           <span class="name_brand_on_picture" style="float:right;">2023</span>
           <br><br>
@@ -1728,8 +1770,8 @@
           <p>Caution! The search engine is not smart.</p>
         </span>
         <span>
-          <h2 id="whether_showing_search_results_h2"> <span id="whether_showing_search_results">Showing</span> results for "<span
-              id="searchQuery">#BTech</span>"</h2>
+          <h2 id="whether_showing_search_results_h2"> <span id="whether_showing_search_results">Showing</span> results
+            for "<span id="searchQuery">#BTech</span>"</h2>
           <p id="showing_search_results" style="display: none;"></p>
         </span>
       </section>
@@ -1750,12 +1792,30 @@
             onmousemove="rotateCube(event)" -->
 
         <div class="cube span_all_cols" id="rotate-scale-cube">
-          <div class="face front" id="rotate-scale-cube-front"><img src="assets/images/001.jpeg" alt="front"></div>
-          <div class="face back" id="rotate-scale-cube-back"> <img src="assets/images/002.jpeg" alt="back"></div>
-          <div class="face right" id="rotate-scale-cube-right"> <img src="assets/images/003.jpg" alt="right"></div>
-          <div class="face left" id="rotate-scale-cube-left"> <img src="assets/images/004.jpeg" alt="left"></div>
-          <div class="face top" id="rotate-scale-cube-top"> <img src="assets/images/005.jpeg" alt="top"></div>
-          <div class="face bottom" id="rotate-scale-cube-bottom"><img src="assets/images/006.jpeg" alt="bottom"></div>
+          <div class="face front" id="rotate-scale-cube-front">
+            <!-- <img src="assets/images/001.jpeg" alt="front"> -->
+            <p>Front</p>
+          </div>
+          <div class="face back" id="rotate-scale-cube-back">
+            <!-- <img src="assets/images/002.jpeg" alt="back"> -->
+            <p>Back</p>
+          </div>
+          <div class="face right" id="rotate-scale-cube-right">
+            <!-- <img src="assets/images/003.jpg" alt="right"> -->
+            <p>Right</p>
+          </div>
+          <div class="face left" id="rotate-scale-cube-left">
+            <!-- <img src="assets/images/004.jpeg" alt="left"> -->
+            <p>Left</p>
+          </div>
+          <div class="face top" id="rotate-scale-cube-top">
+            <!-- <img src="assets/images/005.jpeg" alt="top"> -->
+            <p>Top</p>
+          </div>
+          <div class="face bottom" id="rotate-scale-cube-bottom">
+            <!-- <img src="assets/images/006.jpeg" alt="bottom"> -->
+            <p>Bottom</p>
+          </div>
         </div>
 
 
@@ -1782,7 +1842,7 @@
 
       </section>
 
-     
+
 
       <section class=" mainSection" id="work_section">
 
@@ -1793,7 +1853,7 @@
         <article tabindex="0" class="Work">
           <h1>Research Fellow</h1>
           <p>Research Centre Imarat</p>
-          <p class="keywords">work, experience</p>
+          <p class="keywords">work, experience, living, earning</p>
         </article>
 
         <article tabindex="0" class="Work">
@@ -1870,18 +1930,14 @@
         </span>
 
         <article tabindex="0">
-
+          <img src="assets\images\autodesk-fusion-360-certified-user.png" alt="" srcset="" width="60%"
+            style="border-radius: 0; margin: 20%;">
           <h1>Autodesk Fusion 360 Certified User</h1>
           <p>Autodesk</p>
           <p class="keywords">certification, qualification, study, education, skill</p>
         </article>
 
-        <article tabindex="0">
 
-          <h1>Build your Analytical Skills with Statistical Analysis</h1>
-          <p>LinkedIn Learning Path</p>
-
-        </article>
 
         <span>
           <h2>Courses</h2>
@@ -2193,13 +2249,6 @@
       </section>
 
 
-      <section class="mainSection" id="waste_section">
-        <article style="display: none;">
-          <h1>No, no one is</h1>
-          <p class="keywords">are_you_stupid</p>
-        </article>
-      </section>
-
       <section id="contact_section" class=" mainSection">
 
         <span id="contact">
@@ -2218,23 +2267,8 @@
 
       </section>
 
-    
-
     </main>
   </div>
-
-  <script>
-
-    const boxt = {
-      name: "Good box",
-
-    };
-    console.log("Hello: ", boxt.name);
-
-
-
-  </script>
-
 </body>
 
 </html>

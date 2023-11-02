@@ -1,30 +1,30 @@
 aside section {
-    display: block;
-    /* height: calc(100vh - 100px - 40px - 40px - 60px);
+  display: block;
+  /* height: calc(100vh - 100px - 40px - 40px - 60px);
     height: calc(100vh - 100px - 40px - 60px );*/
-    height: calc( 100% - 80px); 
-    /* width: calc(100% - 16px); */
-    overflow: hidden;
-    padding: 0 20px 0 20px;
-    /* margin-right: 12px; */
-    overflow-y: auto;
-    margin: 80px 00px 0 0px;
-    /* margin-right: 8px; */
-    /* border: 2px solid var(--basei); */
-    /* background-color: #2a1e42; */
-    /* border-radius: 7px; */
+  height: calc(100% - 80px);
+  /* width: calc(100% - 16px); */
+  overflow: hidden;
+  padding: 0 20px 0 20px;
+  /* margin-right: 12px; */
+  overflow-y: auto;
+  margin: 80px 00px 0 0px;
+  /* margin-right: 8px; */
+  /* border: 2px solid var(--basei); */
+  /* background-color: #2a1e42; */
+  /* border-radius: 7px; */
   background-color: #888888;
 
 }
-  
-  
-  
-  aside section:hover {
-    overflow-y: auto;
-    /* margin-right: 8px; */
-  }
-  
-  
+
+
+
+aside section:hover {
+  overflow-y: auto;
+  /* margin-right: 8px; */
+}
+
+
 
 
 /* 
@@ -125,16 +125,42 @@ aside:hover .viewPortMenu:hover {
   margin: 0;
   padding: 0 0 0 0;
   height: calc(76px);
-  position:absolute;
+  position: absolute;
   width: calc(100%);
-  top:0;
+  top: 0;
   background-color: rgba(255, 192, 203, 0);
   overflow: hidden;
 
- 
+
 
   /* border-bottom: 1px solid var(--border-color); */
 }
+
+
+
+.briefblock p {
+ 
+  font-family: sans-serif;
+   
+ 
+  
+  
+}
+
+
+
+
+.briefblock h3 {
+ 
+  margin-top: 20px;
+  
+}
+.briefblock p::first-letter {
+  font-size: 20px;
+   
+
+}
+
 
 
 .briefblock {
@@ -148,15 +174,27 @@ aside:hover .viewPortMenu:hover {
 
 /* Loading animation */
 @-webkit-keyframes LoadingAnimation {
-  0% {opacity: 0;}
-  
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+    /* transform: translateY(80px); */
+  }
+
+  100% {
+    opacity: 1;
+    /* transform: translateY(0px); */
+  }
 }
 
 @keyframes LoadingAnimation {
-  0% {opacity: 0;}
- 
-  100% {opacity: 1;}
+  0% {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 
@@ -165,6 +203,7 @@ aside:hover .viewPortMenu:hover {
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -174,15 +213,18 @@ aside:hover .viewPortMenu:hover {
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
 }
+
 /* slideFromRight */
 @-webkit-keyframes slideFromRight {
   from {
     transform: translateX(200%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -192,6 +234,7 @@ aside:hover .viewPortMenu:hover {
   from {
     transform: translateX(200%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -213,15 +256,15 @@ aside section a {
   background-color: var(--fonti);
   font-size: 13.3333px;
   height: calc(36px);
-  
+
 }
 
 #resize-handle {
   width: 10px;
   height: 10px;
   background-color: #cc3434;
-  position: absolute; 
-   bottom: 0;
+  position: absolute;
+  bottom: 0;
   right: 0;
   cursor: nwse-resize;
   display: none;

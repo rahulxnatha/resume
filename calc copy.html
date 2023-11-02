@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Engineer's Calculator</title>
+    <style>
+        #calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        button {
+            width: 48%;
+            padding: 10px;
+            margin: 5px 1%;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="inputExpression" placeholder="Enter expression (e.g., 10+9.81*6.986)">
+        <button onclick="calculate()">Calculate</button>
+        <button onclick="clearInput()">Clear</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            const expression = document.getElementById("inputExpression").value;
+            if (!expression) {
+                return;
+            }
+
+            try {
+                const result = eval(expression);
+                document.getElementById("result").textContent = `Result: ${result}`;
+            } catch (error) {
+                document.getElementById("result").textContent = "Invalid input";
+            }
+        }
+
+        function clearInput() {
+            document.getElementById("inputExpression").value = "";
+            document.getElementById("result").textContent = "";
+        }
+    </script>
+</body>
+</html>
