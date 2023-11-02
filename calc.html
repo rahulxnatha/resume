@@ -4,7 +4,7 @@
     <title>Engineer's Calculator</title>
     <style>
         #calculator {
-            width: 300px;
+            width: 500px;
             margin: 0 auto;
             padding: 10px;
             border: 1px solid #ccc;
@@ -12,7 +12,7 @@
         }
 
         input[type="text"] {
-            width: 100%;
+            width: calc(100% - 13px);
             padding: 5px;
             margin: 5px 0;
         }
@@ -22,15 +22,26 @@
             padding: 10px;
             margin: 5px 1%;
         }
+
+        #result {
+            font-size: larger;
+        }
     </style>
 </head>
 <body>
     <div id="calculator">
+        <h1>Engineering Calculator</h1>
         <input type="text" id="inputExpression" placeholder="Enter expression (e.g., (5±0.1)*(7±0.2) or 5*3)">
         <button onclick="calculate()">Calculate</button>
         <button onclick="clearInput()">Clear</button>
-        <p>Alt + 0177 for ± symbol (Windows OS keyboard shortcut)</p>
+
+<br><br>
         <p id="result"></p>
+<br><br>
+
+        <p>Alt + 0177 for ± symbol (Windows OS keyboard shortcut)</p>
+        <p>Made by Rahul Natha</p>
+        
     </div>
 
     <script>
