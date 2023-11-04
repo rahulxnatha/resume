@@ -44,7 +44,7 @@ main {
     main {
         width: calc(100% - 40px);
         float: left;
-        margin: 0 20px 0 20px;
+        margin: 0 0px 0 0px;
         padding: 0;
         border: 0px solid var(--border-color);
     }

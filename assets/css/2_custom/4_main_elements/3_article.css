@@ -200,12 +200,12 @@ article p {
 @media only screen and (max-width: 700px) {
     article h1 {
         
-        font-size: 22px;
+        font-size: 20px;
     }
     
     
     article p {
-        font-size: 16px;
+        font-size: 12px;
     }
 
 }
