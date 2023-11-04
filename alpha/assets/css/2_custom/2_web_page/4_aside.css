@@ -74,8 +74,20 @@ aside:hover {
 
 .aside_unfold {
     height: calc(100vh - 200px);
-    /* transition: all 0.5s ease; */
+    /* height: 400px; */
 }
+
+@media only screen and (max-width: 700px) {
+    .aside_unfold {
+        height: 400px;
+        
+    }
+
+    
+
+}
+
+
 
 aside:hover > #viewport {
     background-color: transparent;
@@ -146,7 +158,7 @@ aside h3 {
     aside {
         z-index: 7;
         transition-duration: 0s;
-        position: fixed;
+        position:initial;
 
         width: calc(100% - 2 * 20px);
         margin: 20px 0px 20px 20px;
@@ -156,6 +168,7 @@ aside h3 {
         border-radius: var(--border-radius);
 
         top: calc(80vh);
+        display: none;
     }
 }
 
@@ -174,6 +187,7 @@ aside h3 {
         /* padding: 20px 0px 20px 0px; */
         border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
+        display: none;
     }
 
     aside h1 {

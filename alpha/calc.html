@@ -98,7 +98,7 @@
             border-radius: var(--border-radius);
             background-color: var(--windowBackground);
 
-            background-color: var(--articleBackground);
+            /* background-color: var(--articleBackground); */
             overflow: hidden;
 
             border-radius: var(--border-radius);
@@ -144,18 +144,19 @@
         <button onclick="calculate()">Calculate</button>
         <button onclick="clearInput()">Clear</button>
 
-       <br><br>
+        <br><br>
         <label class="switch_indicate">Consider correlation (uses covariance)
             <label class="fluent-toggle-switch ">
-              <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" unchecked />
-              <span class="slider"></span>
+                <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" unchecked />
+                <span class="slider"></span>
             </label>
-          </label>
-       
-        
+        </label>
+
+
         <p id="result"></p>
- <br><br>
-        <p>This calculator is still in development stage and is under experiment. It might give errors for some inputs.</p>
+        <br><br>
+        <p>This calculator is still in development stage and is under experiment. It might give errors for some inputs.
+        </p>
         <p>"Alt + 0177" for ± symbol (Windows OS keyboard shortcut)</p>
         <p>Made by Rahul Natha</p>
         <p><a href="mailto:engineer-calc-feedback@rahulnatha.com">Give feedback</a></p>
@@ -163,42 +164,28 @@
     </div>
 
     <script>
-        function calculate() {
-            const expression = document.getElementById("inputExpression").value;
-            if (!expression) {
-                return;
-            }
+        function calculateCorrelation(x, y) {
+            // Calculate the Pearson correlation coefficient between x and y.
 
-            try {
-                let result;
-                if (expression.includes("±")) {
-                    result = evaluateExpressionWithTolerance(expression);
-                } else {
-                    result = evaluateExpression(expression);
-                }
-                document.getElementById("result").textContent = `Result: ${result}`;
-            } catch (error) {
-                document.getElementById("result").textContent = "Invalid input";
-            }
+            const meanX = (x + y) / 2;
+            const meanY = (y + x) / 2;
+
+            const covariance = (x - meanX) * (y - meanY);
+            const varianceX = (x - meanX) ** 2;
+            const varianceY = (y - meanY) ** 2;
+
+            return covariance / Math.sqrt(varianceX * varianceY);
         }
 
-        function clearInput() {
-            document.getElementById("inputExpression").value = "";
-            document.getElementById("result").textContent = "";
-        }
-
-        function evaluateExpression(expression) {
-            return eval(expression);
-        }
-
-        function evaluateExpressionWithTolerance(expression) {
-            const regex = /([-+]?\d+(\.\d+)?(?:±\d+(\.\d+)?)*)([\+\-\*\/]*)/g;
+        function evaluateExpressionWithTolerance(expression, considerCorrelation) {
+            const regex = /([-+\d+(\.\d+)?(?:±\d+(\.\d+)?)*)([\+\-\*\/]*)/g;
             const tokens = expression.match(regex);
-            let result = { min: 1, max: 1 };
 
             if (!tokens) {
                 throw new Error("Invalid input");
             }
+
+            let result = { min: 1, max: 1 };
 
             for (const token of tokens) {
                 if (token.match(/[-+\*\/]/)) {
@@ -209,15 +196,22 @@
                     const tolerance = tokenValue[1] || 0;
                     const min = value - tolerance;
                     const max = value + tolerance;
-                    result.min *= min;
-                    result.max *= max;
+
+                    if (considerCorrelation) {
+                        const correlation = calculateCorrelation(min, max);
+                        result.min *= correlation;
+                        result.max *= correlation;
+                    } else {
+                        result.min *= min;
+                        result.max *= max;
+                    }
                 }
             }
 
             if (result.min === result.max) {
-                return result.min.toFixed(2);
+                return { min: result.min };
             } else {
-                return `${result.min.toFixed(2)} to ${result.max.toFixed(2)}`;
+                return result;
             }
         }
 
@@ -227,6 +221,92 @@
                 calculate();
             }
         });
+
+        function calculate() {
+            const expression = document.getElementById("inputExpression").value;
+
+            // Use let instead of const for the result variable
+            let result = evaluateExpressionWithTolerance(expression, correlationSwitch);
+
+            document.getElementById("result").textContent = `Result: ${result.min} to ${result.max}`;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function calculate() {
+        //     const expression = document.getElementById("inputExpression").value;
+        //     if (!expression) {
+        //         return;
+        //     }
+
+        //     try {
+        //         let result;
+        //         if (expression.includes("±")) {
+        //             result = evaluateExpressionWithTolerance(expression);
+        //         } else {
+        //             result = evaluateExpression(expression);
+        //         }
+        //         document.getElementById("result").textContent = `Result: ${result}`;
+        //     } catch (error) {
+        //         document.getElementById("result").textContent = "Invalid input";
+        //     }
+        // }
+
+        // function clearInput() {
+        //     document.getElementById("inputExpression").value = "";
+        //     document.getElementById("result").textContent = "";
+        // }
+
+        // function evaluateExpression(expression) {
+        //     return eval(expression);
+        // }
+
+        // function evaluateExpressionWithTolerance(expression) {
+        //     const regex = /([-+]?\d+(\.\d+)?(?:±\d+(\.\d+)?)*)([\+\-\*\/]*)/g;
+        //     const tokens = expression.match(regex);
+        //     let result = { min: 1, max: 1 };
+
+        //     if (!tokens) {
+        //         throw new Error("Invalid input");
+        //     }
+
+        //     for (const token of tokens) {
+        //         if (token.match(/[-+\*\/]/)) {
+        //             throw new Error("Unsupported operator: " + token);
+        //         } else {
+        //             const tokenValue = token.split('±').map(t => parseFloat(t));
+        //             const value = tokenValue[0];
+        //             const tolerance = tokenValue[1] || 0;
+        //             const min = value - tolerance;
+        //             const max = value + tolerance;
+        //             result.min *= min;
+        //             result.max *= max;
+        //         }
+        //     }
+
+        //     if (result.min === result.max) {
+        //         return result.min.toFixed(2);
+        //     } else {
+        //         return `${result.min.toFixed(2)} to ${result.max.toFixed(2)}`;
+        //     }
+        // }
+
+        // // Handle Enter key press
+        // document.getElementById("inputExpression").addEventListener("keyup", function (event) {
+        //     if (event.key === "Enter") {
+        //         calculate();
+        //     }
+        // });
     </script>
 </body>
 

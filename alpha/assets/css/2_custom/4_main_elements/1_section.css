@@ -25,6 +25,15 @@ main section {
     backdrop-filter: blur(0px);  */
 }
 
+@media only screen and (max-width: 700px) {
+    main section {
+        column-gap: 20px;
+        row-gap: 20px;
+        padding: 0;
+       }
+
+}
+
 .mainSectionsOnDynamicLayoutTest {
     display: grid;
     grid-template-columns: 1fr;
@@ -73,12 +82,16 @@ main section:hover {
 
 @media only screen and (max-width: 700px) {
     main section {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         /* background-color: #aaaaaa; */
         padding-left: 20px;
         padding-right: 20px;
         margin: 0;
     }
+#cubeSection {
+    display: none;
+}
+
 }
 
 /* var(--base60), */

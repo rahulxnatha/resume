@@ -62,7 +62,7 @@ article:hover {
 
 
     /* transform: rotate(0deg); */
-    width: 150%;
+    /* width: 150%; */
     /* height: 150%; */
     /* transition: border-radius 0.5s ease-in-out, transform 0.5s ease, width 2s ease; */
     border-radius: var(--border-radius-on-hover);
@@ -72,13 +72,13 @@ article:hover {
     /* box-shadow: 0px 1px 2px rgba(135, 137, 83, 0.5); */
     box-shadow: 0 1px 4px var(--shadow);
     z-index: 3;
-    animation: increaseWidth 0.5s ease;
+    /* animation: increaseWidth 0.5s ease; */
 }
 
-article:nth-child(3n + 2):hover {
+/* article:nth-child(3n + 2):hover {
     transform: translateX(calc(-100%/3));
-    /* Translate the last column elements left by 50% on hover */
-}
+   
+} */
 
 @keyframes increaseWidth {
     0% {
@@ -197,6 +197,18 @@ article p {
     line-height: 20px;
 }
 
+@media only screen and (max-width: 700px) {
+    article h1 {
+        
+        font-size: 22px;
+    }
+    
+    
+    article p {
+        font-size: 16px;
+    }
+
+}
 
 
 article.active {
