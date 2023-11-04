@@ -139,4 +139,15 @@
         margin: 100px 20px 0 20px;
     }
 
+    .banner_background {
+
+        min-height: calc((100vh - 200px)/2);
+    }
+
+    .banner_fold {
+    
+        min-height: 150px;
+       
+    }
+
 }
