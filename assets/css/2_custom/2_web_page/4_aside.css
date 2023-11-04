@@ -200,6 +200,10 @@ aside h3 {
         backdrop-filter: blur(13px);
     }
 
+    aside:hover {
+        height: calc((100vh - 60px)/2);
+    }
+
     aside h1 {
         font-size: 3em;
         /* font-family: "Montserrat", sans-serif; */
