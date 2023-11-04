@@ -58,6 +58,9 @@
     visibility: hidden;
 }
 
+
+
+
 aside:hover .tabbar, aside:hover .controlButtons {
     visibility:visible;
 }
@@ -80,7 +83,7 @@ aside:hover .tabbar, aside:hover .controlButtons {
     margin: 20px 5px 0 0;
     padding-left: 00px;
     visibility: hidden;
-/* display:none; */
+display:none;
 }
 
 .controlButtons>div {
@@ -238,3 +241,11 @@ aside:hover .tabbar, aside:hover .controlButtons {
 #focus_search_bar:hover {
 width: 50px;
 }
+
+
+@media only screen and (max-width: 700px) {
+   .tabbar, .controlButtons {
+        visibility:visible;
+    }
+
+ }

@@ -79,11 +79,11 @@ aside:hover {
 
 @media only screen and (max-width: 700px) {
     .aside_unfold {
-        height: 400px;
+        height: 100px;
         
     }
 
-    
+  
 
 }
 
@@ -164,30 +164,40 @@ aside h3 {
         margin: 20px 0px 20px 20px;
         /* height: calc(20vh - 40px); */
         padding: 20px 0px 20px 0px;
-        border: 2px solid var(--border-color);
-        border-radius: var(--border-radius);
+        /* border: 2px solid var(--border-color); */
+        /* border-radius: var(--border-radius); */
 
         top: calc(80vh);
-        display: none;
+        /* display: none; */
     }
 }
 
 @media only screen and (max-width: 700px) {
 
-
-
-
     aside {
-        z-index: inherit;
+        z-index: 8;
         transition-duration: 0;
-        position: inherit;
-        width: calc(100% - 80px);
-        margin: 20px 20px 20px 40px;
+        position: fixed;
+        width: 100%;
+        margin:0;
         /* height: calc(100vh - 100px); */
         /* padding: 20px 0px 20px 0px; */
-        border: 2px solid var(--border-color);
-        border-radius: var(--border-radius);
-        display: none;
+        border: 0px solid var(--border-color);
+        border-radius: 0;
+
+        bottom:0;
+        top:auto;
+        left:0;
+        height: calc((100vh - 60px)/2);
+
+
+        box-shadow: 0 1px 4px var(--shadow);
+        /* background-color: var(--windowBackground); */
+        opacity: 100%;
+        backdrop-filter: blur(radial(50%, 50%, 0px, 300px));
+        background-color: var(--windowBackground);
+        -webkit-backdrop-filter: blur(13px);
+        backdrop-filter: blur(13px);
     }
 
     aside h1 {
