@@ -1,0 +1,240 @@
+
+
+/* tabs */
+.elemtab,
+.controlButtons span {
+    border: 2px solid transparent;
+    margin: 0px 20px 0 0px;
+    padding: 0;
+    border-radius: var(--border-radius-capsule);
+    cursor: pointer;
+    display: inline-block;
+    background-color: var(--windowBackground);
+    font-size: 16px;
+    height: calc(36px);
+    /* max-width: 12ch; */
+
+    box-shadow: 0 2px 4px var(--shadow);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+}
+
+.elemtab_active {
+    background-color: var(--ai);
+    background-color: var(--tabs-behind);
+    border: 2px solid var(--border-color);
+    /* color: var(--base); */
+    /* backdrop-filter: blur(13px); */
+    /* border: 1px solid grey; */
+}
+
+/* .elemtab_add {
+    border: 0px solid transparent;
+  
+    margin-left: -10px;
+    margin-top: -10px;
+  } */
+
+ 
+
+.tabbar {
+
+
+    font-family: sans-serif;
+    /* background-color: green; */
+    margin: 0px;
+    padding: 20px 0 0 20px;
+    /* background-color: rgb(75, 135, 188); */
+    /* width: calc(100% - 100px); */
+
+    height: calc(56px + 20px);
+   
+    overflow-x: auto;
+    overflow-y: visible;
+    float: left;
+    /* border: 0.5px dashed #77777715; */
+
+    visibility: hidden;
+}
+
+aside:hover .tabbar, aside:hover .controlButtons {
+    visibility:visible;
+}
+
+
+.tabbar>div,
+.controlButtons>div {
+    width: fit-content;
+    white-space: nowrap;
+    height: 36px;
+    margin: 2px;
+    /* background-color: #f15c4f; */
+}
+
+.controlButtons {
+
+    float: right;
+    width: 150px;
+    border-left: 1px solid var(--border-color);
+    margin: 20px 5px 0 0;
+    padding-left: 00px;
+    visibility: hidden;
+/* display:none; */
+}
+
+.controlButtons>div {
+
+    /* background-color: aqua; */
+    /* width: 300px; */
+    float: right;
+
+
+}
+
+
+
+
+.controlButtons span {
+   
+
+    margin: 0 0 0 5px;
+    border-radius: var(--border-radius);
+    padding: 9px 0 0 0;
+    text-align: center;
+   max-width: 50px;
+   width: 40px;
+   overflow: hidden;
+    cursor: pointer;
+    background-color: var(--fonti);
+    float:right;
+}
+
+
+
+
+.tab_close {
+
+    margin: 10px 0px 0px 0px;
+    padding: 0px 10px 0px 10px;
+
+    /* top: 0; */
+    display: inline-block;
+    display: none;
+    /* border: 2px solid var(--font); */
+    /* width: 0; */
+    /* overflow: hidden; */
+    background-color: rgba(128, 128, 128, 0.381);
+    border-radius: 0px;
+    transition-duration: 6s;
+    transition-property: all;
+    /* height: 20px; */
+    height: calc(38px);
+    /* width: 20px; */
+    /* font-size: 10px; */
+    /* font-weight: 700; */
+}
+
+.elemtab {
+    padding: 7px 10px 0px 10px;
+    overflow: hidden;
+
+}
+
+.over {
+    outline: 4px solid #aaa;
+    outline-offset: -2px;
+}
+
+.elemtab:hover {
+    padding: 7px 0px 0px 10px;
+}
+
+.elemtab_add:hover {
+    padding: 0px 10px 0px 10px;
+}
+
+.elemtab:hover>.tab_close {
+    display: inline-block;
+    /* transition-delay: 1s; */
+    width: auto;
+    animation-name: tabclose;
+    animation-duration: 500ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    /* overflow: hidden; */
+}
+
+@keyframes tabclose {
+    0% {
+
+        width: 0px;
+        margin: 0px 0px 0px 10px;
+        padding: 8px 10px 8px 10px;
+        background: transparent;
+        transform: translateY(100%);
+    }
+
+
+
+    100% {
+        width: 60px;
+        margin: 0px 0px 0px 10px;
+        padding: 8px 10px 8px 10px;
+        transform: translateY(-8px);
+    }
+}
+
+
+.tabbar::-webkit-scrollbar {
+    width: 8px;
+    height: 0px;
+}
+
+.tabbar::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 50vmin;
+
+    border: 0px solid var(--border-color);
+    /* box-shadow: 10px 40px 80px rgb(0, 0, 0); */
+    /* border: 200px solid transparent; */
+
+}
+
+.elemtab>span:first-child {
+    display: inline-block;
+    max-width: 80px;
+    overflow: hidden;
+}
+
+.tab_text {
+    display: inline-block;
+    /* width: 8ch; */
+}
+
+.elemtab:hover .tab_text {
+    display: inline-block;
+
+    overflow: hidden;
+    animation: text_scroll 4s linear infinite;
+    scroll-behavior: smooth;
+}
+
+@keyframes text_scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(calc(-1 * ( 100% - 75px)));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#focus_search_bar:hover {
+width: 50px;
+}

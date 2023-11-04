@@ -1,0 +1,89 @@
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    /* border: 1px solid #ccc; */
+    /* background-color: #f1f1f1; */
+    border-radius: 7px;
+    margin-top: 20px;
+    min-height: fit-content;
+    padding-bottom: 6px;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: transparent;
+    
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 7px 16px 7px 0;
+    transition: 0.3s;
+    font-size: 1em;
+    font-family: sans-serif;
+    padding: 0 5px;
+    margin-left: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    color: transparent;
+
+  }
+  
+  .tab:hover {
+    background-color: var(--windowBackground);
+    
+}
+
+.tab:hover button {
+
+    color: var(--a);
+   padding: 0 5px;
+}
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    /* background-color: #ddd; */
+    font-size: 1em;
+    font-family: sans-serif;
+   outline: 1px solid rgba(127, 127, 127, 0);
+   outline-offset: 0;
+    color: var(--a);
+    /* padding: 2px 16px 2px 0; */
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    /* background-color: var(--windowBackground); */
+    font-size: 1.5em;
+    font-family: serif;
+    color: var(--font);
+    outline: none;
+    padding-left: 0;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 0px 0px;
+    /* border: 1px solid #ccc; */
+    border-top: none;
+    border-radius: 0 0 7px 7px;
+    margin-bottom: 20px;
+  
+    -webkit-animation: LoadingAnimation 1s;
+    animation: LoadingAnimation 1s;
+  }
+  
+  /* Loading animation */
+  @-webkit-keyframes LoadingAnimation {
+    0% {opacity: 0;}
+    
+    100% {opacity: 1;}
+  }
+  
+  @keyframes LoadingAnimation {
+    0% {opacity: 0;}
+   
+    100% {opacity: 1;}
+  }

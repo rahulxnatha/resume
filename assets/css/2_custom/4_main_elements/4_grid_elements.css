@@ -1,0 +1,9 @@
+
+
+.main-grid-elements {
+
+transition: all 0.3s ease;
+transition: grid-column-start 0.3s ease, grid-column-end 0.3s ease;
+
+
+}

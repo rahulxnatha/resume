@@ -1,0 +1,146 @@
+input {
+  appearance: none;
+}
+
+
+
+button, input[type="button"] {
+  /* outline: none; */
+  /* cursor: pointer; */
+
+  /* border: 2px solid grey; */
+  /* line-height: 2.5; */
+  /* padding: 0 20px; */
+  /* font-size: 1rem; */
+  text-align: center;
+  
+  min-width: 72px;
+  min-height: 36px;
+  border-radius: var(--border-radius);
+  border: 0px solid var(--border-color);
+  /* border-radius: 7px; */
+  
+  background-color: var(--fonti);
+  background-color: rgba(5, 74, 72, 0.185);
+  margin: 0 10px 0 0;
+
+  box-shadow: 0 1px 2px var(--shadow);
+
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  transition: border-radius 0.3s;
+  
+}
+button:hover, input[type="button"]:hover {
+  outline-offset: 4px ;
+  background-color: var(--ai);
+  /* outline: 4px solid grey; */
+  border-radius: var(--border-radius-on-hover);
+}
+
+button:active, input[type="button"]:active {
+  /* background-color: rgb(46, 94, 103); */
+  border-radius: var(--border-radius);
+  
+}
+
+header button {
+  float: right;
+}
+
+.mainSection button {
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  min-width: 400px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-size: 20px;
+}
+
+input[type="text"]:focus {
+  border: 3px solid var(--border-color);
+}
+
+textarea {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: #f8f8f8;
+}
+
+
+
+/* Styling <select> element */
+select {
+ 
+ 
+ 
+ 
+  border-radius: 4px;
+  /* appearance: none;  */
+  /* Hide default dropdown arrow */
+  padding: 5px; /* Padding may not work in all browsers */
+}
+
+/* Styling <option> elements */
+select option {
+  font-size: 14px;
+ 
+}
+
+/* Styling the selected <option> element */
+select option:checked {
+ 
+  font-weight: bold;
+}
+
+
+/* Styling the custom select container */
+.custom-select {
+  position: relative;
+  width: 200px;
+}
+
+/* Styling the select trigger */
+.select-trigger {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styling the options container */
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Styling the individual options */
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Styling the selected option */
+.option.active {
+  background-color: #e6e6e6;
+}

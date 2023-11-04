@@ -1,0 +1,22 @@
+/* comment */
+
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+
+margin: 4px 2px 2px 2px;
+
+}
+
+iframe {
+  display: none;
+}
+
+
+.iframe_display {
+  display: block;
+}

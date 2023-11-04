@@ -1,0 +1,337 @@
+aside {
+    z-index: 2;
+
+    position: fixed;
+    top: 80px;
+    left: calc(60% );
+    /* width: calc(50% - 30px);
+    width: calc(50% - 150px); */
+    width: calc(40% - 40px);
+    margin: 0;
+    height: calc(400px);
+    padding: 0;
+    border: 0px solid var(--border-color);
+    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-on-hover);
+    transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
+   
+    resize: both; /* Enable both horizontal and vertical resizing */
+    /* transition: all 0.5s ease; */
+     /* overflow-x: hidden; */
+    /* overflow: hidden; */
+    /* opacity: 0%; */
+/* display: none; */
+
+/* background-color: green; */
+  
+    /* transition-duration: 0s; */
+    
+    /* box-shadow: 0 1px 2px var(--shadow); */
+
+    /* -webkit-backdrop-filter: blur(13px); */
+    /* backdrop-filter: blur(13px); */
+
+    
+
+    /* background-color: green; */
+    /* color: white; */
+
+    /* background-repeat: no-repeat; */
+    /* background-attachment: fixed; */
+    /* background-size: cover; */
+/* 
+    animation-name: aside_load_animation;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+   
+    animation-duration: 2s;
+  }
+  
+  @keyframes aside_load_animation {
+      0% {
+          transform: translateX(100vw);
+      }
+    
+      100% {
+        transform: translateX(0);
+      }
+   */
+  }
+
+aside:hover {
+    border-radius: var(--border-radius-on-hover);
+    box-shadow: 0 1px 4px var(--shadow);
+    /* background-color: var(--windowBackground); */
+    opacity: 100%;
+    backdrop-filter: blur(radial(50%, 50%, 0px, 300px));
+    background-color: var(--windowBackground);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
+    
+}
+
+.aside_unfold {
+    height: calc(100vh - 200px);
+    /* height: 400px; */
+}
+
+@media only screen and (max-width: 700px) {
+    .aside_unfold {
+        height: 400px;
+        
+    }
+
+    
+
+}
+
+
+
+aside:hover > #viewport {
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+    border-radius: 0;
+}
+
+#viewport {
+    background-color: var(--windowBackground);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    border-radius: var(--border-radius-on-hover);
+
+    /* transition: all 0.5s ease; */
+}
+
+.asideMoveOut {
+    left: -50%;
+    transition-duration: 0;
+    /* transition: all 0.5s ease; */
+}
+
+@media (prefers-color-scheme: light) {
+    aside {
+        background-color: var(--windowBackground);
+        background-color: transparent;
+
+    }
+}
+
+
+.viewPortMenu,
+.viewport,
+#viewPort,
+.briefblock,
+.tabbar,
+.tabbar>div {
+    transition-duration: 0s;
+    transition: height 0.5s ease;
+}
+
+
+
+aside h1,
+aside h2,
+aside h3,
+aside h4,
+aside h5,
+aside h6 {
+  /* font-family: Serif; */
+  margin: 0px;
+  /* font-size: 20px; */
+  /* font-weight: 400; */
+}
+
+
+
+
+aside h2 {
+    font-size: 2em;
+}
+aside h3 {
+    font-size: 1.5em;
+}
+
+@media only screen and (max-width: 1230px) {
+    aside {
+        z-index: 7;
+        transition-duration: 0s;
+        position:initial;
+
+        width: calc(100% - 2 * 20px);
+        margin: 20px 0px 20px 20px;
+        /* height: calc(20vh - 40px); */
+        padding: 20px 0px 20px 0px;
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+
+        top: calc(80vh);
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+
+
+
+    aside {
+        z-index: inherit;
+        transition-duration: 0;
+        position: inherit;
+        width: calc(100% - 80px);
+        margin: 20px 20px 20px 40px;
+        /* height: calc(100vh - 100px); */
+        /* padding: 20px 0px 20px 0px; */
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+        display: none;
+    }
+
+    aside h1 {
+        font-size: 3em;
+        /* font-family: "Montserrat", sans-serif; */
+    }
+}
+
+
+
+
+
+
+.context-menu {
+    position: absolute;
+    text-align: left;
+    background: var(--fonti);
+    border: 0px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--font);
+}
+
+.context-menu ul {
+    padding: 0px;
+    margin: 0px;
+    min-width: 150px;
+    list-style: none;
+}
+
+.context-menu ul li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border: 1px solid var(--border-color);
+}
+
+.context-menu ul li a {
+    text-decoration: none;
+    color: black;
+    color: var(--font);
+    padding: 20px;
+}
+
+.context-menu ul li:hover {
+    background: darkgray;
+}
+
+
+aside {
+    -webkit-animation-name: aside_animatebottom;
+    -webkit-animation-duration: 0;
+    animation-name: aside_animatebottom;
+    animation-duration: 0;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+
+}
+
+@-webkit-keyframes aside_animatebottom {
+    0% {
+        top: 100vw;
+        /* height: calc(100vh - 200px); */
+    }
+
+    /* 90% {
+        top: -3vh;
+    }
+
+    93% {
+        top: 1vh;
+    }
+
+    96% {
+        top: -1vh;
+    } */
+
+    100% {}
+}
+
+@keyframes aside_animatebottom {
+    0% {
+        left: -100vw;
+        /* height: calc(100vh - 100px); */
+    }
+
+    10% {
+        left: -0vw;
+    }
+
+
+
+
+    50% {
+        /* height: calc(100vh - 100px); */
+    }
+
+    100% {
+        /* height: calc(100vh - 200px); */
+    }
+
+
+}
+
+#viewport {
+    -webkit-animation-name: viewport_animatebottom;
+    -webkit-animation-duration: 0s;
+    animation-name: viewport_animatebottom;
+    animation-duration: 0s;
+
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+
+
+}
+
+@keyframes viewport_animatebottom {
+    0% {
+
+        /* height: calc(100vh - 100px - 40px - 60px - 40px); */
+    }
+
+
+
+
+
+
+    50% {
+        /* height: calc(100vh - 100px - 40px - 60px - 40px); */
+    }
+
+    100% {
+        /* height: calc(100vh - 100px - 40px - 60px - 100px - 40px); */
+    }
+
+
+}

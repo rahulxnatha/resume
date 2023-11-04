@@ -1,0 +1,106 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  /* height: 120px; */
+  padding: 20px;
+  background-color: #e9ecef;
+  background-color: var(--windowBackground);
+
+  z-index: 7;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 14%);
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  transition-duration: 0.5s;
+
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-name: header_bar_load_animation;
+  animation-duration: 0.5s;
+}
+
+@keyframes header_bar_load_animation {
+    0% {
+        transform: translateX(-100vw);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+
+
+}
+
+
+header>div {
+  min-width: 1000px;
+  /* height: 60px; */
+  overflow-y: unset;
+}
+
+
+header h1 {
+  font-size: 20px;
+  display: inline;
+  float: left;
+}
+
+header span {
+  float: right;
+}
+
+@media only screen and (max-width: 1000px) {
+  header {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  header::-webkit-scrollbar {
+    width: 40px;
+    height: 4px;
+  }
+
+  header::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px none;
+    background-color: var(--windowBackground);
+  }
+
+  header::-webkit-scrollbar-thumb {
+    background: #88888888;
+    border-radius: 50vmin;
+    border: 0px solid var(--border-color);
+  }
+
+  header::-webkit-scrollbar-thumb:hover {
+    background: #888888;
+  }
+
+
+}
+
+@media only screen and (max-width: 1230px) {
+
+#JSregulated74545, .hide_on_mobile,
+
+  header nav,
+
+  .status,
+  .status2,
+  .status.online,
+  .status.offline,
+
+  .search_bar {
+    display: none;
+  }
+
+
+  header>div {
+    min-width: 30px;
+    /* height: 60px; */
+    overflow-y: unset;
+  }
+}

@@ -1,0 +1,10 @@
+img {
+    border-radius: var(--border-radius);
+    cursor: pointer;
+  }
+
+  audio {
+    display: none;
+  }
+  
+

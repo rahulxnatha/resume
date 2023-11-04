@@ -1,0 +1,112 @@
+.smallNotification {
+ 
+  z-index: 2;
+
+  
+  /* --width_status_bar: 200px; */
+  width: fit-content;
+
+  /* margin: 40px 20px 40px calc(100px + calc(0.5*(50% - 150px - var(--width_status_bar)))); */
+  /* height: calc(40px); */
+
+  /* border: 2px solid grey; */
+  /* border-radius: var(--border-radius); */
+  overflow-y: hidden;
+  overflow: hidden;
+
+  /* -webkit-backdrop-filter: blur(13px); */
+  /* backdrop-filter: blur(13px); */
+
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  transition-duration: 0.5s;
+
+  /* font-size: 16px; */
+  /* font-weight: 600; */
+  /* align-items: center; */
+  /* text-align: center; */
+  /* vertical-align: middle; */
+
+}
+
+.smallNotification_div {
+
+  position: fixed;
+  position: absolute;
+  bottom: -50px;
+
+  left: 0px;
+ 
+  z-index: 2;
+
+  margin: 0px 00px 00px calc(00px);
+  height: calc(40px);
+
+  overflow-y: auto;
+  overflow: auto;
+  transition-duration: 0.5s;
+
+  
+  /* align-items: center;
+  text-align: center; */
+  /* width: calc(50% - 150px); */
+
+  /* border: 2px solid grey; */
+  /* background-color: aqua; */
+}
+
+aside:hover .smallNotification_div > button {
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+}
+
+.smallNotification_div {
+  -webkit-animation-name: smallNotification_animatebottom;
+  -webkit-animation-duration: 3s;
+  animation-name: smallNotification_animatebottom;
+  animation-duration: 3s;
+
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+
+}
+
+@-webkit-keyframes smallNotification_animatebottom {
+  0% {
+    top: -100vh;
+  }
+
+  /* 90% {
+      top: -3vh;
+  }
+
+  93% {
+      top: 1vh;
+  }
+
+  96% {
+      top: -1vh;
+  } */
+
+  100% {}
+}
+
+@keyframes smallNotification_animatebottom {
+  0% {
+    bottom: -100vh;
+  }
+
+
+  /* 
+  97% {
+      left: -1vw;
+  } */
+
+  100% {}
+}

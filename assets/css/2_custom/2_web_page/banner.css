@@ -1,0 +1,134 @@
+.banner_section {
+
+    /* background-color: aqua; */
+    width: calc(100vw - 100px);
+    margin: 100px 50px 0 50px;
+    transition: all 0.5s ease;
+}
+
+
+.banner {
+    min-height: 30vmin;
+    /* min-width: 100%; */
+    grid-column-start: 1;
+    grid-column-end: 5;
+    /* display: none; */
+    opacity: 0.9;
+    margin: 20px 0;
+    /**/
+    transition: all 0.5s ease;
+    /* animation: mymove 5s infinite; */
+}
+
+.bannerOnDynamicLayoutTest {
+    margin-top: 20px;
+    grid-column-start: auto;
+    grid-column-end: auto;
+
+}
+
+
+
+.banner_background {
+    /*  */
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat rgba(0, 0, 0, 0.5), url("../../../images/banner/banner.jpg");
+
+    /* Set the background color and image */
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+
+    /* Create a semi-transparent overlay using ::before */
+    ::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        opacity: 0;
+        /* Adjust the opacity (0.5) for transparency */
+        z-index: -1;
+        /* Place it behind the content */
+    }
+
+
+    /* Create a semi-transparent overlay */
+    /* &::after { */
+    /* content: ""; */
+    /* display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.892); */
+    /* Adjust the alpha (0.5) for transparency */
+    /* z-index: 1; */
+    /* Ensure the overlay is on top of the image */
+    /* } */
+
+
+    /* color: white; */
+
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size:cover;
+    /* min-height: calc(100vmin - 200px); */
+    min-height: calc(100vh - 200px);
+    margin: 20px 0;
+    /* border-radius: 0%; */
+    /* height: 100%; */
+    /* width: 100%; */
+
+    transition: all 0.5s ease;
+}
+
+
+
+.banner_text {
+    position: absolute;
+    bottom: 0;
+    padding: 0 20px 20px 0;
+    margin-left: 40%;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .banner_text {
+        
+        font-size: 24px;
+    }
+    
+}
+
+/* for banner  */
+.name_brand_on_picture {
+    padding: 7px;
+    background-color: #88888888;
+    border-radius: var(--border-radius);
+}
+
+
+
+.banner_fold {
+    
+    min-height: 300px;
+   
+}
+
+.banner_section_fold {
+
+    width: calc(100vw - 720px);
+}
+
+@media only screen and (max-width: 700px) {
+    .banner_section_fold {
+
+        width: calc(100vw - 100px);
+    }
+
+}

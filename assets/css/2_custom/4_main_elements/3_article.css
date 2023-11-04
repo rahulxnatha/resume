@@ -1,0 +1,256 @@
+article,
+
+#contact a {
+
+    position: relative;
+
+    margin: 0;
+    padding: 20px 20px 20px 20px;
+
+    border: 0px solid var(--border-color);
+    /* border: 2px solid transparent; */
+    cursor: pointer;
+
+    /* max-width: 600px; */
+    /* background-color: var(--windowBackground); */
+    background-color: var(--articleBackground);
+    overflow: hidden;
+
+    border-radius: var(--border-radius);
+    /* transition: border-radius 0.5s ease-in-out, transform 0.5s ease, width 0.5s ease; */
+    /* transition: border-radius 0.5s ease-in-out, transform 0.5s ease, width 0.5s ease; */
+    transition: all 0.5s ease;
+
+    outline-color: #aaaaaa;
+    outline-width: 1px;
+    outline-style: hidden;
+    outline-offset: 3px;
+
+    /* box-shadow: 0 1px 2px var(--shadow); */
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+
+
+}
+
+
+
+@keyframes border-animation-article {
+    0% {
+        transform: translateX(0px);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+
+    75% {
+        transform: translateX(1px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+
+
+article:hover {
+
+
+
+    /* transform: rotate(0deg); */
+    /* width: 150%; */
+    /* height: 150%; */
+    /* transition: border-radius 0.5s ease-in-out, transform 0.5s ease, width 2s ease; */
+    border-radius: var(--border-radius-on-hover);
+    /* grid-column: span 2; */
+    /* transition-delay: 1s; */
+    /* animation: border-animation-article 0.3s linear infinite; */
+    /* box-shadow: 0px 1px 2px rgba(135, 137, 83, 0.5); */
+    box-shadow: 0 1px 4px var(--shadow);
+    z-index: 3;
+    /* animation: increaseWidth 0.5s ease; */
+}
+
+/* article:nth-child(3n + 2):hover {
+    transform: translateX(calc(-100%/3));
+   
+} */
+
+@keyframes increaseWidth {
+    0% {
+        width: 100%;
+        height: 100%;
+    }
+
+    50% {
+        height: 120%;
+    }
+
+    100% {
+        width: 150%;
+        height: 100%;
+    }
+}
+
+.show-on-hover {
+    display: none;
+    -webkit-animation: LoadingAnimation 1s;
+  animation: LoadingAnimation 1s;
+}
+
+#cmrcet-id:hover .show-on-hover {
+    display: block;
+}
+
+
+/* When hovering a grid item in the first or second column */
+
+
+#contact a {
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+}
+
+.skillBase {
+    background-color: var(--base);
+    margin: 5px -20px -20px -20px;
+    padding: 10px 20px;
+    /* position: absolute; */
+    /* bottom: 0px; */
+    /* width: calc(100% + 40px); */
+    min-height: 40px;
+}
+
+.skillBaseIcon {
+
+    background-color: #77777777;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+.number_of_skillbase {
+    padding-bottom: 0px;
+    /* display: block; */
+}
+
+
+
+.article_hovered {
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    /* transition: border-radius 0.5s ease-in-out, transform 0.5s ease, width 2s ease; */
+
+    /* transition: transform 0.2s; */
+}
+
+/* aside section a:hover {
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    z-index: 4;
+   
+} */
+
+/* aside section a, */
+#contact a {
+    display: inline-block;
+    margin: 0 20px 20px 0;
+}
+
+/* aside section a:hover  */
+article:hover,
+#contact a:hover {
+    /* background-color: var(--base); */
+
+    /* box-shadow: 0px var(--shadow); */
+
+    background-color: var(--windowBackground);
+    background-color: var(--articleBackground);
+
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+
+    /* animation: article_hover 3s ease 1; */
+}
+
+
+
+
+
+article h1 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+
+article p {
+    font-size: 14px;
+    padding: 0;
+    margin: 10px 0 0 0;
+    line-height: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+    article h1 {
+        
+        font-size: 22px;
+    }
+    
+    
+    article p {
+        font-size: 16px;
+    }
+
+}
+
+
+article.active {
+    /* outline: 2px solid #aaa; */
+    outline: 2px solid var(--border-color);
+    outline-offset: 3px;
+    border: 0px solid var(--border-color);
+}
+
+
+.cmrcet:hover {
+    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/tile_backg/CMRCET.jpg");
+
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: cover;
+}
+
+
+
+main>#mainSettings>label {
+    padding: 0px 20px 20px 20px;
+    border-radius: var(--border-radius);
+    background-color: var(--windowBackground);
+    cursor: pointer;
+}
+
+main>#mainSettings>label:hover {
+
+    background-color: var(--base);
+
+}
+
+#mainSettings {
+    overflow: visible;
+}
+
+
+.article {
+    overflow: hidden;
+    transform: rotateX(10deg) rotateY(0deg);
+    transform-style: preserve-3d;
+
+
+}

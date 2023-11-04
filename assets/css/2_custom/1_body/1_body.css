@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* if CSS Variables aren't supported */
+    background-color: #f8f9fa;
+    background-color: var(--background);
+    /* if CSS Variables aren't supported */
+    color: #34252f;
+    color: var(--font);
+    font-weight: 400;
+    /* font-family: 'Work Sans', sans-serif; */
+
+}
+
+/* body {
+    background-image: url('../../../images/pexels-anna-shvets-5324968.jpg');
+
+} */
+
+.background-image-courtesy {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        /* background-image: url('../../../images/iss042e135100_lrg.jpg'); */
+        /* background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/85000/85153/iss042e135100_lrg.jpg'); */
+
+        /* background-image: url('../../../images/pexels-pixabay-247676.jpg'); */
+        animation-name: scaleImage;
+        animation-duration: 30s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-delay: 0s;
+    }
+
+    .background-image-courtesy {
+        display: none;
+    }
+}
+
+.background-image-courtesy {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /* height: 37px; */
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.759);
+    padding: 5px;
+    z-index: 1;
+}
+
+@media print {
+
+    html,
+    body {
+        /* hide whole page while printing */
+        display: none;
+    }
+}
+
+body {
+    /* Use two colors with 20% opacity */
+    /* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
+
+    background-size: cover;
+    /* Scale the background image to cover the entire viewport */
+    background-attachment: fixed;
+    /* Prevent the background image from scrolling with the page */
+    background-repeat: no-repeat;
+    /* Prevent the background from repeating */
+    background-position: center center;
+    /* Center the background image within the viewport */
+
+    /* Delays the animation by 5 seconds */
+}
+
+@keyframes scaleImage {
+    0% {
+        background-size: 100%;
+        /* Start with the image covering the viewport */
+    }
+
+    50% {
+        background-size: 300%;
+        /* Zoom in to 150% size */
+    }
+
+    100% {
+        background-size: 100%;
+        /* Return to covering the viewport */
+    }
+}
