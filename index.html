@@ -1221,34 +1221,7 @@
             <a href="https://instagram.com/rahul.natha" target="_blank">Instagram</a>
           </div>
 
-          <div id="calculator">
-            <input type="text" id="inputExpression" placeholder="Enter expression (e.g., 10+9.81*6.986)">
-            <button onclick="calculate()">Calculate</button>
-            <button onclick="clearInput()">Clear</button>
-            <p id="result"></p>
-        </div>
-    
-        <script>
-            function calculate() {
-                const expression = document.getElementById("inputExpression").value;
-                if (!expression) {
-                    return;
-                }
-    
-                try {
-                    const result = eval(expression);
-                    document.getElementById("result").textContent = `Result: ${result}`;
-                } catch (error) {
-                    document.getElementById("result").textContent = "Invalid input";
-                }
-            }
-    
-            function clearInput() {
-                document.getElementById("inputExpression").value = "";
-                document.getElementById("result").textContent = "";
-            }
-        </script>
-
+          
 
         </div>
 
