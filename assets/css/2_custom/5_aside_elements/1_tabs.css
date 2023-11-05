@@ -50,12 +50,16 @@
 
     height: calc(56px + 20px);
    
-    overflow-x: auto;
+    overflow-x:auto;
+    overflow-x: scroll;
     overflow-y: visible;
     float: left;
     /* border: 0.5px dashed #77777715; */
 
     visibility: hidden;
+
+    scroll-behavior: smooth;
+    
 }
 
 
@@ -69,6 +73,7 @@ aside:hover .tabbar, aside:hover .controlButtons {
 .tabbar>div,
 .controlButtons>div {
     width: fit-content;
+    width: 1000000px;
     white-space: nowrap;
     height: 36px;
     margin: 2px;

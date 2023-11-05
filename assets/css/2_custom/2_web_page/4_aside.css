@@ -201,7 +201,7 @@ aside h3 {
     }
 
     aside:hover {
-        height: calc((100vh - 60px)/2);
+        height: calc((100vh - 60px)*(3/4));
     }
 
     aside h1 {
