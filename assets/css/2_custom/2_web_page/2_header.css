@@ -91,9 +91,11 @@ header span {
   .status,
   .status2,
   .status.online,
-  .status.offline,
-
-  .search_bar {
+  .status.offline
+  
+  ,.search_bar 
+  
+  {
     display: none;
   }
 
@@ -103,4 +105,15 @@ header span {
     /* height: 60px; */
     overflow-y: unset;
   }
+
+ #channels_testing {
+
+  display: none;
+ }
+
+
+
 }
+
+
+

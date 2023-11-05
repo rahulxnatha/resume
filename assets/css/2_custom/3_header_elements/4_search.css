@@ -1,5 +1,3 @@
-
-
 #search_bar {
   height: 36px;
   /* height: 1000px; */
@@ -38,4 +36,14 @@
   margin: -11px 0 0 4px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+@media only screen and (max-width: 700px) {
+
+
+  #search_bar {
+    height: 36px;
+    width: 150px;
+    margin: -11px 0 0 calc((100% - 100px)/2);
+  }
 }
