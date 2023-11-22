@@ -37,7 +37,34 @@
     background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat rgba(0, 0, 0, 0.5), url("../../../images/banner/banner.jpg");
 
     /* Set the background color and image */
-    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+    background: linear-gradient(var(--base),var(--base60),  var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
+
+    background: linear-gradient(var(--base),var(--base60), #00000000, var(--base60), var(--base)), 
+    linear-gradient(to right, var(--base),var(--base60),
+    
+   
+    var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
+    
+    
+    
+    #00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,
+    
+    var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
+    
+    
+    #00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,
+
+    var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
+    
+    
+    var(--base60), var(--base)), 
+
+
+    url("../../../images/banner/banner.jpg") center / cover no-repeat;
+/* 
+    background:  linear-gradient(var(--base60), var(--base60)),
+    url("../../../images/banner/banner.jpg") center / cover no-repeat; */
+
 
     /* Create a semi-transparent overlay using ::before */
     ::before {

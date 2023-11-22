@@ -7,6 +7,7 @@ header {
   padding: 20px;
   background-color: #e9ecef;
   background-color: var(--windowBackground);
+  background-color: var(--base60);
 
   z-index: 7;
   box-shadow: 0 1px 2px rgb(0 0 0 / 14%);
