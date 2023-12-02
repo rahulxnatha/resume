@@ -27,7 +27,7 @@
 
   --lightBackground: #f7f7f7;
   --darkBackground: #121212;
-  --darkBackground: #000000;
+  --darkBackground: rgb(0, 5, 5);
 
   --lightWindowBackground: #ffffff80;
   --darkWindowBackground: #343a4050;

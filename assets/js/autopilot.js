@@ -11,6 +11,13 @@
 // document.getElementById("width_px_aside").innerText = event.clientX + "px" ;
 
 
+// scroll down 60px after 5 seconds 
+
+// setTimeout(function () {
+//   window.scrollY = 60;
+
+// }, 5000);
+
 
 document.getElementById('cubeSection').style.display = 'none';
 
@@ -374,9 +381,16 @@ window.onscroll = function () {
 
 if (currentScrollPos == 0) {
   while (banner_folded == true) {
-    document.getElementById("banner_article").classList.toggle("banner_fold");
-    document.getElementById("banner").classList.toggle("banner_section_fold");
-    document.getElementById("viewPort").classList.toggle("aside_unfold");
+    
+   
+
+    setTimeout(function () {
+      document.getElementById("banner_article").classList.toggle("banner_fold");
+      document.getElementById("viewPort").classList.toggle("aside_unfold");
+      document.getElementById("banner").classList.toggle("banner_section_fold");
+    }, 50);
+
+    
 
     banner_folded = false;
 
