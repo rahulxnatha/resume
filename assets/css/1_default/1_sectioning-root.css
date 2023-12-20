@@ -4,6 +4,7 @@
   box-sizing: border-box;
   z-index: 1;
   /* font-family: 'Work Sans', sans-serif; */
+  font-family:'Trebuchet MS', sans-serif;
   
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -62,6 +63,7 @@
   --border-radius: 34px;
   /* --border-radius: 0px; */
   --border-radius-on-hover: 7px;
+  --border-radius-on-hover: 24px;
   /* --border-radius-on-hover: 0px; */
 
   --number-of-cols: 1;

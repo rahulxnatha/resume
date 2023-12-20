@@ -19,7 +19,7 @@
 // }, 5000);
 
 
-document.getElementById('cubeSection').style.display = 'none';
+// document.getElementById('cubeSection').style.display = 'none';
 
 
 // draggableDiv.addEventListener("mouseup", function() {
