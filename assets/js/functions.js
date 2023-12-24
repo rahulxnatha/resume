@@ -261,9 +261,21 @@ for (let j = 0; j < tab_close.length; j++) {
 
     tab_close[j].addEventListener("click", () => {
         elemtabs[j].style.display = "none";
+        // briefblock[i].style.display = "none";
+
+
         tab_close_clicked = 1;
         closed_tab_is = j;
 
+        // elemtabs[0].click();
+        // elemtabs[0].style.display = "inline-block";
+        // briefblock[0].style.display = "none";
+        // ActivateElemTab(0);
+        // if (j == 0 ) {
+           
+        // } else {
+        //     elemtabs[0].click();
+        // }
 
     });
 
@@ -272,6 +284,7 @@ for (let j = 0; j < tab_close.length; j++) {
 
 
 }
+
 
 
 function ActivateElemTab(which_tab) {
@@ -294,7 +307,9 @@ for (let i = 0; i < briefblock.length; i++) {
                     briefblock[i].style.display = "none";
                     DEActivateElemTab(i);
                 }
-                briefblock[i].style.display = "block";
+                // briefblock[i].style.display = "block"; //uncomment this if you comment below line
+                articles[i].click(); //comment this if needed
+
                 ActivateElemTab(i);
 
             }

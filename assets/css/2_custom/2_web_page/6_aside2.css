@@ -3,10 +3,10 @@
     position: fixed;
     top: 60px;
     left: 0px;
-    width: 50px;
+    width: 25px;
     margin: 20px 20px 20px 0px;
     height: calc(100vh - 100px);
-    padding: 20px 0px 20px 0px;
+    padding: 20px 0px 20px 20px;
     border: 2px solid var(--border-color);
     border-left: 0px solid;
     border-top-right-radius: var(--border-radius);
@@ -30,7 +30,7 @@
     top: 60px;
     left: 0px;
     width: calc(500px);
-    margin: 20px 20px 20px 0px;
+    /* margin: 20px 20px 20px px; */
     height: calc(100vh - 100px);
     padding: 20px 0px 20px 10px;
     border: 2px solid var(--border-color);
@@ -55,14 +55,39 @@
 }
 
 .aside2:hover>h1 {
-    margin: 0 0 20px 20px;
+    margin: 0 0 20px 0px;
     float: none;
     transform: none;
+    width: auto;
+    height: auto;
+    position:initial;
+    /* left:0; */
+
 }
 
 .aside2>h1 {
     display: block;
-  margin: 0 100px 20px 0;
+    position: absolute;
+    left:-355px;
+    font-size:larger;
+      /* margin: 0 100px 20px 0; */
+    /* visibility: hidden; */
+    transform: rotateZ(270deg);
+    /* float: left; */
+    width: 800px;
+    height: 100px;
+
+}
+.aside2:hover> p{
+    margin: 0 0 20px 0px;
+    float: none;
+    transform: none;
+    display: block;
+}
+
+.aside2> p{
+    display: none;
+  /* margin: 0 100px 20px 0; */
     /* visibility: hidden; */
     transform: rotateZ(270deg);
     float: left;
