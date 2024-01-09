@@ -251,3 +251,55 @@ main>#mainSettings>label:hover {
 
 
 }
+
+/* .present { */
+    /* Base styling */
+    /* background-color: #f0f0f0; */
+    /* border: 1px solid #ccc; */
+    /* padding: 10px; */
+  
+    /* More intense glow with larger shadows and higher opacity */
+    /* box-shadow: 
+       0 0 5px rgba(14, 201, 201, 0.7),
+       0 0 30px rgba(233, 237, 237, 0.5),
+       0 0 45px rgba(56, 79, 233, 0.3); */
+    /* animation: shine 1s ease-in-out infinite; */
+  
+    /* Pulsating border for added attention */
+    /* border-color: #ccc; */
+    /* animation: pulseBorder 1s ease-in-out infinite; */
+  /* } */
+  
+  @keyframes shine {
+    0% {
+        box-shadow: 
+        0 0 5px rgba(14, 201, 201, 0.7),
+        0 0 30px rgba(233, 237, 237, 0.5),
+        0 0 45px rgba(56, 79, 233, 0.3);
+    }
+    50% {
+        box-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.7),
+        0 0 30px rgba(233, 237, 237, 0.5),
+        0 0 45px rgba(56, 79, 233, 0.3);
+    }
+    100% {
+        box-shadow: 
+        0 0 5px rgba(14, 201, 201, 0.7),
+        0 0 30px rgba(233, 237, 237, 0.5),
+        0 0 45px rgba(56, 79, 233, 0.3);
+    }
+  }
+  
+  @keyframes pulseBorder {
+    0% {
+      border-color: #ccc;
+    }
+    50% {
+      border-color: #fff;
+    }
+    100% {
+      border-color: #ccc;
+    }
+  }
+  
