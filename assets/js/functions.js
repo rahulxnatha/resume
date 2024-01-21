@@ -343,7 +343,7 @@ for (let i = 0; i < articles.length; i++) {
             clickedArticle = false;
         }
 
-        articles[i].classList.add("microinteraction");
+        // articles[i].classList.add("microinteraction");
 
         articles[i].classList.toggle("active");
 

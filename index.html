@@ -15,15 +15,23 @@
 
   <title>Rahul Natha</title>
 
-  <meta property="og:description" content="" />
+  <meta property="og:title" content="Portfolio - Rahul Natha">
+<meta property="og:image" content="https://raw.githubusercontent.com/hey-rahul/resume/main/assets/images/banner/banner.jpg">
+<meta property="og:description" content="A creative website with a lot of easter eggs made by Rahul Natha!">
+<meta property="og:url" content="https://rahulnatha.com">
+<meta property="og:site_name" content="Portfolio - Rahul Natha">
+
+
+
+  <!-- <meta property="og:description" content="" />
   <meta property="og:title" content="" />
   <meta property="og:url" content="" />
-  <meta property="og:image" content="" />
+  <meta property="og:image" content="" /> -->
 
   <link rel="icon" type="image/png" href="assets/images/favicon/RAHUL.png
     " sizes="96x96">
 
-  <meta name="description" content="" />
+  <meta name="description" content="A creative website with a lot of easter eggs made by Rahul Natha!" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="rating" content="" />
   <meta name="robots" content="noindex, nofollow" />
@@ -123,6 +131,7 @@
   <script src="assets/js/search.js" defer></script>
   <script src="assets/js/greeting.js" defer></script>
   <script src="assets/js/bionic-mode.js" defer></script>
+  <script src="assets/js/carousel.js" defer></script>
 
 
   <!-- <script src="assets/js/cursor.js" defer></script> -->
@@ -1619,10 +1628,45 @@
       <div class="banner" id="default_focus" draggable="true">
         <article class="banner_background" id="banner_article">
 
-          <span class="name_brand_on_picture" style="float:right;">2023</span>
-          <br><br>
+          <!-- <span class="name_brand_on_picture" style="float:right;">2023</span> -->
+          <!-- <br><br> -->
 
-          <span style="float:right" ; class="banner_text typewrite" ;>Welcome</span>
+          <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 3</div>
+              <img class="image_banner_slide " src="assets/images/banner/banner.jpg" style="width:100%">
+              <div class="text">Caption Text</div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 3</div>
+              <img class="image_banner_slide " src="img_snow_wide.jpg" style="width:100%">
+              <div class="text">Caption Two</div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 3</div>
+              <img class="image_banner_slide " src="img_mountains_wide.jpg" style="width:100%">
+              <div class="text">Caption Three</div>
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+            
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span> 
+              <span class="dot" onclick="currentSlide(2)"></span> 
+              <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+            
+            
+
+
+          <!-- <span style="float:right" ; class="banner_text typewrite" ;>Welcome</span> -->
 
 
         </article>

@@ -98,8 +98,9 @@ aside:hover > #viewport {
 
 #viewport {
     background-color: var(--windowBackground);
-    -webkit-backdrop-filter: blur(13px);
-    backdrop-filter: blur(13px);
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
     border-radius: var(--border-radius-on-hover);
 
     /* transition: all 0.5s ease; */
