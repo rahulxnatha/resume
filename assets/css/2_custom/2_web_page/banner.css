@@ -57,10 +57,10 @@
     var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
     
     
-    var(--base60), var(--base));
+    var(--base60), var(--base)),
 
 
-    /* url("../../../images/banner/banner.jpg") center / cover no-repeat; */
+    url("../../../images/banner/banner.jpg") center / cover no-repeat;
 /* 
     background:  linear-gradient(var(--base60), var(--base60)),
     url("../../../images/banner/banner.jpg") center / cover no-repeat; */
