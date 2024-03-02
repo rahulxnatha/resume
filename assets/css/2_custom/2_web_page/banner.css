@@ -39,25 +39,25 @@
     /* Set the background color and image */
     background: linear-gradient(var(--base),var(--base60),  var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
 
-    background: linear-gradient(var(--base),var(--base60), #00000000, var(--base60), var(--base)), 
-    linear-gradient(to right, var(--base),var(--base60),
+    background: linear-gradient(var(--background),var(--background-60), #00000000, var(--background-60), var(--background)), 
+    linear-gradient(to right, var(--background),var(--background-60),
     
    
-    var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
+    var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),
     
     
     
     #00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,
     
-    var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
+    var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),
     
     
     #00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,
 
-    var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),var(--base60),
+    var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),
     
     
-    var(--base60), var(--base)),
+    var(--background-60), var(--background)),
 
 
     url("../../../images/banner/banner.jpg") center / cover no-repeat;
@@ -125,7 +125,8 @@
     font-size: 50px;
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) { */
+@media only screen and (max-width: 1230px) {
 
     .banner_text {
         
@@ -154,7 +155,8 @@
     width: calc(100vw - 720px);
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) { */
+@media only screen and (max-width: 1230px) {
     .banner_section_fold {
 
         width: calc(100vw - 40px);

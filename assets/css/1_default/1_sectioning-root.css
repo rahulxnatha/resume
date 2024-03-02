@@ -27,8 +27,13 @@
   transition: background-color 1s;
 
   --lightBackground: #f7f7f7;
+
+  --lightBackground: #fff;
+  --lightBackground60: rgba(255, 255, 255, 0.6);
+
   --darkBackground: #121212;
   --darkBackground: rgb(0, 5, 5);
+  --darkBackground60: rgba(0, 5, 5, 0.6);
 
   --lightWindowBackground: #ffffff80;
   --darkWindowBackground: #343a4050;
@@ -41,6 +46,9 @@
 
   --lightFont: #272727;
   --darkFont: #f1faee;
+
+  --accent: blue;
+  --accent-dark: #5fbcbf;
 
   --lightAnchor: #234e97;
   --lightAnchor20: hsla(218, 62%, 36%, 0.2);
@@ -101,6 +109,7 @@
     --base60: hsla(0, 0%, 100%, 0.6);
     --base50i: hsla(0, 0%, 0%, 0.5);
     --background: var(--lightBackground);
+    --background-60: var(--lightBackground60);
     --font: var(--lightFont);
     --fonti: var(--darkFont);
     --windowBackground: var(--lightWindowBackground);
@@ -116,6 +125,7 @@
     --selectioni: var(--darkSelection);
     --shadow: var(--lightShadow);
     --border-color: var(--light-border-color);
+    --border-color-hover: var(--accent);
   }
 }
 
@@ -127,6 +137,7 @@
     --base60: hsla(0, 0%, 0%, 0.6);
     --base50i: hsla(0, 0%, 100%, 0.5);
     --background: var(--darkBackground);
+    --background-60: var(--darkBackground60);
     --font: var(--darkFont);
     --fonti: var(--lightFont);
     --windowBackground: var(--darkWindowBackground);
@@ -143,6 +154,7 @@
     --selectioni: var(--lightSelection);
     --shadow: var(--darkShadow);
     --border-color: var(--dark-border-color);
+    --border-color-hover: var(--accent-dark);
   }
 }
 

@@ -77,7 +77,8 @@ aside:hover {
     /* height: 400px; */
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) { */
+@media only screen and (max-width: 1230px) {
     .aside_unfold {
         height: 100px;
         
@@ -173,7 +174,8 @@ aside h3 {
     }
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) { */
+@media only screen and (max-width: 1230px) {
 
     aside {
         z-index: 8;
