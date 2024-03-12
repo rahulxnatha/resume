@@ -23,6 +23,12 @@
 
 }
 
+#search_bar:hover {
+  border-left: 2px solid red;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  border-right: 0px solid var(--border-color);
+}
 #search_bar:focus {
   outline: 2px solid var(--border-color-hover);
 

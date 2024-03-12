@@ -1,195 +1,684 @@
 .banner_section {
 
-    /* background-color: aqua; */
-    width: calc(100vw - 100px);
-    margin: 100px 50px 0 50px;
-    transition: all 0.5s ease;
+  /* background-color: aqua; */
+  width: calc(100vw - 100px);
+  margin: 100px 50px 0 50px;
+  transition: all 0.5s ease;
 }
 
 
 .banner {
-    min-height: 30vmin;
-    /* min-width: 100%; */
-    grid-column-start: 1;
-    grid-column-end: 5;
-    /* display: none; */
-    opacity: 0.9;
-    margin: 20px 0;
-    /**/
-    transition: all 0.5s ease;
-    /* animation: mymove 5s infinite; */
+  min-height: 30vmin;
+  /* min-width: 100%; */
+  grid-column-start: 1;
+  grid-column-end: 5;
+  /* display: none; */
+  opacity: 0.9;
+  margin: 20px 0;
+  /**/
+  transition: all 0.5s ease;
+  /* animation: mymove 5s infinite; */
 }
 
 .bannerOnDynamicLayoutTest {
-    margin-top: 20px;
-    grid-column-start: auto;
-    grid-column-end: auto;
+  margin-top: 20px;
+  grid-column-start: auto;
+  grid-column-end: auto;
 
 }
 
 .bannel_pills {
-    line-height: 50px;
+  line-height: 50px;
 }
 
 .banner_background {
-    /*  */
-    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
-    background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat rgba(0, 0, 0, 0.5), url("../../../images/banner/banner.jpg");
+  /*  */
+  
+  
 
-    /* Set the background color and image */
-    background: linear-gradient(var(--base),var(--base60),  var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg");
 
-    background: linear-gradient(var(--background),var(--background-60), #00000000, var(--background-60), var(--background)), 
-    linear-gradient(to right, var(--background),var(--background-60),
-    
-   
-    var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),
-    
-    
-    
-    #00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,
-    
-    var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),
-    
-    
-    #00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,#00000000,
 
-    var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),var(--background-60),
-    
-    
-    var(--background-60), var(--background)),
+
+
+
+
+  background:
+
+
+    linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+    linear-gradient(to right,
+
+
+
+      var(--background), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000,
+
+      var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000, #00000000,
+
+      var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60), var(--background-60),
+
+
+      var(--background-60), var(--background)),
+
+
 
 
     url("../../../images/banner/banner.jpg") center / cover no-repeat;
-/* 
-    background:  linear-gradient(var(--base60), var(--base60)),
+
+
+
+
+
+  background:
+
+
+    linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+    linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+      var(--background-60),
+      #00000000, #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+      
+      ),
+
+
+
+
+    url("../../../images/banner/banner.jpg") 
+    center / cover no-repeat
+    ;
+
+
+
+
+
+    background: linear-gradient(transparent, transparent), center / contain no-repeat url("../../../images/banner/banner.jpg");
+    background: linear-gradient(transparent, transparent), center / contain no-repeat ;
+
+
+
+
+
+
+
+
+
+  /* background:  linear-gradient(var(--base60), var(--base60)),
     url("../../../images/banner/banner.jpg") center / cover no-repeat; */
 
 
-    /* Create a semi-transparent overlay using ::before */
-    ::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        opacity: 0;
-        /* Adjust the opacity (0.5) for transparency */
-        z-index: -1;
-        /* Place it behind the content */
-    }
+  /* Create a semi-transparent overlay using ::before */
+  ::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    opacity: 0;
+    /* Adjust the opacity (0.5) for transparency */
+    z-index: -1;
+    /* Place it behind the content */
+  }
 
 
-    /* Create a semi-transparent overlay */
-    /* &::after { */
-    /* content: ""; */
-    /* display: block;
+  /* Create a semi-transparent overlay */
+  /* &::after { */
+  /* content: ""; */
+  /* display: block;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.892); */
-    /* Adjust the alpha (0.5) for transparency */
-    /* z-index: 1; */
-    /* Ensure the overlay is on top of the image */
-    /* } */
+  /* Adjust the alpha (0.5) for transparency */
+  /* z-index: 1; */
+  /* Ensure the overlay is on top of the image */
+  /* } */
 
 
-    /* color: white; */
+  /* color: white; */
 
-    background-repeat: no-repeat;
-    /* background-attachment: fixed; */
-    background-size:cover;
-    /* min-height: calc(100vmin - 200px); */
-    min-height: calc(100vh - 200px);
-    margin: 20px 0;
-    /* border-radius: 0%; */
-    /* height: 100%; */
-    /* width: 100%; */
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size:cover;
+  /* min-height: calc(100vmin - 200px); */
+  min-height: calc(100vh - 200px);
+  margin: 20px 0;
+  /* border-radius: 0%; */
+  /* height: 100%; */
+  /* width: 100%; */
 
-    transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  /* animation: banner_spotlight 1s  infinite ; */
+
+  
+
+}
+
+
+
+
+@keyframes banner_spotlight {
+  0% {
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000, var(--background-60), #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+
+
+  }
+
+  10% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000,var(--background-60), #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  20% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, var(--background-60),
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  30% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000,var(--background-60), #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  40% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000,var(--background-60), #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  50% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000,var(--background-60), #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  60% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000,var(--background-60), #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  70% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+       
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000, var(--background-60), 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  80% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000,
+      #00000000,  var(--background-60),  #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  90% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000,
+      #00000000,   #00000000,  var(--background-60),#00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
+
+  100% {
+
+
+
+    background:
+
+
+      linear-gradient(var(--background), var(--background-60), #00000000, var(--background-60), var(--background)),
+
+
+      linear-gradient(to right,
+
+       
+      var(--background),
+      var(--background-60),
+
+
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+     
+      #00000000, #00000000,
+     
+      #00000000,  #00000000, #00000000, 
+      
+      #00000000, #00000000, #00000000, #00000000, #00000000,
+      #00000000,   #00000000,  #00000000,var(--background-60), #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      #00000000, #00000000, #00000000, #00000000, #00000000, 
+      
+
+      var(--background-60),
+      var(--background)
+        
+        ),
+      url("../../../images/banner/banner.jpg") center / cover no-repeat;
+  }
 }
 
 
 
 .banner_text {
-    position: absolute;
-    bottom: 0;
-    padding: 0 20px 20px 0;
-    margin-left: 40%;
-    font-weight: 900;
-    font-size: 50px;
+  position: absolute;
+  bottom: 0;
+  padding: 0 20px 20px 0;
+  margin-left: 40%;
+  font-weight: 900;
+  font-size: 50px;
 }
 
 /* @media only screen and (max-width: 700px) { */
 @media only screen and (max-width: 1230px) {
 
-    .banner_text {
-        
-        font-size: 24px;
-    }
-    
+  .banner_text {
+
+    font-size: 24px;
+  }
+
 }
 
 /* for banner  */
 .name_brand_on_picture {
-    padding: 7px;
-    background-color: #88888888;
-    border-radius: var(--border-radius);
+  padding: 7px;
+  background-color: #88888888;
+  border-radius: var(--border-radius);
 }
 
 
 
 .banner_fold {
-    
-    min-height: 300px;
-   
+
+  min-height: 300px;
+
 }
 
 .banner_section_fold {
 
-    width: calc(100vw - 720px);
+  width: calc(100vw - 720px);
 }
 
 /* @media only screen and (max-width: 700px) { */
 @media only screen and (max-width: 1230px) {
-    .banner_section_fold {
+  .banner_section_fold {
 
-        width: calc(100vw - 40px);
-        margin: 100px 20px 0 20px;
-    }
-    .banner_section {
+    width: calc(100vw - 40px);
+    margin: 100px 20px 0 20px;
+  }
 
-        width: calc(100vw - 40px);
-        margin: 100px 20px 0 20px;
-    }
+  .banner_section {
 
-    .banner_background {
+    width: calc(100vw - 40px);
+    margin: 100px 20px 0 20px;
+  }
 
-        min-height: calc((100vh - 60px)*(1/4) + 40px);
-    }
+  .banner_background {
 
-    .banner_fold {
-    
-        min-height: calc((100vh - 60px)*(1/4) - 40px);
-       
-    }
+    min-height: calc((100vh - 60px)*(1/4) + 40px);
+  }
+
+  .banner_fold {
+
+    min-height: calc((100vh - 60px)*(1/4) - 40px);
+
+  }
 
 }
 
 
 /* For the banner carasuel  */
-.mySlides {display: none}
-img {vertical-align: middle;}
+.mySlides {
+  display: none
+}
+
+img {
+  vertical-align: middle;
+}
 
 
 .image_banner_slide {
 
-    width: calc(100% );
+  width: calc(100%);
   /* height: 100%; */
   object-fit: cover;
   position: absolute;
@@ -197,48 +686,56 @@ img {vertical-align: middle;}
   left: 0;
 
   /* Apply multiple gradients for complex effect */
-  background-image: 
+  background-image:
     linear-gradient(var(--base), var(--base60), #00000000, var(--base60), var(--base)),
-    linear-gradient(to right, var(--base), var(--base60), /* ... remaining gradient values ... */ var(--base60), var(--base));
+    linear-gradient(to right, var(--base), var(--base60),
+      /* ... remaining gradient values ... */
+      var(--base60), var(--base));
 
-    opacity: 0.7;  /* Adjust opacity for desired transparency (0.7 is 70% opaque) */
-    transition: all 0.5s ease;  /* Transition for smooth effect */
+  opacity: 0.7;
+  /* Adjust opacity for desired transparency (0.7 is 70% opaque) */
+  transition: all 0.5s ease;
+  /* Transition for smooth effect */
 
-    filter:brightness(70%);
+  filter: brightness(70%);
 
   /* Other styling from the original CSS */
   transition: all 0.5s ease;
- 
+
 
 
 
 }
+
 /* Slideshow container */
 .slideshow-container {
 
-/* display: none; */
+  /* display: none; */
 
-    width: calc(100% + 40px);  /* Ensures the div takes up the full width of its parent */
-    /* height: 300px; */
-    /* height: 100vh; */
-    position: relative;
+  width: calc(100% + 40px);
+  /* Ensures the div takes up the full width of its parent */
+  /* height: 300px; */
+  /* height: 100vh; */
+  position: relative;
   margin: -20px;
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
   width: auto;
   padding: 16px;
-  margin-top: -22px;
+  margin-top: 22px;
   color: white;
   font-weight: bold;
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+  visibility: hidden;
 }
 
 /* Position the "next button" to the right */
@@ -248,8 +745,9 @@ img {vertical-align: middle;}
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -284,7 +782,8 @@ img {vertical-align: middle;}
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -295,12 +794,21 @@ img {vertical-align: middle;}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
 
+  .prev,
+  .next,
+  .text {
+    font-size: 11px
+  }
+}
