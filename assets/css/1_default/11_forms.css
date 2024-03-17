@@ -31,6 +31,8 @@ button, input[type="button"] {
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   transition: border-radius 0.3s;
+
+  background-color: var(--windowBackground);
   
 }
 button:hover, input[type="button"]:hover {

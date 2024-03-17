@@ -14,6 +14,8 @@ aside {
     border-radius: var(--border-radius);
     border-radius: var(--border-radius-on-hover);
     transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
+
+    /* background-color: var(--windowBackground); */
    
     resize: both; /* Enable both horizontal and vertical resizing */
     /* transition: all 0.5s ease; */
@@ -99,7 +101,7 @@ aside:hover > #viewport {
 
 #viewport {
     background-color: var(--windowBackground);
-    background-color: transparent;
+    /* background-color: transparent; */
     -webkit-backdrop-filter: blur(1px);
     backdrop-filter: blur(1px);
     border-radius: var(--border-radius-on-hover);

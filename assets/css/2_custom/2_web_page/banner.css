@@ -686,18 +686,18 @@ img {
   left: 0;
 
   /* Apply multiple gradients for complex effect */
-  background-image:
-    linear-gradient(var(--base), var(--base60), #00000000, var(--base60), var(--base)),
-    linear-gradient(to right, var(--base), var(--base60),
+  /* background-image: */
+    /* linear-gradient(var(--base), var(--base60), #00000000, var(--base60), var(--base)), */
+    /* linear-gradient(to right, var(--base), var(--base60), */
       /* ... remaining gradient values ... */
-      var(--base60), var(--base));
+      /* var(--base60), var(--base)); */
 
-  opacity: 0.7;
+  opacity: 1;
   /* Adjust opacity for desired transparency (0.7 is 70% opaque) */
   transition: all 0.5s ease;
   /* Transition for smooth effect */
 
-  filter: brightness(70%);
+  /* filter: brightness(70%); */
 
   /* Other styling from the original CSS */
   transition: all 0.5s ease;
@@ -753,12 +753,49 @@ img {
 /* Caption text */
 .text {
   color: #f2f2f2;
-  font-size: 15px;
+  font-size: 50px;
   padding: 8px 12px;
   position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
+  top: 300px;
+  width: 50%;
+  text-align: left;
+  text-shadow: 2px 2px 8px #000000;
+  transition-duration: 0.5s;
+  
+
+
+
+  -webkit-animation-name: come_from_bottom_caption;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+
+  animation-name: come_from_bottom_caption;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes come_from_bottom_caption {
+  0% {
+    top: 600px;
+  }
+
+  100% {
+    top: 300px;
+  }
+}
+
+@keyframes come_from_bottom_caption {
+  0% {
+    top:600px;
+  }
+
+  100% {
+    top: 300px;
+  }
 }
 
 /* Number text (1/3 etc) */
