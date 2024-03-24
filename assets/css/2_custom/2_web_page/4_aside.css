@@ -9,7 +9,7 @@ aside {
     width: calc(40% - 40px);
     margin: 0;
     height: calc(400px);
-    padding: 0;
+    padding: 0 0 20px 0;
     border: 0px solid var(--border-color);
     border-radius: var(--border-radius);
     border-radius: var(--border-radius-on-hover);

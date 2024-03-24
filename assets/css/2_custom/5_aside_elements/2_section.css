@@ -14,6 +14,8 @@ aside section {
   /* background-color: #2a1e42; */
   /* border-radius: 7px; */
   /* background-color: #ff0000; */
+  overflow: hidden
+
 
 }
 
@@ -50,7 +52,13 @@ aside section::-webkit-scrollbar-thumb:hover {
 } */
 aside section::-webkit-scrollbar {
   width: 8px;
+
+  visibility: hidden; /* Hide scrollbar by default */
 }
+
+/* aside section::-webkit-scrollbar {
+  opacity: 1; 
+} */
 
 aside section::-webkit-scrollbar-thumb {
   background: #888888;
@@ -61,6 +69,9 @@ aside section::-webkit-scrollbar-thumb {
   /* border: 200px solid transparent; */
 
 }
+
+
+
 
 aside section div {
   margin: 0;
@@ -171,6 +182,12 @@ aside:hover .viewPortMenu:hover {
   -webkit-animation: LoadingAnimation 1s;
   animation: LoadingAnimation 1s;
 }
+
+
+
+
+
+
 
 /* Loading animation */
 @-webkit-keyframes LoadingAnimation {

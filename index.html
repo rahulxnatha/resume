@@ -133,6 +133,7 @@
   <script src="assets/js/greeting.js" defer></script>
   <script src="assets/js/bionic-mode.js" defer></script>
   <script src="assets/js/carousel.js" defer></script>
+  <script src="assets/js/version.js" defer></script>
 
 
   <!-- <script src="assets/js/cursor.js" defer></script> -->
@@ -1598,8 +1599,10 @@
           </figure>
         </div>
 
-
       </section>
+
+
+     
 
       <!-- <button onclick="changeWidth_aside()">Change width</button>  -->
       <!-- <div id="width_px_aside" style="margin: 20px 0 0 20px; background-color: rgba(0, 0, 0, 0);"></div> -->
@@ -1627,13 +1630,13 @@
 
           <div class="slideshow-container">
 
-            <div class="mySlides fade">
+            <div class="mySlides fade limited-content">
               <div class="numbertext">1</div>
               <img class="image_banner_slide " src="assets/images/banner/AYIMUN 1.jpeg" style="width:100%">
               <div class="text">Asia Youth International Model United Nations, Kuala Lumpur, Malaysia - Jan 2024</div>
             </div>
             
-            <div class="mySlides fade">
+            <div class="mySlides fade" id="BITSH-Banner">
               <div class="numbertext">2</div>
               <img class="image_banner_slide " src="assets/images/banner/bitsh.jpeg" style="width:100%">
               <div class="text">Caption Two</div>
@@ -1671,7 +1674,7 @@
             <span class="dot" ></span> 
           </span> -->
 Carousel &nbsp;
-          <button onclick="currentSlide(1)">AYIMUN</button>
+          <button onclick="currentSlide(1)" class="limited-content">AYIMUN</button>
           <button onclick="currentSlide(2)">BITS Pilani, Hyderabad</button>
           <button onclick="currentSlide(3)">Mumbai, India</button>
           <button onclick="currentSlide(4)">Gold Medal at Academics</button>
