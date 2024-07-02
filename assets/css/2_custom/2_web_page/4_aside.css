@@ -3,7 +3,7 @@ aside {
 
     position: fixed;
     top: 80px;
-    left: calc(60% );
+    left: calc(60%);
     /* width: calc(50% - 30px);
     width: calc(50% - 150px); */
     width: calc(40% - 40px);
@@ -16,24 +16,25 @@ aside {
     transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
 
     /* background-color: var(--windowBackground); */
-   
-    resize: both; /* Enable both horizontal and vertical resizing */
+
+    resize: both;
+    /* Enable both horizontal and vertical resizing */
     /* transition: all 0.5s ease; */
-     /* overflow-x: hidden; */
+    /* overflow-x: hidden; */
     /* overflow: hidden; */
     /* opacity: 0%; */
-/* display: none; */
+    /* display: none; */
 
-/* background-color: green; */
-  
+    /* background-color: green; */
+
     /* transition-duration: 0s; */
-    
+
     /* box-shadow: 0 1px 2px var(--shadow); */
 
     /* -webkit-backdrop-filter: blur(13px); */
     /* backdrop-filter: blur(13px); */
 
-    
+
 
     /* background-color: green; */
     /* color: white; */
@@ -41,7 +42,7 @@ aside {
     /* background-repeat: no-repeat; */
     /* background-attachment: fixed; */
     /* background-size: cover; */
-/* 
+    /* 
     animation-name: aside_load_animation;
     animation-iteration-count: 1;
     animation-timing-function: ease;
@@ -59,7 +60,7 @@ aside {
         transform: translateX(0);
       }
    */
-  }
+}
 
 aside:hover {
     border-radius: var(--border-radius-on-hover);
@@ -71,7 +72,7 @@ aside:hover {
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
-    
+
 }
 
 .aside_unfold {
@@ -83,16 +84,16 @@ aside:hover {
 @media only screen and (max-width: 1230px) {
     .aside_unfold {
         height: 100px;
-        
+
     }
 
-  
+
 
 }
 
 
 
-aside:hover > #viewport {
+aside:hover>#viewport {
     background-color: transparent;
     -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
@@ -142,10 +143,10 @@ aside h3,
 aside h4,
 aside h5,
 aside h6 {
-  /* font-family: Serif; */
-  margin: 0px;
-  /* font-size: 20px; */
-  /* font-weight: 400; */
+    /* font-family: Serif; */
+    margin: 0px;
+    /* font-size: 20px; */
+    /* font-weight: 400; */
 }
 
 
@@ -154,6 +155,7 @@ aside h6 {
 aside h2 {
     font-size: 2em;
 }
+
 aside h3 {
     font-size: 1.5em;
 }
@@ -162,7 +164,7 @@ aside h3 {
     aside {
         z-index: 7;
         transition-duration: 0s;
-        position:initial;
+        position: initial;
 
         width: calc(100% - 2 * 20px);
         margin: 20px 0px 20px 20px;
@@ -184,15 +186,15 @@ aside h3 {
         transition-duration: 0;
         position: fixed;
         width: 100%;
-        margin:0;
+        margin: 0;
         /* height: calc(100vh - 100px); */
         /* padding: 20px 0px 20px 0px; */
         border: 0px solid var(--border-color);
         border-radius: 0;
 
-        bottom:0;
-        top:auto;
-        left:0;
+        bottom: 0;
+        top: auto;
+        left: 0;
         height: calc((100vh - 60px)/2);
 
 
