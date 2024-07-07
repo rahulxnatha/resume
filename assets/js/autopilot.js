@@ -182,6 +182,8 @@ function updateSearchBarWidth() {
     // searchBar.style.height = "auto";
   }
 
+  document.getElementById('search_button_action').click();
+
   searchBar.style.width = updatedWidth + "px";
   searchBar.style.marginLeft = "calc((100% - 700px - " + updatedWidth + "px)/2)";
   // searchBar.style.marginLeft = 0 + "px";

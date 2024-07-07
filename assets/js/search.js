@@ -17,7 +17,8 @@ searchButton.addEventListener('click', function search() {
             work: ['experience', 'work', 'internship', 'job', 'corporate', 'company', 'sector', 'profession', 'field', 'recent'],
             course: ['passion', 'course', 'coursera', 'LinkedIn Learning', 'training'],
             certification: ['certified', 'certification', 'expert', 'certificate'],
-           earning: ['living', 'earn','earning','earnings','pay','paid','stipend','salary', 'salaried'],
+            earning: ['living', 'earn', 'earning', 'earnings', 'pay', 'paid', 'stipend', 'salary', 'salaried'],
+            skill: ['skill'],
 
             // Add more keywords and corresponding mappings as needed
         };
@@ -106,7 +107,7 @@ searchButton.addEventListener('click', function search() {
     let section2 = document.querySelector('#edu_section');
     let section3 = document.querySelector('#skill_section');
     let section4 = document.querySelector('#project_section');
-    
+
 
     // // Append the contents of the second section tag to the first section tag.
     // section1.appendChild(section2.childNodes);
@@ -121,7 +122,7 @@ searchButton.addEventListener('click', function search() {
     // section5.parentNode.removeChild(section5);
 
 
-   
+
 
 
 
@@ -130,19 +131,19 @@ searchButton.addEventListener('click', function search() {
     let section2HTML = section2.innerHTML;
     let section3HTML = section3.innerHTML;
     let section4HTML = section4.innerHTML;
-   
+
 
     // Combine the HTML content of the two section tags into a single string.
-    const combinedHTML = section1HTML + section2HTML + section3HTML + section4HTML ;
+    const combinedHTML = section1HTML + section2HTML + section3HTML + section4HTML;
 
     // Set the innerHTML property of the first section tag to the combined HTML string.
     // section1.innerHTML = combinedHTML;
 
-  // Remove the contents of the second section tag.
+    // Remove the contents of the second section tag.
     //  section2.innerHTML = '';
     //  section3.innerHTML = '';
     //  section4.innerHTML = '';
-   
+
 
 });
 

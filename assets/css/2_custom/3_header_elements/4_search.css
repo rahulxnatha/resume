@@ -24,15 +24,22 @@
 }
 
 #search_bar:hover {
-  border-left: 2px solid red;
-  border-top: 2px solid red;
-  border-bottom: 2px solid red;
-  border-right: 0px solid var(--border-color);
+  border-left: 2px solid     var(--border-color-hover);
+  border-top: 2px solid      var(--border-color-hover);
+  border-bottom: 2px solid   var(--border-color-hover);
+  border-right: 0px solid    var(--border-color-hover);
 }
 #search_bar:focus {
-  outline: 2px solid var(--border-color-hover);
+  /* outline: 2px solid var(--border-color-hover);*/
+   outline: 0px solid var(--border-color-hover); 
+/*
+  outline-offset: 8px; */
+  border-left: 2px solid     var(--border-color-hover);
+  border-top: 2px solid      var(--border-color-hover);
+  border-bottom: 2px solid   var(--border-color-hover);
+  border-right: 0px solid    var(--border-color-hover);
 
-  outline-offset: 4px;
+  
 }
 
 

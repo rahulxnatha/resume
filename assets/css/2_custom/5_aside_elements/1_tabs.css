@@ -42,7 +42,7 @@
     margin: 0px;
     padding: 15px 0 0 20px;
     /* background-color: rgb(75, 135, 188); */
-    width: calc(100% - 180px);
+    width: calc(100% - 160px);
 
     height: calc(56px + 20px );
 
@@ -122,7 +122,7 @@ aside:hover .controlButtons {
     float: right;
     width: 150px;
     border-left: 1px solid var(--border-color);
-    margin: 20px 5px 0 0;
+    margin: 15px 5px 0 0;
     padding-left: 00px;
     right: 0;
     /* visibility: hidden; */
