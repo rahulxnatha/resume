@@ -17,3 +17,32 @@ document.getElementById("version-of-website").innerText = "Version: " + app.vers
 document.getElementById("last-updated-on-date").innerText = "Last updated: " + app.releaseDate;
 
 
+// -----------------------
+
+function updateGreetingAndExperience() {
+  const today = new Date();
+  const startDate = new Date('2021-03-01');
+  const monthsDiff = (today.getFullYear() - startDate.getFullYear()) * 12 + today.getMonth() - startDate.getMonth();
+  const yearsExperience = monthsDiff / 12;
+
+  const paragraph = document.getElementById('experience-paragraph');
+  const currentHour = today.getHours();
+  let greeting = '';
+
+  if (currentHour < 12) {
+    greeting = 'Good morning';
+  } else if (currentHour < 18) {
+    greeting = 'Good afternoon';
+  } else {
+    greeting = 'Good evening';
+  }
+
+  paragraph.textContent = `${greeting} there, I am a working professional with ${yearsExperience.toFixed(1)} years of experience in product design and development, seeking opportunities to leverage expertise in FEA, 3D CAD, production drawing, GD&T and more.`;
+}
+
+// Initial update on page load
+updateGreetingAndExperience();
+
+// Update every hour to keep it accurate
+// setInterval(updateGreetingAndExperience, 60 * 60 * 1000); 
+
