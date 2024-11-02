@@ -7,17 +7,25 @@ aside {
     /* width: calc(50% - 30px);
     width: calc(50% - 150px); */
     width: calc(40% - 40px);
+    /* width: calc(100px); */
     margin: 0;
-    height: calc(400px);
-    padding: 0 0 20px 0;
+    height: calc(370px);
+    /* height: calc(120px); */
+    padding: 0 0 0px 0;
     border: 0px solid var(--border-color);
     border-radius: var(--border-radius);
     border-radius: var(--border-radius-on-hover);
+
+
+
     transition: border-radius 0.5s ease-in-out, width 5s ease-in-out;
 
     /* background-color: var(--windowBackground); */
 
     resize: both;
+
+    /* border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; */
     /* Enable both horizontal and vertical resizing */
     /* transition: all 0.5s ease; */
     /* overflow-x: hidden; */
@@ -73,10 +81,12 @@ aside:hover {
     backdrop-filter: blur(13px);
     /* background: linear-gradient(var(--base60), var(--base)), center / contain no-repeat url("../../../images/banner/banner.jpg"); */
 
+    /* border-bottom-left-radius: 0;
+border-bottom-right-radius: 0; */
 }
 
 .aside_unfold {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 150px - 50px);
     /* height: 400px; */
 }
 

@@ -29,6 +29,17 @@
 
 .bannel_pills {
   line-height: 50px;
+  text-align: center;
+}
+
+/* .banner_active_pill  {
+  border: 4px solid grey ; 
+  background-color: #000;
+
+ } */
+
+ .social_pill::after {
+  content: " ↗️";
 }
 
 .banner_background {
@@ -638,6 +649,10 @@
   width: calc(100vw - 720px);
 }
 
+.banner_pills_banner_section_fold {
+  text-align: left;
+}
+
 /* @media only screen and (max-width: 700px) { */
 @media only screen and (max-width: 1230px) {
   .banner_section_fold {
@@ -756,14 +771,12 @@ img {
   font-size: 50px;
   padding: 8px 12px;
   position: absolute;
-  top: 300px;
-  width: 50%;
-  text-align: left;
+  /* top: 1 * (100vh - 200px); */
+  width: 100%;
+  text-align: center;
   text-shadow: 2px 2px 8px #000000;
   transition-duration: 0.5s;
   
-
-
 
   -webkit-animation-name: come_from_bottom_caption;
   -webkit-animation-duration: 1s;
@@ -778,23 +791,27 @@ img {
   animation-fill-mode: forwards;
 }
 
+.text_banner_fold {
+text-align: left;
+}
+
 @-webkit-keyframes come_from_bottom_caption {
   0% {
-    top: 600px;
+    top: 100vh;
   }
 
   100% {
-    top: 300px;
+    top: calc(100vh - 350px);
   }
 }
 
 @keyframes come_from_bottom_caption {
   0% {
-    top:600px;
+    top: 100vh;
   }
 
   100% {
-    top: 300px;
+    top: calc(100vh - 350px);
   }
 }
 

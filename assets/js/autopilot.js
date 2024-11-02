@@ -163,6 +163,49 @@ function changeWidth_aside(width) {
 // document.getElementsByTagName("main")[0].style.width = "calc(50% - " + width_aside_increase + "px)";
 // document.getElementsByTagName("aside")[0].style.width = "calc(50% - 150px + " + width_aside_increase + "px)";
 
+// let timeoutId;
+// let typingSpeed = 4000; // Initial delay in milliseconds
+
+// function auto_search() {
+
+//   const searchInput = document.getElementById('search_bar');
+//   let timeoutId;
+//   let typingSpeed = 4000; // Initial delay in milliseconds
+
+//   searchInput.addEventListener('input', (inputEvent) => {
+//     clearTimeout(timeoutId);
+
+//     // Calculate time difference between keystrokes
+//     const currentTime = new Date().getTime();
+//     const timeDiff = currentTime - (inputEvent.target.dataset.lastKeyPressTime || 0);
+//     inputEvent.target.dataset.lastKeyPressTime = currentTime;
+
+//     // Update typing speed based on the time difference
+//     typingSpeed = (typingSpeed + timeDiff) / 2;
+
+//     // Set a new timeout based on the calculated typing speed
+//     timeoutId = setTimeout(() => {
+//       // Perform the search here
+//       document.getElementById('search_button_action').click(); 
+//       console.log('Searching:', searchInput.value);
+//       // Reset typing speed for the next search
+//       typingSpeed = 4000;
+//     }, typingSpeed);
+//   });
+
+
+
+
+
+// };
+// function auto_search() {
+//   clearTimeout(timeoutId);
+//   timeoutId =  
+
+//   setTimeout(function () { 
+//     document.getElementById('search_button_action').click(); 
+//      }, 1000); 
+// }; 
 
 function updateSearchBarWidth() {
   var searchBar = document.getElementById("search_bar");
@@ -182,7 +225,12 @@ function updateSearchBarWidth() {
     // searchBar.style.height = "auto";
   }
 
-  document.getElementById('search_button_action').click();
+
+
+
+
+  // auto_search();
+
 
   searchBar.style.width = updatedWidth + "px";
   searchBar.style.marginLeft = "calc((100% - 700px - " + updatedWidth + "px)/2)";
@@ -214,6 +262,7 @@ function updateSearchBarWidth() {
   //   searchBar.style.width = "150px";
   // }
 }
+
 
 
 // document.getElementById("time").innerHTML = "&nbsp;2024 Alpha Preview&nbsp; ";
@@ -381,32 +430,37 @@ window.onscroll = function () {
   // var currentScrollPos = window.pageYOffset;
   var currentScrollPos = window.scrollY;
 
-if (currentScrollPos == 0) {
-  while (banner_folded == true) {
-    
-   
+  if (currentScrollPos == 0) {
+    while (banner_folded == true) {
 
-    setTimeout(function () {
+
+
+      setTimeout(function () {
+        document.getElementById("banner_article").classList.toggle("banner_fold");
+        document.getElementById("viewPort").classList.toggle("aside_unfold");
+        document.getElementById("banner").classList.toggle("banner_section_fold");
+        document.getElementById("banner_pills").classList.toggle("banner_pills_banner_section_fold");
+
+
+      }, 50);
+
+
+
+      banner_folded = false;
+
+    }
+
+  } else {
+    while (banner_folded == false) {
       document.getElementById("banner_article").classList.toggle("banner_fold");
-      document.getElementById("viewPort").classList.toggle("aside_unfold");
       document.getElementById("banner").classList.toggle("banner_section_fold");
-    }, 50);
+      document.getElementById("viewPort").classList.toggle("aside_unfold");
 
-    
+      document.getElementById("banner_pills").classList.toggle("banner_pills_banner_section_fold");
+      banner_folded = true;
 
-    banner_folded = false;
-
+    }
   }
-
-} else {
-  while (banner_folded == false) {
-    document.getElementById("banner_article").classList.toggle("banner_fold");
-    document.getElementById("banner").classList.toggle("banner_section_fold");
-    document.getElementById("viewPort").classList.toggle("aside_unfold");
-    banner_folded = true;
-
-  }
-}
 
 
 
@@ -500,7 +554,7 @@ if (currentScrollPos == 0) {
 
       }
 
-     
+
 
 
       // document.getElementById("smallNotification").style.bottom = "calc( -100px)";

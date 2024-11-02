@@ -37,7 +37,7 @@ function updateGreetingAndExperience() {
     greeting = 'Good evening';
   }
 
-  paragraph.textContent = `${greeting} there, I am a working professional with ${yearsExperience.toFixed(1)} years of experience in product design and development, seeking opportunities to leverage expertise in FEA, 3D CAD, production drawing, GD&T and more.`;
+  paragraph.textContent = `${greeting} there, I am a working professional with ${yearsExperience.toFixed(1)} years of experience in product design with expertise at FEA, 3D CAD, GD&T.`;
 }
 
 // Initial update on page load

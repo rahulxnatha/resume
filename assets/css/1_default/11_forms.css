@@ -58,10 +58,10 @@ header button {
 }
 
 input[type="text"] {
-  min-width: 400px;
+  /* min-width: 400px; */
   padding: 12px 20px;
   margin: 8px 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 
   -webkit-transition: 0.5s;
   transition: 0.5s;

@@ -15,8 +15,6 @@ aside section {
   /* border-radius: 7px; */
   /* background-color: #ff0000; */
   overflow: hidden
-
-
 }
 
 
@@ -53,7 +51,8 @@ aside section::-webkit-scrollbar-thumb:hover {
 aside section::-webkit-scrollbar {
   width: 8px;
 
-  visibility: hidden; /* Hide scrollbar by default */
+  visibility: hidden;
+  /* Hide scrollbar by default */
 }
 
 /* aside section::-webkit-scrollbar {
@@ -115,8 +114,8 @@ aside section div {
 #color_inversion_notice_box {
   display: none;
 
-  border: 1px solid var(--border-color);
-  padding: 0 20px 0px 20px;
+  /* border: 1px solid var(--border-color); */
+  padding: 0;
   border-radius: var(--border-radius);
   margin: 20px 0;
   background-color: transparent;
@@ -150,25 +149,26 @@ aside:hover .viewPortMenu:hover {
 
 
 .briefblock p {
- 
+
   font-family: 'Roboto Condensed', sans-serif;
-   
- 
-  
-  
+
+
+
+
 }
 
 
 
 
 .briefblock h3 {
- 
+
   margin-top: 20px;
-  
+
 }
+
 .briefblock p::first-letter {
   font-size: 20px;
-   
+
 
 }
 
@@ -285,4 +285,173 @@ aside section a {
   right: 0;
   cursor: nwse-resize;
   display: none;
+}
+
+/* --------------------------------------------------------------------- */
+
+
+
+.chat-container {
+  /* background: #fff; */
+  /* border-radius: var(--border-radius); */
+  /* border: 2px solid bar(--border-color); */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box {
+  /* height: 300px; */
+  overflow-y: auto;
+  padding: 0px;
+  /* border: 1px solid #ddd; */
+  border-radius: 5px 5px 0 0;
+  flex-grow: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-message {
+  text-align: right;
+  margin: 5px 0;
+  padding: 10px;
+  /* background-color: #dcf8c6; */
+  background-color: #00514e;
+  background-color: #003e51;
+  background-color: var(--user-input);
+  border-radius: var(--border-radius-capsule);
+  display: inline-block;
+  max-width: 80%;
+
+  display: flex;
+  align-self: flex-end;
+
+  text-align: right;
+}
+
+.bot-message,
+#experience-paragraph {
+  text-align: left;
+  margin: 5px 0;
+  padding: 10px;
+  /* background-color: #f1f0f0; */
+  background-color: #005670;
+  background-color: var(--bot-input);
+  border-radius: 10px;
+  display: inline-block;
+  max-width: 80%;
+
+  display: flex;
+  align-self: flex-start;
+
+  text-align: left;
+}
+
+/* input[type="text"] { */
+/* width: calc(100% - 80px); */
+/* padding: 10px; */
+/* border: 1px solid #ddd; */
+/* border-radius: 0 0 0 5px; */
+/* } */
+
+
+
+#user-input {
+
+
+
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-size: 14px;
+
+  width: 20px;
+  min-width: none;
+
+
+
+  height: 36px;
+
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-left: 2px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  border-right: 0px solid var(--border-color);
+  padding: 5px;
+  padding-left: 10px;
+
+  width: calc(70% - 8px);
+  position: relative;
+  /* top: -2px; */
+  /* bottom: 670px; */
+
+  position: absolute;
+  bottom: -37px;
+  bottom: -49px;
+  bottom: -59px;
+}
+
+/* #user-input:hover {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: var(--border-radius);
+border-bottom-right-radius: 0;
+} */
+
+#experience-paragraph {
+
+  height: auto;
+}
+
+
+
+#send-button {
+  width: 30%;
+  display: inline-block;
+  /* float: right; */
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+  /* background-color: #005670; */
+  /* color: white; */
+  border-radius: var(--border-radius-capsule);
+  cursor: pointer;
+
+
+}
+
+#send-button {
+  height: 36px;
+
+  margin: 0px 0 0 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  border-left: 0px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  border-right: 2px solid var(--border-color);
+
+  position: absolute;
+  bottom: -29px;
+  bottom: -41px;
+  bottom: -51px;
+  right: 0;
+}
+
+#send-button:hover {
+
+
+  border-left: 0px solid var(--border-color-hover);
+  border-top: 2px solid var(--border-color-hover);
+  border-bottom: 2px solid var(--border-color-hover);
+  border-right: 2px solid var(--border-color-hover);
+
+  /* border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+border-bottom-right-radius: var(--border-radius); */
 }

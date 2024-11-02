@@ -51,6 +51,11 @@
   --accent: blue;
   --accent-dark: #5fbcbf;
 
+  --chat-bubble-2: #003e51;
+  
+  --chat-bubble: #005670; 
+  /* bot input  */
+
   --lightAnchor: #234e97;
   --lightAnchor20: hsla(218, 62%, 36%, 0.2);
   --lightAnchorHover: #123b83;
@@ -127,6 +132,8 @@
     --shadow: var(--lightShadow);
     --border-color: var(--light-border-color);
     --border-color-hover: var(--accent);
+    --user-input: var(--darkAnchorHover);
+    --bot-input: #5fbcbf;
   }
 }
 
@@ -156,6 +163,8 @@
     --shadow: var(--darkShadow);
     --border-color: var(--dark-border-color);
     --border-color-hover: var(--accent-dark);
+    --user-input: var(--chat-bubble-2);
+    --bot-input: var(--chat-bubble);
   }
 }
 
