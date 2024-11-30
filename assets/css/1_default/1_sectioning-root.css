@@ -151,7 +151,7 @@
     --windowBackground: var(--darkWindowBackground);
     --articleBackground: var(--darkArticleBackground);
     --window: var(--darkWindow);
-    /* focus */
+    
     --a: var(--darkAnchor);
     --a-hover: var(--darkAnchorHover);
     --accentColor: var(--darkAnchor);

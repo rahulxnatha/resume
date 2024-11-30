@@ -4,7 +4,7 @@ const sendButton = document.getElementById('send-button');
 
 // Synonyms and responses
 const synonyms = {
-    greetings: ["hello", "hi", "hey", "greetings", "what's up"],
+    greetings: ["hello", "hi", "hey", "greetings", "what's up", "hallo"],
     identity: ["what is your name", "who are you", "tell me about yourself"],
     howAreYou: ["how are you", "how do you do"],
     help: ["help", "assist", "what can you do"],
@@ -13,6 +13,7 @@ const synonyms = {
     skills: ["skill", "skills"],
     qualifications: ["qualifications"],
     theme: ["theme"],
+    ok: ["kk", "ok", "okay", "alright", "awesome", "k"],
 };
 
 const responses = {
@@ -26,6 +27,7 @@ const responses = {
     qualifications: ["Take a look at the menu bar."],
     unknown: "I'm sorry, I didn't quite understand that. Could you please clarify?",
     theme: ["Done."],
+    ok: ["Okay."],
 };
 
 
