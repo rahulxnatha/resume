@@ -2,6 +2,9 @@
 <html lang="en-US" dir="ltr" data-color-scheme="light" dark="false">
 
 <head>
+
+  <meta name="robots" content="noindex, nofollow">
+
   <meta charset="utf-8" />
   <base href="" target="_self" />
   <meta http-equiv="x-ua-compatible" content="ie=edge; charset=utf-8" />
@@ -90,6 +93,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/2_span.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/3_article.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/4_grid_elements.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/2_custom/4_main_elements/5_cube.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/5_aside_elements/1_tabs.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/5_aside_elements/2_section.css">
   <link rel="stylesheet" type="text/css" href="assets/css/2_custom/5_aside_elements/3_sub_tabs.css">
@@ -122,6 +126,9 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Quicksand:wght@400&family=Roboto+Condensed&family=Roboto:ital,wght@1,500&family=Work+Sans:wght@300&display=swap"
     rel="stylesheet">
 
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=mic" />
 
   <script src="assets/js/metadata.js" defer></script>
 
@@ -274,8 +281,12 @@
           <input type="search" oninput="updateSearchBarWidth()" name="" id="search_bar" placeholder="Looking for...">
 
           <input type="button" value="Search" id="search_button_action">
-        </span>
 
+
+        </span>
+        <span class="material-symbols-rounded" style="float: inherit; position: absolute; top:15px; margin-left: 15px;">
+          mic
+        </span>
 
         <nav>
 
@@ -290,9 +301,11 @@
 
 
           <a href="#education" onclick="removeAside()" text="Education">Education</a>
+          <a href="#work" title="Work experience">Experience</a>
+
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
-          <a href="#work" title="Work experience"> Experience</a>
+
           <a href="#contact" id="contact_focus_trigger">Contact</a>
 
         </nav>
@@ -567,7 +580,7 @@
 
     </dialog>
 
-    
+
 
     <div class="aside2">
 
@@ -1224,10 +1237,10 @@
 
             <div class="chat-container">
               <div class="chat-box" id="chat-box"></div>
-      
+
             </div>
-      
-            
+
+
           </div>
 
           <!-- <p>Connect with me.</p> -->
@@ -1577,12 +1590,14 @@
           <!-- <div id="show_color-inversion-toggle_view" style="display:none;"> -->
 
 
-            <label class="switch_indicate" title="The dark theme is achieved on the above embedded content, if any, by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.">Color inversion for embedded content
-              <label class="fluent-toggle-switch ">
-                <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" unchecked />
-                <span class="slider"></span>
-              </label>
+          <label class="switch_indicate"
+            title="The dark theme is achieved on the above embedded content, if any, by a color inversion technique. If you find any image or content a bit off, turn off the color inversion using this switch.">Color
+            inversion for embedded content
+            <label class="fluent-toggle-switch ">
+              <input type="checkbox" id="color_inversion_for_viewport_embedded_content_toggle" unchecked />
+              <span class="slider"></span>
             </label>
+          </label>
           <!-- </div> -->
           <!-- </p> -->
 
@@ -1631,7 +1646,7 @@
       </div>
 
       <input type="text" id="user-input" placeholder="Type your message here..." />
-            <button id="send-button">Send</button>
+      <button id="send-button">Send</button>
 
 
     </aside>
@@ -1835,10 +1850,10 @@
 
 
       <!-- <section id="cubeSection" style="  display:none;"> -->
-      <section id="cubeSection">
+      <section id="cubeSection" class="section-background" >
 
         <span>
-          <h1 class="typewrite">The cube</h1>
+          <h1 class="typewrite main_heading" >The cube</h1>
           <!-- <h1>Showing 5 of 5 search results</h1> -->
         </span>
         <!-- 
@@ -1873,24 +1888,10 @@
         </div>
 
 
-        <p class="span_all_cols">Use the scroll wheel on the mouse to rotate (click + drag), zoom (scroll) the cube.
+        <p class="span_all_cols">
+          Use the scroll wheel on the mouse to rotate (click + drag).
           <br>
           Click on any face to view its details.
-
-
-          <label title="Toggle normal view">
-            <span style=" border: 2px solid var(--border-color);">Normal</span>
-          </label>
-          <br>
-          <span style=" border: 2px solid var(--border-color);">Left</span>
-          <span style=" border: 2px solid var(--border-color);">Front</span>
-          <span style=" border: 2px solid var(--border-color);">Right</span>
-          <span style=" border: 2px solid var(--border-color);">Top</span>
-          <span style=" border: 2px solid var(--border-color);">Bottom</span>
-          <span style=" border: 2px solid var(--border-color);">Back</span>
-
-
-
         </p>
 
 
@@ -1898,30 +1899,39 @@
 
 
 
-      <section class=" mainSection" id="work_section">
-
+      <section class="mainSection" id="work_section">
         <span>
-          <h1 id="work" class="main_heading">Experience of work</h1>
+          <h1 id="work" class="main_heading">Work Experience</h1>
         </span>
-
+      
         <article tabindex="0" class="Work present">
-          <h1>Mechanical Engineer</h1>
+          <h1>Senior Research Fellow</h1>
+          <p class="unlocked_content">Research Centre Imarat, Hyderabad</p>
+          <p class="duration">2024 – Present</p>
           <p class="keywords">work, experience, living, earning</p>
         </article>
-
+      
+        <article tabindex="0" class="Work present">
+          <h1>Junior Research Fellow</h1>
+          <p class="unlocked_content">Research Centre Imarat, Hyderabad</p>
+          <p class="duration">2022 – 2024</p>
+          <p class="keywords">work, experience, living, earning</p>
+        </article>
+      
         <article tabindex="0" class="Work">
           <h1>Mechanical Design Engineer, Technical Writer & Illustrator</h1>
           <p>Cyient Limited</p>
+          <p class="duration">2020 – 2022</p>
           <p class="keywords">work, experience</p>
         </article>
-
       </section>
+      
 
       <!-- testtgb -->
       <section class="backgroundHover mainSection" id="edu_section">
 
         <span>
-          <h1 id="education" class="main_heading">Education</h1>
+          <h1 id="education" class="main_heading">Theoretical Knowledge</h1>
         </span>
 
         <span>

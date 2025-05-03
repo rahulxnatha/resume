@@ -8,8 +8,12 @@ main section {
     column-gap: 20px;
     row-gap: 20px;
     transition-duration: 0ms;
-    padding: 0 50px 0px 50px;
-    margin: 0px 0 00px 0;
+    padding: 0 25px 25px 25px;
+    margin: 25px 25px 25px 25px;
+    border: 2px solid rgba(128, 128, 128, 0.196);
+
+    /* margin: 25px; */
+     /* padding: 25px; */
     /* border-right: 2px solid rgb(128, 128, 128);
     border-bottom: 2px solid rgb(128, 128, 128);
     border-top: 2px solid rgb(128, 128, 128); */
@@ -177,7 +181,7 @@ main section:hover,
 main section {
     --angle: 0deg;
 
-    border: 0px solid var(--border-color);
+    /* border: 0px solid var(--border-color); */
     border-radius: var(--border-radius);
     /* Use a linear gradient with six colors for the border image */
     /* border-image: linear-gradient(var(--angle), #12c2e9, #c471ed, #f64f59, #12c2e9, #c471ed, #f64f59) 1; */
@@ -198,3 +202,9 @@ main section {
 margin-bottom: 20px;
 }
 
+
+.section-background:hover {
+    background-color: var(--windowBackground);
+    border: 2px solid grey;
+    
+}

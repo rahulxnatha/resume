@@ -10,7 +10,7 @@
   /* background-color: ; */
   /* -webkit-backdrop-filter: blur(13px); */
   /* backdrop-filter: blur(13px); */
-  filter: blur(30px);
+  filter: blur(1000px);
   background: radial-gradient(circle at 50% 50%, var(--base), rgba(76, 0, 255, 0));
 }
 

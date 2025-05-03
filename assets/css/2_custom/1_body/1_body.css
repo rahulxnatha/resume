@@ -1,14 +1,16 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 0 0 20px 0;
     /* if CSS Variables aren't supported */
-    background-color: #f8f9fa;
-    background-color: var(--background);
+    /* background-color: #f8f9fa; */
+    /* background-color: var(--background); */
     /* if CSS Variables aren't supported */
-    color: #34252f;
+
     color: var(--font);
-    font-weight: 400;
+    /* font-weight: 400; */
     /* font-family: 'Work Sans', sans-serif; */
+
+
 
 }
 
@@ -21,28 +23,66 @@ body {
     display: none;
 }
 
+
+
 @media (prefers-color-scheme: dark) {
     body {
         /* background-image: url('../../../images/iss042e135100_lrg.jpg'); */
         /* background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/85000/85153/iss042e135100_lrg.jpg'); */
 
-        background-image: url('../../../images/pexels-pixabay-247676.jpg');
+        /* background-image: url('../../../images/pexels-pixabay-247676.jpg'); */
         /* background-image: ; */
 
         /* background: linear-gradient(var(--base60), var(--base60)), center / contain no-repeat url('../../../images/banner/banner.jpg'); */
-        animation-name: scaleImage;
+        /* animation-name: scaleImage;
         animation-duration: 30s;
         animation-timing-function: ease;
         animation-iteration-count: infinite;
         animation-iteration-count: 1;
         animation-direction: alternate;
-        animation-delay: 0s;
+        animation-delay: 0s; */
+
+        background-image: radial-gradient(circle, #444 0.5px, transparent 0.5px);
+        background-size: 20px 20px;
+background-color: black;
+        background-image: linear-gradient(to right, #333 1px, transparent 1px),
+            linear-gradient(to bottom, #333 1px, transparent 1px);
+        background-size: 40px 40px;
+
+
     }
 
     .background-image-courtesy {
         display: none;
     }
 }
+
+
+
+body {
+    background-color: #fdfdfd;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cstyle%3E .s{stroke:%23bbb;stroke-width:0.5;fill:none;} .f{fill:%23bbb;} text{fill:%23bbb;} %3C/style%3E %3Crect width='120' height='120' class='s'/%3E %3Ccircle cx='60' cy='60' r='3' class='f'/%3E %3Cpath d='M10 60 Q60 10 110 60 Q60 110 10 60Z' class='s'/%3E %3Cg transform='translate(20,20)'%3E %3Cpath d='M0 0 L10 0 L10 10 L0 10 Z' class='s'/%3E %3Cpath d='M0 5 H10' class='s'/%3E %3C/g%3E %3Cg transform='translate(80,80)'%3E %3Cpath d='M0 0 L5 5 L10 0' class='s'/%3E %3C/g%3E %3Ctext x='5' y='115' font-size='10'%3E%7B%7D%3C/text%3E %3C/svg%3E");
+    background-size: 120px 120px;
+  }
+
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: #111;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cstyle%3E .s{stroke:%23888;stroke-width:0.5;fill:none;} .f{fill:%23888;} text{fill:%23888;} %3C/style%3E %3Crect width='120' height='120' class='s'/%3E %3Ccircle cx='60' cy='60' r='3' class='f'/%3E %3Cpath d='M10 60 Q60 10 110 60 Q60 110 10 60Z' class='s'/%3E %3Cg transform='translate(20,20)'%3E %3Cpath d='M0 0 L10 0 L10 10 L0 10 Z' class='s'/%3E %3Cpath d='M0 5 H10' class='s'/%3E %3C/g%3E %3Cg transform='translate(80,80)'%3E %3Cpath d='M0 0 L5 5 L10 0' class='s'/%3E %3C/g%3E %3Ctext x='5' y='115' font-size='10'%3E%7B%7D%3C/text%3E %3C/svg%3E");
+      background-size: 120px 120px;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: #fdfdfd;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cstyle%3E .s{stroke:%23bbb;stroke-width:0.5;fill:none;} .f{fill:%23bbb;} text{fill:%23bbb;} %3C/style%3E %3Crect width='120' height='120' class='s'/%3E %3Ccircle cx='60' cy='60' r='3' class='f'/%3E %3Cpath d='M10 60 Q60 10 110 60 Q60 110 10 60Z' class='s'/%3E %3Cg transform='translate(20,20)'%3E %3Cpath d='M0 0 L10 0 L10 10 L0 10 Z' class='s'/%3E %3Cpath d='M0 5 H10' class='s'/%3E %3C/g%3E %3Cg transform='translate(80,80)'%3E %3Cpath d='M0 0 L5 5 L10 0' class='s'/%3E %3C/g%3E %3Ctext x='5' y='115' font-size='10'%3E%7B%7D%3C/text%3E %3C/svg%3E");
+      background-size: 120px 120px;
+    }
+  }
+  
+
+
 
 .background-image-courtesy {
     position: fixed;
@@ -64,21 +104,26 @@ body {
     }
 }
 
-body {
-    /* Use two colors with 20% opacity */
-    /* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
+/* body { */
+/* Use two colors with 20% opacity */
+/* background: linear-gradient(-30deg, rgba(255, 0, 0, 0.1), rgba(0, 0, 255, 0.1)); */
 
-    background-size: cover;
-    /* Scale the background image to cover the entire viewport */
-    background-attachment: fixed;
-    /* Prevent the background image from scrolling with the page */
-    background-repeat: no-repeat;
-    /* Prevent the background from repeating */
-    background-position: center center;
-    /* Center the background image within the viewport */
+/* background-size: cover; */
+/* Scale the background image to cover the entire viewport */
+/* background-attachment: fixed; */
+/* Prevent the background image from scrolling with the page */
+/* background-repeat: no-repeat; */
+/* Prevent the background from repeating */
+/* background-position: center center; */
+/* Center the background image within the viewport */
 
-    /* Delays the animation by 5 seconds */
-}
+/* Delays the animation by 5 seconds */
+
+
+/* background-color: rgba(0, 0, 0, 0.759); */
+/* } */
+
+
 
 @keyframes scaleImage {
     0% {
@@ -96,3 +141,4 @@ body {
         /* Return to covering the viewport */
     }
 }
+
