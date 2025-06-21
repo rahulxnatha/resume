@@ -22,11 +22,14 @@ main span {
 }
 
 main span h1 {
-    font-size: 35px;
+    font-size: 60px;
     margin: 0px 0 0 0;
     padding: 0;
     /* margin-top: 80px; */
     padding-top: 20px;
+    font-weight: 300;
+    
+    
 }
 
 main span h2 {

@@ -99,7 +99,7 @@ article:hover {
 .show-on-hover {
     display: none;
     -webkit-animation: LoadingAnimation 1s;
-  animation: LoadingAnimation 1s;
+    animation: LoadingAnimation 1s;
 }
 
 #cmrcet-id:hover .show-on-hover {
@@ -186,6 +186,17 @@ article h1 {
     font-size: 24px;
 }
 
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+    /* font-family: 'Roboto Condensed', sans-serif; */
+    /* font-size: 18px; */
+    text-transform: initial;
+    font-weight: initial;
+}
 
 article p {
     font-size: 14px;
@@ -196,11 +207,11 @@ article p {
 
 @media only screen and (max-width: 700px) {
     article h1 {
-        
+
         font-size: 16px;
     }
-    
-    
+
+
     article p {
         font-size: 12px;
     }
@@ -253,53 +264,56 @@ main>#mainSettings>label:hover {
 }
 
 /* .present { */
-    /* Base styling */
-    /* background-color: #f0f0f0; */
-    /* border: 1px solid #ccc; */
-    /* padding: 10px; */
-  
-    /* More intense glow with larger shadows and higher opacity */
-    /* box-shadow: 
+/* Base styling */
+/* background-color: #f0f0f0; */
+/* border: 1px solid #ccc; */
+/* padding: 10px; */
+
+/* More intense glow with larger shadows and higher opacity */
+/* box-shadow: 
        0 0 5px rgba(14, 201, 201, 0.7),
        0 0 30px rgba(233, 237, 237, 0.5),
        0 0 45px rgba(56, 79, 233, 0.3); */
-    /* animation: shine 1s ease-in-out infinite; */
-  
-    /* Pulsating border for added attention */
-    /* border-color: #ccc; */
-    /* animation: pulseBorder 1s ease-in-out infinite; */
-  /* } */
-  
-  @keyframes shine {
+/* animation: shine 1s ease-in-out infinite; */
+
+/* Pulsating border for added attention */
+/* border-color: #ccc; */
+/* animation: pulseBorder 1s ease-in-out infinite; */
+/* } */
+
+@keyframes shine {
     0% {
-        box-shadow: 
-        0 0 5px rgba(14, 201, 201, 0.7),
-        0 0 30px rgba(233, 237, 237, 0.5),
-        0 0 45px rgba(56, 79, 233, 0.3);
+        box-shadow:
+            0 0 5px rgba(14, 201, 201, 0.7),
+            0 0 30px rgba(233, 237, 237, 0.5),
+            0 0 45px rgba(56, 79, 233, 0.3);
     }
+
     50% {
-        box-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.7),
-        0 0 30px rgba(233, 237, 237, 0.5),
-        0 0 45px rgba(56, 79, 233, 0.3);
+        box-shadow:
+            0 0 5px rgba(255, 255, 255, 0.7),
+            0 0 30px rgba(233, 237, 237, 0.5),
+            0 0 45px rgba(56, 79, 233, 0.3);
     }
+
     100% {
-        box-shadow: 
-        0 0 5px rgba(14, 201, 201, 0.7),
-        0 0 30px rgba(233, 237, 237, 0.5),
-        0 0 45px rgba(56, 79, 233, 0.3);
+        box-shadow:
+            0 0 5px rgba(14, 201, 201, 0.7),
+            0 0 30px rgba(233, 237, 237, 0.5),
+            0 0 45px rgba(56, 79, 233, 0.3);
     }
-  }
-  
-  @keyframes pulseBorder {
+}
+
+@keyframes pulseBorder {
     0% {
-      border-color: #ccc;
+        border-color: #ccc;
     }
+
     50% {
-      border-color: #fff;
+        border-color: #fff;
     }
+
     100% {
-      border-color: #ccc;
+        border-color: #ccc;
     }
-  }
-  
+}
