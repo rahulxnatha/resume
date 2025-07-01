@@ -1,7 +1,25 @@
 <script>// Simulate a mouse click:
+    
+
+</script>
+
+<script>
+  const path = window.location.pathname;
+
+  // Example: redirect all 404s under "/1/" to a specific link
+  if (path.startsWith("/big/")) {
+    window.location.replace("https://rahulnatha.com/big");
+  } else {
+    // Show default 404 message
+    // document.body.innerHTML = `
+    //   <h1>404 - Page Not Found</h1>
+    //   <p>The page you're looking for doesn't exist.</p>
+    //   <a href="https://rahulnatha.com">Go to Home</a>
+    // `;
+
     window.location.href = "https://hey-rahul.github.io/resume/";
 
     // Simulate an HTTP redirect:
     window.location.replace("https://hey-rahul.github.io/resume/");
-
+  }
 </script>
