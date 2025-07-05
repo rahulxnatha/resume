@@ -31,20 +31,20 @@ window.onload = () => {
   });
 
   const searchBox = document.getElementById("searchBox");
-  const dropdown = document.getElementById("customDropdown");
+//   const dropdown = document.getElementById("customDropdown");
 
-  searchBox.addEventListener("focus", () => dropdown.style.display = "block");
-  document.addEventListener("click", e => {
-    if (!e.target.closest(".dropdown-wrapper")) dropdown.style.display = "none";
-  });
+//   searchBox.addEventListener("focus", () => dropdown.style.display = "block");
+//   document.addEventListener("click", e => {
+    // if (!e.target.closest(".dropdown-wrapper")) dropdown.style.display = "none";
+//   });
 
-  dropdown.querySelectorAll("div").forEach(item => {
-    item.addEventListener("click", () => {
-      searchBox.value = item.getAttribute("data-filter");
-      handleSearch();
-      dropdown.style.display = "none";
-    });
-  });
+//   dropdown.querySelectorAll("div").forEach(item => {
+    // item.addEventListener("click", () => {
+    //   searchBox.value = item.getAttribute("data-filter");
+    //   handleSearch();
+    //   dropdown.style.display = "none";
+    // });
+//   });
 
   searchBox.addEventListener("keydown", e => {
     if (e.key === "Enter") handleSearch();
@@ -129,3 +129,32 @@ function levenshtein(a, b) {
 
   return dp[m][n];
 }
+
+
+
+
+
+
+
+function updateVisiblePills() {
+  const current = document.getElementById("searchBox").value.trim().toLowerCase();
+  document.querySelectorAll(".pill").forEach(pill => {
+    const text = pill.dataset.filter.toLowerCase();
+    pill.style.display = (!current || text !== current) ? "inline-block" : "none";
+  });
+}
+
+
+document.querySelectorAll(".pill").forEach(pill => {
+  pill.addEventListener("click", () => {
+    const value = pill.dataset.filter;
+    const searchBox = document.getElementById("searchBox");
+    searchBox.value = value;
+    // searchTasks(); 
+   
+    handleSearch();
+    updateVisiblePills(); // update pills after setting value
+  });
+});
+
+

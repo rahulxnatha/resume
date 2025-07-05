@@ -11,8 +11,8 @@
         const params = new URLSearchParams(window.location.search);
         const show = params.get("view");
 
-        if (show !== "dashboard") {
-            
+        if (show == "onedrive") {
+
             window.location.href = "https://rahulnatha.com/big/gotoonedrive";
             window.location.replace("https://rahulnatha.com/big/gotoonedrive");
         }
@@ -24,22 +24,31 @@
 
 <body>
     <header>
-        <h1>Task Dashboard</h1>
+        <div id="title">Task Dashboard</div>
         <div class="search-bar-container">
             <div class="dropdown-wrapper">
                 <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
-                <div id="customDropdown" class="dropdown">
+                <!-- <div id="customDropdown" class="dropdown">
                     <div data-filter="All">All</div>
                     <div data-filter="Completed">Completed</div>
                     <div data-filter="Processing">Processing</div>
                     <div data-filter="Can start">Can start</div>
                     <div data-filter="Can't start">Can't start</div>
+                </div> -->
+
+                <div id="pillContainer" class="pill-container">
+                    <div class="pill" data-filter="All">All</div>
+                    <div class="pill" data-filter="Completed">Completed</div>
+                    <div class="pill" data-filter="Processing">Processing</div>
+                    <div class="pill" data-filter="Can start">Can start</div>
+                    <div class="pill" data-filter="Can't start">Can't start</div>
                 </div>
             </div>
         </div>
         <div id="searchNote"></div>
         <div class="note">Note: Completed tasks are excluded by default. Type or click "All" to show everything.</div>
         <div id="totalTasks">Total tasks: 0</div>
+
     </header>
 
     <main>
