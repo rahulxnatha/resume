@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+header {
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  background: inherit;
+  z-index: 10;
+}
+
+.search-bar-container {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* border: 1px solid gray; */
+}
+
+#searchBox {
+  padding: 8px;
+  font-size: 16px;
+  /* margin: 0 auto; */
+  width: 100%;
+  max-width: 1000px;
+  background: inherit;
+  color: inherit;
+  border: 1px solid gray;
+}
+
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  background-color: inherit;
+  border: 1px solid #ccc;
+  width: 100%;
+  z-index: 1000;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.dropdown div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown div:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.note, #searchNote, #totalTasks {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#tileContainer {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.task-tile {
+  border: 2px solid grey;
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+  min-width: 250px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.task-tile > div {
+  flex: 1 1 auto;
+  word-break: break-word;
+}
+
+aside#detailPane {
+  flex: 1;
+  max-width: 400px;
+  border-left: 2px solid grey;
+  padding: 10px;
+  position: relative;
+}
+
+#paneContent {
+  padding-top: 30px;
+}
+
+#togglePane {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  #detailPane {
+    display: none;
+    border-left: none;
+    border-top: 2px solid grey;
+    max-width: 100%;
+  }
+
+  #togglePane {
+    display: block;
+  }
+
+  #detailPane.active {
+    display: block;
+  }
+}
+
+body.dark {
+  background: #111;
+  color: white;
+}
+
+body.dark #searchBox {
+  background: #222;
+  color: white;
+  border: 1px solid #555;
+}
