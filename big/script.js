@@ -83,6 +83,13 @@ window.onload = () => {
     document.body.classList.toggle("dark", isDark);
 };
 
+const searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("input", () => {
+    updateVisiblePills(); // 👈 call it on every keystroke
+});
+
+
 function renderTiles(data) {
     const container = document.getElementById("tileContainer");
     container.innerHTML = "";
@@ -91,27 +98,89 @@ function renderTiles(data) {
         const tile = document.createElement("div");
         tile.className = "task-tile";
         tile.id = `tile@${d.id}`;
+
+        // --- Compute progress percent and label ---
+        let progressPercent = 0;
+        let progressText = "";
+        let statusLine = d.status;
+
+        if (/^completed/i.test(d.status)) {
+            progressPercent = 100;
+            progressText = "✅ Completed: 100%";
+        } else if (/^can start/i.test(d.status)) {
+            progressPercent = 20;
+            progressText = "🟢 Can start: 20%";
+        } else if (/^can't start/i.test(d.status)) {
+            progressPercent = 0;
+            progressText = "🔴 Can't start: 0%";
+        } else if (/started:\s*(\d{4}-\d{2}-\d{2}).*estimated completion:\s*(\d{4}-\d{2}-\d{2})/i.test(d.status)) {
+            const match = d.status.match(/started:\s*(\d{4}-\d{2}-\d{2}).*estimated completion:\s*(\d{4}-\d{2}-\d{2})/i);
+            if (match) {
+                const start = new Date(match[1]);
+                const end = new Date(match[2]);
+                const now = new Date();
+                const total = end - start;
+                const elapsed = Math.max(0, now - start);
+                let raw = Math.min(1, elapsed / total);
+                progressPercent = Math.round(21 + raw * (99 - 21)); // Scale 21-99%
+                progressText = `🔄 Processing: ${progressPercent}%`;
+            }
+        }
+
+        // --- Now set the innerHTML safely --- // <div>${statusLine}</div>
         tile.innerHTML = `
-      <div>${d.task}</div>
-      <div>${d.info}</div>
-      <div>${d.status}</div>
-    `;
+            <div class="tile-content">
+                <div>${d.task}</div>
+                <div>${d.info}</div>
+                
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress-text">${progressText}</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progressPercent}%;"></div>
+                </div>
+            </div>
+        `;
+
+        // --- Tile selection and preview logic ---
         tile.addEventListener("click", () => {
             showPaneContent(d.id);
             history.pushState(null, "", `?id=${d.id}`);
-
-
-            // Remove existing selection
             document.querySelectorAll('.task-tile').forEach(t => t.classList.remove('selected'));
-
-            // Add selection to clicked tile
             tile.classList.add('selected');
-
-
         });
+
         container.appendChild(tile);
     });
 }
+
+
+
+function generateStatusHTML(statusText) {
+    if (statusText.toLowerCase().includes("completed")) return "✅ Completed";
+    if (statusText.toLowerCase().includes("can't start")) return "🚫 Can't start";
+    if (statusText.toLowerCase().includes("can start")) return "🟢 Can start (20%)";
+
+    // Match pattern like: Started: 2025-07-01 and processing, estimated completion: 2025-08-01
+    const match = statusText.match(/Started:\s*(\d{4}-\d{2}-\d{2}).*estimated completion:\s*(\d{4}-\d{2}-\d{2})/);
+    if (match) {
+        const start = match[1], end = match[2];
+        const now = new Date();
+        const today = now.toISOString().split('T')[0];
+
+        const progress = calculateProgressPercent(start, end, today);
+        return `🔄 Processing: ${progress}% <div class="progress-bar"><div class="fill" style="width:${progress}%"></div></div>`;
+    }
+
+    return statusText;
+}
+
+function calculateProgressPercent(start, end, today) {
+    const s = new Date(start), e = new Date(end), t = new Date(today);
+    const total = (e - s), done = (t - s);
+    return total <= 0 ? 0 : Math.min(100, Math.max(0, Math.round(done / total * 100)));
+}
+
 
 function showPaneContent(id) {
     const block = blockTexts[id] || "No details available.";
@@ -196,3 +265,50 @@ document.querySelectorAll(".pill").forEach(pill => {
 
 
 
+/////////////////////////////// TIME
+
+window.addEventListener("load", () => {
+    const titleDiv = document.getElementById("title");
+    const now = new Date();
+
+    function formatDateTime(timeZone) {
+        const options = {
+            timeZone,
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit',
+            hour12: false
+        };
+        const parts = new Intl.DateTimeFormat('en-GB', options).formatToParts(now);
+        const get = type => parts.find(p => p.type === type).value;
+        return `${get('year')}-${get('month')}-${get('day')} ${get('hour')}:${get('minute')}`;
+    }
+
+    function getUtcOffset(tz) {
+        const localTime = new Date();
+        const utcTime = new Date(localTime.toLocaleString('en-US', { timeZone: 'UTC' }));
+        const tzTime = new Date(localTime.toLocaleString('en-US', { timeZone: tz }));
+        const offsetMinutes = (tzTime - utcTime) / 60000;
+        const sign = offsetMinutes >= 0 ? '+' : '-';
+        const absMin = Math.abs(offsetMinutes);
+        const hours = String(Math.floor(absMin / 60)).padStart(2, '0');
+        const minutes = String(absMin % 60).padStart(2, '0');
+        return `UTC${sign}${hours}:${minutes}`;
+    }
+
+    const istTime = formatDateTime("Asia/Kolkata");
+    const deTime = formatDateTime("Europe/Berlin");
+
+    const deZone = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Berlin',
+        timeZoneName: 'short'
+    }).formatToParts(now).find(p => p.type === 'timeZoneName').value;
+
+    const deOffset = getUtcOffset("Europe/Berlin");
+    const istOffset = getUtcOffset("Asia/Kolkata");
+
+    const zoneTooltip = (deZone === "CEST")
+        ? `CEST (${deOffset}) — last Sunday in March 02:00 CET to the last Sunday in October 03:00 CEST\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`
+        : `CET (${deOffset}) — last Sunday in October 03:00 CEST to the last Sunday in March 02:00 CET\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`;
+
+    titleDiv.innerHTML = `Task Dashboard as of ${istTime} IST <span title="${istOffset}"> </span>; <span title="${zoneTooltip}">${deTime} ${deZone}</span>`;
+});
