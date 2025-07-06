@@ -5,26 +5,26 @@
 }
 
 a {
-  color: #0066cc;
-  text-decoration: none;
+    color: #0066cc;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {
-  a {
-    color: #66b2ff;
-  }
+    a {
+        color: #66b2ff;
+    }
 
-  a:hover {
-    color: #99ccff;
-  }
+    a:hover {
+        color: #99ccff;
+    }
 }
 
 a {
-  transition: color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 
@@ -236,14 +236,16 @@ main {
 } */
 
 .task-tile.selected {
-  background-color: #e6f2ff; /* Light blue for light mode */
+    background-color: #e6f2ff;
+    /* Light blue for light mode */
 }
 
 /* Dark mode override */
 @media (prefers-color-scheme: dark) {
-  .task-tile.selected {
-    background-color: #1a2b3c; /* Soft dark blue */
-  }
+    .task-tile.selected {
+        background-color: #1a2b3c;
+        /* Soft dark blue */
+    }
 }
 
 
@@ -279,13 +281,13 @@ aside#detailPane {
 
 #togglePane {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     font-size: 24px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
     main {
         flex-direction: column;
     }
@@ -299,11 +301,41 @@ aside#detailPane {
 
     #togglePane {
         display: block;
+
     }
 
     #detailPane.active {
         display: block;
     }
+
+    .note-to-user,
+    .hide-on-phone {
+        display: none;
+
+
+    }
+
+    header {
+
+        height: 30vh;
+
+    }
+
+    main {
+
+        height: 70vh;
+
+    }
+
+    #tileContainer {
+        /* grid-template-columns: repeat(var(--number-of-cols), 1fr); */
+
+
+        grid-template-columns: repeat(1, 1fr);
+
+        width: 100vw;
+    }
+
 }
 
 body.dark {
@@ -319,8 +351,8 @@ body.dark #searchBox {
 
 .note-to-user {
     position: fixed;
-    top:0;
-    right:0;
+    top: 0;
+    right: 0;
     border: 1px solid grey;
     padding: 0px 20px;
     margin: 20px;
