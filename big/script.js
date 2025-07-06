@@ -138,7 +138,14 @@ function renderTiles(data) {
         // --- Tile selection and preview logic ---
         tile.addEventListener("click", () => {
             showPaneContent(d.id);
-            history.pushState(null, "", `?id=${d.id}`);
+            // history.pushState(null, "", `?id=${d.id}`);
+
+            const params = new URLSearchParams(window.location.search);
+            params.set("id", d.id);
+            history.pushState(null, "", `?${params.toString()}`);
+
+
+
             document.querySelectorAll('.task-tile').forEach(t => t.classList.remove('selected'));
             tile.classList.add('selected');
         });
