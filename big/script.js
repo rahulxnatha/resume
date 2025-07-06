@@ -3,29 +3,27 @@ let blockTexts = {};
 let typoThreshold = 0.25;
 
 window.onload = () => {
-    fetch('status.xlsx')
-        .then(res => res.arrayBuffer())
-        .then(buffer => {
-            const workbook = XLSX.read(buffer, { type: 'array' });
-            const sheet = workbook.Sheets["Sheet1"];
-            const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 }).slice(2);
+    const csvUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Sheet1";
+
+    fetch(csvUrl)
+        .then(res => res.text())
+        .then(csvText => {
+            const rows = Papa.parse(csvText.trim(), { skipEmptyLines: true }).data.slice(2);
+
 
             globalData = rows.map(row => ({
-                task: row[1],     // Column B
-                info: row[2],     // Column C
-                status: row[3],   // Column D
-                id: row[4],       // Column E
-                block: row[5] || ""  // Column F
-            })).filter(row => row.task && row.info && row.status && row.id);
+                task: row[1],
+                info: row[2],
+                status: row[3],
+                id: row[4],
+                block: row[5] || ""
+            })).filter(d => d.task && d.info && d.status && d.id);
 
             blockTexts = {};
             globalData.forEach(d => blockTexts[d.id] = d.block);
 
-
-
             function updateTaskSummary(data) {
                 const total = data.length;
-
                 let completed = 0, processing = 0, canStart = 0, cantStart = 0;
 
                 data.forEach(d => {
@@ -43,15 +41,25 @@ window.onload = () => {
                 document.getElementById("totalTasks").innerText = summary;
             }
 
-
-
-
-
             const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
             renderTiles(excludeCompleted);
-            // document.getElementById("totalTasks").innerText = `Recognised tasks: ${globalData.length}`;
             updateTaskSummary(globalData);
 
+            // URL state restore
+            const params = new URLSearchParams(window.location.search);
+            const search = params.get("search");
+            if (search) {
+                document.getElementById("searchBox").value = search;
+                handleSearch();
+            }
+            const sel = params.get("id");
+            if (sel) {
+                const tile = document.getElementById(`tile@${sel}`);
+                if (tile) {
+                    tile.scrollIntoView({ behavior: "smooth", block: "center" });
+                    tile.click();
+                }
+            }
         });
 
     document.getElementById("togglePane").addEventListener("click", () => {
@@ -59,29 +67,14 @@ window.onload = () => {
     });
 
     const searchBox = document.getElementById("searchBox");
-    //   const dropdown = document.getElementById("customDropdown");
-
-    //   searchBox.addEventListener("focus", () => dropdown.style.display = "block");
-    //   document.addEventListener("click", e => {
-    // if (!e.target.closest(".dropdown-wrapper")) dropdown.style.display = "none";
-    //   });
-
-    //   dropdown.querySelectorAll("div").forEach(item => {
-    // item.addEventListener("click", () => {
-    //   searchBox.value = item.getAttribute("data-filter");
-    //   handleSearch();
-    //   dropdown.style.display = "none";
-    // });
-    //   });
-
     searchBox.addEventListener("keydown", e => {
         if (e.key === "Enter") handleSearch();
     });
 
-    // Auto apply dark theme
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.body.classList.toggle("dark", isDark);
 };
+
 
 const searchBox = document.getElementById("searchBox");
 

@@ -419,6 +419,7 @@ body.dark #searchBox {
     margin: 20px;
     font-size: 14px;
     border-radius: 7px;
+    display: none;
 }
 
 .progress-bar {
