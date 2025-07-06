@@ -336,6 +336,13 @@ aside#detailPane {
         width: 100vw;
     }
 
+    #searchBox {
+    
+    width: 200px;
+    max-width: 80vw;
+    
+}
+
 }
 
 body.dark {
