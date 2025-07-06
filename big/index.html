@@ -57,8 +57,11 @@
             </div>
         </div>
         <div id="searchNote"></div>
-        <div class="note">Note: Completed tasks are excluded by default. Type or click "All" to show everything.</div>
-        <div id="totalTasks">Total tasks: 0</div>
+        <div class="note"> Completed tasks: excluded by default, click "All" to show all. Clicking on tiles: shows
+            more info on the right pane. Dark theme: supported, system settings.
+            Shared docs: <a href="https://rahulnatha.com/big?view=onedrive" target="_blank"
+                rel="noopener noreferrer">Shared OneDrive folder</a></div>
+        <div id="totalTasks">Recognised tasks: loading...</div>
 
     </header>
 
@@ -68,8 +71,13 @@
             <button id="togglePane">☰</button>
             <div id="paneContent"></div>
         </aside>
-    </main>
 
+
+
+    </main>
+    <div class="note-to-user">
+        <p>Dear BiG team, welcome to the dashboard designed to help track the timeline of various tasks.</p>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="script.js"></script>
 </body>

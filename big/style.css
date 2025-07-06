@@ -4,6 +4,30 @@
     box-sizing: border-box;
 }
 
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: #66b2ff;
+  }
+
+  a:hover {
+    color: #99ccff;
+  }
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+
 @media (prefers-color-scheme: dark) {
 
     /* For WebKit browsers (Chrome, Edge, Safari) */
@@ -56,7 +80,7 @@ header {
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
-    padding: 20px 0 0 0;
+    padding: 10px 0 0 0;
 
     /* border: 1px solid gray; */
 }
@@ -64,7 +88,7 @@ header {
 #searchBox {
     padding: 8px;
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
     /* margin: 0 auto; */
     width: 350px;
     max-width: 1000px;
@@ -90,7 +114,7 @@ header {
     font-size: 14px;
     user-select: none;
     transition: background 0.2s;
-    border: 2px solid grey;
+    border: 1px solid grey;
 }
 
 /* .pill:hover {
@@ -211,6 +235,18 @@ main {
     word-break: break-word;
 } */
 
+.task-tile.selected {
+  background-color: #e6f2ff; /* Light blue for light mode */
+}
+
+/* Dark mode override */
+@media (prefers-color-scheme: dark) {
+  .task-tile.selected {
+    background-color: #1a2b3c; /* Soft dark blue */
+  }
+}
+
+
 .task-tile>div {
     margin: 0 0 10px 0;
     padding: 0;
@@ -279,4 +315,15 @@ body.dark #searchBox {
     background: #222;
     color: white;
     border: 1px solid #555;
+}
+
+.note-to-user {
+    position: fixed;
+    top:0;
+    right:0;
+    border: 1px solid grey;
+    padding: 0px 20px;
+    margin: 20px;
+    font-size: 14px;
+    border-radius: 7px;
 }
