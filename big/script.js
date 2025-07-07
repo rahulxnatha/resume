@@ -10,13 +10,13 @@ window.onload = () => {
         .then(csvText => {
             const rows = Papa.parse(csvText.trim(), { skipEmptyLines: true }).data.slice(2);
 
-
             globalData = rows.map(row => ({
                 task: row[1],
                 info: row[2],
                 status: row[3],
                 id: row[4],
-                block: row[5] || ""
+                block: row[5] || "",
+                dueDateUTC: row[6] || null
             })).filter(d => d.task && d.info && d.status && d.id);
 
             blockTexts = {};
@@ -73,15 +73,19 @@ window.onload = () => {
 
     const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.body.classList.toggle("dark", isDark);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSearch = urlParams.get("search");
+    if (initialSearch) {
+        const searchBox = document.getElementById("searchBox");
+        searchBox.value = initialSearch;
+        handleSearch();
+    }
 };
 
-
-const searchBox = document.getElementById("searchBox");
-
 searchBox.addEventListener("input", () => {
-    updateVisiblePills(); // 👈 call it on every keystroke
+    updateVisiblePills();
 });
-
 
 function renderTiles(data) {
     const container = document.getElementById("tileContainer");
@@ -89,13 +93,51 @@ function renderTiles(data) {
 
     data.forEach(d => {
         const tile = document.createElement("div");
-        tile.className = "task-tile";
+        // tile.className = "task-tile";
+        
+
+        // Due date logic
+        let dueNote = "";
+        let dueClass = "";
+
+        if (d.dueDateUTC) {
+            const due = new Date(d.dueDateUTC + "Z");  // Treat as UTC
+            const now = new Date();
+
+            // Start-of-day comparison
+            const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+            const dueDay = Date.UTC(due.getUTCFullYear(), due.getUTCMonth(), due.getUTCDate());
+
+            const dayDiff = Math.floor((dueDay - today) / (1000 * 60 * 60 * 24));
+
+            if (dayDiff < 0) {
+                dueNote = "Past due!!";
+                dueClass = "due-imminent";
+            } else if (dayDiff === 0) {
+                dueNote = "Due today!";
+                dueClass = "due-imminent";
+            } else if (dayDiff === 1) {
+                dueNote = "Due tomorrow!";
+                dueClass = "due-imminent";
+            } else {
+                dueNote = `Due in ${dayDiff} days`;
+                dueClass = (dayDiff <= 5) ? "due-soon" : "due-far";
+            }
+        }
+
+
+
+
+
+
+
+tile.className = `task-tile ${dueClass}`;
+
         tile.id = `tile@${d.id}`;
 
-        // --- Compute progress percent and label ---
+        // Progress bar logic
         let progressPercent = 0;
         let progressText = "";
-        let statusLine = d.status;
 
         if (/^completed/i.test(d.status)) {
             progressPercent = 100;
@@ -120,12 +162,18 @@ function renderTiles(data) {
             }
         }
 
-        // --- Now set the innerHTML safely --- // <div>${statusLine}</div>
+
+
+
+
         tile.innerHTML = `
             <div class="tile-content">
                 <div>${d.task}</div>
-                <div>${d.info}</div>
+                <div style="color: grey; margin-top: 4px;">${d.info}</div>
                 
+                ${dueNote ? `<div class="due-note">${dueNote}</div>` : ""}
+                
+
             </div>
             <div class="progress-wrapper">
                 <div class="progress-text">${progressText}</div>
@@ -135,17 +183,11 @@ function renderTiles(data) {
             </div>
         `;
 
-        // --- Tile selection and preview logic ---
         tile.addEventListener("click", () => {
             showPaneContent(d.id);
-            // history.pushState(null, "", `?id=${d.id}`);
-
             const params = new URLSearchParams(window.location.search);
             params.set("id", d.id);
             history.pushState(null, "", `?${params.toString()}`);
-
-
-
             document.querySelectorAll('.task-tile').forEach(t => t.classList.remove('selected'));
             tile.classList.add('selected');
         });
@@ -155,6 +197,7 @@ function renderTiles(data) {
 }
 
 
+// llllllllllll
 
 function generateStatusHTML(statusText) {
     if (statusText.toLowerCase().includes("completed")) return "✅ Completed";
@@ -215,6 +258,23 @@ function handleSearch() {
 
     renderTiles([...matches, ...fallback]);
     note.innerText = corrected !== input ? `Searched for "${corrected}" instead of "${input}".` : "";
+
+
+    // Update URL with search param
+    const url = new URL(window.location);
+    url.searchParams.set("search", input);
+    history.replaceState(null, "", url.toString());
+
+
+    // urlParams.set("search", input);
+
+
+    //     const inputBox = document.getElementById("searchBox");
+    // const rawInput = inputBox.value.trim(); // Original case
+    // urlParams.set("search", rawInput);
+    // history.replaceState(null, '', `${location.pathname}?${urlParams.toString()}`);
+
+
 }
 
 function levenshtein(a, b) {

@@ -1,0 +1,171 @@
+let globalData = [];
+let blockTexts = {};
+let typoThreshold = 0.25;
+
+window.onload = () => {
+    const csvUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Sheet1";
+
+    fetch(csvUrl)
+        .then(res => res.text())
+        .then(csvText => {
+            const rows = Papa.parse(csvText.trim(), { skipEmptyLines: true }).data.slice(2);
+
+
+            globalData = rows.map(row => ({
+                task: row[1],
+                info: row[2],
+                status: row[3],
+                id: row[4],
+                block: row[5] || ""
+            })).filter(d => d.task && d.info && d.status && d.id);
+
+            blockTexts = {};
+            globalData.forEach(d => blockTexts[d.id] = d.block);
+
+            function updateTaskSummary(data) {
+                const total = data.length;
+                let completed = 0, processing = 0, canStart = 0, cantStart = 0;
+
+                data.forEach(d => {
+                    const s = d.status.toLowerCase();
+                    if (s.includes("completed")) completed++;
+                    else if (s.includes("processing")) processing++;
+                    else if (s.includes("can start")) canStart++;
+                    else if (s.includes("can't start") || s.includes("cannot start")) cantStart++;
+                });
+
+                const percent = count => total === 0 ? 0 : Math.round((count / total) * 100);
+
+                const summary = `Recognised tasks: ${total} (${completed} completed [${percent(completed)}%], ${processing} processing [${percent(processing)}%], ${canStart} can start [${percent(canStart)}%], ${cantStart} can't start [${percent(cantStart)}%])`;
+
+                document.getElementById("totalTasks").innerText = summary;
+            }
+
+            const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
+            renderTiles(excludeCompleted);
+            updateTaskSummary(globalData);
+
+            // URL state restore
+            const params = new URLSearchParams(window.location.search);
+            const search = params.get("search");
+            if (search) {
+                document.getElementById("searchBox").value = search;
+                handleSearch();
+            }
+            const sel = params.get("id");
+            if (sel) {
+                const tile = document.getElementById(`tile@${sel}`);
+                if (tile) {
+                    tile.scrollIntoView({ behavior: "smooth", block: "center" });
+                    tile.click();
+                }
+            }
+        });
+
+    document.getElementById("togglePane").addEventListener("click", () => {
+        document.getElementById("detailPane").classList.toggle("active");
+    });
+
+    const searchBox = document.getElementById("searchBox");
+    searchBox.addEventListener("keydown", e => {
+        if (e.key === "Enter") handleSearch();
+    });
+
+    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.body.classList.toggle("dark", isDark);
+
+
+
+
+    // If search=... exists in the URL, pre-fill and trigger search
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSearch = urlParams.get("search");
+    if (initialSearch) {
+        const searchBox = document.getElementById("searchBox");
+        searchBox.value = initialSearch;
+        handleSearch();
+    }
+
+};
+
+
+const searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("input", () => {
+    updateVisiblePills(); // 👈 call it on every keystroke
+});
+
+
+function renderTiles(data) {
+    const container = document.getElementById("tileContainer");
+    container.innerHTML = "";
+
+
+
+    
+    data.forEach(d => {
+        const tile = document.createElement("div");
+        tile.className = "task-tile";
+        tile.id = `tile@${d.id}`;
+
+        // --- Compute progress percent and label ---
+        let progressPercent = 0;
+        let progressText = "";
+        let statusLine = d.status;
+
+        if (/^completed/i.test(d.status)) {
+            progressPercent = 100;
+            progressText = "✅ Completed: 100%";
+        } else if (/^can start/i.test(d.status)) {
+            progressPercent = 20;
+            progressText = "🟢 Can start: 20%";
+        } else if (/^can't start/i.test(d.status)) {
+            progressPercent = 0;
+            progressText = "🔴 Can't start: 0%";
+        } else if (/started:\s*(\d{4}-\d{2}-\d{2}).*estimated completion:\s*(\d{4}-\d{2}-\d{2})/i.test(d.status)) {
+            const match = d.status.match(/started:\s*(\d{4}-\d{2}-\d{2}).*estimated completion:\s*(\d{4}-\d{2}-\d{2})/i);
+            if (match) {
+                const start = new Date(match[1]);
+                const end = new Date(match[2]);
+                const now = new Date();
+                const total = end - start;
+                const elapsed = Math.max(0, now - start);
+                let raw = Math.min(1, elapsed / total);
+                progressPercent = Math.round(21 + raw * (99 - 21)); // Scale 21-99%
+                progressText = `🔄 Processing: ${progressPercent}%`;
+            }
+        }
+
+        // --- Now set the innerHTML safely --- // <div>${statusLine}</div>
+        tile.innerHTML = `
+            <div class="tile-content">
+                <div>${d.task}</div>
+                <div>${d.info}</div>
+                
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress-text">${progressText}</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progressPercent}%;"></div>
+                </div>
+            </div>
+        `;
+
+        // --- Tile selection and preview logic ---
+        tile.addEventListener("click", () => {
+            showPaneContent(d.id);
+            // history.pushState(null, "", `?id=${d.id}`);
+
+            const params = new URLSearchParams(window.location.search);
+            params.set("id", d.id);
+            history.pushState(null, "", `?${params.toString()}`);
+
+
+
+            document.querySelectorAll('.task-tile').forEach(t => t.classList.remove('selected'));
+            tile.classList.add('selected');
+        });
+
+        container.appendChild(tile);
+    });
+}
