@@ -54,12 +54,15 @@
                     <div class="pill" data-filter="Can start">Can start</div>
                     <div class="pill" data-filter="Can't start">Can't start</div>
                 </div>
+
+              
+
             </div>
         </div>
         <div id="searchNote"></div>
         <div class="note"> <span class="hide-on-phone">Completed tasks: excluded by default. Clicking on tiles: shows
-            more info on the right pane. Dark theme: supported, system settings.</span> 
-            </div>
+                more info on the right pane. Dark theme: supported, system settings.</span>
+        </div>
         <div id="totalTasks">Recognised tasks: loading...</div>
 
     </header>
@@ -75,8 +78,11 @@
 
     </main>
     <div class="note-to-user">
-        <p>Dear BiG team, welcome to the dashboard designed by me to help track the timeline of various tasks. <br> You can <a href="https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/edit" target="_blank" rel="noopener noreferrer">update the contents of this dashboard</a>. Shared docs: <a href="https://rahulnatha.com/big?view=onedrive" target="_blank"
-                rel="noopener noreferrer">OneDrive folder</a></p>
+        <p>Dear BiG team, welcome to the dashboard designed by me to help track the timeline of various tasks. <br> You
+            can <a href="https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/edit"
+                target="_blank" rel="noopener noreferrer">update the contents of this dashboard</a>. Shared docs: <a
+                href="https://rahulnatha.com/big?view=onedrive" target="_blank" rel="noopener noreferrer">OneDrive
+                folder</a></p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -86,15 +92,15 @@
 
 
     <script>
-window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const isVisitorBig = params.get("visitor") === "big";
+        window.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const isVisitorBig = params.get("visitor") === "big";
 
-  const note = document.querySelector(".note-to-user");
-  if (note) {
-    note.style.display = isVisitorBig ? "block" : "none";
-  }
-});
+            const note = document.querySelector(".note-to-user");
+            if (note) {
+                note.style.display = isVisitorBig ? "block" : "none";
+            }
+        });
 
     </script>
 </body>

@@ -42,7 +42,15 @@ window.onload = () => {
             }
 
             const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
-            renderTiles(excludeCompleted);
+            // renderTiles(excludeCompleted);
+
+
+            renderTiles(unifiedSort(excludeCompleted));
+
+
+
+
+
             updateTaskSummary(globalData);
 
             // URL state restore
@@ -94,35 +102,42 @@ function renderTiles(data) {
     data.forEach(d => {
         const tile = document.createElement("div");
         // tile.className = "task-tile";
-        
+
 
         // Due date logic
         let dueNote = "";
         let dueClass = "";
-
         if (d.dueDateUTC) {
-            const due = new Date(d.dueDateUTC + "Z");  // Treat as UTC
-            const now = new Date();
+            const statusLower = d.status.toLowerCase();
+            if (!statusLower.includes("completed")) {
+                const due = new Date(d.dueDateUTC + "Z");
+                const now = new Date();
+                const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+                const dueDay = Date.UTC(due.getUTCFullYear(), due.getUTCMonth(), due.getUTCDate());
+                const dayDiff = Math.floor((dueDay - today) / (1000 * 60 * 60 * 24));
 
-            // Start-of-day comparison
-            const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-            const dueDay = Date.UTC(due.getUTCFullYear(), due.getUTCMonth(), due.getUTCDate());
-
-            const dayDiff = Math.floor((dueDay - today) / (1000 * 60 * 60 * 24));
-
-            if (dayDiff < 0) {
-                dueNote = "Past due!!";
-                dueClass = "due-imminent";
-            } else if (dayDiff === 0) {
-                dueNote = "Due today!";
-                dueClass = "due-imminent";
-            } else if (dayDiff === 1) {
-                dueNote = "Due tomorrow!";
-                dueClass = "due-imminent";
-            } else {
-                dueNote = `Due in ${dayDiff} days`;
-                dueClass = (dayDiff <= 5) ? "due-soon" : "due-far";
+                if (dayDiff < 0) {
+                    dueNote = "🔴 Past due";
+                    dueClass = "due-red";
+                } else if (dayDiff === 0) {
+                    dueNote = "🟠 Due today";
+                    dueClass = "due-red";
+                } else if (dayDiff === 1) {
+                    dueNote = "🟡 Due tomorrow";
+                    dueClass = "due-red";
+                } else if (dayDiff <= 5) {
+                    dueNote = `🔵 Due in ${dayDiff} days`;
+                    dueClass = "due-soon";
+                } else {
+                    dueNote = `🟢 Due in ${dayDiff} days`;
+                    dueClass = "due-normal";
+                }
             }
+        }
+
+
+        if (/^completed/i.test(d.status)) {
+            dueClass = "due-completed";
         }
 
 
@@ -131,7 +146,8 @@ function renderTiles(data) {
 
 
 
-tile.className = `task-tile ${dueClass}`;
+
+        tile.className = `task-tile ${dueClass}`;
 
         tile.id = `tile@${d.id}`;
 
@@ -241,7 +257,10 @@ function handleSearch() {
         const combined = `${d.task} ${d.info} ${d.status}`.toLowerCase();
         const block = d.block.toLowerCase();
 
-        if (input === "all") matches.push(d);
+        // if (input === "all") matches.push(d);
+        if (input === "all") matches.push(d); // keep this line
+
+
         else if (input === "completed" && d.status.toLowerCase().includes("completed")) matches.push(d);
         else if (input === "processing" && d.status.toLowerCase().includes("processing")) matches.push(d);
         else if (input === "can start" && d.status.toLowerCase().includes("can start")) matches.push(d);
@@ -256,7 +275,30 @@ function handleSearch() {
         }
     });
 
-    renderTiles([...matches, ...fallback]);
+
+
+
+
+
+    renderTiles(unifiedSort([...matches, ...fallback]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // renderTiles([...matches, ...fallback]);
     note.innerText = corrected !== input ? `Searched for "${corrected}" instead of "${input}".` : "";
 
 
@@ -275,7 +317,59 @@ function handleSearch() {
     // history.replaceState(null, '', `${location.pathname}?${urlParams.toString()}`);
 
 
+
 }
+
+// const searchBoxValue = document.getElementById("searchBox").value.trim().toLowerCase();
+// if (searchBoxValue) {
+//     const tiles = Array.from(document.querySelectorAll(".task-tile"));
+//     renderTiles(unifiedSort(globalData.filter(d => {
+//         const text = `${d.task} ${d.info} ${d.status}`.toLowerCase();
+//         return text.includes(searchBoxValue);
+//     })));
+// }
+
+
+
+
+function unifiedSort(tasks) {
+    return tasks.slice().sort((a, b) => {
+        const rank = t => {
+            const isCompleted = t.status.toLowerCase().includes("completed");
+            const isProcessing = t.status.toLowerCase().includes("processing");
+            const isCanStart = t.status.toLowerCase().includes("can start");
+            const isCantStart = t.status.toLowerCase().includes("can't start") || t.status.toLowerCase().includes("cannot start");
+
+            let dueCategory = 2; // 0 = red due, 1 = other known due, 2 = no due
+            if (t.dueDateUTC && !isCompleted) {
+                const due = new Date(t.dueDateUTC + "Z");
+                const now = new Date();
+                const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+                const dueDay = Date.UTC(due.getUTCFullYear(), due.getUTCMonth(), due.getUTCDate());
+                const dayDiff = Math.floor((dueDay - today) / (1000 * 60 * 60 * 24));
+
+                if (dayDiff <= 1) dueCategory = 0; // Red (today, tomorrow, or past)
+                else dueCategory = 1;              // Known due but not red
+            }
+
+            const statusRank = isProcessing ? 0 : isCanStart ? 1 : isCantStart ? 2 : 3;
+            const finalDueRank = isCompleted ? 3 : dueCategory;
+
+            return [finalDueRank, statusRank, t.task.toLowerCase()];
+        };
+
+        const aRank = rank(a);
+        const bRank = rank(b);
+
+        for (let i = 0; i < aRank.length; i++) {
+            if (aRank[i] < bRank[i]) return -1;
+            if (aRank[i] > bRank[i]) return 1;
+        }
+
+        return 0;
+    });
+}
+
 
 function levenshtein(a, b) {
     const m = a.length, n = b.length;
@@ -372,3 +466,8 @@ window.addEventListener("load", () => {
 
     titleDiv.innerHTML = `Task Dashboard as of ${istTime} IST <span title="${istOffset}"> </span>; <span title="${zoneTooltip}">${deTime} ${deZone}</span>`;
 });
+
+
+
+
+// SORT BY 
