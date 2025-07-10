@@ -533,13 +533,32 @@ body.dark #searchBox {
 
 /* For near future (next 5 days) */
 @keyframes blinkBorder {
-    0% { border-color: #3498db; }
-    50% { border-color: grey; }
-    100% { border-color: #3498db; }
+    0% { border-color: #3498db;
+    
+    outline: 2px solid #00bfff;
+    outline-offset: -2px;
+    box-shadow: 0 0 12px #00bfff;
+    
+    }
+    50% { border-color: grey; 
+    
+    outline: 0px solid #ff950000;
+    outline-offset: -0px;
+    box-shadow: 0 0 0px #ff950000;
+    
+    }
+    100% { border-color: #3498db;
+    
+     outline: 2px solid #00bfff;
+    outline-offset: -2px;
+    box-shadow: 0 0 12px #00bfff;
+    }
 }
 .task-tile.due-soon {
     animation: blinkBorder 1s infinite;
     border: 4px solid #3498db;
+
+    
 }
 .task-tile.due-soon .due-note {
     color: #3498db;
