@@ -165,7 +165,7 @@ main {
     gap: 20px;
     padding: 0px;
     box-sizing: border-box;
-    height: 75vh;
+    height: calc(75vh - 40px);
     margin: 0;
     overflow: auto;
 }
@@ -180,7 +180,7 @@ main {
 
     overflow-y: auto;
     height: fit-content;
-    max-height: calc(75vh - 0px);
+    max-height: calc(75vh - 40px);
     /* margin: 20px; */
     /* border: 2px solid grey; */
 
@@ -227,7 +227,7 @@ main {
 
     border-radius: 7px;
 
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -240,8 +240,10 @@ main {
 .task-tile .tile-content div:nth-child(2) {
     color: grey;
 }
+
 .task-tile .tile-content div {
-    margin-bottom: 6px;  /* or 8px or any value you like */
+    margin-bottom: 6px;
+    /* or 8px or any value you like */
 }
 
 .task-tile .tile-content div:nth-child(2) {
@@ -328,6 +330,7 @@ aside#detailPane {
     padding: 20px;
     overflow-y: auto;
     height: 75vh;
+    height: calc(75vh - 40px);
     border-left: 1px solid grey;
     /* width: calc(40vw - 80px); */
     margin: 0;
@@ -391,11 +394,11 @@ aside#detailPane {
     }
 
     #searchBox {
-    
-    width: 200px;
-    max-width: 80vw;
-    
-}
+
+        width: 200px;
+        max-width: 80vw;
+
+    }
 
 }
 
@@ -423,15 +426,16 @@ body.dark #searchBox {
 }
 
 .progress-bar {
-  height: 6px;
-  background: #444;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-top: 6px;
+    height: 6px;
+    background: #444;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 6px;
 }
+
 .progress-bar .fill {
-  height: 100%;
-  background: linear-gradient(to right, #4fd1c5, #3182ce);
+    height: 100%;
+    background: linear-gradient(to right, #4fd1c5, #3182ce);
 }
 
 .progress-bar {
@@ -441,6 +445,7 @@ body.dark #searchBox {
     border-radius: 3px;
     margin-top: 6px;
 }
+
 .progress-fill {
     height: 100%;
     background-color: #4ecdc4;
@@ -472,10 +477,19 @@ body.dark #searchBox {
 
 /* Due date within 1–5 days (blinking) */
 @keyframes blink-border {
-    0%   { border-color: blue; }
-    50%  { border-color: grey; }
-    100% { border-color: blue; }
+    0% {
+        border-color: blue;
+    }
+
+    50% {
+        border-color: grey;
+    }
+
+    100% {
+        border-color: blue;
+    }
 }
+
 .task-tile.due-soon {
     animation: blink-border 1s infinite;
     border-width: 2px;
@@ -493,10 +507,12 @@ body.dark #searchBox {
 .task-tile.due-far {
     border: 4px solid green;
 }
+
 .task-tile.due-soon {
     border: 4px solid blue;
     animation: blink-blue-grey 1s infinite;
 }
+
 .task-tile.due-imminent {
     border: 4px solid red;
 }
@@ -505,18 +521,28 @@ body.dark #searchBox {
 .due-far .due-note {
     color: green;
 }
+
 .due-soon .due-note {
     color: blue;
 }
+
 .due-imminent .due-note {
     color: red;
 }
 
 /* Blinking border animation */
 @keyframes blink-blue-grey {
-    0% { border-color: blue; }
-    50% { border-color: grey; }
-    100% { border-color: blue; }
+    0% {
+        border-color: blue;
+    }
+
+    50% {
+        border-color: grey;
+    }
+
+    100% {
+        border-color: blue;
+    }
 }
 
 
@@ -527,39 +553,47 @@ body.dark #searchBox {
 .task-tile.due-red {
     border: 4px solid red;
 }
+
 .task-tile.due-red .due-note {
     color: red;
 }
 
 /* For near future (next 5 days) */
 @keyframes blinkBorder {
-    0% { border-color: #3498db;
-    
-    outline: 2px solid #00bfff;
-    outline-offset: -2px;
-    box-shadow: 0 0 12px #00bfff;
-    
+    0% {
+        border-color: #3498db;
+
+        outline: 2px solid #00bfff;
+        outline-offset: -2px;
+        box-shadow: 0 0 12px #00bfff;
+
     }
-    50% { border-color: grey; 
-    
-    outline: 0px solid #ff950000;
-    outline-offset: -0px;
-    box-shadow: 0 0 0px #ff950000;
-    
+
+    50% {
+        border-color: grey;
+
+        outline: 0px solid #ff950000;
+        outline-offset: -0px;
+        box-shadow: 0 0 0px #ff950000;
+
     }
-    100% { border-color: #3498db;
-    
-     outline: 2px solid #00bfff;
-    outline-offset: -2px;
-    box-shadow: 0 0 12px #00bfff;
+
+    100% {
+        border-color: #3498db;
+
+        outline: 2px solid #00bfff;
+        outline-offset: -2px;
+        box-shadow: 0 0 12px #00bfff;
     }
 }
+
 .task-tile.due-soon {
     animation: blinkBorder 1s infinite;
     border: 4px solid #3498db;
 
-    
+
 }
+
 .task-tile.due-soon .due-note {
     color: #3498db;
 }
@@ -568,9 +602,11 @@ body.dark #searchBox {
 .task-tile.due-normal {
     border: 4px solid limegreen;
 }
+
 .task-tile.due-normal .due-note {
     color: limegreen;
 }
+
 /* ............................................................... */
 
 
@@ -617,20 +653,23 @@ body.dark #searchBox {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-            120deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.15) 50%,
-            transparent 100%
-        );
+        background: linear-gradient(120deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.15) 50%,
+                transparent 100%);
         transform: skewX(-20deg);
         animation: shineDark 4s infinite;
         pointer-events: none;
     }
 
     @keyframes shineDark {
-        0% { transform: translateX(-100%) skewX(-20deg); }
-        100% { transform: translateX(100%) skewX(-20deg); }
+        0% {
+            transform: translateX(-100%) skewX(-20deg);
+        }
+
+        100% {
+            transform: translateX(100%) skewX(-20deg);
+        }
     }
 }
 
@@ -654,20 +693,23 @@ body.dark #searchBox {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-            120deg,
-            transparent 0%,
-            rgba(0, 0, 0, 0.1) 50%,
-            transparent 100%
-        );
+        background: linear-gradient(120deg,
+                transparent 0%,
+                rgba(0, 0, 0, 0.1) 50%,
+                transparent 100%);
         transform: skewX(-20deg);
         animation: shineLight 4s infinite;
         pointer-events: none;
     }
 
     @keyframes shineLight {
-        0% { transform: translateX(-100%) skewX(-20deg); }
-        100% { transform: translateX(100%) skewX(-20deg); }
+        0% {
+            transform: translateX(-100%) skewX(-20deg);
+        }
+
+        100% {
+            transform: translateX(100%) skewX(-20deg);
+        }
     }
 }
 
@@ -676,4 +718,15 @@ body.dark #searchBox {
     outline: 2px solid #00bfff;
     outline-offset: -2px;
     box-shadow: 0 0 6px #00bfff;
+}
+
+
+
+footer {
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 0;
+    color: grey;
+    padding: 10px 0 0 0 ;
+
 }
