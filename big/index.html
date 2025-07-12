@@ -105,8 +105,12 @@
     </script>
 
     <footer>
-  © 2024–2025 Rahul Natha. All rights reserved.
+ © 2025–<span id="copy-year"></span> Rahul Natha. All rights reserved.
 </footer>
+
+<script>
+  document.getElementById("copy-year").textContent = new Date().getFullYear() + 1;
+</script>
 
 </body>
 

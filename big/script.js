@@ -464,7 +464,7 @@ window.addEventListener("load", () => {
         ? `CEST (${deOffset}) — last Sunday in March 02:00 CET to the last Sunday in October 03:00 CEST\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`
         : `CET (${deOffset}) — last Sunday in October 03:00 CEST to the last Sunday in March 02:00 CET\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`;
 
-    titleDiv.innerHTML = `Rahul Natha's Task Dashboard as of ${istTime} IST <span title="${istOffset}"> </span>; <span title="${zoneTooltip}">${deTime} ${deZone}</span>. All dates and times follow YYYY-MM-DD HH:MM format`;
+    titleDiv.innerHTML = `Rahul Natha's Task Dashboard as of ${istTime} IST <span title="${istOffset}"> </span>; <span title="${zoneTooltip}">${deTime} ${deZone}</span>. Default date time format is YYYY-MM-DD HH:MM format`;
 });
 
 
