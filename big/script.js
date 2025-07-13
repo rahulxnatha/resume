@@ -421,9 +421,61 @@ document.querySelectorAll(".pill").forEach(pill => {
 
 /////////////////////////////// TIME
 
+// window.addEventListener("load", () => {
+//     const titleDiv = document.getElementById("title");
+//     const now = new Date();
+
+//     function formatDateTime(timeZone) {
+//         const options = {
+//             timeZone,
+//             year: 'numeric', month: '2-digit', day: '2-digit',
+//             hour: '2-digit', minute: '2-digit',
+//             hour12: false
+//         };
+//         const parts = new Intl.DateTimeFormat('en-GB', options).formatToParts(now);
+//         const get = type => parts.find(p => p.type === type).value;
+//         return `${get('year')}-${get('month')}-${get('day')} ${get('hour')}:${get('minute')}`;
+//     }
+
+//     function getUtcOffset(tz) {
+//         const localTime = new Date();
+//         const utcTime = new Date(localTime.toLocaleString('en-US', { timeZone: 'UTC' }));
+//         const tzTime = new Date(localTime.toLocaleString('en-US', { timeZone: tz }));
+//         const offsetMinutes = (tzTime - utcTime) / 60000;
+//         const sign = offsetMinutes >= 0 ? '+' : '-';
+//         const absMin = Math.abs(offsetMinutes);
+//         const hours = String(Math.floor(absMin / 60)).padStart(2, '0');
+//         const minutes = String(absMin % 60).padStart(2, '0');
+//         return `UTC${sign}${hours}:${minutes}`;
+//     }
+
+//     const istTime = formatDateTime("Asia/Kolkata");
+//     const deTime = formatDateTime("Europe/Berlin");
+
+//     const deZone = new Intl.DateTimeFormat('en-GB', {
+//         timeZone: 'Europe/Berlin',
+//         timeZoneName: 'short'
+//     }).formatToParts(now).find(p => p.type === 'timeZoneName').value;
+
+//     const deOffset = getUtcOffset("Europe/Berlin");
+//     const istOffset = getUtcOffset("Asia/Kolkata");
+
+//     const zoneTooltip = (deZone === "CEST")
+//         ? `CEST (${deOffset}) — last Sunday in March 02:00 CET to the last Sunday in October 03:00 CEST\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`
+//         : `CET (${deOffset}) — last Sunday in October 03:00 CEST to the last Sunday in March 02:00 CET\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`;
+
+//     titleDiv.innerHTML = `Rahul Natha's Task Dashboard as of ${istTime} IST <span title="${istOffset}"> </span>; <span title="${zoneTooltip}">${deTime} ${deZone}</span>. Default date time format is YYYY-MM-DD HH:MM format`;
+// });
+
+
+
+
+// SORT BY 
+
+
 window.addEventListener("load", () => {
     const titleDiv = document.getElementById("title");
-    const now = new Date();
+    const loadTime = new Date();  // Capture the load time once
 
     function formatDateTime(timeZone) {
         const options = {
@@ -432,7 +484,7 @@ window.addEventListener("load", () => {
             hour: '2-digit', minute: '2-digit',
             hour12: false
         };
-        const parts = new Intl.DateTimeFormat('en-GB', options).formatToParts(now);
+        const parts = new Intl.DateTimeFormat('en-GB', options).formatToParts(loadTime);
         const get = type => parts.find(p => p.type === type).value;
         return `${get('year')}-${get('month')}-${get('day')} ${get('hour')}:${get('minute')}`;
     }
@@ -449,13 +501,19 @@ window.addEventListener("load", () => {
         return `UTC${sign}${hours}:${minutes}`;
     }
 
+    function minutesAgo(date) {
+        const diffMs = new Date() - date;
+        const mins = Math.floor(diffMs / 60000);
+        return mins === 0 ? "just now" : `${mins} min${mins === 1 ? "" : "s"} ago`;
+    }
+
     const istTime = formatDateTime("Asia/Kolkata");
     const deTime = formatDateTime("Europe/Berlin");
 
     const deZone = new Intl.DateTimeFormat('en-GB', {
         timeZone: 'Europe/Berlin',
         timeZoneName: 'short'
-    }).formatToParts(now).find(p => p.type === 'timeZoneName').value;
+    }).formatToParts(loadTime).find(p => p.type === 'timeZoneName').value;
 
     const deOffset = getUtcOffset("Europe/Berlin");
     const istOffset = getUtcOffset("Asia/Kolkata");
@@ -464,10 +522,101 @@ window.addEventListener("load", () => {
         ? `CEST (${deOffset}) — last Sunday in March 02:00 CET to the last Sunday in October 03:00 CEST\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`
         : `CET (${deOffset}) — last Sunday in October 03:00 CEST to the last Sunday in March 02:00 CET\n[expressed in YYYY-MM-DD HH:MM TIMEZONE]`;
 
-    titleDiv.innerHTML = `Rahul Natha's Task Dashboard as of ${istTime} IST <span title="${istOffset}"> </span>; <span title="${zoneTooltip}">${deTime} ${deZone}</span>. Default date time format is YYYY-MM-DD HH:MM format`;
+    titleDiv.innerHTML = `
+        Task Dashboard as of ${istTime} IST ; 
+        <span title="${zoneTooltip}">${deTime} ${deZone}</span> 
+        
+    `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const updatedSpan = document.createElement("span");
+    updatedSpan.style.marginLeft = "0px";
+    titleDiv.appendChild(updatedSpan);
+
+    const lastUpdated = new Date(); // Timestamp of dashboard load
+
+    function updateStopwatchLabel() {
+        const now = new Date();
+        const diff = now - lastUpdated;
+
+        let text = "";
+        if (diff < 1000) {
+            text = `Updated ${diff} ms ago`;
+        } else if (diff < 5000) {
+            text = `Updated ${Math.floor(diff / 1000)} sec${diff < 2000 ? "" : "s"} ago`;
+        } else if (diff < 10000) {
+            text = `Updated at least 5 secs ago`;
+        } else if (diff < 15000) {
+            text = `Updated at least 10 secs ago`;
+        } else if (diff < 20000) {
+            text = `Updated at least 15 secs ago`;
+        } else if (diff < 40000) {
+            text = `Updated at least 20 secs ago`;
+        } else if (diff < 60000) {
+            text = `Updated at least 40 secs ago`;
+        } else if (diff < 3600000) {
+            const mins = Math.floor(diff / 60000);
+            text = `Updated at least ${mins} min${mins === 1 ? "" : "s"} ago`;
+        } else if (diff < 86400000) {
+            const hours = Math.floor(diff / 3600000);
+            text = `Updated at least ${hours} hour${hours === 1 ? "" : "s"} ago`;
+        } else {
+            const days = Math.floor(diff / 86400000);
+            text = `Updated at least ${days} day${days === 1 ? "" : "s"} ago`;
+        }
+
+        updatedSpan.textContent = `(${text})`;
+    }
+
+    // Start stopwatch updates every 500 ms
+    // setInterval(updateStopwatchLabel, 500);
+
+
+
+
+
+
+    function startSmartStopwatch() {
+    let lastDiff = -1;
+
+    function loop() {
+        const now = new Date();
+        const diff = now - lastUpdated;
+
+        updateStopwatchLabel();
+
+        let nextDelay;
+        if (diff < 1000) {
+            nextDelay = 1; // Update every ms
+        } else if (diff < 5000) {
+            nextDelay = 500;
+        } else {
+            nextDelay = 1000;
+        }
+
+        setTimeout(loop, nextDelay);
+    }
+
+    loop(); // Kick off the loop
+}
+
+startSmartStopwatch();
+
+
+
 });
 
-
-
-
-// SORT BY 
