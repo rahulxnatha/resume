@@ -334,7 +334,12 @@ aside#detailPane {
     border-left: 1px solid grey;
     /* width: calc(40vw - 80px); */
     margin: 0;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
 
 #togglePane {
     display: none;
@@ -729,4 +734,13 @@ footer {
     color: grey;
     padding: 10px 0 0 0 ;
 
+}
+
+
+@media (prefers-color-scheme: dark) {
+  #syncBtn {
+    background-color: #333;
+    color: white;
+    border: 1px solid #666;
+  }
 }

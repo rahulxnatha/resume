@@ -2,7 +2,8 @@ let globalData = [];
 let blockTexts = {};
 let typoThreshold = 0.25;
 
-window.onload = () => {
+
+function fetchAndRenderData() {
     const csvUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Sheet1";
 
     fetch(csvUrl)
@@ -42,7 +43,7 @@ window.onload = () => {
             }
 
             const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
-            // renderTiles(excludeCompleted);
+
 
 
             renderTiles(unifiedSort(excludeCompleted));
@@ -74,6 +75,18 @@ window.onload = () => {
         document.getElementById("detailPane").classList.toggle("active");
     });
 
+}
+
+
+
+// window.onload = () => {
+window.addEventListener("load", () => {
+
+
+    fetchAndRenderData(); // Initial load
+
+
+
     const searchBox = document.getElementById("searchBox");
     searchBox.addEventListener("keydown", e => {
         if (e.key === "Enter") handleSearch();
@@ -89,7 +102,8 @@ window.onload = () => {
         searchBox.value = initialSearch;
         handleSearch();
     }
-};
+    // };
+});
 
 searchBox.addEventListener("input", () => {
     updateVisiblePills();
@@ -241,10 +255,99 @@ function calculateProgressPercent(start, end, today) {
 }
 
 
+// function showPaneContent(id) {
+//     const block = blockTexts[id] || "No details available.";
+//     document.getElementById("paneContent").innerText = block;
+// }
+
+// function showPaneContent(id) {
+//     const raw = blockTexts[id] || "No details available.";
+//     const safe = escapeHTML(raw);
+//     const linked = autoLink(safe);
+//     // document.getElementById("paneContent").innerHTML = linked;
+//     // document.getElementById("paneContent").innerHTML = autoLink(blockTexts[id] || "No details available.");
+//     document.getElementById("paneContent").innerHTML = autoLink(blockTexts[id] || "No details available.");
+
+
+// }
+
+
+
+
 function showPaneContent(id) {
-    const block = blockTexts[id] || "No details available.";
-    document.getElementById("paneContent").innerText = block;
+    const raw = blockTexts[id] || "No details available.";
+    document.getElementById("paneContent").innerHTML = autoLink(raw);
 }
+
+
+
+function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[tag]));
+}
+
+function autoLink(text) {
+    if (!text) return "";
+
+    // Escape HTML
+    text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    text = text.replace(/\r?\n/g, "<br>");
+
+    // Step 1: Email addresses
+    text = text.replace(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g, email =>
+        `<a href="mailto:${email}" target="_blank">${email}</a>`
+    );
+
+    // Step 2: Phone numbers starting with +
+    text = text.replace(/(?<!\w)(\+\d[\d\s\-().]{7,}\d)(?!\w)/g, match => {
+        const clean = match.replace(/[^\d+]/g, "");
+        return `<a href="tel:${clean}" target="_blank">${match}</a>`;
+    });
+
+    // Step 3: Full URLs with http/https
+    text = text.replace(/\bhttps?:\/\/[^\s<>"',)]+/gi, url =>
+        `<a href="${url}" target="_blank">${url}</a>`
+    );
+
+    // Step 4: Skip already linked parts before adding bare domains
+    const dummy = document.createElement("div");
+    dummy.innerHTML = text;
+
+    // Recursively walk the DOM nodes and only auto-link text nodes
+    function linkifyNode(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const linked = node.textContent.replace(
+                /(^|\s)(?!(https?:\/\/|mailto:|tel:))((?:[a-z0-9-]+\.)+[a-z]{2,})(\/[^\s<>"',)]*)?/gi,
+                (_, space, _skip, domain, path) => {
+                    const full = `https://${domain}${path || ""}`;
+                    return `${space}<a href="${full}" target="_blank">${domain}${path || ""}</a>`;
+                }
+            );
+            const span = document.createElement("span");
+            span.innerHTML = linked;
+            node.replaceWith(...span.childNodes);
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== "A") {
+            Array.from(node.childNodes).forEach(linkifyNode);
+        }
+    }
+
+    Array.from(dummy.childNodes).forEach(linkifyNode);
+
+    return dummy.innerHTML;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function handleSearch() {
     const input = document.getElementById("searchBox").value.trim().toLowerCase();
@@ -473,7 +576,10 @@ document.querySelectorAll(".pill").forEach(pill => {
 // SORT BY 
 
 
-window.addEventListener("load", () => {
+function DateAndSync() {
+
+
+
     const titleDiv = document.getElementById("title");
     const loadTime = new Date();  // Capture the load time once
 
@@ -555,28 +661,28 @@ window.addEventListener("load", () => {
 
         let text = "";
         if (diff < 1000) {
-            text = `Updated ${diff} ms ago`;
+            text = `Synced ${diff} ms ago`;
         } else if (diff < 5000) {
-            text = `Updated ${Math.floor(diff / 1000)} sec${diff < 2000 ? "" : "s"} ago`;
+            text = `Synced ${Math.floor(diff / 1000)} sec${diff < 2000 ? "" : "s"} ago`;
         } else if (diff < 10000) {
-            text = `Updated at least 5 secs ago`;
+            text = `Synced at least 5 secs ago`;
         } else if (diff < 15000) {
-            text = `Updated at least 10 secs ago`;
+            text = `Synced at least 10 secs ago`;
         } else if (diff < 20000) {
-            text = `Updated at least 15 secs ago`;
+            text = `Synced at least 15 secs ago`;
         } else if (diff < 40000) {
-            text = `Updated at least 20 secs ago`;
+            text = `Synced at least 20 secs ago`;
         } else if (diff < 60000) {
-            text = `Updated at least 40 secs ago`;
+            text = `Synced at least 40 secs ago`;
         } else if (diff < 3600000) {
             const mins = Math.floor(diff / 60000);
-            text = `Updated at least ${mins} min${mins === 1 ? "" : "s"} ago`;
+            text = `Synced at least ${mins} min${mins === 1 ? "" : "s"} ago`;
         } else if (diff < 86400000) {
             const hours = Math.floor(diff / 3600000);
-            text = `Updated at least ${hours} hour${hours === 1 ? "" : "s"} ago`;
+            text = `Synced at least ${hours} hour${hours === 1 ? "" : "s"} ago`;
         } else {
             const days = Math.floor(diff / 86400000);
-            text = `Updated at least ${days} day${days === 1 ? "" : "s"} ago`;
+            text = `Synced at least ${days} day${days === 1 ? "" : "s"} ago`;
         }
 
         updatedSpan.textContent = `(${text})`;
@@ -591,32 +697,48 @@ window.addEventListener("load", () => {
 
 
     function startSmartStopwatch() {
-    let lastDiff = -1;
+        let lastDiff = -1;
 
-    function loop() {
-        const now = new Date();
-        const diff = now - lastUpdated;
+        function loop() {
+            const now = new Date();
+            const diff = now - lastUpdated;
 
-        updateStopwatchLabel();
+            updateStopwatchLabel();
 
-        let nextDelay;
-        if (diff < 1000) {
-            nextDelay = 1; // Update every ms
-        } else if (diff < 5000) {
-            nextDelay = 500;
-        } else {
-            nextDelay = 1000;
+            let nextDelay;
+            if (diff < 1000) {
+                nextDelay = 1; // Update every ms
+            } else if (diff < 5000) {
+                nextDelay = 500;
+            } else {
+                nextDelay = 1000;
+            }
+
+            setTimeout(loop, nextDelay);
         }
 
-        setTimeout(loop, nextDelay);
+        loop(); // Kick off the loop
     }
 
-    loop(); // Kick off the loop
+    startSmartStopwatch();
+
 }
 
-startSmartStopwatch();
+window.addEventListener("load", () => {
 
+
+    DateAndSync();
 
 
 });
 
+
+
+
+
+// ................................  
+
+document.getElementById("syncBtn").addEventListener("click", () => {
+    fetchAndRenderData();
+    DateAndSync();
+});

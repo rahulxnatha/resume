@@ -35,7 +35,10 @@
 
 <body>
     <header>
-        <div id="title">Task Dashboard as of ...</div>
+
+        <button id="syncBtn" style="display: inline;">🔄 Sync</button>
+        <span id="title">Task Dashboard as of ...</span>
+
         <div class="search-bar-container">
             <div class="dropdown-wrapper">
                 <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
@@ -55,7 +58,7 @@
                     <div class="pill" data-filter="Can't start">Can't start</div>
                 </div>
 
-              
+
 
             </div>
         </div>
@@ -105,12 +108,12 @@
     </script>
 
     <footer>
- © 2025–<span id="copy-year"></span> Rahul Natha. All rights reserved.
-</footer>
+        © 2025–<span id="copy-year"></span> Rahul Natha. All rights reserved.
+    </footer>
 
-<script>
-  document.getElementById("copy-year").textContent = new Date().getFullYear() + 1;
-</script>
+    <script>
+        document.getElementById("copy-year").textContent = new Date().getFullYear() + 1;
+    </script>
 
 </body>
 
