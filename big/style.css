@@ -626,7 +626,16 @@ body.dark #searchBox {
 /* Common completed tile styles */
 .task-tile.due-completed {
     position: relative;
-    overflow: hidden;
+
+
+
+    overflow: clip; /* instead of hidden */
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+
+
+
     border: 2px solid;
     background: transparent;
     backdrop-filter: blur(6px);
