@@ -36,7 +36,7 @@
 <body>
     <header>
 
-        <button id="syncBtn" style="display: inline;">🔄 Sync</button>
+       
         <span id="title">Task Dashboard as of ...</span>
 
         <div class="search-bar-container">
@@ -56,12 +56,22 @@
                     <div class="pill" data-filter="Processing">Processing</div>
                     <div class="pill" data-filter="Can start">Can start</div>
                     <div class="pill" data-filter="Can't start">Can't start</div>
+
+
+                    <span class="notonPhone">|</span>
+
+
+                     <span id="syncBtn" class="pill2" style="display: inline;">🔄 Sync</span>
+
+
+                    <span id="togglePane" class="pill2">Show task info</span>
+
                 </div>
 
 
 
             </div>
-            <button id="togglePane">☰ Task info</button>
+            
         </div>
         <div id="searchNote"></div>
         <div class="note"> <span class="hide-on-phone">Completed tasks: excluded by default. Clicking on tiles: shows
