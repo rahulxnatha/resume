@@ -76,7 +76,7 @@ function fetchAndRenderData() {
 
 
         show_task_info = !show_task_info;
-        document.getElementById("togglePane").innerHTML = show_task_info ? "Hide task info" : "Show task info";
+        document.getElementById("togglePane").innerHTML = show_task_info ? "👀 Hide task info" : "👁️ Show task info";
         document.getElementById("detailPane").classList.toggle("active");
 
 

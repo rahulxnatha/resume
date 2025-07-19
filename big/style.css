@@ -726,7 +726,7 @@ footer {
         /* background-color: #ccc; */
         border-radius: 20px;
         cursor: pointer;
-        font-size: 14px;
+        /* font-size: 14px; */
         user-select: none;
         transition: background 0.2s;
         /* background-color:#00000000; */
@@ -804,6 +804,17 @@ footer {
     .onPhone {
         display: inline;
     }
+
+    .pill, .pill2 {
+    /* padding: 6px 12px; */
+    /* background-color: #ccc; */
+    /* border-radius: 20px; */
+    /* cursor: pointer; */
+    font-size: 12px;
+    /* user-select: none; */
+    /* transition: background 0.2s; */
+    border: 1px solid grey;
+}
 
     header {
 
