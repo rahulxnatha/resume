@@ -80,6 +80,10 @@
                             open_in_new
                         </span></span>
 
+                    <span class="notonPhone">|</span>
+
+                    <span id="subscription-type" class="pill2">Plan</span>
+
                 </div>
             </div>
 
@@ -96,6 +100,7 @@
                 <input type="checkbox" id="rememberMeCheckbox" />
                 Remember Me
             </label>
+
         </div>
 
 
@@ -110,14 +115,76 @@
         <div class="note"> <span class="hide-on-phone">Completed tasks: excluded by default. Clicking on tiles: shows
                 more info on the right pane. Dark theme: supported, system settings.</span>
         </div>
-        <div id="totalTasks">Recognised tasks: loading...</div>
+
+        <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
+        </span>
+
+
 
     </header>
 
     <main>
         <section id="tileContainer">
 
-            <div id="empty-state">🔑 Please enter a dashboard key to begin.</div>
+            <div id="empty-state">
+
+
+                <table class="dashboard-pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Name</th>
+                            <th>Features</th>
+                            <th>Devices</th>
+                            <th>Price (1 Year)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Basic</strong></td>
+                            <td>
+                                - Tasks tab with filters and preview pane<br>
+                                - Sync button<br>
+                                - Auto smart sorting (no manual options)<br>
+                                - "Edit content" link<br>
+                                - Uses Rahul’s Google Sheet (user = editor)
+                            </td>
+                            <td>✅ Mobile<br>✅ PC & Mac</td>
+                            <td><strong>Free</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Advanced</strong></td>
+                            <td>
+                                - All Basic features<br>
+                                - Timeline tab with stage bars<br>
+                                - Tracking charts (e.g., money)<br>
+                                - Custom sorting via pills<br>
+                                - Uses Rahul’s Google Sheet (user = editor)
+                            </td>
+                            <td>❌ Mobile<br>✅ PC & Mac</td>
+                            <td>₹149/year</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Premium+</strong></td>
+                            <td>
+                                - All Advanced features<br>
+                                - Settings menu: Favorites, Web Notifications, Auto-Sync<br>
+                                - Feature request access (early rollout)<br>
+                                - Can use your own Google Sheet or Excel (you own the data)<br>
+                                - Highest customization and support
+                            </td>
+                            <td>❌ Mobile<br>✅ PC & Mac</td>
+                            <td>₹299/year</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+            </div>
         </section>
         <div id="timeline-container" style="display: none;"></div>
 
@@ -140,7 +207,10 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="dashboard.js"></script>
 
 
     <!-- <script>
