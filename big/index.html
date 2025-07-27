@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-
-
-    <meta name="robots" content="noindex, nofollow" />
-
-
-    <meta name="googlebot" content="noindex, nofollow" />
-    <meta name="googlebot" content="notranslate" />
-    <meta name="googlebot-news" content="noindex, nosnippet" />
-    <meta name="AdsBot-Google" content="noindex, nofollow" />
-    <meta name="google" content="nositelinkssearchbox" />
-    <meta name="google" content="nopagereadaloud" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
 
     <script>
         const params = new URLSearchParams(window.location.search);
@@ -31,101 +12,30 @@
 
     </script>
 
-</head>
-
-<body>
-    <header>
-
-       
-        <span id="title">Task Dashboard as of ...</span>
-
-        <div class="search-bar-container">
-            <div class="dropdown-wrapper">
-                <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
-                <!-- <div id="customDropdown" class="dropdown">
-                    <div data-filter="All">All</div>
-                    <div data-filter="Completed">Completed</div>
-                    <div data-filter="Processing">Processing</div>
-                    <div data-filter="Can start">Can start</div>
-                    <div data-filter="Can't start">Can't start</div>
-                </div> -->
-
-                <div id="pillContainer" class="pill-container">
-                    <div class="pill" data-filter="All">All</div>
-                    <div class="pill" data-filter="Completed">Completed</div>
-                    <div class="pill" data-filter="Processing">Processing</div>
-                    <div class="pill" data-filter="Can start">Can start</div>
-                    <div class="pill" data-filter="Can't start">Can't start</div>
-
-
-                    <span class="notonPhone">|</span>
-
-
-                     <span id="syncBtn" class="pill2" style="display: inline;">🔄 Sync</span>
-
-
-                    <span id="togglePane" class="pill2">👁️ Show task info</span>
-
-                </div>
-
-
-
-            </div>
-            
-        </div>
-        <div id="searchNote"></div>
-        <div class="note"> <span class="hide-on-phone">Completed tasks: excluded by default. Clicking on tiles: shows
-                more info on the right pane. Dark theme: supported, system settings.</span>
-        </div>
-        <div id="totalTasks">Recognised tasks: loading...</div>
-
-    </header>
-
-    <main>
-        <section id="tileContainer"></section>
-        <aside id="detailPane">
-            
-            <div id="paneContent"></div>
-        </aside>
-
-
-
-    </main>
-    <div class="note-to-user">
-        <p>Dear BiG team, welcome to the dashboard designed by me to help track the timeline of various tasks. <br> You
-            can <a href="https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/edit"
-                target="_blank" rel="noopener noreferrer">update the contents of this dashboard</a>, and access the <a
-                href="https://rahulnatha.com/big?view=onedrive" target="_blank" rel="noopener noreferrer">OneDrive
-                folder</a> (password shared on email)</p>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
-
+    <script>
+        // Replace with your actual dashboard key
+        // const key = 'HHOTINWO3R21ZIU';
+        // Redirect with key as URL parameter
+        // window.location.href = `/dashboard/?key=HHOTINWO3R21ZIU&visitor=big`;
+    // </script>
 
     <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            const params = new URLSearchParams(window.location.search);
-            const isVisitorBig = params.get("visitor") === "big";
+    const defaultKey = 'HHOTINWO3R21ZIU';
+    const defaultVisitor = 'big';
 
-            const note = document.querySelector(".note-to-user");
-            if (note) {
-                note.style.display = isVisitorBig ? "block" : "none";
-            }
-        });
+    const url = new URL(window.location.href);
+    const param = new URLSearchParams(url.search);
 
-    </script>
+    // Only add default values if they're missing
+    if (!param.has('key')) {
+        param.set('key', defaultKey);
+    }
+    if (!param.has('visitor')) {
+        param.set('visitor', defaultVisitor);
+    }
 
-    <footer>
-        © 2025–<span id="copy-year"></span> Rahul Natha. All rights reserved.
-    </footer>
+    // Redirect to /dashboard/ with all parameters
+    window.location.href = '/dashboard/?' + param.toString();
+</script>
 
-    <script>
-        document.getElementById("copy-year").textContent = new Date().getFullYear() + 1;
-    </script>
 
-</body>
-
-</html>

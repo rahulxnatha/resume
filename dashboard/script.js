@@ -1,10 +1,232 @@
+let currentSheetId = "";
+let currentDashboardLabel = "";
 let globalData = [];
 let blockTexts = {};
 let typoThreshold = 0.25;
 
+  document.getElementById('rememberMeCheckbox').checked = true;
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("dashboardKeyInput");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlKey = urlParams.get("key");
+
+    const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
+    const lastUsedKey = localStorage.getItem("lastUsedDashboardKey");
+
+    populateKeyDropdown(savedKeys);
+
+    if (urlKey && urlKey.length === 15) {
+        handleDashboardKey(urlKey, false).then(success => {
+            if (success) {
+                // Preserve all query parameters except 'key'
+                const newParams = new URLSearchParams(urlParams);
+                newParams.delete("key"); // Remove the key parameter
+                const newQueryString = newParams.toString();
+                const newUrl = newQueryString
+                    ? `${window.location.pathname}?${newQueryString}`
+                    : window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        });
+        return;
+    }
+
+    // Rest of the code remains unchanged
+    if (lastUsedKey && savedKeys[lastUsedKey]) {
+        const { sheetId, label } = savedKeys[lastUsedKey];
+        currentSheetId = sheetId;
+        currentDashboardLabel = label;
+
+        input.value = label;
+        input.setAttribute("data-key", lastUsedKey);
+        input.readOnly = true;
+
+        document.getElementById("rememberMeContainer").style.display = "none";
+        document.getElementById("dashboardKeyDropdown").style.display = "none";
+        document.getElementById("empty-state")?.remove();
+        fetchAndRenderData();
+    } else if (Object.keys(savedKeys).length === 0 && !urlKey) {
+        document.getElementById("tilesContainer").innerHTML = `
+            <div id="empty-state">🔑 Please enter a dashboard key to begin.</div>
+        `;
+    }
+});
+
+async function handleDashboardKey(rawKey, forceRemember = false) {
+    const input = document.getElementById("dashboardKeyInput");
+    const key = rawKey || input.getAttribute("data-key") || input.value.trim().toUpperCase();
+    if (key.length !== 15) return false;
+
+    const remember = forceRemember || document.getElementById("rememberMeCheckbox")?.checked;
+    const keysSheetUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Keys";
+
+    try {
+        const response = await fetch(keysSheetUrl);
+        const csv = await response.text();
+        const rows = csv.trim().split("\n").slice(2);
+
+        for (let row of rows) {
+            const cells = row.split(",");
+            const keyFromSheet = (cells[1] || "").replace(/['"]/g, "").trim().toUpperCase();
+            const sheetId = (cells[2] || "").replace(/['"]/g, "").trim();
+            const label = (cells[3] || "").replace(/['"]/g, "").trim();
+
+            if (keyFromSheet === key) {
+                currentSheetId = sheetId;
+                currentDashboardLabel = label;
+
+                const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
+
+                if (remember) {
+                    savedKeys[key] = { sheetId, label };
+                    localStorage.setItem("dashboardKeys", JSON.stringify(savedKeys));
+                    localStorage.setItem("lastUsedDashboardKey", key);
+                }
+
+                sessionStorage.setItem("lastUsedDashboardKey", key);
+                sessionStorage.setItem("lastUsedDashboardLabel", label);
+
+                populateKeyDropdown(savedKeys); // Update dropdown only on success
+
+                input.value = label;
+                input.setAttribute("data-key", key);
+                input.readOnly = true;
+
+                document.getElementById("rememberMeContainer").style.display = "none";
+                document.getElementById("empty-state")?.remove();
+                fetchAndRenderData();
+                return true;
+            }
+        }
+
+        // Invalid key: show alert but don't update dropdown or localStorage
+        alert("Invalid dashboard key.");
+        return false;
+
+    } catch (err) {
+        console.error("Error reading Keys sheet:", err);
+        alert("Failed to verify the dashboard key.");
+        return false;
+    }
+}
+
+
+function populateKeyDropdown(savedKeys) {
+    const dropdown = document.getElementById("dashboardKeyDropdown");
+    dropdown.innerHTML = "";
+
+    const cleanedKeys = {};
+    Object.entries(savedKeys).forEach(([key, value]) => {
+        if (!value?.label || !value?.sheetId) return;
+        cleanedKeys[key] = value;
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <span class="key-label">${value.label}</span>
+            <span class="delete-key" data-key="${key}">🗙</span>
+        `;
+        li.addEventListener("click", (e) => {
+            if (e.target.classList.contains("delete-key")) return;
+            const input = document.getElementById("dashboardKeyInput");
+            input.value = value.label;
+            input.setAttribute("data-key", key);
+            handleDashboardKey(key, true);
+            dropdown.style.display = "none";
+        });
+        dropdown.appendChild(li);
+    });
+
+    // Only update localStorage if explicitly needed (e.g., after deletion)
+    // Move localStorage update to delete handler or explicit save
+    dropdown.style.display = Object.keys(cleanedKeys).length ? "block" : "none";
+}
+
+// Input focus behavior
+const keyInput = document.getElementById("dashboardKeyInput");
+keyInput.addEventListener("focus", function () {
+    const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
+    populateKeyDropdown(savedKeys);
+    this.readOnly = false;
+    this.value = "";
+    document.getElementById("rememberMeContainer").style.display = "block";
+    document.getElementById("dashboardKeyDropdown").style.display = "block";
+});
+
+// Outside click to collapse
+document.addEventListener("click", function (e) {
+    const input = document.getElementById("dashboardKeyInput");
+    const dropdown = document.getElementById("dashboardKeyDropdown");
+    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = "none";
+    }
+});
+
+// Handle input typing
+keyInput.addEventListener("input", function () {
+    const value = this.value.trim().toUpperCase();
+    const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
+
+    if (value.length === 15) {
+        handleDashboardKey(value);
+        document.getElementById("dashboardKeyDropdown").style.display = "none";
+    } else if (value.length >= 3) {
+        const matches = {};
+        for (let key in savedKeys) {
+            const label = savedKeys[key].label.toUpperCase();
+            if (key.includes(value) || label.includes(value)) {
+                matches[key] = savedKeys[key];
+            }
+        }
+        populateKeyDropdown(matches);
+    } else {
+        document.getElementById("dashboardKeyDropdown").style.display = "none";
+    }
+});
+
+// Delete remembered key
+document.getElementById("dashboardKeyDropdown").addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-key")) {
+        const keyToDelete = e.target.getAttribute("data-key");
+        let savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
+        delete savedKeys[keyToDelete];
+        localStorage.setItem("dashboardKeys", JSON.stringify(savedKeys));
+
+        if (localStorage.getItem("lastUsedDashboardKey") === keyToDelete) {
+            localStorage.removeItem("lastUsedDashboardKey");
+        }
+
+        populateKeyDropdown(savedKeys);
+    }
+});
+
+
+
+// NOT CHANGE BELOW THIS LINE 
+
+
+
+
+
 
 function fetchAndRenderData() {
-    const csvUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Sheet1";
+
+
+    // const csvUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Sheet1";
+
+    if (!currentSheetId) {
+        console.error("Sheet ID is not set.");
+        return;
+    }
+
+
+
+    const csvUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
+    // fetch data from this URL
+
+
 
     fetch(csvUrl)
         .then(res => res.text())
@@ -119,7 +341,7 @@ searchBox.addEventListener("input", () => {
 
 function renderTiles(data) {
     const container = document.getElementById("tileContainer");
-    container.innerHTML = "";
+    container.innerHTML = ""; // Clear existing tiles"";
 
     data.forEach(d => {
         const tile = document.createElement("div");
@@ -750,3 +972,40 @@ document.getElementById("syncBtn").addEventListener("click", () => {
     fetchAndRenderData();
     DateAndSync();
 });
+
+
+
+
+
+
+
+// ....................................................... 
+
+const pillTasks = document.getElementById("pill-tasks");
+const pillTimeline = document.getElementById("pill-timeline");
+const timelineContainer = document.getElementById("timeline-container");
+const tilesContainer = document.getElementById("tileContainer");
+
+pillTasks.addEventListener("click", () => {
+    pillTasks.classList.add("active-tab");
+    pillTimeline.classList.remove("active-tab");
+    tilesContainer.style.display = "grid";
+    timelineContainer.style.display = "none";
+});
+
+pillTimeline.addEventListener("click", () => {
+    pillTimeline.classList.add("active-tab");
+    pillTasks.classList.remove("active-tab");
+    tilesContainer.style.display = "none";
+    timelineContainer.style.display = "flex";
+});
+
+
+
+
+// ------------------------------------------ 
+
+// const params = new URLSearchParams(window.location.search);
+// if (params.has('key')) {
+
+// }
