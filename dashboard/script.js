@@ -1009,3 +1009,70 @@ pillTimeline.addEventListener("click", () => {
 // if (params.has('key')) {
 
 // }
+
+
+
+
+// dashboard edit option js 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("dashboardKeyInput");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlKey = urlParams.get("key");
+
+    const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
+    const lastUsedKey = localStorage.getItem("lastUsedDashboardKey");
+
+    populateKeyDropdown(savedKeys);
+
+    if (urlKey && urlKey.length === 15) {
+        handleDashboardKey(urlKey, false).then(success => {
+            if (success) {
+                // Preserve all query parameters except 'key'
+                const newParams = new URLSearchParams(urlParams);
+                newParams.delete("key"); // Remove the key parameter
+                const newQueryString = newParams.toString();
+                const newUrl = newQueryString
+                    ? `${window.location.pathname}?${newQueryString}`
+                    : window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }
+        });
+        return;
+    }
+
+    if (lastUsedKey && savedKeys[lastUsedKey]) {
+        const { sheetId, label } = savedKeys[lastUsedKey];
+        currentSheetId = sheetId;
+        currentDashboardLabel = label;
+
+        input.value = label;
+        input.setAttribute("data-key", lastUsedKey);
+        input.readOnly = true;
+
+        document.getElementById("rememberMeContainer").style.display = "none";
+        document.getElementById("dashboardKeyDropdown").style.display = "none";
+        document.getElementById("empty-state")?.remove();
+        fetchAndRenderData();
+    } else if (Object.keys(savedKeys).length === 0 && !urlKey) {
+        document.getElementById("tilesContainer").innerHTML = `
+            <div id="empty-state">🔑 Please enter a dashboard key to begin.</div>
+        `;
+    }
+
+    // Add event listener for editContentBtn
+    const editContentBtn = document.getElementById("editContentBtn");
+    if (editContentBtn) {
+        editContentBtn.addEventListener("click", () => {
+            if (currentSheetId) {
+                const sheetUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}`;
+                window.open(sheetUrl, "_blank");
+            } else {
+                alert("No sheet ID available. Please enter a valid dashboard key.");
+            }
+        });
+    } else {
+        console.warn("Element with id='editContentBtn' not found in the DOM.");
+    }
+});
