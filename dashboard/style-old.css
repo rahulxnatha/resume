@@ -27,7 +27,9 @@ a {
     transition: color 0.2s ease;
 }
 
+
 @media (prefers-color-scheme: dark) {
+
     /* For WebKit browsers (Chrome, Edge, Safari) */
     ::-webkit-scrollbar {
         width: 12px;
@@ -50,6 +52,7 @@ a {
         color: #ffffff;
     }
 }
+
 
 body {
     margin: 0;
@@ -78,6 +81,7 @@ header {
     /* justify-content: center; */
     /* align-items: center; */
     padding: 10px 0 0 0;
+
     /* border: 1px solid gray; */
 }
 
@@ -102,8 +106,7 @@ header {
     margin-top: 10px;
 }
 
-.pill,
-.pill2 {
+.pill, .pill2 {
     padding: 6px 12px;
     /* background-color: #ccc; */
     border-radius: 20px;
@@ -116,17 +119,20 @@ header {
 
 #empty-state {
     position: absolute;
-    top: 22vh;
-    color: #888;
-    font-size: 1.2rem;
-    margin-top: 2rem;
+  top: 22vh;
+  
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 2rem;
 }
+
 
 .active-tab {
     background-color: #005a78;
     color: white;
     /* font-weight: bold; */
 }
+
 
 /* .pill:hover {
   background-color: #aaa;
@@ -138,24 +144,17 @@ header {
 }
 
 #subscription-type {
-    border: 1px solid transparent;
-    /* Ensures 1px border width */
+    border: 1px solid transparent; /* Ensures 1px border width */
     border-image: linear-gradient(
         to right,
-        #0c00b8,
-        /* Blue */
-        #ec6200,
-        /* Orange */
-        #ff00ff,
-        /* Magenta */
-        #00ffff,
-        /* Cyan */
-        #0c00b8
-        /* Loop back to blue */
+        #0c00b8, /* Blue */
+        #ec6200, /* Orange */
+        #ff00ff, /* Magenta */
+        #00ffff, /* Cyan */
+        #0c00b8  /* Loop back to blue */
     ) 1;
-    /* padding: 4px 8px; */
-    display: inline-block;
-    /* Ensures the span respects border dimensions */
+    /* padding: 4px 8px;  */
+    display: inline-block; /* Ensures the span respects border dimensions */
 }
 
 .dropdown {
@@ -167,6 +166,7 @@ header {
     z-index: 1000;
     max-height: 150px;
     overflow-y: auto;
+
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
 }
@@ -203,19 +203,25 @@ main {
 
 #tileContainer {
     /* grid-template-columns: repeat(var(--number-of-cols), 1fr); */
+
+
     grid-template-columns: repeat(3, 1fr);
+
     width: 60vw;
+
     overflow-y: auto;
     height: fit-content;
     max-height: calc(75vh - 40px);
     /* margin: 20px; */
     /* border: 2px solid grey; */
+
     column-gap: 20px;
     row-gap: 20px;
     /* transition-duration: 0ms; */
     /* padding: 0 25px 25px 25px; */
     /* margin: 25px 25px 25px 25px; */
     /* border: 2px solid rgba(128, 128, 128, 0.196); */
+
     display: grid;
     /* grid-template-columns: repeat(auto-fill, minmax(10px, 1fr)); */
     grid-template-columns: repeat(var(--number-of-cols), 1fr);
@@ -240,19 +246,26 @@ main {
     /* flex-direction: row; */
     /* gap: 10px; */
     /* flex-wrap: wrap; */
+
     /* position: relative; */
     height: auto;
     margin: 0;
     padding: 20px 20px 20px 20px;
+
     /* border: 2px solid var(--border-color); */
     /* border: 2px solid transparent; */
     cursor: pointer;
+
     border-radius: 7px;
+
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* padding: 10px; */
-    /* height: 200px; */
+    /* height: 200px;  */
+
+
 }
 
 .task-tile .tile-content div:nth-child(2) {
@@ -268,6 +281,13 @@ main {
     font-weight: 400;
     font-size: 0.95em;
 }
+
+
+
+
+
+
+
 
 /* Make the info text grey and slightly smaller */
 .task-tile .tile-content div:nth-child(2) {
@@ -294,7 +314,10 @@ main {
     margin-top: auto;
 }
 
+
 /* .task-tile>div {
+
+
     flex: 1 1 auto;
     word-break: break-word;
 } */
@@ -312,17 +335,19 @@ main {
     }
 }
 
-.task-tile > div {
+
+.task-tile>div {
     margin: 0 0 10px 0;
     padding: 0;
     word-break: break-word;
     line-height: 1.5;
 }
 
-.task-tile > div:nth-child(2),
-.task-tile > div:nth-child(3) {
+.task-tile>div:nth-child(2),
+.task-tile>div:nth-child(3) {
     color: grey;
 }
+
 
 aside#detailPane {
     flex: 1;
@@ -340,10 +365,12 @@ aside#detailPane {
     border-left: 1px solid grey;
     /* width: calc(40vw - 80px); */
     margin: 0;
+
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
+
 
 #togglePane {
     display: none;
@@ -351,6 +378,10 @@ aside#detailPane {
     /* top: 40px; */
     /* right: 10px; */
     /* font-size: 24px; */
+
+
+
+
     /* padding: 6px 12px; */
     /* background-color: #ccc; */
     /* border-radius: 20px; */
@@ -367,8 +398,7 @@ body.dark {
     color: white;
 }
 
-body.dark #searchBox,
-#dashboardKeyInput {
+body.dark #searchBox, #dashboardKeyInput {
     background: #222;
     color: white;
     border: 1px solid #555;
@@ -413,6 +443,7 @@ body.dark #searchBox,
     border-radius: 3px;
     transition: width 0.3s ease;
 }
+
 
 /* Add this to your existing CSS */
 /* .tile-content div.due-note {
@@ -461,6 +492,7 @@ body.dark #searchBox,
     border-width: 4px;
 }
 
+
 /* jjjjjjjjjjjjjjjjjjjjjjjjjjjj */
 
 .task-tile.due-far {
@@ -504,6 +536,9 @@ body.dark #searchBox,
     }
 }
 
+
+
+
 /* ......................... */
 /* For past, today, or tomorrow */
 .task-tile.due-red {
@@ -518,20 +553,25 @@ body.dark #searchBox,
 @keyframes blinkBorder {
     0% {
         border-color: #3498db;
+
         outline: 2px solid #00bfff;
         outline-offset: -2px;
         box-shadow: 0 0 12px #00bfff;
+
     }
 
     50% {
         border-color: grey;
+
         outline: 0px solid #ff950000;
         outline-offset: -0px;
         box-shadow: 0 0 0px #ff950000;
+
     }
 
     100% {
         border-color: #3498db;
+
         outline: 2px solid #00bfff;
         outline-offset: -2px;
         box-shadow: 0 0 12px #00bfff;
@@ -541,6 +581,8 @@ body.dark #searchBox,
 .task-tile.due-soon {
     animation: blinkBorder 1s infinite;
     border: 4px solid #3498db;
+
+
 }
 
 .task-tile.due-soon .due-note {
@@ -558,18 +600,29 @@ body.dark #searchBox,
 
 /* ............................................................... */
 
+
+
 /* ----------------------- */
+
+
+
 
 /* ---------------------------------------------------------------- */
 
 /* Common completed tile styles */
 .task-tile.due-completed {
     position: relative;
+
+
+
     overflow: clip;
     /* instead of hidden */
     white-space: normal;
     word-wrap: break-word;
     word-break: break-word;
+
+
+
     border: 2px solid;
     background: transparent;
     backdrop-filter: blur(6px);
@@ -668,23 +721,38 @@ body.dark #searchBox,
     box-shadow: 0 0 6px #00bfff;
 }
 
+
+
 footer {
     text-align: center;
     font-size: 0.85em;
     margin-top: 0;
     color: grey;
     padding: 10px 0 0 0;
+
 }
 
+
 @media (prefers-color-scheme: dark) {
+
     /* #syncBtn {
         background-color: #333;
         color: white;
         border: 1px solid #666;
+
+
+
     } */
 
+
+
+
+
     #syncBtn {
+
         /* margin-top: 5px; */
+
+
         padding: 6px 12px;
         /* background-color: #ccc; */
         border-radius: 20px;
@@ -694,12 +762,21 @@ footer {
         transition: background 0.2s;
         /* background-color:#00000000; */
         border: 1px solid grey;
+
+
+
     }
+
+
+
+
 }
 
+
+
 .onPhone {
-    display: none;
-}
+        display: none;
+    }
 
 @media (max-width: 1100px) {
     main {
@@ -717,11 +794,13 @@ footer {
         border-top: 2px solid grey;
         width: calc(100vw - 0px);
         /* background-color: #00bfff; */
+
         height: calc(0px);
         overflow: hidden;
     }
 
     #paneContent {
+
         position: fixed;
         left: 0;
         top: 35vh;
@@ -731,11 +810,15 @@ footer {
         height: calc(60vh);
         box-sizing: border-box;
         /* overflow: hidden; */
+
         border-radius: 0px;
+
+
     }
 
     #togglePane {
         display: block;
+
     }
 
     #detailPane.active {
@@ -745,389 +828,238 @@ footer {
     .note-to-user,
     .hide-on-phone {
         display: none;
+
+
     }
 
     .onPhone {
         display: inline;
     }
 
-    .pill,
-    .pill2 {
-        /* padding: 6px 12px; */
-        /* background-color: #ccc; */
-        /* border-radius: 20px; */
-        /* cursor: pointer; */
-        font-size: 12px;
-        /* user-select: none; */
-        /* transition: background 0.2s; */
-        border: 1px solid grey;
-    }
+    .pill, .pill2 {
+    /* padding: 6px 12px; */
+    /* background-color: #ccc; */
+    /* border-radius: 20px; */
+    /* cursor: pointer; */
+    font-size: 12px;
+    /* user-select: none; */
+    /* transition: background 0.2s; */
+    border: 1px solid grey;
+}
 
     header {
+
         height: 35vh;
+
     }
 
     main {
+
         /* height: 65vh; */
         height: calc(65vh - 40px);
+
     }
 
     #tileContainer {
         /* grid-template-columns: repeat(var(--number-of-cols), 1fr); */
+
+
         grid-template-columns: repeat(1, 1fr);
+
         width: 100vw;
     }
 
     #searchBox {
+
         width: 200px;
         max-width: 80vw;
+
     }
+
 }
 
-/* ............................................ . . */
+
+
+/* ............................................ . .  */
 
 #timeline-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .stage-bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.2s;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .stage-bar:hover {
-    background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 .stage-bar span {
-    flex: 1;
-    font-weight: 500;
-    text-align: center;
+  flex: 1;
+  font-weight: 500;
+  text-align: center;
 }
 
-/* ------------------------------------------ */
 
-/* --------------------------------- table below */
+
+/* ------------------------------------------  */
+
+
+
+.dashboard-key-container {
+  position:absolute;
+  right: 20px;
+  top: 20px;
+  
+  max-width: max-content;
+  margin: 10px auto;
+  
+}
+
+#dashboardKeyInput {
+  width: 400px;
+  padding: 8px 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-family: monospace;
+   text-transform: uppercase;
+}
+
+#dashboardKeyDropdown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-key {
+  color: red;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+
+#dashboardKeyDropdown {
+  position: absolute;
+  width: 100%;
+  background: #0000007d;
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  display: none;
+}
+
+#dashboardKeyDropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* #dashboardKeyDropdown li:hover {
+  background-color: #f0f0f0;
+} */
+
+#rememberMeContainer {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: left;
+}
+
+
+/* --------------------------------- table below  */
 
 .dashboard-pricing-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    font-size: 15px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
 }
 
 /* Light Theme */
 @media (prefers-color-scheme: light) {
-    .dashboard-pricing-table thead {
-        background: linear-gradient(to right, #007acc, #005a9e);
-        color: white;
-    }
+  .dashboard-pricing-table thead {
+    background: linear-gradient(to right, #007acc, #005a9e);
+    color: white;
+  }
 
-    .dashboard-pricing-table th,
-    .dashboard-pricing-table td {
-        padding: 16px 20px;
-        text-align: left;
-        border-bottom: 1px solid #eee;
-    }
+  .dashboard-pricing-table th,
+  .dashboard-pricing-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
 
-    .dashboard-pricing-table tbody tr {
-        background-color: #ffffff;
-        transition: background 0.3s ease;
-    }
+  .dashboard-pricing-table tbody tr {
+    background-color: #ffffff;
+    transition: background 0.3s ease;
+  }
 
-    .dashboard-pricing-table tbody tr:hover {
-        background-color: #f5faff;
-    }
+  .dashboard-pricing-table tbody tr:hover {
+    background-color: #f5faff;
+  }
 
-    .dashboard-pricing-table td {
-        color: #333;
-    }
+  .dashboard-pricing-table td {
+    color: #333;
+  }
 
-    .dashboard-pricing-table td:last-child {
-        font-weight: bold;
-        color: #007acc;
-    }
+  .dashboard-pricing-table td:last-child {
+    font-weight: bold;
+    color: #007acc;
+  }
 }
 
 /* Dark Theme */
 @media (prefers-color-scheme: dark) {
-    .dashboard-pricing-table thead {
-        background: linear-gradient(to right, #1e1e2f, #11111a);
-        color: #f2f2f2;
-    }
+  .dashboard-pricing-table thead {
+    background: linear-gradient(to right, #1e1e2f, #11111a);
+    color: #f2f2f2;
+  }
 
-    .dashboard-pricing-table th,
-    .dashboard-pricing-table td {
-        padding: 16px 20px;
-        text-align: left;
-        border-bottom: 1px solid #333;
-    }
-
-    .dashboard-pricing-table tbody tr {
-        background-color: #1a1a1a;
-        transition: background 0.3s ease;
-    }
-
-    .dashboard-pricing-table tbody tr:hover {
-        background-color: #23232e;
-    }
-
-    .dashboard-pricing-table td {
-        color: #ddd;
-    }
-
-    .dashboard-pricing-table td:last-child {
-        font-weight: bold;
-        color: #4ea3ff;
-    }
-}
-
-/* ------------------------------------------- key bar below */
-
-/* Key bar container with wrapper for stacking */
-.dashboard-key-container {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    max-width: max-content;
-    margin: 10px auto;
-    /* position: relative;  */
-    
-    /* For absolute positioning of checkbox */
-}
-
-.dashboard-key-container > .key-input-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-/* Key input */
-#dashboardKeyInput {
-    width: 400px;
-    max-width: 90vw;
-    padding: 8px 12px;
-    font-size: 15px;
-    font-family: monospace;
-    text-transform: uppercase;
-    border: 1px solid transparent;
-    border-image: linear-gradient(
-        to right,
-        #0c00b8, /* Blue */
-        #ec6200, /* Orange */
-        #ff00ff, /* Magenta */
-        #00ffff  /* Cyan */
-    ) 1;
-    border-radius: 6px;
-    outline: none;
-    background: inherit;
-    color: inherit;
-    transition: box-shadow 0.2s ease, background 0.2s ease;
-}
-
-#dashboardKeyInput:focus {
-    box-shadow: 0 0 6px rgba(0, 191, 255, 0.5); /* Cyan glow on focus */
-    background: rgba(255, 255, 255, 0.05); /* Subtle background change */
-}
-
-/* Dark theme adjustments for input */
-@media (prefers-color-scheme: dark) {
-    #dashboardKeyInput {
-        background: #222;
-        color: #fff;
-        border-image: linear-gradient(
-            to right,
-            #4d4dff, /* Lighter blue */
-            #ff8533, /* Lighter orange */
-            #ff66ff, /* Lighter magenta */
-            #66ffff  /* Lighter cyan */
-        ) 1;
-    }
-    #dashboardKeyInput:focus {
-        box-shadow: 0 0 6px rgba(102, 255, 255, 0.7);
-        background: rgba(255, 255, 255, 0.1);
-    }
-}
-
-/* Dropdown container */
-#dashboardKeyDropdown {
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    -webkit-backdrop-filter: blur(13px);
-    backdrop-filter: blur(13px);
-    border: 1px solid transparent;
-    border-image: linear-gradient(
-        to bottom,
-        #0c00b8,
-        #ec6200
-    ) 1;
-    border-top: none;
-    max-height: 200px;
-    overflow-y: hidden; /* Hide scrollbar by default */
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 10;
-    border-radius: 0 0 6px 6px;
-    display: none;
-    margin-top: 5px; /* Controlled small gap between input and dropdown */
-}
-
-/* Show vertical scrollbar on hover with custom styling */
-#dashboardKeyDropdown:hover {
-    overflow-y: auto; /* Enable vertical scrolling on hover */
-    overflow-x: hidden; /* Ensure no horizontal scrolling */
-}
-
-#dashboardKeyDropdown::-webkit-scrollbar {
-    width: 8px;
-}
-
-#dashboardKeyDropdown::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-#dashboardKeyDropdown::-webkit-scrollbar-thumb {
-    background-color: #666;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-}
-
-#dashboardKeyDropdown:hover::-webkit-scrollbar-thumb {
-    background-color: #00ffff; /* Cyan thumb on hover */
-}
-
-/* Fallback for Firefox */
-#dashboardKeyDropdown {
-    scrollbar-width: thin;
-    scrollbar-color: #00ffff transparent;
-}
-
-/* Dark theme adjustments for dropdown */
-@media (prefers-color-scheme: dark) {
-    #dashboardKeyDropdown {
-        background: rgba(34, 34, 34, 0.5);
-        border-image: linear-gradient(
-            to bottom,
-            #4d4dff,
-            #ff8533
-        ) 1;
-    }
-    #dashboardKeyDropdown:hover::-webkit-scrollbar-thumb {
-        background-color: #66ffff; /* Lighter cyan in dark mode */
-    }
-    #dashboardKeyDropdown {
-        scrollbar-color: #66ffff transparent;
-    }
-}
-
-/* Dropdown items */
-#dashboardKeyDropdown li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    color: inherit;
-    background: transparent;
-    transition: background 0.2s ease, transform 0.2s ease;
-    white-space: nowrap; /* Prevent text wrapping that could cause overflow */
-    flex-shrink: 1; /* Allow shrinking to fit width */
-}
-
-#dashboardKeyDropdown li:hover {
-    background: rgba(0, 191, 255, 0.2); /* Cyan hover effect */
-    transform: translateX(2px); /* Subtle shift for interactivity */
-}
-
-/* Delete key button */
-.delete-key {
-    color: #ff3333; /* Bright red */
-    margin-left: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
-    white-space: nowrap; /* Prevent wrapping */
-}
-
-.delete-key:hover {
-    color: #ff6666; /* Lighter red on hover */
-    transform: scale(1.2); /* Slight zoom for emphasis */
-}
-
-/* Dark theme adjustments for delete key */
-@media (prefers-color-scheme: dark) {
-    .delete-key {
-        color: #ff6666;
-    }
-    .delete-key:hover {
-        color: #ff9999;
-    }
-}
-
-/* Remember Me checkbox */
-#rememberMeContainer {
-    position: absolute;
-    top: -25px; /* Position above key bar, adjust based on checkbox height */
-    font-size: 14px;
-    color: #777;
+  .dashboard-pricing-table th,
+  .dashboard-pricing-table td {
+    padding: 16px 20px;
     text-align: left;
-    padding: 2px 12px;
-    min-height: 20px; /* Reserve space even when hidden */
+    border-bottom: 1px solid #333;
+  }
+
+  .dashboard-pricing-table tbody tr {
+    background-color: #1a1a1a;
+    transition: background 0.3s ease;
+  }
+
+  .dashboard-pricing-table tbody tr:hover {
+    background-color: #23232e;
+  }
+
+  .dashboard-pricing-table td {
+    color: #ddd;
+  }
+
+  .dashboard-pricing-table td:last-child {
+    font-weight: bold;
+    color: #4ea3ff;
+  }
 }
 
-#rememberMeContainer input {
-    margin-right: 5px;
-    accent-color: #ec6200; /* Orange checkbox */
-}
-
-/* Dark theme adjustments for Remember Me */
-@media (prefers-color-scheme: dark) {
-    #rememberMeContainer {
-        color: #ccc;
-    }
-    #rememberMeContainer input {
-        accent-color: #ff8533; /* Lighter orange */
-    }
-}
-
-/* Mobile adjustments */
-@media (max-width: 1100px) {
-    .dashboard-key-container {
-        right: 10px;
-        top: 10px;
-    }
-    #dashboardKeyInput {
-        width: 200px;
-        font-size: 13px;
-        padding: 6px 10px;
-    }
-    #dashboardKeyDropdown li {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-    #rememberMeContainer {
-        font-size: 12px;
-        padding: 2px 10px;
-        top: -20px; /* Adjust for mobile checkbox height */
-    }
-    #dashboardKeyDropdown::-webkit-scrollbar {
-        width: 6px; /* Smaller scrollbar on mobile hover */
-    }
-}
+/* ------------------------------------------- key bar below  */
