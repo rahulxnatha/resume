@@ -1,22 +1,306 @@
 let currentSheetId = "";
 let currentDashboardLabel = "";
 let globalData = [];
+let globalTimelineData = [];
 let blockTexts = {};
 let typoThreshold = 0.25;
+const CACHE_KEY = 'dashboard_data';
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
 document.getElementById('rememberMeCheckbox').checked = true;
 
+function getCachedData() {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        if (Date.now() - timestamp < CACHE_TTL) return data;
+    }
+    return null;
+}
+
+function setCachedData(data) {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+}
+
+function fetchAndRenderData() {
+    const cachedData = getCachedData();
+    if (cachedData) {
+        globalData = cachedData.tasks;
+        globalTimelineData = cachedData.timeline;
+        blockTexts = cachedData.briefs;
+        renderCurrentView();
+        return;
+    }
+
+    if (!currentSheetId) {
+        console.error("Sheet ID is not set.");
+        showError("Please set a valid Google Sheet ID.");
+        return;
+    }
+
+    const tasksUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
+    const timelineUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}/gviz/tq?tqx=out:csv&sheet=Timeline`;
+
+    Promise.all([
+        fetch(tasksUrl).then(res => res.text()).catch(err => { console.error("Tasks fetch error:", err); return ""; }),
+        fetch(timelineUrl).then(res => res.text()).catch(err => { console.error("Timeline fetch error:", err); return ""; })
+    ])
+        .then(([tasksCsv, timelineCsv]) => {
+            if (!window.Papa) {
+                console.error("PapaParse library is missing.");
+                showError("Failed to load data: PapaParse library missing.");
+                return;
+            }
+
+            // Process Tasks tab
+            const taskRows = tasksCsv ? Papa.parse(tasksCsv.trim(), { skipEmptyLines: true }).data.slice(2) : [];
+            globalData = taskRows.map(row => ({
+                task: row[1] || "",
+                info: row[2] || "",
+                status: row[3] || "",
+                id: row[4] || `task${taskRows.indexOf(row) + 1}`,
+                block: row[5] || "",
+                dueDateUTC: row[6] || null
+            })).filter(d => d.task && d.info && d.status && d.id);
+
+            // Process Timeline tab
+            const timelineRows = timelineCsv ? Papa.parse(timelineCsv.trim(), { skipEmptyLines: true }).data.slice(1) : [];
+            globalTimelineData = timelineRows.map((row, index) => ({
+                id: row[0] || `timeline${index + 1}`,
+                stage: row[1] || "",
+                description: row[2] || "",
+                amountSpent: row[3] ? parseFloat(row[3].replace(/[^0-9.]/g, '')).toFixed(2) : "0.00",
+                amountRequired: row[4] ? parseFloat(row[4].replace(/[^0-9.]/g, '')).toFixed(2) : "0.00",
+                startDate: row[5] || null,
+               'endDate': row[6] || null
+            })).filter(d => d.stage && d.stage.toLowerCase() !== "total");
+
+            // Map brief texts
+            blockTexts = {};
+            globalData.forEach(d => blockTexts[d.id] = d.block);
+            globalTimelineData.forEach(d => blockTexts[d.id] = d.description);
+
+            // Cache data
+            setCachedData({ tasks: globalData, timeline: globalTimelineData, briefs: blockTexts });
+
+            renderCurrentView();
+        })
+        .catch(err => {
+            console.error("Error processing data:", err);
+            showError("Failed to load data. Please check your connection or Sheet ID.");
+        });
+}
+
+function showError(message) {
+    document.getElementById("tileContainer").innerHTML = `<div class="stage-bar error"><div>${message}</div></div>`;
+    document.getElementById("timeline-container").innerHTML = `<div class="stage-bar error"><div>${message}</div></div>`;
+}
+
+function renderCurrentView() {
+    const isTimelineActive = localStorage.getItem('activeTab') === 'timeline';
+    const pillTimeline = document.getElementById("pill-timeline");
+    const pillTasks = document.getElementById("pill-tasks");
+    const tileContainer = document.getElementById("tileContainer");
+    const timelineContainer = document.getElementById("timeline-container");
+
+    if (isTimelineActive) {
+        pillTimeline.classList.add("active-tab");
+        pillTasks.classList.remove("active-tab");
+        tileContainer.style.display = "none";
+        timelineContainer.style.display = "flex";
+        renderTimeline(globalTimelineData);
+    } else {
+        pillTasks.classList.add("active-tab");
+        pillTimeline.classList.remove("active-tab");
+        tileContainer.style.display = "grid";
+        timelineContainer.style.display = "none";
+        const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
+        renderTiles(unifiedSort(excludeCompleted));
+    }
+
+    updateTaskSummary(globalData);
+
+    const params = new URLSearchParams(window.location.search);
+    const search = params.get("search");
+    if (search) {
+        document.getElementById("searchBox").value = search;
+        handleSearch();
+    }
+    const sel = params.get("id");
+    if (sel && blockTexts[sel]) {
+        const tile = document.getElementById(`tile@${sel}`);
+        if (tile) {
+            tile.scrollIntoView({ behavior: "smooth", block: "center" });
+            tile.click();
+        }
+    }
+}
+
+function renderTimeline(data) {
+    const container = document.getElementById("timeline-container");
+    container.innerHTML = "";
+    if (!data || !data.length) {
+        container.innerHTML = `<div class="stage-bar error"><div>No timeline data available. Check Google Sheets "Timeline" tab.</div></div>`;
+        return;
+    }
+    const fragment = document.createDocumentFragment();
+    const now = new Date("2025-08-07T21:53:00+05:30"); // Current IST time
+    const sortedData = data.slice().sort((a, b) => {
+        if (!a.endDate || !b.endDate) return 0;
+        return new Date(a.endDate) - new Date(b.endDate);
+    });
+    sortedData.forEach((d, index) => {
+        if (!d.stage) return;
+        let dateClass = "future";
+        let dateText = "No end date";
+        let daysRemaining = "";
+        if (d.endDate) {
+            const end = new Date(d.endDate);
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+            const diffTime = endDay - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // Include end date, exclude today
+            daysRemaining = diffDays >= 0 ? ` (${diffDays} days)` : "";
+            dateText = `${end.getFullYear()}-${(end.getMonth() + 1).toString().padStart(2, '0')}-${end.getDate().toString().padStart(2, '0')}${daysRemaining}`;
+            if (end < now) {
+                dateClass = "past-due";
+                dateText += " (Past due)";
+            } else if (d.startDate && new Date(d.startDate) <= now) {
+                dateClass = "current";
+                dateText += " (In progress)";
+            }
+        }
+        const stageBar = document.createElement("div");
+        stageBar.className = `stage-bar ${dateClass}`;
+        stageBar.id = `tile@${d.id}`;
+        stageBar.innerHTML = `
+            <div class="stage-name">${d.stage}</div>
+            <div class="amounts">${d.amountSpent}/${d.amountRequired}</div>
+            <div class="dates">${dateText}</div>
+            <div class="view-tasks">View Tasks</div>
+        `;
+        stageBar.addEventListener("click", (e) => {
+            if (!e.target.classList.contains("view-tasks")) {
+                showPaneContent(d.id);
+                const params = new URLSearchParams(window.location.search);
+                params.set("id", d.id);
+                history.pushState(null, "", `?${params.toString()}`);
+                document.querySelectorAll('.stage-bar, .task-tile').forEach(t => t.classList.remove('selected'));
+                stageBar.classList.add('selected');
+            }
+        });
+        stageBar.querySelector(".view-tasks").addEventListener("click", () => {
+            const searchTerm = d.stage; // Search by exact stage name
+            document.getElementById("searchBox").value = searchTerm;
+            document.getElementById("pill-tasks").click();
+            handleSearch();
+        });
+        fragment.appendChild(stageBar);
+    });
+    container.appendChild(fragment);
+}
+
+function handleSearch() {
+    const input = document.getElementById("searchBox").value.trim().toLowerCase();
+    const note = document.getElementById("searchNote");
+    let corrected = input;
+    let matches = [];
+    let fallback = [];
+
+    if (document.getElementById("pill-timeline").classList.contains("active-tab")) {
+        globalTimelineData.forEach(d => {
+            const combined = `${d.stage}`.toLowerCase();
+            if (input === "all") matches.push(d);
+            else if (combined.includes(input)) matches.push(d);
+            else if (levenshtein(input, combined) <= Math.floor(combined.length * typoThreshold)) {
+                corrected = d.stage;
+                matches.push(d);
+            }
+        });
+        renderTimeline(matches);
+    } else {
+        globalData.forEach(d => {
+            const combined = `${d.task} ${d.info} ${d.status}`.toLowerCase();
+            const block = blockTexts[d.id] ? blockTexts[d.id].toLowerCase() : "";
+            if (input === "all") matches.push(d);
+            else if (input === "completed" && d.status.toLowerCase().includes("completed")) matches.push(d);
+            else if (input === "processing" && d.status.toLowerCase().includes("processing")) matches.push(d);
+            else if (input === "can start" && d.status.toLowerCase().includes("can start")) matches.push(d);
+            else if (input === "can't start" && d.status.toLowerCase().includes("can't start")) matches.push(d);
+            else if (combined.includes(input)) matches.push(d);
+            else if (block.includes(input)) matches.push(d); // Search brief text
+            else if (levenshtein(input, combined) <= Math.floor(combined.length * typoThreshold)) {
+                corrected = d.task;
+                matches.push(d);
+            } else if (block && levenshtein(input, block) <= Math.floor(block.length * typoThreshold)) {
+                corrected = d.task;
+                matches.push(d);
+            }
+        });
+        renderTiles(unifiedSort(matches));
+    }
+
+    note.innerText = corrected !== input ? `Searched for "${corrected}" instead of "${input}".` : "";
+    const url = new URL(window.location);
+    url.searchParams.set("search", input);
+    history.replaceState(null, "", url.toString());
+}
+
+function updateTaskSummary(data) {
+    const total = data.length;
+    let completed = 0, processing = 0, canStart = 0, cantStart = 0;
+    data.forEach(d => {
+        const s = d.status.toLowerCase();
+        if (s.includes("completed")) completed++;
+        else if (s.includes("processing")) processing++;
+        else if (s.includes("can start")) canStart++;
+        else if (s.includes("can't start") || s.includes("cannot start")) cantStart++;
+    });
+    const percent = count => total === 0 ? 0 : Math.round((count / total) * 100);
+    const summary = `Recognised tasks: ${total} (${completed} completed [${percent(completed)}%], ${processing} processing [${percent(processing)}%], ${canStart} can start [${percent(canStart)}%], ${cantStart} can't start [${percent(cantStart)}%])`;
+    document.getElementById("totalTasks").innerText = summary;
+}
+
+const pillTasks = document.getElementById("pill-tasks");
+const pillTimeline = document.getElementById("pill-timeline");
+const tileContainer = document.getElementById("tileContainer");
+const timelineContainer = document.getElementById("timeline-container");
+
+pillTasks.dataset.filter = "tasks";
+pillTimeline.dataset.filter = "timeline";
+
+pillTasks.addEventListener("click", () => {
+    pillTasks.classList.add("active-tab");
+    pillTimeline.classList.remove("active-tab");
+    tileContainer.style.display = "grid";
+    timelineContainer.style.display = "none";
+    localStorage.setItem('activeTab', 'tasks');
+    const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
+    renderTiles(unifiedSort(excludeCompleted));
+});
+
+pillTimeline.addEventListener("click", () => {
+    pillTimeline.classList.add("active-tab");
+    pillTasks.classList.remove("active-tab");
+    tileContainer.style.display = "none";
+    timelineContainer.style.display = "flex";
+    localStorage.setItem('activeTab', 'timeline');
+    renderTimeline(globalTimelineData);
+});
+
+document.getElementById("syncBtn").addEventListener("click", () => {
+    localStorage.removeItem(CACHE_KEY);
+    fetchAndRenderData();
+    DateAndSync();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("dashboardKeyInput");
-
     const urlParams = new URLSearchParams(window.location.search);
     const urlKey = urlParams.get("key");
-
     const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
     const lastUsedKey = localStorage.getItem("lastUsedDashboardKey");
-
     populateKeyDropdown(savedKeys);
-
     if (urlKey && urlKey.length === 15) {
         handleDashboardKey(urlKey, false).then(success => {
             if (success) {
@@ -31,35 +315,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         return;
     }
-
     if (lastUsedKey && savedKeys[lastUsedKey]) {
         const { sheetId, label, subscription } = savedKeys[lastUsedKey];
         currentSheetId = sheetId;
         currentDashboardLabel = label;
-
-        // Update subscription-type span for saved key
         const subscriptionSpan = document.getElementById("subscription-type");
         if (subscriptionSpan) {
             subscriptionSpan.textContent = subscription || "No subscription specified";
         } else {
             console.warn("Element with id='subscription-type' not found in the DOM.");
         }
-
         input.value = label;
         input.setAttribute("data-key", lastUsedKey);
         input.readOnly = true;
-
         document.getElementById("rememberMeContainer").style.display = "none";
         document.getElementById("dashboardKeyDropdown").style.display = "none";
         document.getElementById("empty-state")?.remove();
         fetchAndRenderData();
     } else if (Object.keys(savedKeys).length === 0 && !urlKey) {
-        document.getElementById("tilesContainer").innerHTML = `
+        document.getElementById("tileContainer").innerHTML = `
             <div id="empty-state">🔑 Please enter a dashboard key to begin.</div>
         `;
     }
-
-    // Set up Edit Content button dynamically
     setupEditContentButton();
 });
 
@@ -67,61 +344,47 @@ async function handleDashboardKey(rawKey, forceRemember = false) {
     const input = document.getElementById("dashboardKeyInput");
     const key = rawKey || input.getAttribute("data-key") || input.value.trim().toUpperCase();
     if (key.length !== 15) return false;
-
     const remember = forceRemember || document.getElementById("rememberMeCheckbox")?.checked;
     const keysSheetUrl = "https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/gviz/tq?tqx=out:csv&sheet=Keys";
-
     try {
         const response = await fetch(keysSheetUrl);
         const csv = await response.text();
-        const rows = csv.trim().split("\n").slice(2); // Skip first two rows (header and comment)
-
+        const rows = csv.trim().split("\n").slice(2);
         for (let row of rows) {
             const cells = row.split(",");
             const keyFromSheet = (cells[1] || "").replace(/['"]/g, "").trim().toUpperCase();
             const sheetId = (cells[2] || "").replace(/['"]/g, "").trim();
             const label = (cells[3] || "").replace(/['"]/g, "").trim();
-            const subscription = (cells[4] || "").replace(/['"]/g, "").trim(); // Subscription column (index 4)
-
+            const subscription = (cells[4] || "").replace(/['"]/g, "").trim();
             if (keyFromSheet === key) {
                 currentSheetId = sheetId;
                 currentDashboardLabel = label;
-
-                // Update subscription-type span
                 const subscriptionSpan = document.getElementById("subscription-type");
                 if (subscriptionSpan) {
                     subscriptionSpan.textContent = subscription || "No subscription specified";
                 } else {
                     console.warn("Element with id='subscription-type' not found in the DOM.");
                 }
-
                 const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
-
                 if (remember) {
-                    savedKeys[key] = { sheetId, label, subscription }; // Store subscription in savedKeys
+                    savedKeys[key] = { sheetId, label, subscription };
                     localStorage.setItem("dashboardKeys", JSON.stringify(savedKeys));
                     localStorage.setItem("lastUsedDashboardKey", key);
                 }
-
                 sessionStorage.setItem("lastUsedDashboardKey", key);
                 sessionStorage.setItem("lastUsedDashboardLabel", label);
-
                 populateKeyDropdown(savedKeys);
-
                 input.value = label;
                 input.setAttribute("data-key", key);
                 input.readOnly = true;
-
                 document.getElementById("rememberMeContainer").style.display = "none";
                 document.getElementById("empty-state")?.remove();
                 fetchAndRenderData();
                 return true;
             }
         }
-
         alert("Invalid dashboard key.");
         return false;
-
     } catch (err) {
         console.error("Error reading Keys sheet:", err);
         alert("Failed to verify the dashboard key.");
@@ -132,12 +395,10 @@ async function handleDashboardKey(rawKey, forceRemember = false) {
 function populateKeyDropdown(savedKeys) {
     const dropdown = document.getElementById("dashboardKeyDropdown");
     dropdown.innerHTML = "";
-
     const cleanedKeys = {};
     Object.entries(savedKeys).forEach(([key, value]) => {
         if (!value?.label || !value?.sheetId) return;
         cleanedKeys[key] = value;
-
         const li = document.createElement("li");
         li.innerHTML = `
             <span class="key-label">${value.label}</span>
@@ -153,7 +414,6 @@ function populateKeyDropdown(savedKeys) {
         });
         dropdown.appendChild(li);
     });
-
     dropdown.style.display = Object.keys(cleanedKeys).length ? "block" : "none";
 }
 
@@ -178,7 +438,6 @@ document.addEventListener("click", function (e) {
 keyInput.addEventListener("input", function () {
     const value = this.value.trim().toUpperCase();
     const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
-
     if (value.length === 15) {
         handleDashboardKey(value);
         document.getElementById("dashboardKeyDropdown").style.display = "none";
@@ -202,16 +461,13 @@ document.getElementById("dashboardKeyDropdown").addEventListener("click", functi
         let savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
         delete savedKeys[keyToDelete];
         localStorage.setItem("dashboardKeys", JSON.stringify(savedKeys));
-
         if (localStorage.getItem("lastUsedDashboardKey") === keyToDelete) {
             localStorage.removeItem("lastUsedDashboardKey");
         }
-
         populateKeyDropdown(savedKeys);
     }
 });
 
-// Function to set up Edit Content button with dynamic detection
 function setupEditContentButton() {
     function attachEventListener() {
         const editContentBtn = document.getElementById("editContentBtn");
@@ -235,113 +491,24 @@ function setupEditContentButton() {
         console.warn("Element with id='editContentBtn' not found in the DOM.");
         return false;
     }
-
-    // Try attaching immediately
     if (!attachEventListener()) {
-        // Set up MutationObserver to detect when editContentBtn is added to DOM
         const observer = new MutationObserver((mutations, obs) => {
             if (attachEventListener()) {
-                obs.disconnect(); // Stop observing once the button is found
+                obs.disconnect();
             }
         });
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 }
-
-// --- DO NOT CHANGE BELOW THIS LINE ---
-function fetchAndRenderData() {
-    if (!currentSheetId) {
-        console.error("Sheet ID is not set.");
-        return;
-    }
-
-    const csvUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
-    fetch(csvUrl)
-        .then(res => res.text())
-        .then(csvText => {
-            const rows = Papa.parse(csvText.trim(), { skipEmptyLines: true }).data.slice(2);
-            globalData = rows.map(row => ({
-                task: row[1],
-                info: row[2],
-                status: row[3],
-                id: row[4],
-                block: row[5] || "",
-                dueDateUTC: row[6] || null
-            })).filter(d => d.task && d.info && d.status && d.id);
-
-            blockTexts = {};
-            globalData.forEach(d => blockTexts[d.id] = d.block);
-
-            function updateTaskSummary(data) {
-                const total = data.length;
-                let completed = 0, processing = 0, canStart = 0, cantStart = 0;
-                data.forEach(d => {
-                    const s = d.status.toLowerCase();
-                    if (s.includes("completed")) completed++;
-                    else if (s.includes("processing")) processing++;
-                    else if (s.includes("can start")) canStart++;
-                    else if (s.includes("can't start") || s.includes("cannot start")) cantStart++;
-                });
-                const percent = count => total === 0 ? 0 : Math.round((count / total) * 100);
-                const summary = `Recognised tasks: ${total} (${completed} completed [${percent(completed)}%], ${processing} processing [${percent(processing)}%], ${canStart} can start [${percent(canStart)}%], ${cantStart} can't start [${percent(cantStart)}%])`;
-                document.getElementById("totalTasks").innerText = summary;
-            }
-
-            const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
-            renderTiles(unifiedSort(excludeCompleted));
-            updateTaskSummary(globalData);
-
-            const params = new URLSearchParams(window.location.search);
-            const search = params.get("search");
-            if (search) {
-                document.getElementById("searchBox").value = search;
-                handleSearch();
-            }
-            const sel = params.get("id");
-            if (sel) {
-                const tile = document.getElementById(`tile@${sel}`);
-                if (tile) {
-                    tile.scrollIntoView({ behavior: "smooth", block: "center" });
-                    tile.click();
-                }
-            }
-        });
-
-    document.getElementById("togglePane").addEventListener("click", () => {
-        show_task_info = !show_task_info;
-        document.getElementById("togglePane").innerHTML = show_task_info ? "👀 Hide task info" : "👁️ Show task info";
-        document.getElementById("detailPane").classList.toggle("active");
-    });
-}
-
-var show_task_info = false;
-
-window.addEventListener("load", () => {
-    fetchAndRenderData();
-    const searchBox = document.getElementById("searchBox");
-    searchBox.addEventListener("keydown", e => {
-        if (e.key === "Enter") handleSearch();
-    });
-    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.body.classList.toggle("dark", isDark);
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialSearch = urlParams.get("search");
-    if (initialSearch) {
-        searchBox.value = initialSearch;
-        handleSearch();
-    }
-});
-
-searchBox.addEventListener("input", () => {
-    updateVisiblePills();
-});
 
 function renderTiles(data) {
     const container = document.getElementById("tileContainer");
     container.innerHTML = "";
+    if (!data || !data.length) {
+        container.innerHTML = `<div class="stage-bar error"><div>No tasks available.</div></div>`;
+        return;
+    }
+    const fragment = document.createDocumentFragment();
     data.forEach(d => {
         const tile = document.createElement("div");
         let dueNote = "";
@@ -419,11 +586,12 @@ function renderTiles(data) {
             const params = new URLSearchParams(window.location.search);
             params.set("id", d.id);
             history.pushState(null, "", `?${params.toString()}`);
-            document.querySelectorAll('.task-tile').forEach(t => t.classList.remove('selected'));
+            document.querySelectorAll('.task-tile, .stage-bar').forEach(t => t.classList.remove('selected'));
             tile.classList.add('selected');
         });
-        container.appendChild(tile);
+        fragment.appendChild(tile);
     });
+    container.appendChild(fragment);
 }
 
 function generateStatusHTML(statusText) {
@@ -450,6 +618,9 @@ function calculateProgressPercent(start, end, today) {
 function showPaneContent(id) {
     const raw = blockTexts[id] || "No details available.";
     document.getElementById("paneContent").innerHTML = autoLink(raw);
+    if (window.innerWidth <= 1100) {
+        document.getElementById("detailPane").classList.add("active");
+    }
 }
 
 function escapeHTML(str) {
@@ -492,39 +663,6 @@ function autoLink(text) {
     }
     Array.from(dummy.childNodes).forEach(linkifyNode);
     return dummy.innerHTML;
-}
-
-function handleSearch() {
-
-    document.getElementById("pill-tasks").click();
-
-    const input = document.getElementById("searchBox").value.trim().toLowerCase();
-    const note = document.getElementById("searchNote");
-    let corrected = input;
-    let matches = [];
-    let fallback = [];
-    globalData.forEach(d => {
-        const combined = `${d.task} ${d.info} ${d.status}`.toLowerCase();
-        const block = d.block.toLowerCase();
-        if (input === "all") matches.push(d);
-        else if (input === "completed" && d.status.toLowerCase().includes("completed")) matches.push(d);
-        else if (input === "processing" && d.status.toLowerCase().includes("processing")) matches.push(d);
-        else if (input === "can start" && d.status.toLowerCase().includes("can start")) matches.push(d);
-        else if (input === "can't start" && d.status.toLowerCase().includes("can't start")) matches.push(d);
-        else if (combined.includes(input)) matches.push(d);
-        else if (block.includes(input)) fallback.push(d);
-        else if (levenshtein(input, combined) <= Math.floor(combined.length * typoThreshold)) {
-            corrected = d.task;
-            matches.push(d);
-        } else if (levenshtein(input, block) <= Math.floor(block.length * typoThreshold)) {
-            fallback.push(d);
-        }
-    });
-    renderTiles(unifiedSort([...matches, ...fallback]));
-    note.innerText = corrected !== input ? `Searched for "${corrected}" instead of "${input}".` : "";
-    const url = new URL(window.location);
-    url.searchParams.set("search", input);
-    history.replaceState(null, "", url.toString());
 }
 
 function unifiedSort(tasks) {
@@ -577,20 +715,10 @@ function levenshtein(a, b) {
 function updateVisiblePills() {
     const current = document.getElementById("searchBox").value.trim().toLowerCase();
     document.querySelectorAll(".pill").forEach(pill => {
-        const text = pill.dataset.filter.toLowerCase();
+        const text = pill.dataset.filter?.toLowerCase() || "";
         pill.style.display = (!current || text !== current) ? "inline-block" : "none";
     });
 }
-
-document.querySelectorAll(".pill").forEach(pill => {
-    pill.addEventListener("click", () => {
-        const value = pill.dataset.filter;
-        const searchBox = document.getElementById("searchBox");
-        searchBox.value = value;
-        handleSearch();
-        updateVisiblePills();
-    });
-});
 
 function DateAndSync() {
     const titleDiv = document.getElementById("title");
@@ -616,11 +744,6 @@ function DateAndSync() {
         const hours = String(Math.floor(absMin / 60)).padStart(2, '0');
         const minutes = String(absMin % 60).padStart(2, '0');
         return `UTC${sign}${hours}:${minutes}`;
-    }
-    function minutesAgo(date) {
-        const diffMs = new Date() - date;
-        const mins = Math.floor(diffMs / 60000);
-        return mins === 0 ? "just now" : `${mins} min${mins === 1 ? "" : "s"} ago`;
     }
     const istTime = formatDateTime("Asia/Kolkata");
     const deTime = formatDateTime("Europe/Berlin");
@@ -693,231 +816,28 @@ function DateAndSync() {
 }
 
 window.addEventListener("load", () => {
+    const searchBox = document.getElementById("searchBox");
     DateAndSync();
-});
-
-document.getElementById("syncBtn").addEventListener("click", () => {
-    fetchAndRenderData();
-    DateAndSync();
-});
-
-const pillTasks = document.getElementById("pill-tasks");
-const pillTimeline = document.getElementById("pill-timeline");
-const timelineContainer = document.getElementById("timeline-container");
-const tilesContainer = document.getElementById("tileContainer");
-
-pillTasks.addEventListener("click", () => {
-    pillTasks.classList.add("active-tab");
-    pillTimeline.classList.remove("active-tab");
-    tilesContainer.style.display = "grid";
-    timelineContainer.style.display = "none";
-});
-
-pillTimeline.addEventListener("click", () => {
-    pillTimeline.classList.add("active-tab");
-    pillTasks.classList.remove("active-tab");
-    tilesContainer.style.display = "none";
-    timelineContainer.style.display = "flex";
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const input = document.getElementById("dashboardKeyInput");
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlKey = urlParams.get("key");
-    const savedKeys = JSON.parse(localStorage.getItem("dashboardKeys") || "{}");
-    const lastUsedKey = localStorage.getItem("lastUsedDashboardKey");
-    populateKeyDropdown(savedKeys);
-    if (urlKey && urlKey.length === 15) {
-        handleDashboardKey(urlKey, false).then(success => {
-            if (success) {
-                const newParams = new URLSearchParams(urlParams);
-                newParams.delete("key");
-                const newQueryString = newParams.toString();
-                const newUrl = newQueryString
-                    ? `${window.location.pathname}?${newQueryString}`
-                    : window.location.pathname;
-                window.history.replaceState({}, document.title, newUrl);
-            }
-        });
-        return;
-    }
-    if (lastUsedKey && savedKeys[lastUsedKey]) {
-        const { sheetId, label, subscription } = savedKeys[lastUsedKey];
-        currentSheetId = sheetId;
-        currentDashboardLabel = label;
-        const subscriptionSpan = document.getElementById("subscription-type");
-        if (subscriptionSpan) {
-            subscriptionSpan.textContent = subscription || "No subscription specified";
-        } else {
-            console.warn("Element with id='subscription-type' not found in the DOM.");
-        }
-        input.value = label;
-        input.setAttribute("data-key", lastUsedKey);
-        input.readOnly = true;
-        document.getElementById("rememberMeContainer").style.display = "none";
-        document.getElementById("dashboardKeyDropdown").style.display = "none";
-        document.getElementById("empty-state")?.remove();
-        fetchAndRenderData();
-    } else if (Object.keys(savedKeys).length === 0 && !urlKey) {
-        document.getElementById("tilesContainer").innerHTML = `
-            <div id="empty-state">🔑 Please enter a dashboard key to begin.</div>
-        `;
-    }
-});
-
-
-
-// --------------------- append 
-
-
-
-// Global variable for timeline data (new name to avoid conflict)
-let timelineData7 = [];
-
-// Parse date with strict validation
-function parseDateString7(dateStr) {
-    if (!dateStr) return null;
-    // Try standard formats: MM/DD/YYYY, YYYY-MM-DD, DD-MM-YYYY
-    const formats = [
-        {
-            regex: /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/, // MM/DD/YYYY
-            parse: ([_, month, day, year]) => ({ year: parseInt(year), month: parseInt(month), day: parseInt(day) })
-        },
-        {
-            regex: /^(\d{4})-(\d{2})-(\d{2})$/, // YYYY-MM-DD
-            parse: ([_, year, month, day]) => ({ year: parseInt(year), month: parseInt(month), day: parseInt(day) })
-        },
-        {
-            regex: /^(\d{1,2})-(\d{1,2})-(\d{4})$/, // DD-MM-YYYY
-            parse: ([_, day, month, year]) => ({ year: parseInt(year), month: parseInt(month), day: parseInt(day) })
-        }
-    ];
-
-    for (const { regex, parse } of formats) {
-        const match = dateStr.match(regex);
-        if (match) {
-            const { year, month, day } = parse(match);
-            // Validate ranges: month 1-12, day 1-31
-            if (month < 1 || month > 12 || day < 1 || day > 31) {
-                console.warn("Invalid date range:", dateStr, { year, month, day });
-                return null;
-            }
-            const date = new Date(year, month - 1, day);
-            if (!isNaN(date) && date.getFullYear() === year && date.getMonth() + 1 === month && date.getDate() === day) {
-                return date;
-            }
-        }
-    }
-    console.warn("Failed to parse date:", dateStr);
-    return null;
-}
-
-// Fetch timeline data from Google Sheet
-function fetchTimelineData7() {
-    if (!currentSheetId) {
-        console.error("Sheet ID is not set for timeline data.");
-        document.getElementById("timeline-container").innerHTML = `<div class="stage-bar error"><div>No Sheet ID provided.</div></div>`;
-        return;
-    }
-
-    const timelineUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}/gviz/tq?tqx=out:csv&sheet=Timeline`;
-    fetch(timelineUrl)
-        .then(res => {
-            if (!res.ok) throw new Error("Failed to fetch timeline data.");
-            return res.text();
-        })
-        .then(csvText => {
-            if (!window.Papa) {
-                console.error("PapaParse library is missing.");
-                document.getElementById("timeline-container").innerHTML = `<div class="stage-bar error"><div>PapaParse library missing.</div></div>`;
-                return;
-            }
-            const rows = Papa.parse(csvText.trim(), { skipEmptyLines: true }).data.slice(1); // Skip header
-            timelineData7 = rows.map((row, index) => {
-                console.log("Raw endDate:", row[6]); // Debug raw endDate
-                const amountSpent = row[3] ? parseFloat(row[3].replace(/[^0-9.]/g, '')) : 0;
-                const amountRequired = row[4] ? parseFloat(row[4].replace(/[^0-9.]/g, '')) : 0;
-                return {
-                    id: row[0] || `timeline${index + 1}`,
-                    stage: row[1] || "",
-                    netRequired: (amountRequired - amountSpent).toFixed(2),
-                    endDate: row[6] || null
-                };
-            }).filter(d => d.stage && d.stage.toLowerCase() !== "total");
-            renderTimeline7();
-        })
-        .catch(err => {
-            console.error("Error fetching timeline data:", err);
-            document.getElementById("timeline-container").innerHTML = `<div class="stage-bar error"><div>Failed to load timeline data.</div></div>`;
-        });
-}
-
-// Render timeline stage bars
-function renderTimeline7() {
-    const container = document.getElementById("timeline-container");
-    container.innerHTML = "";
-    if (!timelineData7.length) {
-        container.innerHTML = `<div class="stage-bar error"><div>No timeline data available.</div></div>`;
-        return;
-    }
-
-    const now = new Date("2025-08-07T23:16:00+05:30"); // Current IST time
-    timelineData7.forEach(d => {
-        if (!d.stage) return;
-        let dateText = "No end date";
-        let dateClass = "future";
-        if (d.endDate) {
-            const end = parseDateString7(d.endDate);
-            if (end && !isNaN(end)) {
-                const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
-                const diffDays = Math.ceil((endDay - today) / (1000 * 60 * 60 * 24)) + 0; // Include end date
-                dateText = `${end.getFullYear()}-${(end.getMonth() + 1).toString().padStart(2, '0')}-${end.getDate().toString().padStart(2, '0')} (${diffDays} days)`;
-                if (end < now) {
-                    dateClass = "past-due";
-                    dateText += " (Past due)";
-                }
-            } else {
-                dateText = "Invalid date";
-                dateClass = "error";
-            }
-        }
-
-        const stageBar = document.createElement("div");
-        stageBar.className = `stage-bar ${dateClass}`;
-        stageBar.id = `stage@${d.id}`;
-        stageBar.innerHTML = `
-            <div class="stage-name">${d.stage}</div>
-            <div class="amounts">${parseFloat(d.netRequired).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
-            <div class="dates">${dateText}</div>
-        `;
-        stageBar.style.cursor = "pointer"; // Indicate clickability
-
-        stageBar.addEventListener("click", () => {
-            const searchBox = document.getElementById("searchBox");
-            searchBox.value = d.stage; // Set search to exact stage name
-            document.getElementById("pill-tasks").click(); // Switch to tasks tab
-            handleSearch(); // Trigger existing search
-        });
-
-        container.appendChild(stageBar);
+    searchBox.addEventListener("keydown", e => {
+        if (e.key === "Enter") handleSearch();
     });
-}
-
-// Fetch and render timeline on sync button click
-document.getElementById("syncBtn").addEventListener("click", () => {
-    fetchTimelineData7();
-});
-
-// Fetch and render timeline on page load
-window.addEventListener("load", () => {
-    fetchTimelineData7();
-    if (document.getElementById("pill-timeline").classList.contains("active-tab")) {
-        renderTimeline7();
+    searchBox.addEventListener("input", () => {
+        updateVisiblePills();
+    });
+    const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.body.classList.toggle("dark", isDark);
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSearch = urlParams.get("search");
+    if (initialSearch) {
+        searchBox.value = initialSearch;
+        handleSearch();
     }
 });
 
-// Render timeline when timeline tab is clicked
-document.getElementById("pill-timeline").addEventListener("click", () => {
-    renderTimeline7();
+document.getElementById("togglePane").addEventListener("click", () => {
+    show_task_info = !show_task_info;
+    document.getElementById("togglePane").innerHTML = show_task_info ? "👀 Hide task info" : "👁️ Show task info";
+    document.getElementById("detailPane").classList.toggle("active");
 });
+
+var show_task_info = false;

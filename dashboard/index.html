@@ -101,16 +101,39 @@
             </label>
             <input type="text" id="dashboardKeyInput" placeholder="DASHBOARD KEY" autocomplete="off" maxlength="15" />
             <ul id="dashboardKeyDropdown"></ul>
-            
+
 
         </div>
 
 
+        <!-- <form id="myForm">
+            <input name="name" placeholder="Your name" required />
+            <input name="email" placeholder="Your email" required />
+            <textarea name="message" placeholder="Your message"></textarea>
+            <button type="submit">Send</button>
+        </form> -->
 
+        <!-- <script>
+            document.getElementById("myForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const formData = {
+                    name: this.name.value,
+                    email: this.email.value,
+                    message: this.message.value
+                };
+                fetch("https://script.google.com/macros/s/AKfycbyfpto3_bv3SjUJ2aXQgJCn8WQidL9tR7N0RZEblFqiDmVUljmj4-iMYXQqE3CSaUcMzQ/exec", {
+                    method: "POST",
+                    body: JSON.stringify(formData)
+                })
+                    .then(res => res.text())
+                    .then(data => {
+                        alert("Submitted: " + data);
 
-
-
-
+                        this.reset(); 
+                        // optional
+                    });
+            });
+        </script> -->
 
 
 
@@ -132,57 +155,57 @@
 
 
                 <table class="dashboard-pricing-table">
-    <thead>
-        <tr>
-            <th>Tier</th>
-            <th>Name</th>
-            <th>Features</th>
-            <th>Devices</th>
-            <th>Price (1 Year)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td><strong>Basic</strong></td>
-            <td>
-                - Tasks tab with filters and preview pane<br>
-                - Sync button<br>
-                - Auto smart sorting (no manual options)<br>
-                - "Edit content" link<br>
-                - Uses Rahul’s Google Sheet (user = editor)
-            </td>
-            <td>✅ Mobile<br>✅ PC & Mac</td>
-            <td><strong>Free</strong></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><strong>Plus</strong></td>
-            <td>
-                - All Basic features<br>
-                - Timeline tab with stage bars<br>
-                - Tracking charts (e.g., money)<br>
-                - Custom sorting via pills<br>
-                - Uses Rahul’s Google Sheet (user = editor)
-            </td>
-            <td>❌ Mobile<br>✅ PC & Mac</td>
-            <td>₹249/year</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td><strong>Premium</strong></td>
-            <td>
-                - All Plus features<br>
-                - Settings menu: Favorites, Web Notifications, Auto-Sync<br>
-                - Feature request access (early rollout)<br>
-                - Can use your own Google Sheet or Excel (you own the data)<br>
-                - Highest customization and support
-            </td>
-            <td>❌ Mobile<br>✅ PC & Mac</td>
-            <td>₹499/year</td>
-        </tr>
-    </tbody>
-</table>
+                    <thead>
+                        <tr>
+                            <th>Tier</th>
+                            <th>Name</th>
+                            <th>Features</th>
+                            <th>Devices</th>
+                            <th>Price (1 Year)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Basic</strong></td>
+                            <td>
+                                - Tasks tab with filters and preview pane<br>
+                                - Sync button<br>
+                                - Auto smart sorting (no manual options)<br>
+                                - "Edit content" link<br>
+                                - Uses Rahul’s Google Sheet (user = editor)
+                            </td>
+                            <td>✅ Mobile<br>✅ PC & Mac</td>
+                            <td><strong>Free</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Plus</strong></td>
+                            <td>
+                                - All Basic features<br>
+                                - Timeline tab with stage bars<br>
+                                - Tracking charts (e.g., money)<br>
+                                - Custom sorting via pills<br>
+                                - Uses Rahul’s Google Sheet (user = editor)
+                            </td>
+                            <td>❌ Mobile<br>✅ PC & Mac</td>
+                            <td>₹249/year</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Premium</strong></td>
+                            <td>
+                                - All Plus features<br>
+                                - Settings menu: Favorites, Web Notifications, Auto-Sync<br>
+                                - Feature request access (early rollout)<br>
+                                - Can use your own Google Sheet or Excel (you own the data)<br>
+                                - Highest customization and support
+                            </td>
+                            <td>❌ Mobile<br>✅ PC & Mac</td>
+                            <td>₹499/year</td>
+                        </tr>
+                    </tbody>
+                </table>
 
 
             </div>
@@ -213,6 +236,8 @@
     <!-- <script src="script.js"></script> -->
     <script src="dashboard.js"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
     <!-- <script>
         window.addEventListener("DOMContentLoaded", () => {
