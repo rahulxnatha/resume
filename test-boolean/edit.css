@@ -1,0 +1,79 @@
+:root {
+    --primary-color: #005a78;
+    --primary-hover: #007a9e;
+    --border-color: #d1d1d1;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --status-color: #777777;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --border-color: #444444;
+        --text-color: #ffffff;
+        --background-color: #111111;
+        --status-color: #aaaaaa;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+main {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-container {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+#status-message {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: var(--status-color);
+}
