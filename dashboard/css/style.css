@@ -212,11 +212,157 @@ header {
     margin-top: 2rem;
 }
 
-.active-tab {
-    background-color: #005a78;
-    color: white;
-    /* font-weight: bold; */
+/* pppp tabs */
+
+
+
+
+
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
+
+
+
+.pill3-container {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    /* margin-top: 10px; */
+    /* background-color: #005a7878; */
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+
+.pill3 {
+    position: relative;
+    cursor: pointer;
+    padding: 6px 12px;
+    /* font-weight: 600; */
+    /* color: #666; */
+    user-select: none;
+    transition: color 0.3s ease;
+    /* border-radius: 20px; */
+    font-size: 14px;
+    z-index: 2;
+}
+
+.pill3.active-tab {
+   /* background: linear-gradient(
+    270deg,
+    #bebbe9,
+    #f2bd98,
+    #fab5fa,
+    #ccfcfc,
+    #c1bcfc
+  );
+  background-size: 1000% 1000%;
+  animation: gradientShift 30s ease infinite;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; */
+
+  background-color: var(--pill-text-active-highlight);
+  /* padding: 0 4px;  */
+  display: inline-block; 
+  /* z-index: 20000000000000000; */
+
+  color: var(--pill-text-active-color);
+
+/* color: #00ffff; */
+
+
+
+
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pill-text-color: #ccc;
+    --pill-text-active-color: #131313;
+    --pill-text-active-highlight: #bdbdbd;
+    --pill-text-active-uline: #3c3c3c;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --pill-text-color: #131313;
+    --pill-text-active-color: #ccc;
+    --pill-text-active-highlight: #222;
+    --pill-text-active-uline: #c4c4c4;
+  }
+}
+
+
+
+
+.pill3.active-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* height: calc(1.2em + 100px); */
+    height: 2px;
+    width: 100%;
+
+    background-color: var(--pill-text-active-uline); 
+    /* z-index: 1; */
+
+
+
+    /* border-radius: 20px; */
+    animation: slideInUnderline 0.3s ease forwards;
+}
+
+@keyframes slideInUnderline {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* ppppp */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* .pill:hover {
   background-color: #aaa;
