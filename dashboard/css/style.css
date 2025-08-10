@@ -28,6 +28,7 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
+
     /* For WebKit browsers (Chrome, Edge, Safari) */
     ::-webkit-scrollbar {
         width: 12px;
@@ -70,6 +71,8 @@ header {
     /* background-color: aliceblue; */
     /* overflow: auto; */
     border-bottom: 1px solid grey;
+
+
 }
 
 .search-bar-container {
@@ -95,15 +98,32 @@ header {
     border-radius: 7px;
 }
 
+
+
+
+
+
 .pill-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: 10px;
+    display: flex;
+    /* so it shrinks/grows to fit pills */
+    flex-wrap: nowrap;
+    /* no wrapping */
+    overflow: hidden;
+    /* avoid partial pill overflow */
+    transition: width 0.4s ease;
+    /* smooth width change */
+    gap: 10px;
+    /* space between pills */
 }
+
+
+
+
 
 .pill,
 .pill2 {
+    display: inline-block;
     padding: 6px 12px;
     /* background-color: #ccc; */
     border-radius: 20px;
@@ -112,7 +132,77 @@ header {
     user-select: none;
     transition: background 0.2s;
     border: 1px solid grey;
+    transition: max-width 0.5s ease, opacity 0.5s ease;
+
 }
+
+
+
+
+
+
+
+
+.pill {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.pill.new {
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+.pill.new.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.pill.hide {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #empty-state {
     position: absolute;
@@ -140,19 +230,18 @@ header {
 #subscription-type {
     border: 1px solid transparent;
     /* Ensures 1px border width */
-    border-image: linear-gradient(
-        to right,
-        #0c00b8,
-        /* Blue */
-        #ec6200,
-        /* Orange */
-        #ff00ff,
-        /* Magenta */
-        #00ffff,
-        /* Cyan */
-        #0c00b8
-        /* Loop back to blue */
-    ) 1;
+    border-image: linear-gradient(to right,
+            #0c00b8,
+            /* Blue */
+            #ec6200,
+            /* Orange */
+            #ff00ff,
+            /* Magenta */
+            #00ffff,
+            /* Cyan */
+            #0c00b8
+            /* Loop back to blue */
+        ) 1;
     /* padding: 4px 8px; */
     display: inline-block;
     /* Ensures the span respects border dimensions */
@@ -312,15 +401,15 @@ main {
     }
 }
 
-.task-tile > div {
+.task-tile>div {
     margin: 0 0 10px 0;
     padding: 0;
     word-break: break-word;
     line-height: 1.5;
 }
 
-.task-tile > div:nth-child(2),
-.task-tile > div:nth-child(3) {
+.task-tile>div:nth-child(2),
+.task-tile>div:nth-child(3) {
     color: grey;
 }
 
@@ -428,6 +517,13 @@ body.dark #searchBox,
 .task-tile {
     border: 2px solid #ccc;
     transition: border 0.3s ease;
+
+
+
+
+
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+    animation: fadeIn 0.4s ease-out;
 }
 
 /* Due date > 5 days */
@@ -765,6 +861,7 @@ footer {
 
     header {
         height: 35vh;
+
     }
 
     main {
@@ -904,11 +1001,11 @@ footer {
     max-width: max-content;
     margin: 10px auto;
     /* position: relative;  */
-    
+
     /* For absolute positioning of checkbox */
 }
 
-.dashboard-key-container > .key-input-wrapper {
+.dashboard-key-container>.key-input-wrapper {
     position: relative;
     width: 100%;
 }
@@ -922,13 +1019,16 @@ footer {
     font-family: monospace;
     text-transform: uppercase;
     border: 1px solid transparent;
-    border-image: linear-gradient(
-        to right,
-        #0c00b8, /* Blue */
-        #ec6200, /* Orange */
-        #ff00ff, /* Magenta */
-        #00ffff  /* Cyan */
-    ) 1;
+    border-image: linear-gradient(to right,
+            #0c00b8,
+            /* Blue */
+            #ec6200,
+            /* Orange */
+            #ff00ff,
+            /* Magenta */
+            #00ffff
+            /* Cyan */
+        ) 1;
     border-radius: 6px;
     outline: none;
     background: inherit;
@@ -937,8 +1037,10 @@ footer {
 }
 
 #dashboardKeyInput:focus {
-    box-shadow: 0 0 6px rgba(0, 191, 255, 0.5); /* Cyan glow on focus */
-    background: rgba(255, 255, 255, 0.05); /* Subtle background change */
+    box-shadow: 0 0 6px rgba(0, 191, 255, 0.5);
+    /* Cyan glow on focus */
+    background: rgba(255, 255, 255, 0.05);
+    /* Subtle background change */
 }
 
 /* Dark theme adjustments for input */
@@ -946,14 +1048,18 @@ footer {
     #dashboardKeyInput {
         background: #222;
         color: #fff;
-        border-image: linear-gradient(
-            to right,
-            #4d4dff, /* Lighter blue */
-            #ff8533, /* Lighter orange */
-            #ff66ff, /* Lighter magenta */
-            #66ffff  /* Lighter cyan */
-        ) 1;
+        border-image: linear-gradient(to right,
+                #4d4dff,
+                /* Lighter blue */
+                #ff8533,
+                /* Lighter orange */
+                #ff66ff,
+                /* Lighter magenta */
+                #66ffff
+                /* Lighter cyan */
+            ) 1;
     }
+
     #dashboardKeyInput:focus {
         box-shadow: 0 0 6px rgba(102, 255, 255, 0.7);
         background: rgba(255, 255, 255, 0.1);
@@ -969,28 +1075,31 @@ footer {
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);
     border: 1px solid transparent;
-    border-image: linear-gradient(
-        to bottom,
-        #0c00b8,
-        #ec6200
-    ) 1;
+    border-image: linear-gradient(to bottom,
+            #0c00b8,
+            #ec6200) 1;
     border-top: none;
     max-height: 200px;
-    overflow-y: hidden; /* Hide scrollbar by default */
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    overflow-y: hidden;
+    /* Hide scrollbar by default */
+    overflow-x: hidden;
+    /* Prevent horizontal scrollbar */
     list-style: none;
     margin: 0;
     padding: 0;
     z-index: 10;
     border-radius: 0 0 6px 6px;
     display: none;
-    margin-top: 5px; /* Controlled small gap between input and dropdown */
+    margin-top: 5px;
+    /* Controlled small gap between input and dropdown */
 }
 
 /* Show vertical scrollbar on hover with custom styling */
 #dashboardKeyDropdown:hover {
-    overflow-y: auto; /* Enable vertical scrolling on hover */
-    overflow-x: hidden; /* Ensure no horizontal scrolling */
+    overflow-y: auto;
+    /* Enable vertical scrolling on hover */
+    overflow-x: hidden;
+    /* Ensure no horizontal scrolling */
 }
 
 #dashboardKeyDropdown::-webkit-scrollbar {
@@ -1009,7 +1118,8 @@ footer {
 }
 
 #dashboardKeyDropdown:hover::-webkit-scrollbar-thumb {
-    background-color: #00ffff; /* Cyan thumb on hover */
+    background-color: #00ffff;
+    /* Cyan thumb on hover */
 }
 
 /* Fallback for Firefox */
@@ -1022,15 +1132,16 @@ footer {
 @media (prefers-color-scheme: dark) {
     #dashboardKeyDropdown {
         background: rgba(34, 34, 34, 0.5);
-        border-image: linear-gradient(
-            to bottom,
-            #4d4dff,
-            #ff8533
-        ) 1;
+        border-image: linear-gradient(to bottom,
+                #4d4dff,
+                #ff8533) 1;
     }
+
     #dashboardKeyDropdown:hover::-webkit-scrollbar-thumb {
-        background-color: #66ffff; /* Lighter cyan in dark mode */
+        background-color: #66ffff;
+        /* Lighter cyan in dark mode */
     }
+
     #dashboardKeyDropdown {
         scrollbar-color: #66ffff transparent;
     }
@@ -1047,28 +1158,36 @@ footer {
     color: inherit;
     background: transparent;
     transition: background 0.2s ease, transform 0.2s ease;
-    white-space: nowrap; /* Prevent text wrapping that could cause overflow */
-    flex-shrink: 1; /* Allow shrinking to fit width */
+    white-space: nowrap;
+    /* Prevent text wrapping that could cause overflow */
+    flex-shrink: 1;
+    /* Allow shrinking to fit width */
 }
 
 #dashboardKeyDropdown li:hover {
-    background: rgba(0, 191, 255, 0.2); /* Cyan hover effect */
-    transform: translateX(2px); /* Subtle shift for interactivity */
+    background: rgba(0, 191, 255, 0.2);
+    /* Cyan hover effect */
+    transform: translateX(2px);
+    /* Subtle shift for interactivity */
 }
 
 /* Delete key button */
 .delete-key {
-    color: #ff3333; /* Bright red */
+    color: #ff3333;
+    /* Bright red */
     margin-left: 10px;
     font-size: 16px;
     cursor: pointer;
     transition: color 0.2s ease, transform 0.2s ease;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap;
+    /* Prevent wrapping */
 }
 
 .delete-key:hover {
-    color: #ff6666; /* Lighter red on hover */
-    transform: scale(1.2); /* Slight zoom for emphasis */
+    color: #ff6666;
+    /* Lighter red on hover */
+    transform: scale(1.2);
+    /* Slight zoom for emphasis */
 }
 
 /* Dark theme adjustments for delete key */
@@ -1076,6 +1195,7 @@ footer {
     .delete-key {
         color: #ff6666;
     }
+
     .delete-key:hover {
         color: #ff9999;
     }
@@ -1084,17 +1204,20 @@ footer {
 /* Remember Me checkbox */
 #rememberMeContainer {
     position: absolute;
-    top: -25px; /* Position above key bar, adjust based on checkbox height */
+    top: -25px;
+    /* Position above key bar, adjust based on checkbox height */
     font-size: 14px;
     color: #777;
     text-align: left;
     padding: 2px 12px;
-    min-height: 20px; /* Reserve space even when hidden */
+    min-height: 20px;
+    /* Reserve space even when hidden */
 }
 
 #rememberMeContainer input {
     margin-right: 5px;
-    accent-color: #ec6200; /* Orange checkbox */
+    accent-color: #ec6200;
+    /* Orange checkbox */
 }
 
 /* Dark theme adjustments for Remember Me */
@@ -1102,8 +1225,10 @@ footer {
     #rememberMeContainer {
         color: #ccc;
     }
+
     #rememberMeContainer input {
-        accent-color: #ff8533; /* Lighter orange */
+        accent-color: #ff8533;
+        /* Lighter orange */
     }
 }
 
@@ -1113,22 +1238,28 @@ footer {
         right: 10px;
         top: 10px;
     }
+
     #dashboardKeyInput {
         width: 200px;
         font-size: 13px;
         padding: 6px 10px;
     }
+
     #dashboardKeyDropdown li {
         font-size: 12px;
         padding: 6px 10px;
     }
+
     #rememberMeContainer {
         font-size: 12px;
         padding: 2px 10px;
-        top: -20px; /* Adjust for mobile checkbox height */
+        top: -20px;
+        /* Adjust for mobile checkbox height */
     }
+
     #dashboardKeyDropdown::-webkit-scrollbar {
-        width: 6px; /* Smaller scrollbar on mobile hover */
+        width: 6px;
+        /* Smaller scrollbar on mobile hover */
     }
 }
 
@@ -1184,12 +1315,19 @@ footer {
 
 /* Fade-in Animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Stage Bar Child Elements */
-.stage-bar > div {
+.stage-bar>div {
     flex: 1;
     font-size: 14px;
     word-break: break-word;
@@ -1258,45 +1396,58 @@ footer {
         background: #121212;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
     .stage-bar {
         background: #1e1e1e;
         border-left-color: #424242;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     }
+
     .stage-bar:hover {
         background: #252525;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
     }
+
     .stage-bar .stage-name {
         color: #e0e0e0;
     }
+
     .stage-bar .amounts {
         color: #bdbdbd;
     }
+
     .stage-bar .dates {
         color: #9e9e9e;
     }
+
     .stage-bar.past-due {
         border-left-color: #ef5350;
     }
+
     .stage-bar.past-due .dates {
         color: #ef5350;
     }
+
     .stage-bar.current {
         border-left-color: #29b6f6;
     }
+
     .stage-bar.current .dates {
         color: #29b6f6;
     }
+
     .stage-bar.future {
         border-left-color: #4caf50;
     }
+
     .stage-bar.future .dates {
         color: #4caf50;
     }
+
     .stage-bar.error {
         border-left-color: #ef5350;
     }
+
     .stage-bar.error .dates {
         color: #ef5350;
     }
@@ -1309,22 +1460,27 @@ footer {
         padding: 16px;
         max-height: calc(85vh - 50px);
     }
+
     .stage-bar {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
         padding: 14px;
     }
-    .stage-bar > div {
+
+    .stage-bar>div {
         width: 100%;
         padding: 4px 0;
     }
+
     .stage-bar .stage-name {
         font-size: 14px;
     }
+
     .stage-bar .amounts {
         font-size: 13px;
     }
+
     .stage-bar .dates {
         font-size: 12px;
     }

@@ -536,13 +536,198 @@ function levenshtein(a, b) {
     return dp[m][n];
 }
 
+// function updateVisiblePills() {
+//     const current = document.getElementById("searchBox").value.trim().toLowerCase();
+//     document.querySelectorAll(".pill").forEach(pill => {
+//         const text = pill.dataset.filter.toLowerCase();
+//         pill.style.display = (!current || text !== current) ? "inline-block" : "none";
+//     });
+// }
+
+
 function updateVisiblePills() {
     const current = document.getElementById("searchBox").value.trim().toLowerCase();
-    document.querySelectorAll(".pill").forEach(pill => {
+    const pills = Array.from(document.querySelectorAll(".pill"));
+
+    // First hide pills that should disappear with animation
+    pills.forEach(pill => {
         const text = pill.dataset.filter.toLowerCase();
-        pill.style.display = (!current || text !== current) ? "inline-block" : "none";
+        if (current && text === current && pill.style.display !== "none") {
+            pill.classList.add("hide");
+            setTimeout(() => {
+                pill.style.display = "none";
+                pill.classList.remove("hide");
+            }, 300);
+        }
     });
+
+    // After 1 second, show the pills that should appear
+    setTimeout(() => {
+        pills.forEach(pill => {
+            const text = pill.dataset.filter.toLowerCase();
+            if (!current || text !== current) {
+                if (pill.style.display === "none") {
+                    pill.style.display = "inline-block";
+                    pill.classList.add("new");
+                    void pill.offsetWidth; // trigger reflow
+                    pill.classList.add("show");
+                    setTimeout(() => {
+                        pill.classList.remove("new", "show");
+                    }, 300);
+                }
+            }
+        });
+    }, 1000);
 }
+
+
+
+
+
+// function updateVisiblePills() {
+//     const current = document.getElementById("searchBox").value.trim().toLowerCase();
+//     document.querySelectorAll(".pill").forEach(pill => {
+//         const text = pill.dataset.filter.toLowerCase();
+//         if (!current || text !== current) {
+//             pill.classList.remove("hidden");
+//         } else {
+//             pill.classList.add("hidden");
+//         }
+//     });
+// }
+
+
+// function updateVisiblePills() {
+//     const current = document.getElementById("searchBox").value.trim().toLowerCase();
+
+//     document.querySelectorAll(".pill").forEach(pill => {
+//         const text = pill.dataset.filter.toLowerCase();
+//         const shouldHide = (current && text === current);
+
+//         if (shouldHide && !pill.classList.contains("hidden")) {
+//             // Animate disappearance
+//             pill.style.width = pill.offsetWidth + "px"; // lock start width
+//             pill.offsetHeight; // force reflow
+//             pill.classList.add("hidden");
+
+//             // Remove from flow after animation
+//             setTimeout(() => {
+//                 pill.style.display = "none";
+//             }, 400); // match CSS transition duration
+//         } 
+//         else if (!shouldHide && pill.classList.contains("hidden")) {
+//             // Prepare for appearance
+//             pill.style.display = "inline-block"; // put it back in flow
+//             const fullWidth = pill.scrollWidth + "px";
+
+//             pill.classList.remove("hidden");
+//             pill.style.width = "0px"; // collapsed start
+//             pill.offsetHeight; // reflow
+//             pill.style.width = fullWidth;
+
+//             // Reset width after animation to auto
+//             setTimeout(() => {
+//                 pill.style.width = "";
+//             }, 400);
+//         }
+//     });
+// }
+
+
+
+
+
+
+// function updateVisiblePills() {
+//     const current = document.getElementById("searchBox").value.trim().toLowerCase();
+//     const duration = 400; // must match CSS transition (in ms)
+
+//     document.querySelectorAll(".pill").forEach(pill => {
+//         const text = pill.dataset.filter.toLowerCase();
+//         const shouldHide = (current && text === current);
+
+//         // Hide
+//         if (shouldHide && !pill.classList.contains("hidden")) {
+//             pill.style.width = pill.offsetWidth + "px"; // lock start width
+//             pill.offsetHeight; // reflow
+//             pill.classList.add("hidden");
+
+//             // Remove from flow exactly after animation
+//             setTimeout(() => {
+//                 pill.style.display = "none";
+//             }, duration);
+//         }
+
+//         // Show
+//         else if (!shouldHide && pill.classList.contains("hidden")) {
+//             pill.style.display = "inline-block";
+//             const fullWidth = pill.scrollWidth + "px";
+
+//             // Start from 0 width
+//             pill.style.width = "0px";
+//             pill.offsetHeight; // reflow
+
+//             pill.classList.remove("hidden");
+//             pill.style.width = fullWidth;
+
+//             // Keep fixed px width until after animation ends
+//             setTimeout(() => {
+//                 pill.style.width = "";
+//             }, duration);
+//         }
+//     });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// In updateVisiblePills()
+// function updateVisiblePills() {
+//     const current = document.getElementById("searchBox").value.trim().toLowerCase();
+//     document.querySelectorAll(".pill").forEach(pill => {
+//         const text = pill.dataset.filter.toLowerCase();
+//         pill.classList.toggle('hidden', current && text === current); // Toggle hidden class
+//     });
+// }
+
+
+
+// function updateVisiblePills() {
+//     const current = document.getElementById("searchBox").value.trim().toLowerCase();
+//     document.querySelectorAll(".pill").forEach((pill, index) => {
+//         const text = pill.dataset.filter.toLowerCase();
+//         pill.style.animationDelay = `${index * 0.05}s`; // Stagger animations
+//         pill.classList.toggle("hidden", current && text === current);
+//     });
+//     setTimeout(() => {
+//         document.querySelectorAll(".pill").forEach(pill => {
+//             pill.style.animationDelay = "0s";
+//         });
+//     }, 600);
+// }
+
+
+
+
+
+
 
 document.querySelectorAll(".pill").forEach(pill => {
     pill.addEventListener("click", () => {
