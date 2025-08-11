@@ -10,26 +10,32 @@ function stopScrolling() {
   cancelAnimationFrame(scrolling);
 }
 
+function startCycleWithDelay() {
+  stopScrolling(); // just in case
+  setTimeout(() => {
+    startScrolling();
+  }, 6000); // 6s delay before cycle starts
+}
+
 function scrollStep() {
   container.scrollLeft += scrollSpeed;
-  // Loop back to start for infinite effect
+
+  // If reached the end
   if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
-    container.scrollLeft = 0;
+    stopScrolling();
+    setTimeout(() => {
+      container.scrollLeft = 0; // reset
+      startCycleWithDelay(); // pause before next cycle
+    }, 6000); // pause after finishing current cycle
+    return;
   }
+
   scrolling = requestAnimationFrame(scrollStep);
 }
 
-// Start auto-scroll
-startScrolling();
+// First cycle
+startCycleWithDelay();
 
 // Pause on hover
 container.addEventListener('mouseenter', stopScrolling);
 container.addEventListener('mouseleave', startScrolling);
-
-// Button scroll
-document.querySelector('.scroll-left').addEventListener('click', () => {
-  container.scrollLeft -= 100;
-});
-document.querySelector('.scroll-right').addEventListener('click', () => {
-  container.scrollLeft += 100;
-});
