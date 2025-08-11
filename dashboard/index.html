@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Dashboard</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/pill-label-scroll.css" />
     <!-- <link rel="stylesheet" href="style-old.css" /> -->
 
 
@@ -100,7 +101,7 @@
                     <span class="pill3-container">
                         <!-- Below existing pills like "sync", "show/hide task info" -->
                         <span id="pill-tasks" class="pill3 active-tab">Tasks</span>
-                        <span id="pill-timeline" class="pill3">Timeline</span>
+                        <span id="pill-timeline" class="pill3">Labels</span>
                     </span>
                     <span class="notonPhone">|</span>
 
@@ -118,6 +119,13 @@
 
                     <span id="subscription-type" class="pill2">Enter the key</span>
 
+
+
+
+                    
+                </div>
+                <div id="pillContainer2" class="pill-container">
+                    a
                 </div>
             </div>
 
@@ -170,9 +178,9 @@
 
 
 
-        <div class="note"> <span class="hide-on-phone">Completed tasks: excluded by default. Clicking on tiles: shows
+        <!-- <div class="note"> <span class="hide-on-phone">Completed tasks: excluded by default. Clicking on tiles: shows
                 more info on the right pane. Dark theme: supported, system settings.</span>
-        </div>
+        </div> -->
 
         <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
         </span>
@@ -270,6 +278,7 @@
     <script src="js/dashboard.js"></script>
     <script src="js/edit-content-button.js"></script>
     <script src="js/server.js"></script>
+    <script src="js/pill-label-scroll.js"></script>
     <!-- <script src="sw.js"></script> -->
 
 

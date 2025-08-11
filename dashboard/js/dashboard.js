@@ -970,7 +970,7 @@ function fetchTimelineData7() {
     const timelineUrl = `https://docs.google.com/spreadsheets/d/${currentSheetId}/gviz/tq?tqx=out:csv&sheet=Timeline`;
 
 
-    
+
     fetch(timelineUrl)
         .then(res => {
             if (!res.ok) throw new Error("Failed to fetch timeline data.");
@@ -1000,6 +1000,13 @@ function fetchTimelineData7() {
             console.error("Error fetching timeline data:", err);
             document.getElementById("timeline-container").innerHTML = `<div class="stage-bar error"><div>Failed to load timeline data.</div></div>`;
         });
+
+
+
+
+    createStageBarPills();
+    // Refresh stage-bar pills after data load
+
 }
 
 // Render timeline stage bars
@@ -1052,6 +1059,12 @@ function renderTimeline7() {
 
         container.appendChild(stageBar);
     });
+
+
+    createStageBarPills();
+    // Refresh stage-bar pills after data load
+
+
 }
 
 // Fetch and render timeline on sync button click
@@ -1081,8 +1094,84 @@ document.getElementById("pill-timeline").addEventListener("click", () => {
 
 
 
-// -------------------------- notifications 
+// -------------------------- label pills
 
+//  createStageBarPills(); 
+
+function createStageBarPills() {
+    const pillContainer2 = document.getElementById("pillContainer2");
+    if (!pillContainer2) return;
+
+    pillContainer2.innerHTML = ""; // Clear old pills
+
+    // Grab all stage-bar elements
+    const stageBars = document.querySelectorAll(".stage-bar");
+
+    stageBars.forEach(stageBar => {
+        // const labelText = stageBar.querySelector("span")?.textContent?.trim();
+        const labelText = stageBar.querySelector(".stage-name")?.textContent?.trim();
+
+        if (labelText) {
+            const pill = document.createElement("span");
+            pill.className = "pill-label";
+            pill.textContent = labelText;
+
+            // Click event triggers a search for this label
+            // pill.addEventListener("click", () => {
+            //     // Switch to Tasks tab
+            //     document.getElementById("pill-tasks").click();
+
+            //     // Trigger search for this stage
+            //     const searchBox = document.getElementById("searchBox");
+            //     if (searchBox) {
+            //         searchBox.value = `#${labelText}`;
+            //         searchBox.dispatchEvent(new Event("input"));
+            //     }
+            // });
+
+
+
+
+
+            pill.addEventListener("click", () => {
+                // Put the label text directly into the search box
+                searchBox.value = labelText;
+
+                // // Call the same search function your Enter key uses
+                // if (typeof filterTasks === "function") {
+                //     filterTasks(); // adjust this to your actual search function name
+                // } else {
+                //     // If you rely on triggering an input event for search:
+                //     searchBox.dispatchEvent(new Event("input"));
+                // }
+
+                // Switch to the Tasks tab
+                document.getElementById("pill-tasks").click();
+
+                // Simulate Enter key press to trigger search
+                searchBox.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            pillContainer2.appendChild(pill);
+        }
+    });
+}
 
 
 

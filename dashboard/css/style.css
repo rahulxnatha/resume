@@ -115,14 +115,45 @@ header {
     /* smooth width change */
     gap: 10px;
     /* space between pills */
+    width: fit-content;
 }
 
+#pillContainer2 {
+    margin-top: 10px;
+    display: flex;
+    /* so it shrinks/grows to fit pills */
+    flex-wrap: nowrap;
+    /* no wrapping */
+    overflow: hidden;
+    /* avoid partial pill overflow */
+    transition: width 0.4s ease;
+    /* smooth width change */
+    gap: 10px;
+    /* space between pills */
+    width: calc(100vw - 40px);
+    /* overflow-x: auto; */
+}
+
+.pill-label {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid grey;
+    /* margin: 4px; */
+    /* background-color: var(--pill-bg, transparent); */
+    /* transition: background 0.2s, color 0.2s; */
+}
+/* .pill-label:hover {
+    background-color: rgba(128, 128, 128, 0.15);
+} */
 
 
 
 
 .pill,
-.pill2 {
+.pill2, .pill-label {
     display: inline-block;
     padding: 6px 12px;
     /* background-color: #ccc; */
@@ -371,6 +402,8 @@ header {
 .dropdown-wrapper {
     position: relative;
     display: inline-block;
+    width: fit-content;
+    text-wrap: nowrap;
 }
 
 #subscription-type {
