@@ -122,7 +122,7 @@ header {
     margin-top: 10px;
     display: flex;
     /* so it shrinks/grows to fit pills */
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     /* no wrapping */
     overflow: hidden;
     /* avoid partial pill overflow */
@@ -145,9 +145,9 @@ header {
     /* background-color: var(--pill-bg, transparent); */
     /* transition: background 0.2s, color 0.2s; */
 }
-/* .pill-label:hover {
+.pill-label:hover {
     background-color: rgba(128, 128, 128, 0.15);
-} */
+}
 
 
 
@@ -290,7 +290,7 @@ header {
     z-index: 2;
 }
 
-.pill3.active-tab {
+.pill3.active-tab, .pill-label.active-tab {
    /* background: linear-gradient(
     270deg,
     #bebbe9,
@@ -1730,4 +1730,17 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
         font-size: 12px;
         margin-left: 5px;
     }
+}
+
+
+
+
+
+.post {
+    margin:20px 0;
+    padding: 20px;
+    border: 1px solid #808080;
+    background-color: #191919;
+    display: block;
+    border-radius: 20px;
 }

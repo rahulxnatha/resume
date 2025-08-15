@@ -409,10 +409,31 @@ function calculateProgressPercent(start, end, today) {
     return total <= 0 ? 0 : Math.min(100, Math.max(0, Math.round(done / total * 100)));
 }
 
+// function showPaneContent(id) {
+//     const raw = blockTexts[id] || "No details available.";
+//     document.getElementById("paneContent").innerHTML = autoLink(raw);
+// }
+
+
+
 function showPaneContent(id) {
     const raw = blockTexts[id] || "No details available.";
-    document.getElementById("paneContent").innerHTML = autoLink(raw);
+    let html = autoLink(raw);
+
+    // Regex to find timestamp + following text until next timestamp or end
+    html = html.replace(
+        /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)([\s\S]*?)(?=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)|$)/g,
+        (match, timestamp, content) => {
+            return `<span class="post">${timestamp}${content}</span>`;
+        }
+    );
+
+    document.getElementById("paneContent").innerHTML = html;
 }
+
+
+
+
 
 function escapeHTML(str) {
     return str.replace(/[&<>"']/g, tag => ({
@@ -459,6 +480,11 @@ function autoLink(text) {
 function handleSearch() {
 
     document.getElementById("pill-tasks").click();
+
+
+    updateActivePillFromSearch();
+
+
 
     const input = document.getElementById("searchBox").value.trim().toLowerCase();
     const note = document.getElementById("searchNote");
@@ -1096,7 +1122,153 @@ document.getElementById("pill-timeline").addEventListener("click", () => {
 
 // -------------------------- label pills
 
-//  createStageBarPills(); 
+//  createStageBarPills();
+
+// function createStageBarPills() {
+//     const pillContainer2 = document.getElementById("pillContainer2");
+//     if (!pillContainer2) return;
+
+//     pillContainer2.innerHTML = ""; // Clear old pills
+
+//     // Grab all stage-bar elements
+//     const stageBars = document.querySelectorAll(".stage-bar");
+
+//     stageBars.forEach(stageBar => {
+//         // const labelText = stageBar.querySelector("span")?.textContent?.trim();
+//         const labelText = stageBar.querySelector(".stage-name")?.textContent?.trim();
+
+//         if (labelText) {
+//             const pill = document.createElement("span");
+//             pill.className = "pill-label";
+//             pill.textContent = labelText;
+
+//             // Click event triggers a search for this label
+//             // pill.addEventListener("click", () => {
+//             //     // Switch to Tasks tab
+//             //     document.getElementById("pill-tasks").click();
+
+//             //     // Trigger search for this stage
+//             //     const searchBox = document.getElementById("searchBox");
+//             //     if (searchBox) {
+//             //         searchBox.value = `#${labelText}`;
+//             //         searchBox.dispatchEvent(new Event("input"));
+//             //     }
+//             // });
+
+
+
+
+
+//             pill.addEventListener("click", () => {
+
+
+
+
+
+
+
+//                 document.querySelectorAll('.pill-label').forEach(pill => {
+//                     pill.addEventListener('click', function () {
+//                         // Remove active-tab from all pills
+//                         document.querySelectorAll('.pill-label').forEach(p => p.classList.remove('active-tab'));
+
+//                         // Add active-tab to clicked pill
+//                         this.classList.add('active-tab');
+//                     });
+//                 });
+
+
+//                 // Put the label text directly into the search box
+//                 searchBox.value = labelText;
+
+//                 // // Call the same search function your Enter key uses
+//                 // if (typeof filterTasks === "function") {
+//                 //     filterTasks(); // adjust this to your actual search function name
+//                 // } else {
+//                 //     // If you rely on triggering an input event for search:
+//                 //     searchBox.dispatchEvent(new Event("input"));
+//                 // }
+
+//                 // Switch to the Tasks tab
+//                 document.getElementById("pill-tasks").click();
+
+//                 // Simulate Enter key press to trigger search
+//                 searchBox.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//             });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//             pillContainer2.appendChild(pill);
+//         }
+//     });
+// }
+
+
+
+
+
+
+
+// PILL REFRESH PILL-LABEL CLASS 
+
+
+
+
+function updateActivePillFromSearch() {
+    const searchValue = searchBox.value.trim().toLowerCase();
+
+    const hasMatch = Array.from(document.querySelectorAll(".pill-label"))
+        .some(pill => pill.textContent.trim().toLowerCase() === searchValue);
+
+    if (!hasMatch) {
+        document.querySelectorAll(".pill-label").forEach(p => p.classList.remove("active-tab"));
+    }
+}
+
+// const searchBox = document.getElementById("searchBox");
+
+// Run when user types
+searchBox.addEventListener("input", updateActivePillFromSearch);
+
+// Example: run it when search value is changed programmatically
+// (just call updateActivePillFromSearch() after setting searchBox.value)
+
+
+
+
+
 
 function createStageBarPills() {
     const pillContainer2 = document.getElementById("pillContainer2");
@@ -1104,82 +1276,36 @@ function createStageBarPills() {
 
     pillContainer2.innerHTML = ""; // Clear old pills
 
-    // Grab all stage-bar elements
     const stageBars = document.querySelectorAll(".stage-bar");
 
     stageBars.forEach(stageBar => {
-        // const labelText = stageBar.querySelector("span")?.textContent?.trim();
         const labelText = stageBar.querySelector(".stage-name")?.textContent?.trim();
+        if (!labelText) return;
 
-        if (labelText) {
-            const pill = document.createElement("span");
-            pill.className = "pill-label";
-            pill.textContent = labelText;
+        const pill = document.createElement("span");
+        pill.className = "pill-label";
+        pill.textContent = labelText;
 
-            // Click event triggers a search for this label
-            // pill.addEventListener("click", () => {
-            //     // Switch to Tasks tab
-            //     document.getElementById("pill-tasks").click();
+        pill.addEventListener("click", function () {
+            // 1. Set active tab styling
+            document.querySelectorAll(".pill-label").forEach(p => p.classList.remove("active-tab"));
+            this.classList.add("active-tab");
 
-            //     // Trigger search for this stage
-            //     const searchBox = document.getElementById("searchBox");
-            //     if (searchBox) {
-            //         searchBox.value = `#${labelText}`;
-            //         searchBox.dispatchEvent(new Event("input"));
-            //     }
-            // });
-
-
-
-
-
-            pill.addEventListener("click", () => {
-                // Put the label text directly into the search box
+            // 2. Put the label text directly into the search box
+            const searchBox = document.getElementById("searchBox");
+            if (searchBox) {
                 searchBox.value = labelText;
-
-                // // Call the same search function your Enter key uses
-                // if (typeof filterTasks === "function") {
-                //     filterTasks(); // adjust this to your actual search function name
-                // } else {
-                //     // If you rely on triggering an input event for search:
-                //     searchBox.dispatchEvent(new Event("input"));
-                // }
-
-                // Switch to the Tasks tab
-                document.getElementById("pill-tasks").click();
-
-                // Simulate Enter key press to trigger search
+                // Simulate Enter key press
                 searchBox.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
-            });
+            }
 
+            // 3. Switch to the Tasks tab
+            document.getElementById("pill-tasks").click();
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            pillContainer2.appendChild(pill);
-        }
+        pillContainer2.appendChild(pill);
     });
 }
-
-
-
-
-
-
-
-
 
 
 

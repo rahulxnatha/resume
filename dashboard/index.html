@@ -51,11 +51,17 @@
     <header>
 
 
-        <span id="title">Task Dashboard as of ...</span>
+
 
         <div class="search-bar-container">
             <div class="dropdown-wrapper">
                 <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
+
+
+
+
+                <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
+                </span>
                 <!-- <div id="customDropdown" class="dropdown">
                     <div data-filter="All">All</div>
                     <div data-filter="Completed">Completed</div>
@@ -178,8 +184,7 @@
                 more info on the right pane. Dark theme: supported, system settings.</span>
         </div> -->
 
-        <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
-        </span>
+
 
 
 
@@ -274,7 +279,8 @@
     <script src="js/dashboard.js"></script>
     <script src="js/edit-content-button.js"></script>
     <script src="js/server.js"></script>
-    <script src="js/pill-label-scroll.js"></script>
+    <script src="js/pill-label.js"></script>
+    <!-- <script src="js/pill-label-scroll.js"></script> -->
     <!-- <script src="sw.js"></script> -->
 
 
@@ -294,6 +300,7 @@
     </script> -->
 
     <footer>
+        <span id="title">Task Dashboard as of ...</span>
         © 2025–<span id="copy-year"></span> Rahul Natha. All rights reserved.
     </footer>
 
