@@ -420,10 +420,22 @@ function showPaneContent(id) {
     let html = autoLink(raw);
 
     // Step 1: Wrap timestamp sections into posts
+    // html = html.replace(
+    //     /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)([\s\S]*?)(?=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)|$)/g,
+    //     (match, timestamp, content) => `<span class="post">${timestamp}${content}</span>`
+    // );
+
+    // Step 1: Wrap timestamp sections into posts and timestamp span
     html = html.replace(
-        /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)([\s\S]*?)(?=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)|$)/g,
-        (match, timestamp, content) => `<span class="post">${timestamp}${content}</span>`
+        /(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):([\s\S]*?)(?=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)|$)/g,
+        (match, year, month, day, hour, minute, content) => {
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const displayDate = `${day} ${monthNames[parseInt(month, 10) - 1]} ${year} ${hour}:${minute}`;
+            return `<span class="post"><span class="timestamp">${displayDate}</span>${content}</span>`;
+        }
     );
+
 
     // Step 2: Parse HTML to DOM so we can safely combine Manage + Labels
     const container = document.createElement("div");
@@ -514,33 +526,33 @@ function collectManageBlock(startNode) {
 
 
 (function bindMetaLabelClicks() {
-  const pane = document.getElementById("paneContent");
-  if (!pane || pane.dataset.labelsBound) return;
+    const pane = document.getElementById("paneContent");
+    if (!pane || pane.dataset.labelsBound) return;
 
-  pane.addEventListener("click", (e) => {
-    const el = e.target.closest(".label");
-    if (!el || !pane.contains(el)) return;
+    pane.addEventListener("click", (e) => {
+        const el = e.target.closest(".label");
+        if (!el || !pane.contains(el)) return;
 
-    const labelText = el.textContent.trim();
+        const labelText = el.textContent.trim();
 
-    // Remove from all labels
-    document.querySelectorAll(".label").forEach(l => l.classList.remove("active-tab"));
+        // Remove from all labels
+        document.querySelectorAll(".label").forEach(l => l.classList.remove("active-tab"));
 
-    // Add active-tab and remove after 2 seconds
-    el.classList.add("active-tab");
-    setTimeout(() => el.classList.remove("active-tab"), 2000);
+        // Add active-tab and remove after 2 seconds
+        el.classList.add("active-tab");
+        setTimeout(() => el.classList.remove("active-tab"), 2000);
 
-    // Put text in search and trigger your existing flow
-    const searchBox = document.getElementById("searchBox");
-    if (searchBox) {
-      searchBox.value = labelText;
-      searchBox.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
-    }
+        // Put text in search and trigger your existing flow
+        const searchBox = document.getElementById("searchBox");
+        if (searchBox) {
+            searchBox.value = labelText;
+            searchBox.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+        }
 
-    document.getElementById("pill-tasks").click();
-  });
+        document.getElementById("pill-tasks").click();
+    });
 
-  pane.dataset.labelsBound = "1";
+    pane.dataset.labelsBound = "1";
 })();
 
 

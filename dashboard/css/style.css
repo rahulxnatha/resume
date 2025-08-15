@@ -1072,6 +1072,8 @@ footer {
         width: 200px;
         max-width: 80vw;
     }
+
+
 }
 
 /* ............................................ . . */
@@ -1752,11 +1754,12 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 .post {
     margin: 0px 0 20px 0;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     border: 1px solid #808080;
     background-color: #191919;
     display: block;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .post:hover,
@@ -1802,5 +1805,17 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     transition: background 0.2s, color 0.2s;
 
     margin-top: 5px;
+    text-wrap: wrap;
 }
 
+.timestamp {
+    /* color: #808080; */
+    /* font-size: 12px; */
+    margin: 0px 0 0 -20px;
+    background-color: #121212;
+    width: calc(100% + 40px);
+    padding: 20px 10px;
+    display: block;
+    text-align: center;
+
+}
