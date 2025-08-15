@@ -145,6 +145,7 @@ header {
     /* background-color: var(--pill-bg, transparent); */
     /* transition: background 0.2s, color 0.2s; */
 }
+
 .pill-label:hover {
     background-color: rgba(128, 128, 128, 0.15);
 }
@@ -153,7 +154,8 @@ header {
 
 
 .pill,
-.pill2, .pill-label {
+.pill2,
+.pill-label {
     display: inline-block;
     padding: 6px 12px;
     /* background-color: #ccc; */
@@ -290,8 +292,9 @@ header {
     z-index: 2;
 }
 
-.pill3.active-tab, .pill-label.active-tab {
-   /* background: linear-gradient(
+.pill3.active-tab,
+.pill-label.active-tab {
+    /* background: linear-gradient(
     270deg,
     #bebbe9,
     #f2bd98,
@@ -307,38 +310,49 @@ header {
   background-clip: text;
   color: transparent; */
 
-  background-color: var(--pill-text-active-highlight);
-  /* padding: 0 4px;  */
-  display: inline-block; 
-  /* z-index: 20000000000000000; */
+    background-color: var(--pill-text-active-highlight);
+    /* padding: 0 4px;  */
+    display: inline-block;
+    /* z-index: 20000000000000000; */
 
-  color: var(--pill-text-active-color);
+    color: var(--pill-text-active-color);
 
-/* color: #00ffff; */
+    /* color: #00ffff; */
 
 
 
+
+}
+
+.label.active-tab {
+   
+    background-color: var(--pill-text-active-highlight);
+   
+    display: inline-block;
+ 
+
+    color: var(--pill-text-active-color);
 
 }
 
 
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --pill-text-color: #ccc;
-    --pill-text-active-color: #131313;
-    --pill-text-active-highlight: #bdbdbd;
-    --pill-text-active-uline: #3c3c3c;
-  }
+    :root {
+        --pill-text-color: #ccc;
+        --pill-text-active-color: #131313;
+        --pill-text-active-highlight: #bdbdbd;
+        --pill-text-active-uline: #3c3c3c;
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    --pill-text-color: #131313;
-    --pill-text-active-color: #ccc;
-    --pill-text-active-highlight: #222;
-    --pill-text-active-uline: #c4c4c4;
-  }
+    :root {
+        --pill-text-color: #131313;
+        --pill-text-active-color: #ccc;
+        --pill-text-active-highlight: #222;
+        --pill-text-active-uline: #c4c4c4;
+    }
 }
 
 
@@ -353,7 +367,7 @@ header {
     height: 2px;
     width: 100%;
 
-    background-color: var(--pill-text-active-uline); 
+    background-color: var(--pill-text-active-uline);
     /* z-index: 1; */
 
 
@@ -1737,10 +1751,56 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 
 .post {
-    margin:20px 0;
+    margin: 0px 0 20px 0;
     padding: 20px;
     border: 1px solid #808080;
     background-color: #191919;
     display: block;
     border-radius: 20px;
 }
+
+.post:hover,
+.manage:hover,
+.labels:hover {
+    background-color: #282828;
+}
+
+.manage,
+.labels {
+    display: block;
+    /* flex-direction: column; */
+    /* gap: 10px; */
+    padding: 10px;
+    /* border: 1px solid #808080; */
+    background-color: #191919;
+    border-radius: 0px;
+}
+
+.meta {
+    margin: 00px 0;
+    padding: 0px;
+    border: 1px solid #808080;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    border-radius: 20px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.link, .label {
+    color: #00bfff;
+    text-decoration: none;
+
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid grey;
+    transition: background 0.2s, color 0.2s;
+
+    margin-top: 5px;
+}
+

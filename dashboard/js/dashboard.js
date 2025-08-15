@@ -415,21 +415,138 @@ function calculateProgressPercent(start, end, today) {
 // }
 
 
-
 function showPaneContent(id) {
     const raw = blockTexts[id] || "No details available.";
     let html = autoLink(raw);
 
-    // Regex to find timestamp + following text until next timestamp or end
+    // Step 1: Wrap timestamp sections into posts
     html = html.replace(
         /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)([\s\S]*?)(?=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)|$)/g,
-        (match, timestamp, content) => {
-            return `<span class="post">${timestamp}${content}</span>`;
-        }
+        (match, timestamp, content) => `<span class="post">${timestamp}${content}</span>`
     );
 
-    document.getElementById("paneContent").innerHTML = html;
+    // Step 2: Parse HTML to DOM so we can safely combine Manage + Labels
+    const container = document.createElement("div");
+    container.innerHTML = html;
+
+    // Find Manage or Labels text nodes/elements
+    let manageNode = null, labelsNode = null;
+
+    [...container.childNodes].forEach(node => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            const txt = node.innerHTML || node.textContent;
+            if (/^Manage:/i.test(txt.trim())) manageNode = node;
+            if (/^Labels:/i.test(txt.trim())) labelsNode = node;
+        } else if (node.nodeType === Node.TEXT_NODE) {
+            const txt = node.textContent.trim();
+            if (/^Manage:/i.test(txt.trim())) {
+                const manageDiv = collectManageBlock(node);
+                node.remove();
+                manageNode = manageDiv;
+            }
+
+            if (/^Labels:/i.test(txt.trim())) {
+                const span = document.createElement("div");
+                span.className = "labels";
+                const labelText = txt.replace(/^Labels:\s*/i, "");
+                const labelSpans = splitLabelsRespectingQuotes(labelText)
+                    .map(l => `<span class="label">${l}</span>`)
+                    .join(" ");
+                span.innerHTML = "Labels: " + labelSpans;
+                node.replaceWith(span);
+                labelsNode = span;
+            }
+
+        }
+    });
+
+    // If either exists, group into one .meta
+    if (manageNode || labelsNode) {
+        const meta = document.createElement("span");
+        meta.className = "meta";
+        if (manageNode) meta.appendChild(manageNode);
+        if (labelsNode) meta.appendChild(labelsNode);
+        // Insert meta at the start
+        container.insertBefore(meta, container.firstChild);
+    }
+
+    document.getElementById("paneContent").innerHTML = container.innerHTML;
 }
+
+function splitLabelsRespectingQuotes(labelString) {
+    const labels = [];
+    let current = "";
+    let inQuotes = false;
+
+    for (let i = 0; i < labelString.length; i++) {
+        const char = labelString[i];
+        if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            labels.push(current.trim().replace(/^"|"$/g, ''));
+            current = "";
+        } else {
+            current += char;
+        }
+    }
+    if (current) {
+        labels.push(current.trim().replace(/^"|"$/g, ''));
+    }
+    return labels.filter(Boolean);
+}
+
+
+function collectManageBlock(startNode) {
+    const manageDiv = document.createElement("div");
+    manageDiv.className = "manage";
+    manageDiv.append("Manage: ");
+
+    let node = startNode.nextSibling;
+    while (node && !(node.textContent || "").trim().startsWith("Labels:")) {
+        const next = node.nextSibling;
+        manageDiv.appendChild(node);
+        node = next;
+    }
+
+    return manageDiv;
+}
+
+
+
+(function bindMetaLabelClicks() {
+  const pane = document.getElementById("paneContent");
+  if (!pane || pane.dataset.labelsBound) return;
+
+  pane.addEventListener("click", (e) => {
+    const el = e.target.closest(".label");
+    if (!el || !pane.contains(el)) return;
+
+    const labelText = el.textContent.trim();
+
+    // Remove from all labels
+    document.querySelectorAll(".label").forEach(l => l.classList.remove("active-tab"));
+
+    // Add active-tab and remove after 2 seconds
+    el.classList.add("active-tab");
+    setTimeout(() => el.classList.remove("active-tab"), 2000);
+
+    // Put text in search and trigger your existing flow
+    const searchBox = document.getElementById("searchBox");
+    if (searchBox) {
+      searchBox.value = labelText;
+      searchBox.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    }
+
+    document.getElementById("pill-tasks").click();
+  });
+
+  pane.dataset.labelsBound = "1";
+})();
+
+
+
+
+
 
 
 
@@ -453,7 +570,7 @@ function autoLink(text) {
         return `<a href="tel:${clean}" target="_blank">${match}</a>`;
     });
     text = text.replace(/\bhttps?:\/\/[^\s<>"',)]+/gi, url =>
-        `<a href="${url}" target="_blank">${url}</a>`
+        `<a href="${url}" target="_blank" class="link">${url}</a>`
     );
     const dummy = document.createElement("div");
     dummy.innerHTML = text;
