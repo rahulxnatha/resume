@@ -1814,8 +1814,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     margin: 0px 0 0 -20px;
     background-color: #121212;
     width: calc(100% + 40px);
-    padding: 20px 10px;
+    padding: 20px 20px;
     display: block;
-    text-align: center;
+    /* text-align: center; */
 
 }

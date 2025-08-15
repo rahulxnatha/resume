@@ -431,7 +431,7 @@ function showPaneContent(id) {
         (match, year, month, day, hour, minute, content) => {
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            const displayDate = `${day} ${monthNames[parseInt(month, 10) - 1]} ${year} ${hour}:${minute}`;
+            const displayDate = `${day} ${monthNames[parseInt(month, 10) - 1]} ${year}, ${hour}:${minute}`;
             return `<span class="post"><span class="timestamp">${displayDate}</span>${content}</span>`;
         }
     );
