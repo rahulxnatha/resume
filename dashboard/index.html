@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Dashboard</title>
     <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/style_cleaned.css" /> -->
     <link rel="stylesheet" href="css/pill-label-scroll.css" />
     <!-- <link rel="stylesheet" href="style-old.css" /> -->
 
@@ -48,7 +49,7 @@
 
 
 <body>
-    <header>
+    <header id="appHeader">
 
 
 
@@ -189,8 +190,10 @@
 
 
     </header>
+<div id="headerResizer" class="resizer horizontal"></div>
+    <main id="mainArea">
 
-    <main>
+        <div id="tileScrollWrapper">
         <section id="tileContainer">
 
             <div id="empty-state">
@@ -251,9 +254,16 @@
 
 
             </div>
+
+
+            
         </section>
+        </div>
         <div id="timeline-container" style="display: none;"></div>
 
+
+
+        <div id="mainResizer" class="resizer vertical"></div>
         <aside id="detailPane">
 
             <div id="paneContent"></div>
@@ -280,6 +290,7 @@
     <script src="js/edit-content-button.js"></script>
     <script src="js/server.js"></script>
     <script src="js/pill-label.js"></script>
+    <script src="js/resize.js"></script>
     <!-- <script src="js/pill-label-scroll.js"></script> -->
     <!-- <script src="sw.js"></script> -->
 

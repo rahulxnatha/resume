@@ -4,13 +4,24 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* prevent unwanted global scrollbars */
+}
+
 a {
     color: #0066cc;
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -478,9 +489,11 @@ main {
     gap: 20px;
     padding: 0px;
     box-sizing: border-box;
-    height: calc(75vh - 40px);
+    max-height: calc(75vh - 40px);
     margin: 0;
     overflow: auto;
+    /* width: 60vw; */
+    min-width: 200px; /* never collapse below 200px */
 }
 
 #tileContainer {
@@ -488,7 +501,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     width: 60vw;
     overflow-y: auto;
-    height: fit-content;
+    /* height: fit-content; */
     max-height: calc(75vh - 40px);
     /* margin: 20px; */
     /* border: 2px solid grey; */
@@ -511,12 +524,46 @@ main {
     /* margin: 25px 25px 25px 25px; */
 }
 
+#tileScrollWrapper {
+    overflow-y: auto;
+    flex: initial;        /* don’t force it to fill remaining height */
+    height: auto;         /* shrink to content height */
+    max-height: 100%;     /* but still stay inside main */
+}
+
+
+#tileContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: stretch; /* ensures all tiles in a row have same height */
+    align-items: start; /* prevents vertical stretching */
+    min-width: 260px; /* never collapse below 200px */
+
+    
+    align-items: start;            /* prevent ugly full-height stretching */
+    grid-auto-rows: auto;          /* row height = tallest tile in that row */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: start;      /* stop vertical stretching */
+    height: auto !important; /* prevent flex from forcing full height */
+    flex: initial !important; /* don't let flex grow to fill parent */
+
+    
+
+    overflow: visible; /* or overflow-y: visible; */
+}
+
+
 .task-tile {
     border: 2px solid grey;
     padding: 10px;
     margin: 0;
     cursor: pointer;
     min-width: 50px;
+    max-width: 500px;
     /* flex: 1 1 300px; */
     /* display: flex; */
     /* flex-direction: row; */
@@ -535,6 +582,18 @@ main {
     justify-content: space-between;
     /* padding: 10px; */
     /* height: 200px; */
+
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* fill grid cell height */
+
+    display: flex;
+    flex-direction: column;
+    height: auto; /* only as tall as content */
+
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
 }
 
 .task-tile .tile-content div:nth-child(2) {
@@ -612,14 +671,22 @@ aside#detailPane {
     /* border-left: 2px solid grey; */
     padding: 0px;
     position: relative;
+    overflow: auto;
 }
+
+#detailPane {
+    flex: 0 0 350px; /* start with 350px width */
+    min-width: 200px; /* never collapse below 200px */
+    overflow-y: auto; /* keep internal scrolling if content exceeds height */
+}
+
 
 #paneContent {
     padding: 20px;
     overflow-y: auto;
-    height: 75vh;
-    height: calc(75vh - 40px);
-    border-left: 1px solid grey;
+    /* height: 75vh; */
+    /* max-height: calc(75vh - 40px); */
+    /* border-left: 1px solid grey; */
     /* width: calc(40vw - 80px); */
     margin: 0;
     white-space: pre-wrap;
@@ -1067,6 +1134,15 @@ footer {
         grid-template-columns: repeat(1, 1fr);
         width: 100vw;
     }
+
+    #tileContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; /* keeps your existing spacing */
+    width: 100%;
+    align-items: stretch; /* ensures all tiles in a row have same height */
+}
+
 
     #searchBox {
         width: 200px;
@@ -1758,7 +1834,7 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     border: 1px solid #808080;
     background-color: #191919;
     display: block;
-    border-radius: 20px;
+    border-radius: 13px;
     overflow: hidden;
 }
 
@@ -1787,7 +1863,7 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     display: flex;
     flex-direction: column;
     /* gap: 10px; */
-    border-radius: 20px;
+    border-radius: 13px;
     overflow: hidden;
     user-select: none;
 }
@@ -1818,4 +1894,69 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     display: block;
     /* text-align: center; */
 
+}
+
+
+
+
+
+
+
+
+
+/* resize  */
+
+.resizer {
+    background: transparent;
+    z-index: 100;
+}
+
+.resizer.horizontal {
+    height: 5px;
+    cursor: row-resize;
+}
+
+.resizer.vertical {
+    width: 5px;
+    cursor: col-resize;
+    border-right: 1px solid rgb(128, 128, 128);
+}
+
+.resizer:hover {
+    background: rgba(128, 128, 128, 0.2);
+}
+
+
+
+/* main sizes  */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#appHeader {
+    flex: 0 0 auto; 
+}
+
+#headerResizer {
+    flex: 0 0 5px;
+    cursor: row-resize;
+}
+
+#mainArea {
+    flex: 1 1 auto;
+    display: flex;
+    overflow: hidden; 
+    
+ }
+
+footer {
+    flex: 0 0 auto; /* footer height fixed */
 }
