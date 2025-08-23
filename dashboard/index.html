@@ -56,13 +56,24 @@
 
         <div class="search-bar-container">
             <div class="dropdown-wrapper">
-                <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
+
+
+                <span class="header-title">
+                    <img src="image/TD LOGO (1).png" alt="" width="100" >
+
+
+
+                    <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
 
 
 
 
-                <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
+                    <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
+                    </span>
+
                 </span>
+
+
                 <!-- <div id="customDropdown" class="dropdown">
                     <div data-filter="All">All</div>
                     <div data-filter="Completed">Completed</div>
@@ -113,6 +124,11 @@
                     <span class="notonPhone">|</span>
 
                     <span class="pill2" id="editContentBtn">Edit content <span class="material-symbols-outlined"
+                            style="font-size: inherit;">
+                            open_in_new
+                        </span></span>
+
+                    <span class="pill2" id="oneDriveBtn">OneDrive <span class="material-symbols-outlined"
                             style="font-size: inherit;">
                             open_in_new
                         </span></span>
@@ -190,53 +206,58 @@
 
 
     </header>
-<div id="headerResizer" class="resizer horizontal"></div>
+    <div id="headerResizer" class="resizer horizontal"></div>
     <main id="mainArea">
 
         <div id="tileScrollWrapper">
-        <section id="tileContainer">
+            <div class="search-result-note" id="searchResultNote"
+            
+            >
+        
+        Showing you 5 matching results.</div>
+            <section id="tileContainer">
 
-            <div id="empty-state">
+                <div id="empty-state">
 
 
-                <table class="dashboard-pricing-table">
-                    <thead>
-                        <tr>
-                            <th>Tier</th>
-                            <th>Name</th>
-                            <th>Features</th>
+                    <table class="dashboard-pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Name</th>
+                                <th>Features</th>
 
-                            <th>Price (1 Year)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><strong>Basic</strong></td>
-                            <td>
-                                - Tasks tab with filters and preview pane<br>
-                                - Sync button<br>
-                                - Auto smart sorting (no manual options)<br>
-                                - "Edit content" link<br>
+                                <th>Price (1 Year)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Basic</strong></td>
+                                <td>
+                                    - Tasks tab with filters and preview pane<br>
+                                    - Sync button<br>
+                                    - Auto smart sorting (no manual options)<br>
+                                    - "Edit content" link<br>
 
-                            </td>
+                                </td>
 
-                            <td><strong>Free</strong></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><strong>Plus</strong></td>
-                            <td>
-                                - All Basic features<br>
-                                - Timeline tab with stage bars<br>
-                                - Tracking charts (e.g., money)<br>
-                                - Custom sorting via pills<br>
+                                <td><strong>Free</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Plus</strong></td>
+                                <td>
+                                    - All Basic features<br>
+                                    - Timeline tab with stage bars<br>
+                                    - Tracking charts (e.g., money)<br>
+                                    - Custom sorting via pills<br>
 
-                            </td>
+                                </td>
 
-                            <td>₹249/year</td>
-                        </tr>
-                        <!-- <tr>
+                                <td>₹249/year</td>
+                            </tr>
+                            <!-- <tr>
                             <td>3</td>
                             <td><strong>Premium</strong></td>
                             <td>
@@ -249,15 +270,15 @@
                             <td>❌ Mobile<br>✅ PC & Mac</td>
                             <td>₹499/year</td>
                         </tr> -->
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
 
-            </div>
+                </div>
 
 
-            
-        </section>
+
+            </section>
         </div>
         <div id="timeline-container" style="display: none;"></div>
 
@@ -266,19 +287,49 @@
         <div id="mainResizer" class="resizer vertical"></div>
         <aside id="detailPane">
 
+            <div class="note-to-user">
+                <p>Dear <span class="username">user</span>, welcome to the dashboard designed by me to help track the
+                    timeline of various tasks.
+                </p>
+
+
+
+                <details>
+                    <summary><strong>Instructions</strong></summary>
+                    <ol>
+                        <li>Clicking on a task tile (left pane) will load more details about it below in this pane
+                            (right pane).</li>
+                        <li>Use the "Edit content" button (header) to modify the dashboard contents.</li>
+                        <li>Use the "Sync" button (header) to update the dashboard with the latest data.</li>
+                        <li>Use the pills (header) to filter tasks by status.</li>
+                        <li>Use the timeline tab (header) to view tasks in a timeline format.</li>
+                    </ol>
+
+                    <p><strong>Note:</strong> This dashboard is designed to be used on a desktop or laptop computer. It
+                        may
+                        not work well on mobile devices.</p>
+                </details>
+
+
+                <p>
+                    You can <a
+                        href="https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/edit"
+                        target="_blank" rel="noopener noreferrer">update the contents of this dashboard</a> (if
+                    given edit permission), and access the
+                    <a href="https://rahulnatha.com/big?view=onedrive" target="_blank"
+                        rel="noopener noreferrer">OneDrive folder</a> (password shared on email).
+                </p>
+
+            </div>
+
+
             <div id="paneContent"></div>
         </aside>
 
 
 
     </main>
-    <!-- <div class="note-to-user">
-        <p>Dear BiG team, welcome to the dashboard designed by me to help track the timeline of various tasks. <br> You
-            can <a href="https://docs.google.com/spreadsheets/d/1CiJwmxOffFdaX9ZNxMrw4a8MODt6GsTn8bs7vsSGJ3o/edit"
-                target="_blank" rel="noopener noreferrer">update the contents of this dashboard</a>, and access the <a
-                href="https://rahulnatha.com/big?view=onedrive" target="_blank" rel="noopener noreferrer">OneDrive
-                folder</a> (password shared on email)</p>
-    </div> -->
+
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
@@ -297,7 +348,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
-    <!-- <script>
+    <script>
         window.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const isVisitorBig = params.get("visitor") === "big";
@@ -308,11 +359,13 @@
             }
         });
 
-    </script> -->
+    </script>
 
     <footer>
         <span id="title">Task Dashboard as of ...</span>
         © 2025–<span id="copy-year"></span> Rahul Natha. All rights reserved.
+
+        <!-- <img src="image/RAHUL DOCS logo (1).png" alt="" height="30px" style=" display: inline;"> -->
     </footer>
 
     <script>

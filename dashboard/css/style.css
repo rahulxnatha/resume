@@ -76,6 +76,7 @@ header {
     /* position: sticky; */
     top: 0;
     background: inherit;
+    /* background: #dcdcdc; */
     z-index: 10;
     height: 25vh;
     overflow: auto;
@@ -85,6 +86,16 @@ header {
 
 
 }
+
+.header-title {
+  display: flex; /* 1. Enable flexbox layout */
+  align-items: center; /* 2. Vertically align items in the middle */
+  /* justify-content: space-between;  */
+  padding: 0px; /* Optional: Add some padding for spacing */
+  gap: 20px; /* 4. Add space between the title and search bar */
+}
+
+
 
 .search-bar-container {
     margin: 0px 0;
@@ -148,7 +159,7 @@ header {
 .pill-label {
     display: inline-block;
     padding: 6px 12px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
     border: 1px solid grey;
@@ -181,7 +192,9 @@ header {
 }
 
 
-
+.pill-label {
+    border-radius: 10px;
+}
 
 
 
@@ -475,9 +488,14 @@ header {
 
 .note,
 #searchNote,
-#totalTasks,
 #title {
     margin-top: 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+#totalTasks {
+    /* margin-top: 10px; */
     font-size: 14px;
     color: #777;
 }
@@ -494,6 +512,12 @@ main {
     overflow: auto;
     /* width: 60vw; */
     min-width: 200px; /* never collapse below 200px */
+}
+
+.search-result-note {
+    margin-left: 20px;
+    font-size: xx-large;
+    font-weight: 100;
 }
 
 #tileContainer {
@@ -529,6 +553,7 @@ main {
     flex: initial;        /* don’t force it to fill remaining height */
     height: auto;         /* shrink to content height */
     max-height: 100%;     /* but still stay inside main */
+    
 }
 
 
@@ -724,16 +749,31 @@ body.dark #searchBox,
 }
 
 .note-to-user {
-    position: fixed;
-    top: 20px;
-    right: 0;
+    /* position: fixed; */
+    /* top: 20px; */
+    /* right: 0; */
     border: 1px solid grey;
     padding: 0px 20px;
-    margin: 20px;
+    margin: 15px 20px 0 20px;
     font-size: 14px;
-    border-radius: 7px;
+    border-radius: 13px;
     display: none;
+background-color: rgb(41, 20, 5);
+    /* z-index: 2000; */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .progress-bar {
     height: 6px;
@@ -1098,10 +1138,10 @@ footer {
         display: block;
     }
 
-    .note-to-user,
+    /* .note-to-user,
     .hide-on-phone {
         display: none;
-    }
+    } */
 
     .onPhone {
         display: inline;
@@ -1141,6 +1181,7 @@ footer {
     gap: 20px; /* keeps your existing spacing */
     width: 100%;
     align-items: stretch; /* ensures all tiles in a row have same height */
+    padding-bottom: 20px; /* add padding to bottom for spacing */
 }
 
 
@@ -1827,33 +1868,76 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 
 
-
 .post {
     margin: 0px 0 20px 0;
     padding: 0 20px 20px 20px;
-    border: 1px solid #808080;
-    background-color: #191919;
     display: block;
     border-radius: 13px;
     overflow: hidden;
 }
 
-.post:hover,
-.manage:hover,
-.labels:hover {
-    background-color: #282828;
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .post {
+        background-color: #191919;
+        border: 1px solid #808080;
+        color: #e0e0e0; /* light text */
+    }
 }
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .post {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        color: #222; /* dark text */
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .post:hover,
+    .manage:hover,
+    .labels:hover {
+        background-color: #282828;
+    }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .post:hover,
+    .manage:hover,
+    .labels:hover {
+        background-color: #f0f0f0;
+    }
+}
+
 
 .manage,
 .labels {
     display: block;
-    /* flex-direction: column; */
-    /* gap: 10px; */
     padding: 10px;
-    /* border: 1px solid #808080; */
-    background-color: #191919;
     border-radius: 0px;
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .manage,
+    .labels {
+        background-color: #191919;
+        color: #d0d0d0;
+    }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .manage,
+    .labels {
+        background-color: #ffffff;
+        color: #333;
+    }
+}
+
 
 .meta {
     margin: 00px 0;
@@ -1885,16 +1969,30 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 }
 
 .timestamp {
-    /* color: #808080; */
-    /* font-size: 12px; */
     margin: 0px 0 0 -20px;
-    background-color: #121212;
     width: calc(100% + 40px);
     padding: 20px 20px;
     display: block;
-    /* text-align: center; */
-
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .timestamp {
+        background-color: #121212;
+        color: #b0b0b0; /* light gray text */
+    }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .timestamp {
+        background-color: #f5f5f5;
+        color: #555; /* dark gray text */
+    }
+}
+
+
+
 
 
 
