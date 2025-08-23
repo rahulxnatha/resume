@@ -749,18 +749,33 @@ body.dark #searchBox,
 }
 
 .note-to-user {
-    /* position: fixed; */
-    /* top: 20px; */
-    /* right: 0; */
-    border: 1px solid grey;
+    border: 1px solid;
     padding: 0px 20px;
     margin: 15px 20px 0 20px;
     font-size: 14px;
     border-radius: 13px;
     display: none;
-background-color: rgb(41, 20, 5);
-    /* z-index: 2000; */
+    user-select: none;
 }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .note-to-user {
+        background-color: rgba(41, 20, 5, 0.24);
+        border-color: #666;
+        color: #e0e0e0;
+    }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .note-to-user {
+        background-color: rgba(255, 215, 180, 0.35); /* soft warm tint */
+        border-color: #bbb;
+        color: #333;
+    }
+}
+
 
 
 
