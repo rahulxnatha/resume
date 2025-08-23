@@ -515,9 +515,19 @@ main {
 }
 
 .search-result-note {
-    margin-left: 20px;
+    padding: 0 20px 10px 20px;
+
     font-size: xx-large;
     font-weight: 100;
+    position: sticky;
+
+    top: 0;   /* 👈 required for sticky to take effect */
+    background: #99999928; /* optional, prevents text overlap */
+    z-index: 5;       /* optional, keeps it above tiles */
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    
 }
 
 #tileContainer {
