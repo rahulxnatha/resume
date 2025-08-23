@@ -386,6 +386,9 @@ function renderTiles(data) {
         });
         container.appendChild(tile);
     });
+
+    // update number of tiles being shown
+    document.getElementById("nresults").innerHTML = data.length;
 }
 
 function generateStatusHTML(statusText) {
