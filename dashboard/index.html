@@ -59,7 +59,7 @@
 
 
                 <span class="header-title">
-                    <img src="image/TD LOGO (1).png" alt="" width="100" >
+                    <img src="image/TD LOGO (1).png" alt="" width="100">
 
 
 
@@ -83,12 +83,23 @@
                 </div> -->
 
                 <div id="pillContainer" class="pill-container">
-                    <div class="pill" data-filter="All">All</div>
 
-                    <div class="pill" data-filter="Completed">Completed</div>
-                    <div class="pill" data-filter="Processing">Processing</div>
-                    <div class="pill" data-filter="Can start">Can start</div>
-                    <div class="pill" data-filter="Can't start">Can't start</div>
+
+                    <div class="pill" data-filter="-{completed}">Default <span id="a-pill-count"></span></div>
+
+                    <div class="pill" data-filter="-{completed}, -{can't start}">Feeling energetic<span id="a-pill-count"></span></div>
+
+                    <div class="pill" data-filter="+{can start}, +{can't start}">Future outlook<span id="a-pill-count"></span></div>
+
+                    <div class="pill" data-filter="+{completed}, +{processing}">Inspect work<span id="a-pill-count"></span></div>
+
+                    <div class="pill" data-filter="">All <span id="a-pill-count"></span></div>
+                    <div class="pill" data-filter="{Completed}">Completed <span id="c-pill-count"></span></div>
+                    <div class="pill" data-filter="{Processing}">Processing <span id="p-pill-count"></span></div>
+                    <div class="pill" data-filter="{Can start}">Can start <span id="n-pill-count"></span></div>
+                    <div class="pill" data-filter="{Can't start}">Can't start <span id="t-pill-count"></span></div>
+
+
 
 
                     <span class="notonPhone">|</span>
@@ -117,7 +128,7 @@
 
 
                     <span class="pill3-container">
-                        <!-- Below existing pills like "sync", "show/hide task info" -->
+                      
                         <span id="pill-tasks" class="pill3 active-tab">Tasks</span>
                         <span id="pill-timeline" class="pill3">Labels</span>
                     </span>
@@ -128,10 +139,10 @@
                             open_in_new
                         </span></span>
 
-                    <span class="pill2" id="oneDriveBtn">OneDrive <span class="material-symbols-outlined"
+                    <!-- <span class="pill2" id="oneDriveBtn">OneDrive <span class="material-symbols-outlined"
                             style="font-size: inherit;">
                             open_in_new
-                        </span></span>
+                        </span></span> -->
 
 
 
@@ -210,11 +221,9 @@
     <main id="mainArea">
 
         <div id="tileScrollWrapper">
-            <div class="search-result-note" id="searchResultNote"
-            
-            >
-        
-        Showing you <span id="nresults"></span> matching results.</div>
+            <div class="search-result-note" id="searchResultNote">
+
+                Showing you <span id="nresults"></span> matching results.</div>
             <section id="tileContainer">
 
                 <div id="empty-state">

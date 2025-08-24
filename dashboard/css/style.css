@@ -15,6 +15,12 @@ body {
     overflow: hidden; /* prevent unwanted global scrollbars */
 }
 
+hide {
+    /* display: none !important; */
+    visibility: hidden !important;
+}
+
+
 a {
     color: #0066cc;
     text-decoration: none;
@@ -159,7 +165,7 @@ header {
 .pill-label {
     display: inline-block;
     padding: 6px 12px;
-    border-radius: 10px;
+   
     cursor: pointer;
     font-size: 14px;
     border: 1px solid grey;
@@ -193,7 +199,7 @@ header {
 
 
 .pill-label {
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 

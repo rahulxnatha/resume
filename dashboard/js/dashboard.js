@@ -4,6 +4,9 @@ let globalData = [];
 let blockTexts = {};
 let typoThreshold = 0.25;
 
+var total_tasks_variable = 0;
+
+
 document.getElementById('rememberMeCheckbox').checked = true;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -250,11 +253,35 @@ function fetchAndRenderData() {
                 const percent = count => total === 0 ? 0 : Math.round((count / total) * 100);
                 const summary = `Recognised tasks: ${total} (${completed} completed [${percent(completed)}%], ${processing} processing [${percent(processing)}%], ${canStart} can start [${percent(canStart)}%], ${cantStart} can't start [${percent(cantStart)}%])`;
                 document.getElementById("totalTasks").innerText = summary;
+
+                total_tasks_variable = total;
+
+
             }
+
+
+
 
             const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
             renderTiles(unifiedSort(excludeCompleted));
+
+
+
             updateTaskSummary(globalData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             const params = new URLSearchParams(window.location.search);
             const search = params.get("search");
@@ -297,9 +324,15 @@ window.addEventListener("load", () => {
     }
 });
 
-searchBox.addEventListener("input", () => {
-    updateVisiblePills();
-});
+// safe attachment: only add input listener if element exists
+const __searchBox_el = document.getElementById("searchBox");
+if (__searchBox_el) {
+    __searchBox_el.addEventListener("input", () => {
+        updateVisiblePills();
+        updateActivePillFromSearch();
+    });
+}
+
 
 function renderTiles(data) {
     const container = document.getElementById("tileContainer");
@@ -388,8 +421,19 @@ function renderTiles(data) {
     });
 
     // update number of tiles being shown
-    document.getElementById("nresults").innerHTML = data.length;
+
+
+    // document.getElementById("nresults").innerHTML = `all ${total}` ;
+    document.getElementById("nresults").innerHTML = data.length === total_tasks_variable ? `all ${total_tasks_variable}` : `${data.length} of ${total_tasks_variable}`;
+    pillLabelHighlightEngine();
+
+
 }
+
+
+
+
+
 
 function generateStatusHTML(statusText) {
     if (statusText.toLowerCase().includes("completed")) return "✅ Completed";
@@ -640,7 +684,28 @@ function handleSearch() {
             fallback.push(d);
         }
     });
-    renderTiles(unifiedSort([...matches, ...fallback]));
+    // renderTiles(unifiedSort([...matches, ...fallback]));
+
+    // Decide whether advanced status-brace tokens are present
+    const rawQuery = (document.getElementById("searchBox")?.value || "").trim();
+    const hasBraceToken = /-?\{[^}]+\}/.test(rawQuery); // matches {status}, -{status}, -{"status"} etc.
+
+    let combined;
+    if (hasBraceToken) {
+        // If user used {..} syntax, run advanced parser against full dataset
+        combined = applyAdvancedSearch(globalData);
+    } else {
+        // Otherwise apply advanced parsing only on the already-matched subset
+        combined = [...matches, ...fallback];
+        if (typeof applyAdvancedSearch === "function") combined = applyAdvancedSearch(combined);
+    }
+
+    const results = unifiedSort(combined);
+    renderTiles(results);
+
+
+
+
     note.innerText = corrected !== input ? `Searched for "${corrected}" instead of "${input}".` : "";
     const url = new URL(window.location);
     url.searchParams.set("search", input);
@@ -1377,9 +1442,9 @@ document.getElementById("pill-timeline").addEventListener("click", () => {
 
 
 
-
 function updateActivePillFromSearch() {
-    const searchValue = searchBox.value.trim().toLowerCase();
+    const sb = document.getElementById("searchBox");
+    const searchValue = (sb ? sb.value : "").trim().toLowerCase();
 
     const hasMatch = Array.from(document.querySelectorAll(".pill-label"))
         .some(pill => pill.textContent.trim().toLowerCase() === searchValue);
@@ -1388,6 +1453,7 @@ function updateActivePillFromSearch() {
         document.querySelectorAll(".pill-label").forEach(p => p.classList.remove("active-tab"));
     }
 }
+
 
 // const searchBox = document.getElementById("searchBox");
 
@@ -1438,6 +1504,124 @@ function createStageBarPills() {
         pillContainer2.appendChild(pill);
     });
 }
+
+
+
+
+
+
+
+
+
+
+function pillLabelHighlightEngine() {
+    const searchValue = document.getElementById("searchBox").value.trim().toLowerCase();
+
+    // Remove from all first
+    document.querySelectorAll(".pill-label").forEach(p => p.classList.remove("active-tab"));
+
+    if (!searchValue) return; // stop if search is empty
+
+    // Highlight only matching pill-label
+    document.querySelectorAll(".pill-label").forEach(p => {
+        if (p.textContent.trim().toLowerCase() === searchValue) {
+            p.classList.add("active-tab");
+        }
+    });
+}
+
+
+// applyAdvancedSearch(tasks)
+// Supports:
+// - {status}  (status filter) and -{status} (exclude status)
+// - "keyword" or unquoted tokens => keyword match on task/info/block
+// - -"keyword" => exclude keyword
+// - -{"completed"} is treated same as -{completed}
+// - "-{completed}" (quotes around whole thing) is treated as a literal keyword '-{completed}'
+// - multiple tokens separated by commas
+// - if NO {..} tokens present, status filters are ignored (keyword-only mode)
+function applyAdvancedSearch(tasks) {
+    const raw = (document.getElementById("searchBox")?.value || "").trim();
+    if (!raw) return tasks;
+
+    const tokens = raw.split(",").map(t => t.trim()).filter(Boolean);
+    const posStatus = [], negStatus = [], posKw = [], negKw = [];
+
+    tokens.forEach(tok => {
+        if (!tok) return;
+
+        // operator before quoted: e.g. -"can't start" or -"{completed}"
+        const opQuoted = tok.match(/^([+-])"([\s\S]*)"$/);
+        if (opQuoted) {
+            const op = opQuoted[1], content = opQuoted[2].trim();
+            if (/^\{[\s\S]*\}$/.test(content)) {
+                // -"{...}" => treat as status token (unwrap quotes inside braces)
+                const inner = content.replace(/^\{\s*"?|"?\s*\}$/g, "").trim().toLowerCase();
+                if (op === "-") negStatus.push(inner); else posStatus.push(inner);
+            } else {
+                if (op === "-") negKw.push(content.toLowerCase()); else posKw.push(content.toLowerCase());
+            }
+            return;
+        }
+
+        // fully quoted token (literal keyword)
+        const fullyQuoted = tok.match(/^"([\s\S]*)"$/);
+        if (fullyQuoted) { posKw.push(fullyQuoted[1].trim().toLowerCase()); return; }
+
+        // normal tokens with optional +/- prefix
+        let isNeg = false;
+        let tkn = tok;
+        if (tkn[0] === "+" || tkn[0] === "-") { isNeg = tkn[0] === "-"; tkn = tkn.slice(1).trim(); }
+
+        // status token with braces (allow optional quotes inside)
+        const statusMatch = tkn.match(/^\{\s*"?([\s\S]*?)"?\s*\}$/);
+        if (statusMatch) {
+            const content = statusMatch[1].trim().toLowerCase();
+            if (isNeg) negStatus.push(content); else posStatus.push(content);
+            return;
+        }
+
+        // otherwise keyword
+        const c = tkn.trim().toLowerCase();
+        if (!c) return;
+        if (isNeg) negKw.push(c); else posKw.push(c);
+    });
+
+    const hasStatus = posStatus.length > 0 || negStatus.length > 0;
+
+    return tasks.filter(d => {
+        const status = (d.status || "").toLowerCase();
+        const text = `${d.task || ""} ${d.info || ""} ${d.block || ""}`.toLowerCase();
+
+        // positive checks
+        let statusOK = true;
+        if (hasStatus && posStatus.length) statusOK = posStatus.some(s => status.includes(s));
+        let kwOK = true;
+        if (posKw.length) kwOK = posKw.some(k => text.includes(k));
+
+        // negative checks
+        const statusBad = hasStatus && negStatus.some(s => status.includes(s));
+        const kwBad = negKw.some(k => text.includes(k));
+
+        return statusOK && kwOK && !statusBad && !kwBad;
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
