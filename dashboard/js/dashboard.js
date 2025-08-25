@@ -64,6 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set up Edit Content button dynamically
     setupEditContentButton();
+
+
+
+
+    const savedMode = localStorage.getItem("sortMode") || "default";
+    const sortDropdown = document.getElementById("sortMode");
+    if (sortDropdown) {
+        sortDropdown.value = savedMode;  // set dropdown
+    }
+
 });
 
 async function handleDashboardKey(rawKey, forceRemember = false) {
@@ -251,7 +261,7 @@ function fetchAndRenderData() {
                     else if (s.includes("can't start") || s.includes("cannot start")) cantStart++;
                 });
                 const percent = count => total === 0 ? 0 : Math.round((count / total) * 100);
-                const summary = `Recognised tasks: ${total} (${completed} completed [${percent(completed)}%], ${processing} processing [${percent(processing)}%], ${canStart} can start [${percent(canStart)}%], ${cantStart} can't start [${percent(cantStart)}%])`;
+                const summary = `al ${total}; ${completed} co [${percent(completed)}%]; ${processing} pr [${percent(processing)}%]; ${canStart} ca [${percent(canStart)}%]; ${cantStart} can't [${percent(cantStart)}%]`;
                 document.getElementById("totalTasks").innerText = summary;
 
                 total_tasks_variable = total;
@@ -261,9 +271,23 @@ function fetchAndRenderData() {
 
 
 
+            const excludeCompleted = globalData.filter(
+                d => !d.status.toLowerCase().includes("completed")
+            );
 
-            const excludeCompleted = globalData.filter(d => !d.status.toLowerCase().includes("completed"));
-            renderTiles(unifiedSort(excludeCompleted));
+            // get current mode from dropdown, fallback to "default"
+            // const sortMode = document.getElementById("sortMode")?.value || "default";
+
+            // renderTiles(unifiedSort(excludeCompleted, sortMode));
+
+
+
+
+
+            const sortMode = document.getElementById("sortMode")?.value || "default";
+            // const results = unifiedSort(combined, sortMode); // in handleSearch
+            renderTiles(unifiedSort(excludeCompleted, sortMode)); // in fetchAndRenderData
+
 
 
 
@@ -305,6 +329,18 @@ function fetchAndRenderData() {
         document.getElementById("detailPane").classList.toggle("active");
     });
 }
+
+// document.getElementById("sortMode").addEventListener("change", () => {
+//     handleSearch(); // re-run search so tiles re-render using new mode
+// });
+
+document.getElementById("sortMode").addEventListener("change", () => {
+    const mode = document.getElementById("sortMode").value;
+    localStorage.setItem("sortMode", mode);   // save preference
+    handleSearch(); // re-run search with new sort
+});
+
+
 
 var show_task_info = false;
 
@@ -530,6 +566,22 @@ function showPaneContent(id) {
     }
 
     document.getElementById("paneContent").innerHTML = container.innerHTML;
+
+    const pane = document.getElementById("paneContent");
+
+    // Remove any old animation class
+    pane.classList.remove("pane-animate");
+
+    // Force reflow so the animation restarts
+    void pane.offsetWidth;
+
+    // Add class back to trigger animation
+    pane.classList.add("pane-animate");
+
+
+
+
+
 }
 
 function splitLabelsRespectingQuotes(labelString) {
@@ -684,7 +736,7 @@ function handleSearch() {
             fallback.push(d);
         }
     });
-    // renderTiles(unifiedSort([...matches, ...fallback]));
+
 
     // Decide whether advanced status-brace tokens are present
     const rawQuery = (document.getElementById("searchBox")?.value || "").trim();
@@ -700,8 +752,25 @@ function handleSearch() {
         if (typeof applyAdvancedSearch === "function") combined = applyAdvancedSearch(combined);
     }
 
-    const results = unifiedSort(combined);
-    renderTiles(results);
+    // const results = unifiedSort(combined);
+    // renderTiles(results);
+
+
+
+    // const sortMode = document.getElementById("sortMode")?.value || "default";
+    // const results = unifiedSort(combined, sortMode);
+    // renderTiles(results);
+
+
+    // const sortMode = document.getElementById("sortMode")?.value || "default";
+    // const results = unifiedSort(combined, sortMode); // in handleSearch
+    // renderTiles(unifiedSort(excludeCompleted, sortMode)); // in fetchAndRenderData
+
+
+const sortMode = document.getElementById("sortMode")?.value || "default";
+const results = unifiedSort(combined, sortMode);
+renderTiles(results);
+
 
 
 
@@ -712,13 +781,15 @@ function handleSearch() {
     history.replaceState(null, "", url.toString());
 }
 
-function unifiedSort(tasks) {
+function unifiedSort(tasks, mode = "default") {
     return tasks.slice().sort((a, b) => {
         const rank = t => {
             const isCompleted = t.status.toLowerCase().includes("completed");
             const isProcessing = t.status.toLowerCase().includes("processing");
             const isCanStart = t.status.toLowerCase().includes("can start");
             const isCantStart = t.status.toLowerCase().includes("can't start") || t.status.toLowerCase().includes("cannot start");
+
+            // --- Due date priority ---
             let dueCategory = 2;
             if (t.dueDateUTC && !isCompleted) {
                 const due = new Date(t.dueDateUTC + "Z");
@@ -726,13 +797,35 @@ function unifiedSort(tasks) {
                 const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
                 const dueDay = Date.UTC(due.getUTCFullYear(), due.getUTCMonth(), due.getUTCDate());
                 const dayDiff = Math.floor((dueDay - today) / (1000 * 60 * 60 * 24));
-                if (dayDiff <= 1) dueCategory = 0;
-                else dueCategory = 1;
+                if (dayDiff <= 1) dueCategory = 0; // urgent
+                else dueCategory = 1;              // has a due date
             }
+
+            // --- Status rank ---
             const statusRank = isProcessing ? 0 : isCanStart ? 1 : isCantStart ? 2 : 3;
-            const finalDueRank = isCompleted ? 3 : dueCategory;
-            return [finalDueRank, statusRank, t.task.toLowerCase()];
+
+            // --- Label weightage (count labels if parsed) ---
+            let labelCount = 0;
+            if (t.block) {
+                const labelMatches = t.block.match(/Labels:\s*(.*)/i);
+                if (labelMatches && labelMatches[1]) {
+                    labelCount = labelMatches[1]
+                        .split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/) // split respecting quotes
+                        .filter(x => x.trim()).length;
+                }
+            }
+
+            // --- Switch based on mode ---
+            if (mode === "context") {
+                return [isCompleted ? 3 : dueCategory, -labelCount, statusRank, t.task.toLowerCase()];
+            } else if (mode === "workflow") {
+                return [isCompleted ? 3 : dueCategory, statusRank, -labelCount, t.task.toLowerCase()];
+            } else {
+                // default
+                return [isCompleted ? 3 : dueCategory, statusRank, t.task.toLowerCase()];
+            }
         };
+
         const aRank = rank(a);
         const bRank = rank(b);
         for (let i = 0; i < aRank.length; i++) {
@@ -742,6 +835,7 @@ function unifiedSort(tasks) {
         return 0;
     });
 }
+
 
 function levenshtein(a, b) {
     const m = a.length, n = b.length;
@@ -1619,11 +1713,11 @@ const keyInput2 = document.getElementById("dashboardKeyInput");
 const keyContainer = document.getElementById("dashboardKeyContainer");
 
 keyInput2.addEventListener("focus", () => {
-  keyContainer.classList.add("dashboard-key-container-adjusted");
+    keyContainer.classList.add("dashboard-key-container-adjusted");
 });
 
 keyInput2.addEventListener("blur", () => {
-  keyContainer.classList.remove("dashboard-key-container-adjusted");
+    keyContainer.classList.remove("dashboard-key-container-adjusted");
 });
 
 

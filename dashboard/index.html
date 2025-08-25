@@ -65,10 +65,17 @@
 
                     <input type="text" id="searchBox" placeholder="Search tasks..." autocomplete="off" />
 
+                    <span class="sort-container">
+                        <label for="sortMode">Sort engine:</label>
+                        <select id="sortMode">
+                            <option value="default">Default</option>
+                            <option value="context">Enhanced for context</option>
+                            <option value="workflow" selected>Enhanced for workflow</option>
+                        </select>
+                    </span>
 
 
-
-                    <span id="totalTasks">Recognised tasks: 🔑 Please enter a dashboard key to begin.
+                    <span id="totalTasks">🔑 Please enter a dashboard key to begin.
                     </span>
 
                 </span>
@@ -87,11 +94,14 @@
 
                     <div class="pill" data-filter="-{completed}">Default <span id="a-pill-count"></span></div>
 
-                    <div class="pill" data-filter="-{completed}, -{can't start}">Feeling energetic<span id="a-pill-count"></span></div>
+                    <div class="pill" data-filter="-{completed}, -{can't start}">Feeling energetic<span
+                            id="a-pill-count"></span></div>
 
-                    <div class="pill" data-filter="+{can start}, +{can't start}">Future outlook<span id="a-pill-count"></span></div>
+                    <div class="pill" data-filter="+{can start}, +{can't start}">Future outlook<span
+                            id="a-pill-count"></span></div>
 
-                    <div class="pill" data-filter="+{completed}, +{processing}">Inspect work<span id="a-pill-count"></span></div>
+                    <div class="pill" data-filter="+{completed}, +{processing}">Inspect work<span
+                            id="a-pill-count"></span></div>
 
                     <div class="pill" data-filter="">All <span id="a-pill-count"></span></div>
                     <div class="pill" data-filter="{Completed}">Completed <span id="c-pill-count"></span></div>
@@ -128,7 +138,7 @@
 
 
                     <span class="pill3-container">
-                      
+
                         <span id="pill-tasks" class="pill3 active-tab">Tasks</span>
                         <span id="pill-timeline" class="pill3">Labels</span>
                     </span>
@@ -154,9 +164,17 @@
                     <span id="subscription-type" class="pill2">Enter the key</span>
 
                 </div>
-                <div id="pillContainer2" class="pill-container">
+                <span id="pillContainer2" class="pill-container">
                     Loading labels...
-                </div>
+                </span>
+
+
+
+
+
+
+
+
             </div>
 
         </div>

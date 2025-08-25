@@ -713,6 +713,7 @@ aside#detailPane {
     padding: 0px;
     position: relative;
     overflow: auto;
+    
 }
 
 #detailPane {
@@ -733,7 +734,27 @@ aside#detailPane {
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
+
+
+     /* animation: fadeIn 0.4s ease-out; */
 }
+
+/* style.css */
+@keyframes paneFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pane-animate {
+  animation: paneFadeIn 0.4s ease-out;
+}
+
 
 #togglePane {
     display: none;
@@ -2093,4 +2114,102 @@ body {
 
 footer {
     flex: 0 0 auto; /* footer height fixed */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* pill 
+ */
+
+
+ @keyframes pillSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pill, .pill-label {
+  animation: pillSlideUp 0.3s ease-out;
+}
+
+
+/* sort engine nnnnnnnnnnnnnnnnnnn */
+
+/* Sort engine container */
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* margin: 10px 0; */
+  /* font-size: 14px; */
+  /* font-weight: 500; */
+}
+
+/* Label text */
+.sort-container label {
+  white-space: nowrap;
+  /* font-weight: 600; */
+}
+
+/* Dropdown style (light theme default) */
+#sortMode {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #222;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover and focus */
+#sortMode:hover {
+  border-color: #888;
+}
+
+#sortMode:focus {
+  outline: none;
+  border-color: #0078d4; /* same accent blue */
+  box-shadow: 0 0 5px rgba(0,120,212,0.4);
+}
+
+/* Dark theme version */
+@media (prefers-color-scheme: dark) {
+  #sortMode {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    color: #f1f1f1;
+  }
+
+  #sortMode:hover {
+    border-color: #666;
+  }
+
+  #sortMode:focus {
+    border-color: #3399ff;
+    box-shadow: 0 0 5px rgba(51,153,255,0.4);
+  }
+
+  .sort-container label {
+    color: #ddd;
+  }
+}
+
+/* Dropdown options */
+#sortMode option {
+  padding: 6px;
 }
