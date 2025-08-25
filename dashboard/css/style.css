@@ -1340,12 +1340,17 @@ footer {
 .dashboard-key-container {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 0px;
     max-width: max-content;
     margin: 10px auto;
     /* position: relative;  */
-
+  transition: top 0.3s ease;
     /* For absolute positioning of checkbox */
+}
+
+.dashboard-key-container-adjusted {
+    top: 20px;
+    transition: top 0.3s ease;
 }
 
 .dashboard-key-container>.key-input-wrapper {
@@ -1355,7 +1360,7 @@ footer {
 
 /* Key input */
 #dashboardKeyInput {
-    width: 400px;
+    width: 300px;
     max-width: 90vw;
     padding: 8px 12px;
     font-size: 15px;

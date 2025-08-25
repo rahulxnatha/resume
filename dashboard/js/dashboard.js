@@ -1613,6 +1613,18 @@ function applyAdvancedSearch(tasks) {
 
 
 
+// dashboard key adjustments for css dynamic height
+
+const keyInput2 = document.getElementById("dashboardKeyInput");
+const keyContainer = document.getElementById("dashboardKeyContainer");
+
+keyInput2.addEventListener("focus", () => {
+  keyContainer.classList.add("dashboard-key-container-adjusted");
+});
+
+keyInput2.addEventListener("blur", () => {
+  keyContainer.classList.remove("dashboard-key-container-adjusted");
+});
 
 
 
