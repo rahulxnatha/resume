@@ -460,7 +460,7 @@ function renderTiles(data) {
 
 
     // document.getElementById("nresults").innerHTML = `all ${total}` ;
-    document.getElementById("nresults").innerHTML = data.length === total_tasks_variable ? `all ${total_tasks_variable}` : `${data.length} of ${total_tasks_variable}`;
+    document.getElementById("nresults").innerHTML = data.length === total_tasks_variable ? `All ${total_tasks_variable}` : `${data.length}`;
     pillLabelHighlightEngine();
 
 
@@ -497,16 +497,9 @@ function calculateProgressPercent(start, end, today) {
 //     document.getElementById("paneContent").innerHTML = autoLink(raw);
 // }
 
-
 function showPaneContent(id) {
     const raw = blockTexts[id] || "No details available.";
     let html = autoLink(raw);
-
-    // Step 1: Wrap timestamp sections into posts
-    // html = html.replace(
-    //     /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)([\s\S]*?)(?=(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:)|$)/g,
-    //     (match, timestamp, content) => `<span class="post">${timestamp}${content}</span>`
-    // );
 
     // Step 1: Wrap timestamp sections into posts and timestamp span
     html = html.replace(
@@ -519,12 +512,48 @@ function showPaneContent(id) {
         }
     );
 
-
-    // Step 2: Parse HTML to DOM so we can safely combine Manage + Labels
+    // Step 2: Parse HTML to DOM so we can safely process
     const container = document.createElement("div");
     container.innerHTML = html;
 
-    // Find Manage or Labels text nodes/elements
+    // Convert numbered text into <ol><li>...</li></ol>, supporting multiple lists per post
+    container.querySelectorAll(".post").forEach(post => {
+        let content = post.innerHTML;
+
+        const parts = content.split(/<br\s*\/?>/i);
+        let newParts = [];
+        let inList = false;
+
+        parts.forEach(line => {
+            const clean = line.trim();
+            const match = /^(\d+)\.\s*(.+)/.exec(clean);
+
+            if (match) {
+                if (!inList) {
+                    newParts.push("<ol>");
+                    inList = true;
+                }
+                newParts.push(`<li>${match[2]}</li>`);
+            } else {
+                if (inList) {
+                    newParts.push("</ol>");
+                    inList = false;
+                }
+                if (clean !== "") {
+                    // only add <br> between non-empty normal lines
+                    if (newParts.length > 0) newParts.push("<br>");
+                    newParts.push(clean);
+                }
+            }
+        });
+
+        if (inList) newParts.push("</ol>");
+
+        post.innerHTML = newParts.join("");
+    });
+
+
+    // Step 3: Manage + Labels logic
     let manageNode = null, labelsNode = null;
 
     [...container.childNodes].forEach(node => {
@@ -539,7 +568,6 @@ function showPaneContent(id) {
                 node.remove();
                 manageNode = manageDiv;
             }
-
             if (/^Labels:/i.test(txt.trim())) {
                 const span = document.createElement("div");
                 span.className = "labels";
@@ -551,38 +579,25 @@ function showPaneContent(id) {
                 node.replaceWith(span);
                 labelsNode = span;
             }
-
         }
     });
 
-    // If either exists, group into one .meta
     if (manageNode || labelsNode) {
         const meta = document.createElement("span");
         meta.className = "meta";
         if (manageNode) meta.appendChild(manageNode);
         if (labelsNode) meta.appendChild(labelsNode);
-        // Insert meta at the start
         container.insertBefore(meta, container.firstChild);
     }
 
     document.getElementById("paneContent").innerHTML = container.innerHTML;
 
     const pane = document.getElementById("paneContent");
-
-    // Remove any old animation class
     pane.classList.remove("pane-animate");
-
-    // Force reflow so the animation restarts
     void pane.offsetWidth;
-
-    // Add class back to trigger animation
     pane.classList.add("pane-animate");
-
-
-
-
-
 }
+
 
 function splitLabelsRespectingQuotes(labelString) {
     const labels = [];
@@ -705,6 +720,25 @@ function autoLink(text) {
     return dummy.innerHTML;
 }
 
+function fuzzyIncludes(text, query, typoThreshold = 0.3) {
+    const textWords = text.split(/\s+/);
+    const queryWords = query.split(/\s+/);
+
+    return queryWords.every(qw => {
+        // direct substring match first
+        if (text.includes(qw)) return true;
+
+        // fuzzy check against each word in text
+        return textWords.some(tw => {
+            const dist = levenshtein(qw, tw);
+            const allowed = Math.max(1, Math.floor(tw.length * typoThreshold));
+            return dist <= allowed;
+        });
+    });
+}
+
+
+
 function handleSearch() {
 
     document.getElementById("pill-tasks").click();
@@ -729,12 +763,31 @@ function handleSearch() {
         else if (input === "can't start" && d.status.toLowerCase().includes("can't start")) matches.push(d);
         else if (combined.includes(input)) matches.push(d);
         else if (block.includes(input)) fallback.push(d);
+
+
+
+
+
         else if (levenshtein(input, combined) <= Math.floor(combined.length * typoThreshold)) {
             corrected = d.task;
             matches.push(d);
         } else if (levenshtein(input, block) <= Math.floor(block.length * typoThreshold)) {
             fallback.push(d);
         }
+
+
+        // else if (fuzzyIncludes(combined, input)) {
+        //     corrected = d.task;
+        //     matches.push(d);
+        // } else if (fuzzyIncludes(block, input)) {
+        //     fallback.push(d);
+        // }
+
+
+
+
+
+
     });
 
 
@@ -767,15 +820,15 @@ function handleSearch() {
     // renderTiles(unifiedSort(excludeCompleted, sortMode)); // in fetchAndRenderData
 
 
-const sortMode = document.getElementById("sortMode")?.value || "default";
-const results = unifiedSort(combined, sortMode);
-renderTiles(results);
+    const sortMode = document.getElementById("sortMode")?.value || "default";
+    const results = unifiedSort(combined, sortMode);
+    renderTiles(results);
 
 
 
 
 
-    note.innerText = corrected !== input ? `Searched for "${corrected}" instead of "${input}".` : "";
+    note.innerText = corrected !== input ? `Try searching for "${corrected}" instead of "${input}".` : "";
     const url = new URL(window.location);
     url.searchParams.set("search", input);
     history.replaceState(null, "", url.toString());

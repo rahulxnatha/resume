@@ -493,12 +493,15 @@ header {
 }
 
 .note,
-#searchNote,
 #title {
     margin-top: 10px;
     font-size: 14px;
     color: #777;
 }
+
+
+
+
 
 #totalTasks {
     /* margin-top: 10px; */
@@ -526,6 +529,7 @@ main {
     font-size: xx-large;
     font-weight: 100;
     position: sticky;
+    text-wrap: wrap;
 
     top: 0;   /* 👈 required for sticky to take effect */
     background: #99999928; /* optional, prevents text overlap */
@@ -533,6 +537,14 @@ main {
 
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    
+}
+
+#searchNote {
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    top: 70px;
     
 }
 
@@ -1932,6 +1944,26 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     border-radius: 13px;
     overflow: hidden;
 }
+
+.post ol {
+    margin: 8px 0 12px 24px;   /* space around list, indent */
+    padding: 0;                /* reset browser defaults */
+    counter-reset: item;       /* reset for custom counter if needed */
+}
+
+.post li {
+    margin: 4px 0;             /* space between items */
+    line-height: 1.5;          /* readability */
+    /* font-size: 14px;          */
+    /* color: #222;             */
+}
+
+/* Optional: style numbers to look nicer */
+.post li::marker {
+    font-weight: bold;
+    color: #555;               /* slightly dimmed number color */
+}
+
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
