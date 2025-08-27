@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     user-select: none;
@@ -13,7 +14,8 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* prevent unwanted global scrollbars */
+    overflow: hidden;
+    /* prevent unwanted global scrollbars */
 }
 
 hide {
@@ -92,14 +94,23 @@ header {
     border-bottom: 1px solid grey;
 
 
+    overflow-x: auto;
+    /* keep horizontal scroll enabled */
+    scrollbar-width: none;
+    /* Firefox */
+
 }
 
 .header-title {
-  display: flex; /* 1. Enable flexbox layout */
-  align-items: center; /* 2. Vertically align items in the middle */
-  /* justify-content: space-between;  */
-  padding: 0px; /* Optional: Add some padding for spacing */
-  gap: 20px; /* 4. Add space between the title and search bar */
+    display: flex;
+    /* 1. Enable flexbox layout */
+    align-items: center;
+    /* 2. Vertically align items in the middle */
+    /* justify-content: space-between;  */
+    padding: 0px;
+    /* Optional: Add some padding for spacing */
+    gap: 20px;
+    /* 4. Add space between the title and search bar */
 }
 
 
@@ -166,7 +177,7 @@ header {
 .pill-label {
     display: inline-block;
     padding: 6px 12px;
-   
+
     cursor: pointer;
     font-size: 14px;
     border: 1px solid grey;
@@ -356,11 +367,11 @@ header {
 }
 
 .label.active-tab {
-   
+
     background-color: var(--pill-text-active-highlight);
-   
+
     display: inline-block;
- 
+
 
     color: var(--pill-text-active-color);
 
@@ -521,7 +532,8 @@ main {
     margin: 0;
     overflow: auto;
     /* width: 60vw; */
-    min-width: 200px; /* never collapse below 200px */
+    min-width: 200px;
+    /* never collapse below 200px */
 }
 
 .search-result-note {
@@ -532,13 +544,16 @@ main {
     position: sticky;
     text-wrap: wrap;
 
-    top: 0;   /* 👈 required for sticky to take effect */
-    background: #99999928; /* optional, prevents text overlap */
-    z-index: 5;       /* optional, keeps it above tiles */
+    top: 0;
+    /* 👈 required for sticky to take effect */
+    background: #99999928;
+    /* optional, prevents text overlap */
+    z-index: 5;
+    /* optional, keeps it above tiles */
 
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    
+
 }
 
 #searchNote {
@@ -546,7 +561,7 @@ main {
     font-weight: normal;
     position: absolute;
     top: 70px;
-    
+
 }
 
 #tileContainer {
@@ -579,10 +594,13 @@ main {
 
 #tileScrollWrapper {
     overflow-y: auto;
-    flex: initial;        /* don’t force it to fill remaining height */
-    height: auto;         /* shrink to content height */
-    max-height: 100%;     /* but still stay inside main */
-    
+    flex: initial;
+    /* don’t force it to fill remaining height */
+    height: auto;
+    /* shrink to content height */
+    max-height: 100%;
+    /* but still stay inside main */
+
 }
 
 
@@ -590,24 +608,33 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    align-items: stretch; /* ensures all tiles in a row have same height */
-    align-items: start; /* prevents vertical stretching */
-    min-width: 260px; /* never collapse below 200px */
+    align-items: stretch;
+    /* ensures all tiles in a row have same height */
+    align-items: start;
+    /* prevents vertical stretching */
+    min-width: 260px;
+    /* never collapse below 200px */
 
-    
-    align-items: start;            /* prevent ugly full-height stretching */
-    grid-auto-rows: auto;          /* row height = tallest tile in that row */
+
+    align-items: start;
+    /* prevent ugly full-height stretching */
+    grid-auto-rows: auto;
+    /* row height = tallest tile in that row */
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    align-items: start;      /* stop vertical stretching */
-    height: auto !important; /* prevent flex from forcing full height */
-    flex: initial !important; /* don't let flex grow to fill parent */
+    align-items: start;
+    /* stop vertical stretching */
+    height: auto !important;
+    /* prevent flex from forcing full height */
+    flex: initial !important;
+    /* don't let flex grow to fill parent */
 
-    
 
-    overflow: visible; /* or overflow-y: visible; */
+
+    overflow: visible;
+    /* or overflow-y: visible; */
 }
 
 
@@ -639,15 +666,17 @@ main {
 
     display: flex;
     flex-direction: column;
-    height: 100%; /* fill grid cell height */
+    height: 100%;
+    /* fill grid cell height */
 
     display: flex;
     flex-direction: column;
-    height: auto; /* only as tall as content */
+    height: auto;
+    /* only as tall as content */
 
     display: flex;
     flex-direction: column;
-    height: 100%; 
+    height: 100%;
 }
 
 .task-tile .tile-content div:nth-child(2) {
@@ -726,13 +755,16 @@ aside#detailPane {
     padding: 0px;
     position: relative;
     overflow: auto;
-    
+
 }
 
 #detailPane {
-    flex: 0 0 350px; /* start with 350px width */
-    min-width: 200px; /* never collapse below 200px */
-    overflow-y: auto; /* keep internal scrolling if content exceeds height */
+    flex: 0 0 350px;
+    /* start with 350px width */
+    min-width: 200px;
+    /* never collapse below 200px */
+    overflow-y: auto;
+    /* keep internal scrolling if content exceeds height */
 }
 
 
@@ -749,23 +781,24 @@ aside#detailPane {
     overflow-wrap: break-word;
 
 
-     /* animation: fadeIn 0.4s ease-out; */
+    /* animation: fadeIn 0.4s ease-out; */
 }
 
 /* style.css */
 @keyframes paneFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .pane-animate {
-  animation: paneFadeIn 0.4s ease-out;
+    animation: paneFadeIn 0.4s ease-out;
 }
 
 
@@ -802,14 +835,14 @@ body.dark #searchBox,
 
 
 .close-button {
-  background: none;
-  border: 1px solid;
-  border-radius: 6px;
-  padding: 4px 8px 0 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  /* margin: 20px; */
+    background: none;
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 4px 8px 0 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* margin: 20px; */
     /* position: absolute; */
     /* top: 10px; */
     /* float: right; */
@@ -817,38 +850,38 @@ body.dark #searchBox,
 
 /* Light theme */
 @media (prefers-color-scheme: light) {
-  .close-button {
-    color: #333;
-    border-color: #aaa;
-    background-color: #f5f5f5;
-  }
+    .close-button {
+        color: #333;
+        border-color: #aaa;
+        background-color: #f5f5f5;
+    }
 
-  .close-button:hover {
-    background-color: #e0e0e0;
-    border-color: #888;
-  }
+    .close-button:hover {
+        background-color: #e0e0e0;
+        border-color: #888;
+    }
 
-  .close-button:active {
-    background-color: #d0d0d0;
-  }
+    .close-button:active {
+        background-color: #d0d0d0;
+    }
 }
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
-  .close-button {
-    color: #f0f0f0;
-    border-color: #666;
-    background-color: #2a2a2a;
-  }
+    .close-button {
+        color: #f0f0f0;
+        border-color: #666;
+        background-color: #2a2a2a;
+    }
 
-  .close-button:hover {
-    background-color: #3a3a3a;
-    border-color: #888;
-  }
+    .close-button:hover {
+        background-color: #3a3a3a;
+        border-color: #888;
+    }
 
-  .close-button:active {
-    background-color: #444;
-  }
+    .close-button:active {
+        background-color: #444;
+    }
 }
 
 
@@ -881,7 +914,8 @@ body.dark #searchBox,
 /* Light mode */
 @media (prefers-color-scheme: light) {
     .note-to-user {
-        background-color: rgba(255, 215, 180, 0.35); /* soft warm tint */
+        background-color: rgba(255, 215, 180, 0.35);
+        /* soft warm tint */
         border-color: #bbb;
         color: #333;
     }
@@ -1302,13 +1336,16 @@ footer {
     }
 
     #tileContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px; /* keeps your existing spacing */
-    width: 100%;
-    align-items: stretch; /* ensures all tiles in a row have same height */
-    padding-bottom: 20px; /* add padding to bottom for spacing */
-}
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        /* keeps your existing spacing */
+        width: 100%;
+        align-items: stretch;
+        /* ensures all tiles in a row have same height */
+        padding-bottom: 20px;
+        /* add padding to bottom for spacing */
+    }
 
 
     #searchBox {
@@ -1439,7 +1476,7 @@ footer {
     max-width: max-content;
     margin: 10px auto;
     /* position: relative;  */
-  transition: top 0.3s ease;
+    transition: top 0.3s ease;
     /* For absolute positioning of checkbox */
 }
 
@@ -2015,19 +2052,24 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 }
 
 .post p:first-of-type {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 
 .post ol {
-    margin: 8px 0 12px 24px;   /* space around list, indent */
-    padding: 0;                /* reset browser defaults */
-    counter-reset: item;       /* reset for custom counter if needed */
+    margin: 8px 0 12px 24px;
+    /* space around list, indent */
+    padding: 0;
+    /* reset browser defaults */
+    counter-reset: item;
+    /* reset for custom counter if needed */
 }
 
 .post li {
-    margin: 4px 0;             /* space between items */
-    line-height: 1.5;          /* readability */
+    margin: 4px 0;
+    /* space between items */
+    line-height: 1.5;
+    /* readability */
     /* font-size: 14px;          */
     /* color: #222;             */
 }
@@ -2035,7 +2077,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 /* Optional: style numbers to look nicer */
 .post li::marker {
     font-weight: bold;
-    color: #555;               /* slightly dimmed number color */
+    color: #555;
+    /* slightly dimmed number color */
 }
 
 
@@ -2044,7 +2087,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     .post {
         background-color: #191919;
         border: 1px solid #808080;
-        color: #e0e0e0; /* light text */
+        color: #e0e0e0;
+        /* light text */
     }
 }
 
@@ -2053,12 +2097,14 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     .post {
         background-color: #ffffff;
         border: 1px solid #ccc;
-        color: #222; /* dark text */
+        color: #222;
+        /* dark text */
     }
 }
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
+
     .post:hover,
     .manage:hover,
     .labels:hover {
@@ -2068,6 +2114,7 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
+
     .post:hover,
     .manage:hover,
     .labels:hover {
@@ -2085,6 +2132,7 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
+
     .manage,
     .labels {
         background-color: #191919;
@@ -2094,6 +2142,7 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
+
     .manage,
     .labels {
         background-color: #ffffff;
@@ -2115,7 +2164,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     user-select: none;
 }
 
-.link, .label {
+.link,
+.label {
     color: #00bfff;
     text-decoration: none;
 
@@ -2142,7 +2192,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 @media (prefers-color-scheme: dark) {
     .timestamp {
         background-color: #121212;
-        color: #b0b0b0; /* light gray text */
+        color: #b0b0b0;
+        /* light gray text */
     }
 }
 
@@ -2150,7 +2201,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 @media (prefers-color-scheme: light) {
     .timestamp {
         background-color: #f5f5f5;
-        color: #555; /* dark gray text */
+        color: #555;
+        /* dark gray text */
     }
 }
 
@@ -2191,7 +2243,8 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
 
 /* main sizes  */
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
@@ -2203,7 +2256,7 @@ body {
 }
 
 #appHeader {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
 
 #headerResizer {
@@ -2214,12 +2267,13 @@ body {
 #mainArea {
     flex: 1 1 auto;
     display: flex;
-    overflow: hidden; 
-    
- }
+    overflow: hidden;
+
+}
 
 footer {
-    flex: 0 0 auto; /* footer height fixed */
+    flex: 0 0 auto;
+    /* footer height fixed */
 }
 
 
@@ -2236,19 +2290,21 @@ footer {
  */
 
 
- @keyframes pillSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes pillSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.pill, .pill-label {
-  animation: pillSlideUp 0.3s ease-out;
+.pill,
+.pill-label {
+    animation: pillSlideUp 0.3s ease-out;
 }
 
 
@@ -2256,66 +2312,67 @@ footer {
 
 /* Sort engine container */
 .sort-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  /* margin: 10px 0; */
-  /* font-size: 14px; */
-  /* font-weight: 500; */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* margin: 10px 0; */
+    /* font-size: 14px; */
+    /* font-weight: 500; */
 }
 
 /* Label text */
 .sort-container label {
-  white-space: nowrap;
-  /* font-weight: 600; */
+    white-space: nowrap;
+    /* font-weight: 600; */
 }
 
 /* Dropdown style (light theme default) */
 #sortMode {
-  padding: 6px 12px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #222;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #222;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 /* Hover and focus */
 #sortMode:hover {
-  border-color: #888;
+    border-color: #888;
 }
 
 #sortMode:focus {
-  outline: none;
-  border-color: #0078d4; /* same accent blue */
-  box-shadow: 0 0 5px rgba(0,120,212,0.4);
+    outline: none;
+    border-color: #0078d4;
+    /* same accent blue */
+    box-shadow: 0 0 5px rgba(0, 120, 212, 0.4);
 }
 
 /* Dark theme version */
 @media (prefers-color-scheme: dark) {
-  #sortMode {
-    background-color: #1e1e1e;
-    border: 1px solid #444;
-    color: #f1f1f1;
-  }
+    #sortMode {
+        background-color: #1e1e1e;
+        border: 1px solid #444;
+        color: #f1f1f1;
+    }
 
-  #sortMode:hover {
-    border-color: #666;
-  }
+    #sortMode:hover {
+        border-color: #666;
+    }
 
-  #sortMode:focus {
-    border-color: #3399ff;
-    box-shadow: 0 0 5px rgba(51,153,255,0.4);
-  }
+    #sortMode:focus {
+        border-color: #3399ff;
+        box-shadow: 0 0 5px rgba(51, 153, 255, 0.4);
+    }
 
-  .sort-container label {
-    color: #ddd;
-  }
+    .sort-container label {
+        color: #ddd;
+    }
 }
 
 /* Dropdown options */
 #sortMode option {
-  padding: 6px;
+    padding: 6px;
 }
