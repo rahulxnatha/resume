@@ -520,6 +520,9 @@ function showPaneContent(id) {
     container.querySelectorAll(".post").forEach(post => {
         let content = post.innerHTML;
 
+      
+
+
         const parts = content.split(/<br\s*\/?>/i);
         let newParts = [];
         let inList = false;
@@ -541,8 +544,11 @@ function showPaneContent(id) {
                 }
                 if (clean !== "") {
                     // only add <br> between non-empty normal lines
-                    if (newParts.length > 0) newParts.push("<br>");
-                    newParts.push(clean);
+                    // if (newParts.length > 0) newParts.push("<br>");
+                    // newParts.push(clean);
+
+                    newParts.push(`<p>${clean}</p>`);
+
                 }
             }
         });

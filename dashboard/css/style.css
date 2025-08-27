@@ -1945,6 +1945,11 @@ body.dark .toggle-switch input[type="checkbox"]:checked {
     overflow: hidden;
 }
 
+.post p:first-of-type {
+  margin-top: 0;
+}
+
+
 .post ol {
     margin: 8px 0 12px 24px;   /* space around list, indent */
     padding: 0;                /* reset browser defaults */
