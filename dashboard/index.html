@@ -28,7 +28,13 @@
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=open_in_new" />
+
+  
+
+
     <script>
+
+
         const params = new URLSearchParams(window.location.search);
         const show = params.get("view");
 
@@ -94,7 +100,7 @@
 
                     <div class="pill" data-filter="-{completed}">Default <span id="a-pill-count"></span></div>
 
-                    <div class="pill" data-filter="-{completed}, -{can't start}">Feeling energetic<span
+                    <div class="pill" data-filter="+{processing}, +{can start}">Feeling energetic<span
                             id="a-pill-count"></span></div>
 
                     <div class="pill" data-filter="+{can start}, +{can't start}">Future outlook<span
@@ -178,7 +184,7 @@
             </div>
 
         </div>
-        
+
 
 
 
@@ -232,7 +238,7 @@
 
 
 
-  
+
 
     </header>
     <div id="headerResizer" class="resizer horizontal"></div>
@@ -242,17 +248,17 @@
             <div class="search-result-note" id="searchResultNote">
 
                 <span id="nresults">Loading</span> matching results <br>
-                
+
                 <span id="searchNote"></span>
-              
-            
+
+
             </div>
             <section id="tileContainer">
 
                 <div id="empty-state">
 
 
-                    
+
 
                     <table class="dashboard-pricing-table">
                         <thead>
@@ -321,8 +327,14 @@
         <div id="mainResizer" class="resizer vertical"></div>
         <aside id="detailPane">
 
-            <div class="note-to-user">
-                <p>Dear <span class="username">user</span>, welcome to the dashboard designed by me to help track the
+            <div class="note-to-user" id="note-to-user">
+
+
+
+
+
+                <p>Dear <span class="username">user</span>, welcome to the dashboard designed by me to help track
+                    the
                     timeline of various tasks.
                 </p>
 
@@ -339,7 +351,8 @@
                         <li>Use the timeline tab (header) to view tasks in a timeline format.</li>
                     </ol>
 
-                    <p><strong>Note:</strong> This dashboard is designed to be used on a desktop or laptop computer. It
+                    <p><strong>Note:</strong> This dashboard is designed to be used on a desktop or laptop computer.
+                        It
                         may
                         not work well on mobile devices.</p>
                 </details>
@@ -354,6 +367,27 @@
                         rel="noopener noreferrer">OneDrive folder</a> (password shared on email).
                 </p>
 
+
+                <button class="close-button" id="close-note-to-user">
+
+                    Close
+                </button>
+
+
+            </div>
+
+            <div class="note-to-user" id="email-redirect">
+
+
+
+
+                <p> Thank you for following the link from the email. Below are the
+                    details I wish to share related to this task.</p>
+
+                <button class="close-button" id="close-email-redirect">
+
+                    Close
+                </button>
             </div>
 
 
@@ -386,10 +420,18 @@
         window.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
             const isVisitorBig = params.get("visitor") === "big";
+            const isEmailRedirect = params.get("redirect-from") === "email";
 
             const note = document.querySelector(".note-to-user");
             if (note) {
                 note.style.display = isVisitorBig ? "block" : "none";
+            }
+
+
+
+            const emailRedirect = document.getElementById("email-redirect");
+            if (emailRedirect) {
+                emailRedirect.style.display = isEmailRedirect ? "block" : "none";
             }
         });
 

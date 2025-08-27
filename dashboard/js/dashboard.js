@@ -605,6 +605,15 @@ function showPaneContent(id) {
 }
 
 
+document.getElementById("close-note-to-user").addEventListener("click", function () {
+  document.getElementById("note-to-user").style.display = "none";
+});
+
+document.getElementById("close-email-redirect").addEventListener("click", function () {
+  document.getElementById("email-redirect").style.display = "none";
+});
+
+
 function splitLabelsRespectingQuotes(labelString) {
     const labels = [];
     let current = "";
