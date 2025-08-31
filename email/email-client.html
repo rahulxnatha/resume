@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rahul • HTML Email Generator</title>
+  <style>
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 20px; }
+    label { display: block; margin-top: 10px; }
+    textarea { width: 100%; height: 300px; margin-top: 5px; font-family: monospace; }
+    button { margin-top: 15px; padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>HTML Email Generator</h1>
+
+  <label>Heading 1: <input type="text" id="h1" value="Subject Line Title Goes Here"></label>
+  <label>Paragraph: <textarea id="para">Hi [Name],\n\nThis is a quick note from Rahul. Replace this paragraph with your message. Keep sentences short, scannable, and friendly.</textarea></label>
+  <label>Highlight #1 Title: <input type="text" id="h1_1" value="Highlight #1"></label>
+  <label>Highlight #1 Text: <textarea id="para1">Short supporting copy about a project, update, or feature.</textarea></label>
+  <label>Highlight #2 Title: <input type="text" id="h1_2" value="Highlight #2"></label>
+  <label>Highlight #2 Text: <textarea id="para2">Another brief point with a clear benefit or outcome.</textarea></label>
+  <label>OneDrive URL: <input type="text" id="onedrive" value="https://rahulnatha.com/big?view=onedrive"></label>
+  <label>Task Dashboard URL: <input type="text" id="dashboard" value="https://rahulnatha.com/big?view=dashboard"></label>
+
+  <button onclick="generateHTML()">Generate HTML</button>
+
+  <h2>Generated HTML:</h2>
+  <textarea id="output" readonly></textarea>
+
+  <script>
+    function generateHTML() {
+      const h1 = document.getElementById('h1').value;
+      const para = document.getElementById('para').value;
+      const h1_1 = document.getElementById('h1_1').value;
+      const para1 = document.getElementById('para1').value;
+      const h1_2 = document.getElementById('h1_2').value;
+      const para2 = document.getElementById('para2').value;
+      const onedrive = document.getElementById('onedrive').value;
+      const dashboard = document.getElementById('dashboard').value;
+
+      const html = `
+<div style="margin:0;padding:24px;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background-color:#ececec;">
+
+<h1>${h1}</h1>
+
+<p>${para.replace(/\n/g,'<br>')}</p>
+
+<div style="padding:16px;margin-top:16px;background-color:#fafafa;">
+  <h2>${h1_1}</h2>
+  <p>${para1}</p>
+</div>
+
+<div style="padding:16px;margin-top:16px;background-color:#fafafa;">
+  <h2>${h1_2}</h2>
+  <p>${para2}</p>
+</div>
+
+<div style="margin-top:16px;padding:16px;background-color:#fafafa;text-align:center;">
+  <p><a href="${onedrive}"><button>OneDrive folder</button></a></p>
+  <p><a href="${dashboard}"><button>Web-based task dashboard</button></a></p>
+</div>
+
+<div style="color:#6b7280;font-size:12px;line-height:18px;margin-top:12px;">
+  <p>Rahul Natha • Hyderabad, India<br>
+  <a href="mailto:mr.rahulnatha@gmail.com">mr.rahulnatha@gmail.com</a></p>
+</div>
+
+</div>`;
+
+      document.getElementById('output').value = html;
+    }
+  </script>
+
+</body>
+</html>
