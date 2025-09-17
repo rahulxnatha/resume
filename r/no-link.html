@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow,notranslate">
+<title>Redirecting…</title>
+<style>
+:root { --bg:#f4f4f4; --text:#222; --accent:#0078ff; --spinner:#e0e0e0; }
+@media (prefers-color-scheme:dark){
+  :root { --bg:#111; --text:#eee; --accent:#1e90ff; --spinner:#333; }
+}
+body {
+  margin:0; height:100vh; background:var(--bg); color:var(--text);
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  font-family:"Segoe UI",sans-serif; text-align:center; padding:20px;
+}
+.spinner {
+  width:60px; height:60px; border-radius:50%;
+  background:radial-gradient(var(--accent) 35%, transparent 36%);
+  animation:pulse 1.5s ease-in-out infinite; margin-bottom:25px; position:relative;
+}
+.spinner::after {
+  content:''; position:absolute; top:50%; left:50%;
+  width:120%; height:120%; border:2px solid var(--accent);
+  border-radius:50%; transform:translate(-50%,-50%); opacity:.2;
+}
+@keyframes pulse {0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.3);opacity:.5;}}
+.message { font-size:1.5rem; max-width:90%; }
+.countdown { font-size:1.3rem; margin-top:8px; color:var(--accent); font-weight:500; }
+.error { color:crimson; font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="spinner"></div>
+<div class="message">
+  <span id="status">No link available to redirect! <br>Come back later or <a href="mailto:url-redirect-failure-handler@rahulnatha.com">contact us</a>.</span>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+
+
+</body>
+</html>
