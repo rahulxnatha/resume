@@ -69,17 +69,18 @@ body {
       if(tag === queryTag) {
         found = true;
         statusEl.textContent = desc || 'Redirecting…';
-        let seconds = 1;
-        countdownEl.textContent = `Redirecting in ${seconds}…`;
+        // let seconds = 1;
+        // countdownEl.textContent = `Redirecting in ${seconds}…`;
+        countdownEl.textContent = `Redirecting immediately`;
 
-        const timer = setInterval(()=>{
-          seconds--;
-          countdownEl.textContent = `Redirecting in ${seconds}…`;
-          if(seconds <= 0){
-            clearInterval(timer);
+        // const timer = setInterval(()=>{
+          // seconds--;
+          // countdownEl.textContent = `Redirecting in ${seconds}…`;
+          // if(seconds <= 0){
+            // clearInterval(timer);
             location.replace(url);
-          }
-        },1000);
+          // }
+        // },1000);
         break;
       }
     }
