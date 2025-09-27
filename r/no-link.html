@@ -99,14 +99,22 @@
   <div class="spinner"></div>
   <div class="message">
     <span id="status">
-      Not shared yet! <br>
+      Not yet shared by <span id="creator">creator</span>.<br>
       And no link available to redirect! <br>
-      Come back later or <a
-        href="mailto:url-redirect-failure-handler@rahulnatha.com">email me</a>.</span>
+      Come back later or <a href="mailto:url-redirect-failure-handler@rahulnatha.com">email me</a>.</span>
     <div class="countdown" id="countdown"></div>
   </div>
 
+  <script>
+    // Get the value of the "creator" parameter from the URL
+    const params = new URLSearchParams(window.location.search);
+    const creatorName = params.get('creator');
 
+    // If found, update the #creator span
+    if (creatorName) {
+      document.getElementById('creator').textContent = creatorName;
+    }
+  </script>
 
 </body>
 
