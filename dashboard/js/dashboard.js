@@ -499,7 +499,24 @@ function calculateProgressPercent(start, end, today) {
 
 function showPaneContent(id) {
     const raw = blockTexts[id] || "No details available.";
-    let html = autoLink(raw);
+    // let html = autoLink(raw);
+
+    // Temporarily protect iframe URLs from autoLink
+    let iframePlaceholders = [];
+    let html = raw.replace(/<iframe[\s\S]*?<\/iframe>/gi, m => {
+        iframePlaceholders.push(m);
+        return `__IFRAME_PLACEHOLDER_${iframePlaceholders.length - 1}__`;
+    });
+
+    html = autoLink(html);
+
+    // Restore iframes
+    iframePlaceholders.forEach((frame, i) => {
+        html = html.replace(`__IFRAME_PLACEHOLDER_${i}__`, frame);
+    });
+
+
+    // -- replaced 
 
     // Step 1: Wrap timestamp sections into posts and timestamp span
     html = html.replace(
@@ -520,7 +537,7 @@ function showPaneContent(id) {
     container.querySelectorAll(".post").forEach(post => {
         let content = post.innerHTML;
 
-      
+
 
 
         const parts = content.split(/<br\s*\/?>/i);
@@ -606,11 +623,11 @@ function showPaneContent(id) {
 
 
 document.getElementById("close-note-to-user").addEventListener("click", function () {
-  document.getElementById("note-to-user").style.display = "none";
+    document.getElementById("note-to-user").style.display = "none";
 });
 
 document.getElementById("close-email-redirect").addEventListener("click", function () {
-  document.getElementById("email-redirect").style.display = "none";
+    document.getElementById("email-redirect").style.display = "none";
 });
 
 
