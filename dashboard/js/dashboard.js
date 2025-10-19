@@ -516,7 +516,8 @@ function showPaneContent(id) {
     });
 
 
-    // -- replaced 
+
+    // -- replaced one
 
     // Step 1: Wrap timestamp sections into posts and timestamp span
     html = html.replace(
