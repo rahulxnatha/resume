@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rahul Natha – Cinematic Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- SheetJS for Google Sheets + local xlsx fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <canvas id="space-canvas"></canvas>
+  <div class="background-mesh"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span>RAHUL&nbsp;NATHA</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero">Overview</a>
+        <a href="#experience">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#certification">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="hero" class="hero">
+      <div class="hero-planet" aria-hidden="true"></div>
+      <div class="star-sphere" aria-hidden="true"></div>
+
+      <div class="hero-name-block reveal">
+        <h1 class="hero-name">Rahul Natha</h1>
+        <p class="hero-sub">
+          Mechanical engineer &amp; research fellow working on actuation systems, gear trains and
+          FEA – and building interactive, animation-heavy tools to explain that work.
+        </p>
+        <div class="hero-chip-bottom">
+          <span>Actuation · FEA · CAD · Dashboards</span>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll to explore experience</span>
+          <span class="arrow">↓</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section id="experience" class="timeline reveal">
+      <div class="timeline-header">
+        <div class="section-title">Experience timeline</div>
+        <div class="section-kicker">
+          Experience entries are loaded from the <b>work</b> tab of the Google Sheet.
+        </div>
+      </div>
+      <div id="timeline-items" class="timeline-items"></div>
+    </section>
+
+    <section id="skills" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Skill mesh</div>
+        <div class="section-kicker">
+          Skills are read from the <b>skill</b> tab – each row becomes a glass tile.
+        </div>
+      </div>
+      <div id="skills-grid" class="section-grid"></div>
+    </section>
+
+    <section id="certification" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Certifications</div>
+        <div class="section-kicker">
+          Entries from the <b>certification</b> tab appear here.
+        </div>
+      </div>
+      <div id="cert-grid" class="section-grid"></div>
+    </section>
+
+    <section id="projects" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Selected projects</div>
+        <div class="section-kicker">
+          Projects are loaded from the <b>projects</b> tab.
+        </div>
+      </div>
+      <div id="projects-grid" class="section-grid"></div>
+    </section>
+
+    <section id="contact" class="section reveal" style="margin-top:4rem;">
+      <div class="section-header">
+        <div class="section-title">Contact &amp; links</div>
+        <div class="section-kicker">
+          Contact rows from the <b>contact</b> tab appear as tiles.
+        </div>
+      </div>
+      <div id="contact-grid" class="section-grid"></div>
+    </section>
+
+    <footer>
+      Starship portfolio · powered by Google Sheets data
+    </footer>
+  </main>
+
+  <!-- Details Pane -->
+  <aside id="details-pane" class="details-pane">
+    <div class="details-topbar">
+      <div id="details-title" class="details-title">DETAIL</div>
+      <div class="details-controls">
+        <button id="details-min" title="Minimize">_</button>
+        <button id="details-max" title="Maximize">⧉</button>
+        <button id="details-close" title="Close">×</button>
+      </div>
+    </div>
+    <div class="details-search-row">
+      <input id="details-search" type="text" placeholder="Search / choose tile" />
+      <div id="details-dropdown" class="details-dropdown"></div>
+    </div>
+    <div id="details-content" class="details-content">
+      <p style="font-size:.85rem;opacity:.8;">Select a tile to view its details.</p>
+    </div>
+  </aside>
+
+  <script src="sheet.js"></script>
+  <script src="robots.js"></script>
+</body>
+</html>

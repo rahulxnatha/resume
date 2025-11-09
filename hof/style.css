@@ -1,0 +1,180 @@
+/* --- Global Reset & Typography --- */
+:root {
+    --color-primary: #FFFFFF;    /* Text color */
+    --color-background: #000000; /* Deep black background */
+    --color-accent: #00FFFF;     /* Electric Blue/Cyan for highlights */
+    --color-border: #333333;     /* Subtle border line color */
+    --font-main: 'Roboto Mono', monospace; /* Monospace for technical/modern feel */
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* --- Canvas Background (for kinetic effect) --- */
+#kinetic-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keep behind all content */
+    opacity: 0.1; /* Very subtle */
+}
+
+/* --- Header & Navigation --- */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid var(--color-border);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.95); /* Semi-transparent black */
+}
+
+.logo-area .logo {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links a, .language-switch a {
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    transition: color var(--transition-speed);
+}
+
+.nav-links a:hover, .language-switch a:hover {
+    color: var(--color-accent);
+}
+
+.language-switch .active-lang {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.language-switch .separator {
+    color: var(--color-border);
+}
+
+/* --- Main Content Sections --- */
+#main-content {
+    padding-top: 80px; /* Offset for fixed header */
+}
+
+.full-screen-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 10%;
+}
+
+.content-section {
+    padding: 100px 10%;
+    border-top: 1px solid var(--color-border);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    border-bottom: 3px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* --- Hero Section Specifics --- */
+.hero-title {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    /* Optional: subtle flicker effect for AI/Tech feel */
+    text-shadow: 0 0 5px var(--color-accent);
+}
+
+.hero-motto {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+/* --- Project Grid --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: #111; /* Slightly lighter black */
+    padding: 25px;
+    border: 1px solid var(--color-border);
+    transition: transform 0.4s, border-color 0.4s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.card-visual {
+    height: 200px;
+    background-color: #222;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+}
+
+.card-title {
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+/* --- Profile Content --- */
+.profile-bio p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.profile-content a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-border);
+}

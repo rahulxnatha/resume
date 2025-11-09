@@ -501,18 +501,19 @@ function showPaneContent(id) {
     const raw = blockTexts[id] || "No details available.";
     // let html = autoLink(raw);
 
-    // Temporarily protect iframe URLs from autoLink
-    let iframePlaceholders = [];
-    let html = raw.replace(/<iframe[\s\S]*?<\/iframe>/gi, m => {
-        iframePlaceholders.push(m);
-        return `__IFRAME_PLACEHOLDER_${iframePlaceholders.length - 1}__`;
+    // Step 0: Temporarily protect iframe, spline-viewer, and script tags
+    let placeholders = [];
+    let html = raw.replace(/<(iframe|spline-viewer|script)[\s\S]*?<\/\1>/gi, m => {
+        placeholders.push(m);
+        return `__PLACEHOLDER_${placeholders.length - 1}__`;
     });
 
+    // Step 1: auto-link remaining URLs
     html = autoLink(html);
 
-    // Restore iframes
-    iframePlaceholders.forEach((frame, i) => {
-        html = html.replace(`__IFRAME_PLACEHOLDER_${i}__`, frame);
+    // Step 2: Restore protected tags
+    placeholders.forEach((content, i) => {
+        html = html.replace(`__PLACEHOLDER_${i}__`, content);
     });
 
 

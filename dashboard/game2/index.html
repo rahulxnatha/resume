@@ -1,0 +1,61 @@
+<!-- ===========================
+File: index.html
+A minimal metaverse-like portfolio: free-move 3D world with dynamic scene zones,
+HUD, XP, and section portals. No external branding. Uses Three.js + PointerLockControls.
+For production, vendor libraries locally in /vendor.
+=========================== -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rahul Natha — 3D World Portfolio (Proto)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0a0f1a" />
+</head>
+<body>
+  <div id="ui">
+    <div class="brand">RAHUL NATHA</div>
+    <div class="pill">MODE: EXPLORER</div>
+    <div class="xp">
+      <div class="bar"><div class="fill" id="xpFill"></div></div>
+      <div class="txt" id="xpText">0 / 100 XP</div>
+    </div>
+    <div class="socials">
+      <a id="gh" target="_blank" rel="noopener">GitHub</a>
+      <a id="ln" target="_blank" rel="noopener">LinkedIn</a>
+      <a id="mail" href="#">Email</a>
+    </div>
+  </div>
+
+  <div id="instructions">
+    <h1>Enter the World</h1>
+    <p>Click to lock pointer • <kbd>WASD</kbd> move • <kbd>Space</kbd> jump • <kbd>Shift</kbd> sprint • <kbd>Esc</kbd> unlock</p>
+    <button id="startBtn">Start</button>
+  </div>
+
+  <div id="crosshair"></div>
+  <canvas id="world"></canvas>
+
+  <!-- Three.js (CDN for proto) -->
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.164/build/three.module.js';
+    import { PointerLockControls } from 'https://cdn.jsdelivr.net/npm/three@0.164/examples/jsm/controls/PointerLockControls.js';
+    import { TextGeometry } from 'https://cdn.jsdelivr.net/npm/three@0.164/examples/jsm/geometries/TextGeometry.js';
+    import { FontLoader } from 'https://cdn.jsdelivr.net/npm/three@0.164/examples/jsm/loaders/FontLoader.js';
+
+    // Expose Three to other modules loaded via classic script tags
+    window.THREE = THREE;
+    window.PointerLockControls = PointerLockControls;
+    window.TextGeometry = TextGeometry;
+    window.FontLoader = FontLoader;
+  </script>
+
+  <!-- Game scripts -->
+  <script src="content.js"></script>
+  <script src="player.js"></script>
+  <script src="world.js"></script>
+</body>
+</html>
+
+

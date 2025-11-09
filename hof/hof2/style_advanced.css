@@ -1,0 +1,203 @@
+/* --- Global Reset & Variables --- */
+:root {
+    --color-primary: #FFFFFF;
+    --color-background: #000000;
+    --color-accent: #00FFFF;     /* Electric Cyan */
+    --color-secondary: #00AAFF;  /* Brighter Blue */
+    --color-border: #333333;
+    --font-main: 'Roboto Mono', monospace;
+    --scroll-duration: 300vh; /* Make each scene long for scroll control */
+    --header-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-main);
+    line-height: 1.7;
+    perspective: 1px; /* Crucial for creating a 3D container */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* --- Header (Fixed) --- */
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s;
+}
+
+.nav-links a, .language-switch a {
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+.nav-links a:hover, .language-switch a:hover { color: var(--color-accent); }
+.language-switch .active-lang { color: var(--color-accent); font-weight: bold; }
+.language-switch .separator { color: var(--color-border); }
+
+/* --- Scroll Scenes & Layering --- */
+.scroll-scene {
+    height: var(--scroll-duration); 
+    position: relative;
+    z-index: 1; 
+}
+
+/* Fixed Background Elements (The 3D Layers) */
+.fixed-element {
+    position: sticky;
+    top: 0; 
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    opacity: 0; 
+    transition: all 0.5s ease-out; 
+    transform-style: preserve-3d;
+}
+
+/* Content Wrapper (The text/UI layers that stick in place) */
+.content-wrapper {
+    position: sticky;
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    padding: 0 15%;
+}
+
+/* --- GEOMETRIC SHAPES (Scene 1) --- */
+/* 1. Geometric Mesh/Grid (Layer 1 - Dynamic background) */
+#geometric-layer-1 {
+    z-index: -2;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(0, 255, 255, 0.1),
+        rgba(0, 255, 255, 0.1) 1px,
+        rgba(0, 0, 0, 0) 1px,
+        rgba(0, 0, 0, 0) 50px
+    );
+    transform: rotateX(45deg) scale(2);
+    opacity: 0.3;
+}
+
+/* 2. Geometric Cube/Complex Shape (Layer 2 - Focal point) */
+#geometric-layer-2 {
+    z-index: -3; 
+    width: 60vh;
+    height: 60vh;
+    left: 20%;
+    top: 30%;
+    background-color: transparent;
+    border: 3px solid rgba(0, 170, 255, 0.5); 
+    box-shadow: 0 0 50px var(--color-accent);
+    transform: rotateY(30deg) rotateX(15deg) translateZ(-500px); 
+    opacity: 0.7;
+    /* Complex Engineering Polygon */
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+}
+
+/* --- FEA-INSPIRED SHAPE (Scene 2) --- */
+#fea-inspired-shape {
+    z-index: -1;
+    opacity: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Stress-Plot Polygon */
+    clip-path: polygon(50% 0%, 65% 15%, 100% 30%, 85% 60%, 100% 85%, 50% 100%, 0% 85%, 15% 60%, 0% 30%, 35% 15%);
+    /* Red/Orange gradient to symbolize stress or a heat map */
+    background: radial-gradient(circle, rgba(255, 100, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 70%); 
+}
+
+.viz-label {
+    color: var(--color-primary);
+    text-shadow: 0 0 5px var(--color-accent);
+    font-size: 1.5rem;
+}
+
+/* --- Hero Section Specifics --- */
+#hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--color-accent);
+}
+
+#hero-motto {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    opacity: 0; 
+}
+
+.word-reveal {
+    opacity: 0.2; /* Starting opacity for flicker effect */
+    transition: opacity 0.5s;
+}
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-border);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+/* --- Other Sections --- */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    border-bottom: 3px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.project-details-1 {
+    width: 60%;
+    text-align: left;
+    margin-right: auto;
+    opacity: 0; 
+    padding-left: 5%;
+}
+
+.project-details-1 p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+}

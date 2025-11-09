@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rahul Natha – Portfolio (Galaxy)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ========= RESET ========= */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --bg:#020617;
+      --fg:#f9fafb;
+      --muted:#9ca3af;
+      --accent-1:#38bdf8;
+      --accent-2:#a855f7;
+      --accent-3:#22c55e;
+      --nav-h:72px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --border-soft:rgba(148,163,184,.45);
+      --shadow-soft:0 18px 60px rgba(15,23,42,.9);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:#f9fafb;
+        --fg:#020617;
+        --muted:#4b5563;
+        --border-soft:rgba(148,163,184,.5);
+        --shadow-soft:0 20px 56px rgba(15,23,42,.15);
+      }
+    }
+
+    body{
+      font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      min-height:100vh;
+      overflow-x:hidden;
+      line-height:1.5;
+    }
+
+    /* ========= REAL GALAXY BACKGROUND (A) ========= */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        /* huge nearby star glow, ~10x screen */
+        radial-gradient(circle at -120% -40%,
+          rgba(255,255,255,.95) 0%,
+          rgba(252,211,77,.85) 8%,
+          rgba(248,250,252,.2) 26%,
+          transparent 55%),
+        radial-gradient(circle at 110% 130%,
+          rgba(15,23,42,.9) 0%,
+          transparent 60%),
+        url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg")
+          center/cover no-repeat fixed;
+      filter:brightness(.9);
+    }
+    @media (prefers-color-scheme: light){
+      body::before{
+        background:
+          radial-gradient(circle at -120% -40%,
+            rgba(255,255,255,.98) 0%,
+            rgba(252,211,77,.95) 10%,
+            rgba(255,248,209,.85) 30%,
+            transparent 55%),
+          radial-gradient(circle at 110% 130%,
+            rgba(15,23,42,.2) 0%, transparent 60%),
+          url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg")
+            center/cover no-repeat fixed;
+        filter:brightness(1.1);
+      }
+    }
+
+    .background-mesh{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      opacity:.45;
+      mix-blend-mode:soft-light;
+      background-image:
+        linear-gradient(135deg,rgba(148,163,184,.16) 1px,transparent 1px),
+        linear-gradient(45deg,rgba(148,163,184,.16) 1px,transparent 1px);
+      background-size:26px 26px;
+      pointer-events:none;
+    }
+
+    /* ========= LAYOUT ========= */
+    .nav{
+      position:sticky; top:0; z-index:30;
+      height:var(--nav-h);
+      display:flex; align-items:center; justify-content:center;
+      backdrop-filter:blur(18px);
+      background:linear-gradient(to bottom,
+        rgba(15,23,42,.92),rgba(15,23,42,.65),rgba(15,23,42,.1));
+      border-bottom:1px solid rgba(148,163,184,.45);
+    }
+    @media (prefers-color-scheme: light){
+      .nav{
+        background:linear-gradient(to bottom,
+          rgba(249,250,251,.97),rgba(249,250,251,.8),rgba(249,250,251,.4));
+      }
+    }
+
+    .nav-inner{
+      width:min(1120px,100% - 3rem);
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo{display:flex;align-items:center;gap:.6rem;
+      font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;}
+    .logo-mark{
+      width:26px;height:26px;border-radius:999px;
+      background:conic-gradient(from 200deg,var(--accent-2),var(--accent-1),var(--accent-3),var(--accent-2));
+      box-shadow:0 0 16px rgba(56,189,248,.9),0 0 30px rgba(168,85,247,.9);
+      position:relative;overflow:hidden;
+    }
+    .logo-mark::after{
+      content:"";position:absolute;inset:4px;border-radius:inherit;
+      background:radial-gradient(circle at 30% 20%,rgba(248,250,252,.9),rgba(15,23,42,.95));
+      mix-blend-mode:screen;
+    }
+    .nav-links{display:flex;gap:1.2rem;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;}
+    .nav-links a{
+      color:var(--muted); text-decoration:none; padding-block:.3rem; position:relative;
+    }
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+      border-radius:999px;
+      background-image:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      transition:width .18s ease-out;
+    }
+    .nav-links a:hover{color:var(--fg);}
+    .nav-links a:hover::after{width:100%;}
+
+    .page{
+      width:min(1120px,100% - 3rem);
+      margin:0 auto 4rem auto;
+      padding-top:1.5rem;
+    }
+    @media (min-width:1200px){
+      .page{padding-right:360px;} /* space for details pane */
+    }
+
+    /* ========= HERO ========= */
+    .hero{
+      min-height:calc(100vh - var(--nav-h));
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-planet{
+      position:absolute;
+      right:-40vw;
+      bottom:-35vh;
+      width:80vw;
+      height:80vw;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 10%,rgba(246,246,255,.7),transparent 30%),
+                 radial-gradient(circle at 60% 85%,rgba(15,23,42,.9),rgba(15,23,42,.2));
+      box-shadow:0 -40px 80px rgba(15,23,42,.9);
+      opacity:.7;
+      pointer-events:none;
+    }
+    @media (prefers-color-scheme: light){
+      .hero-planet{
+        background:radial-gradient(circle at 25% 10%,rgba(255,255,255,.95),transparent 30%),
+                   radial-gradient(circle at 60% 85%,rgba(148,163,184,.6),rgba(148,163,184,.1));
+        opacity:.9;
+      }
+    }
+
+    .hero-name-block{
+      position:relative;
+      margin-bottom:3rem;
+      max-width:540px;
+    }
+    @media (max-width:700px){
+      .hero-name-block{margin-bottom:2.5rem;}
+    }
+
+    .hero-name{
+      font-size:clamp(2.8rem,5vw,3.8rem);
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--fg);
+      text-shadow:
+        0 1px 0 rgba(15,23,42,.95),
+        0 2px 0 rgba(15,23,42,.95),
+        0 3px 5px rgba(15,23,42,.9);
+    }
+    .hero-sub{
+      margin-top:.9rem;
+      font-size:.98rem;
+      color:var(--muted);
+      max-width:32rem;
+    }
+    .hero-chip-bottom{
+      margin-top:.8rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.3rem .9rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.55);
+      background:rgba(15,23,42,.88);
+      color:var(--muted);
+      backdrop-filter:blur(14px);
+      font-size:.8rem;
+    }
+    @media (prefers-color-scheme: light){
+      .hero-chip-bottom{background:rgba(255,255,255,.92);}
+    }
+    .scroll-indicator{
+      margin-top:1.4rem;
+      font-size:.78rem;
+      color:var(--muted);
+      display:inline-flex;
+      flex-direction:column;
+      gap:.2rem;
+    }
+    .scroll-indicator span.arrow{
+      display:inline-block;
+      animation:arrowBounce 1.2s ease-in-out infinite;
+    }
+    @keyframes arrowBounce{
+      0%,100%{transform:translateY(0);opacity:.7;}
+      50%{transform:translateY(6px);opacity:1;}
+    }
+
+    /* ========= GENERIC SECTIONS ========= */
+    .section{
+      margin-top:4rem;
+      padding:2.5rem;
+      border-radius:var(--radius-lg);
+      background:rgba(10,12,25,.85);
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(18px);
+      position:relative;
+      overflow:hidden;
+    }
+    @media (prefers-color-scheme: light){
+      .section{background:rgba(255,255,255,.96);}
+    }
+
+    .section-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:1rem;
+      margin-bottom:1.8rem;
+    }
+    .section-title{
+      font-size:1.05rem;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      color:var(--muted);
+    }
+    .section-kicker{
+      font-size:.86rem;
+      color:var(--muted);
+      max-width:18rem;
+      text-align:right;
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.5rem;
+    }
+    @media (max-width:960px){
+      .section-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+    @media (max-width:700px){
+      .section-grid{grid-template-columns:minmax(0,1fr);}
+    }
+
+    /* ========= ARTICLE / TILE ========= */
+    article{
+      position:relative;
+      padding:1.3rem 1.3rem 1.5rem;
+      border-radius:var(--radius-md);
+      background:linear-gradient(140deg,
+        rgba(15,23,42,.72),rgba(15,23,42,.9));
+      border:1px solid rgba(148,163,184,.7);
+      box-shadow:
+        0 16px 40px rgba(15,23,42,.95),
+        0 0 24px rgba(15,23,42,.9);
+      backdrop-filter:blur(22px);
+      cursor:pointer;
+      color:var(--fg);
+    }
+    @media (prefers-color-scheme: light){
+      article{
+        background:rgba(255,255,255,.9);
+        box-shadow:
+          0 16px 40px rgba(148,163,184,.4),
+          0 0 20px rgba(148,163,184,.4);
+      }
+    }
+
+    article::before{
+      content:"";
+      position:absolute;
+      top:-10px; left:16px; right:16px;
+      height:14px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:radial-gradient(circle at 50% 20%,
+        rgba(248,250,252,.25),rgba(15,23,42,.95));
+      box-shadow:0 4px 18px rgba(15,23,42,1);
+    }
+    article::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(120deg,
+        transparent 0%,rgba(248,250,252,.18) 45%,transparent 80%);
+      transform:translateX(-120%);
+      opacity:0; pointer-events:none;
+    }
+    article:hover{
+      transform:translateY(-6px);
+      box-shadow:
+        0 22px 60px rgba(15,23,42,1),
+        0 0 40px rgba(56,189,248,.7);
+    }
+    article:hover::after{
+      opacity:1;
+      animation:shimmer 1.1s ease-out forwards;
+    }
+    @keyframes shimmer{
+      from{transform:translateX(-120%);}
+      to{transform:translateX(120%);}
+    }
+
+    .article-bolt{
+      position:absolute;
+      width:10px;height:10px;border-radius:999px;
+      border:1px solid rgba(148,163,184,.75);
+      background:radial-gradient(circle at 30% 30%,#f9fafb,rgba(15,23,42,1));
+      box-shadow:0 0 12px rgba(148,163,184,.8);
+    }
+    .article-bolt.bl{bottom:10px;left:16px;}
+    .article-bolt.br{bottom:10px;right:16px;}
+
+    article h3{
+      font-size:.92rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      margin-bottom:.4rem;
+      color:var(--fg);
+      text-shadow:0 1px 0 rgba(15,23,42,.95);
+    }
+    article .meta-line{
+      font-size:.72rem;
+      color:var(--muted);
+      margin-bottom:.4rem;
+    }
+    article .body{
+      font-size:.8rem;
+      color:var(--fg);
+      opacity:.92;
+      margin-bottom:.8rem;
+    }
+    article .tags{
+      display:flex;flex-wrap:wrap;gap:.3rem;
+      font-size:.68rem;
+    }
+    article .tag-pill{
+      border-radius:999px;
+      padding:.2rem .6rem;
+      border:1px solid rgba(148,163,184,.7);
+      background:rgba(15,23,42,.88);
+      color:var(--fg);
+    }
+    @media (prefers-color-scheme: light){
+      article .tag-pill{background:rgba(255,255,255,.92);color:var(--fg);}
+    }
+
+    /* ========= SKETCH STRIP ========= */
+    .sketch-strip{
+      margin-top:1.8rem;
+      padding:.9rem;
+      border-radius:var(--radius-md);
+      border:1px dashed rgba(148,163,184,.6);
+      background:
+        linear-gradient(135deg,rgba(15,23,42,.96),rgba(15,23,42,.86));
+      display:flex;align-items:center;justify-content:space-between;
+      gap:1rem;
+      font-size:.8rem;color:var(--muted);
+      backdrop-filter:blur(16px);
+    }
+    .sketch-strip svg{width:120px;height:46px;}
+    @media (prefers-color-scheme: light){
+      .sketch-strip{
+        background:linear-gradient(135deg,#f9fafb,#e5e7eb);
+      }
+    }
+
+    /* ========= TIMELINE ========= */
+    .timeline{
+      margin-top:4rem;
+      padding:2.6rem 2.6rem 2.8rem;
+      border-radius:var(--radius-lg);
+      background:rgba(10,12,25,.9);
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(18px);
+      position:relative;
+      overflow:hidden;
+    }
+    @media (prefers-color-scheme: light){
+      .timeline{background:rgba(255,255,255,.97);}
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      top:3.4rem; bottom:2.4rem;
+      left:80px;
+      width:2px;
+      background-image:linear-gradient(180deg,var(--accent-1),var(--accent-2));
+      opacity:.85;
+    }
+
+    .timeline-item{
+      position:relative;
+      display:grid;
+      grid-template-columns:150px minmax(0,1fr);
+      gap:2.2rem;
+      padding-block:1.4rem;
+      padding-left:10px;
+    }
+    .timeline-item::before{
+      content:"";
+      position:absolute;
+      left:72px;
+      top:1.5rem;
+      width:14px;height:14px;
+      border-radius:999px;
+      border:2px solid rgba(15,23,42,1);
+      background-image:radial-gradient(circle at 30% 30%,#f9fafb,var(--accent-1));
+      box-shadow:0 0 0 4px rgba(56,189,248,.35),
+                 0 0 26px rgba(56,189,248,.9);
+    }
+    .timeline-meta{
+      font-size:.76rem;
+      color:var(--muted);
+      text-align:right;
+      padding-right:.5rem;
+    }
+    .timeline-role{
+      font-size:.96rem;
+      margin-bottom:.2rem;
+      color:var(--fg);
+    }
+    .timeline-body{
+      font-size:.82rem;
+      color:var(--muted);
+      max-width:40rem;
+    }
+    .timeline-body b{color:var(--fg);}
+
+    /* ========= FOOTER ========= */
+    footer{
+      padding:3rem 1rem 4rem;
+      text-align:center;
+      font-size:.78rem;
+      color:var(--muted);
+    }
+
+    /* ========= REVEAL ========= */
+    .reveal{opacity:0;transform:translateY(30px);
+      transition:opacity .6s ease-out,transform .6s ease-out;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .spacer{height:2.5rem;}
+
+    /* ========= DETAILS PANE ========= */
+    .details-pane{
+      position:fixed;top:0;right:-360px;
+      width:340px;height:100vh;
+      background:rgba(6,9,20,.96);
+      border-left:1px solid rgba(148,163,184,.35);
+      box-shadow:-8px 0 40px rgba(15,23,42,.9);
+      color:var(--fg);
+      backdrop-filter:blur(18px);
+      overflow-y:auto;
+      transition:right .6s cubic-bezier(.19,1,.22,1);
+      z-index:50;
+    }
+    @media (prefers-color-scheme: light){
+      .details-pane{
+        background:rgba(248,250,252,.98);
+        box-shadow:-8px 0 40px rgba(148,163,184,.6);
+      }
+    }
+    .details-pane.open{right:0;}
+    .details-close{
+      position:absolute;top:14px;right:18px;
+      border:none;background:transparent;
+      color:var(--fg);font-size:2rem;line-height:1;
+      cursor:pointer;opacity:.7;
+    }
+    .details-close:hover{opacity:1;}
+    .details-content{
+      padding:4.5rem 2rem 2rem;
+      font-size:.9rem;line-height:1.6;
+      color:var(--fg);
+    }
+    .details-content h3{
+      font-size:1.1rem;
+      margin-bottom:.75rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--fg);
+    }
+    .details-content img{
+      width:100%;border-radius:10px;margin:1rem 0;display:block;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-mesh"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span>RAHUL&nbsp;NATHA</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero">Overview</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-planet" aria-hidden="true"></div>
+
+      <div class="hero-name-block reveal">
+        <h1 class="hero-name">RAHUL&nbsp;NATHA</h1>
+        <p class="hero-sub">
+          Mechanical engineer & research fellow working on actuation systems, gear trains and
+          FEA – and building interactive, animation-heavy tools to explain that work.
+        </p>
+        <div class="hero-chip-bottom">
+          <span>Actuation · FEA · CAD · Dashboards</span>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll to explore experience</span>
+          <span class="arrow">↓</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <!-- EXPERIENCE / TIMELINE -->
+    <section id="experience" class="timeline reveal">
+      <div class="section-header">
+        <div class="section-title">Experience Timeline</div>
+        <div class="section-kicker">
+          Placeholder: Roles and projects visualised like load paths through time –
+          from B.Tech to research fellow, from MATLAB loops to UI animations.
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div>2023 – Present</div>
+          <div>Hyderabad · Placeholder</div>
+        </div>
+        <div>
+          <div class="timeline-role"><b>Senior Research Fellow (Electro-Mechanical Systems)</b></div>
+          <p class="timeline-body">
+            Placeholder: Lead design of electro-mechanical actuation systems and gear trains; build
+            parametrised spring models; run FEA and create design tools that automate iterations.
+            Integrates data processing (MATLAB, Excel, KISSsoft, Ansys) with intuitive visual dashboards.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div>2021 – 2023</div>
+          <div>Hyderabad · Placeholder</div>
+        </div>
+        <div>
+          <div class="timeline-role"><b>Junior Research Fellow (Mechanical Design)</b></div>
+          <p class="timeline-body">
+            Placeholder: Owned end-to-end design of mechanical sub-assemblies and validation pipelines;
+            crafted Excel-driven calculators, MATLAB scripts, and visual documentation for cross-functional teams.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">
+          <div>Earlier</div>
+          <div>India · Placeholder</div>
+        </div>
+        <div>
+          <div class="timeline-role"><b>B.Tech – Mechanical Engineering</b></div>
+          <p class="timeline-body">
+            Placeholder: Built fundamentals in mechanics, design, and analysis. Projects range from bicycle
+            mechanisms to conceptual rotor assemblies, blending analytical thinking with “draw-it-till-it-works”
+            intuition.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Skill Mesh</div>
+        <div class="section-kicker">
+          Placeholder: treat each tile like an element in a reduced FEA model of what you can do.
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Mechanical &amp; Design</h3>
+          <div class="meta-line">Core · design · validation</div>
+          <div class="body">
+            Placeholder: Machine design, actuation systems, shaft and gear sizing logic, spring design
+            (including machined helical torsion springs with exactly linear stiffness vs turns behaviour).
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Gear trains</span>
+            <span class="tag-pill">Springs</span>
+            <span class="tag-pill">Actuators</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Simulation &amp; Analysis</h3>
+          <div class="meta-line">FEA · parametric sweeps</div>
+          <div class="body">
+            Placeholder: Ansys-based structural analysis, load paths, contact evaluation; parametric sweeps via
+            MATLAB to iterate designs quickly instead of by hand.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Ansys</span>
+            <span class="tag-pill">FEA</span>
+            <span class="tag-pill">MATLAB</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>CAD &amp; Documentation</h3>
+          <div class="meta-line">Solid modelling · drawings</div>
+          <div class="body">
+            Placeholder: SOLIDWORKS models, drawing standards, design tables, exploded views – plus
+            narrative-style documentation that explains the “why” behind each feature.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">SOLIDWORKS</span>
+            <span class="tag-pill">Design tables</span>
+            <span class="tag-pill">Docs</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Web &amp; Dashboards</h3>
+          <div class="meta-line">HTML · CSS · JavaScript</div>
+          <div class="body">
+            Placeholder: Single-file experiments like this, plus your real dashboard that reads from Google
+            Sheets, supports search, and uses layout logic similar to autopilot.js.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">HTML/CSS/JS</span>
+            <span class="tag-pill">Sheets</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Automation &amp; Scripting</h3>
+          <div class="meta-line">Glue between tools</div>
+          <div class="body">
+            Placeholder: Excel calculators, MATLAB loops, and scripts that shrink repetitive design work into
+            single-click tools.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Excel</span>
+            <span class="tag-pill">Automation</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Story &amp; Communication</h3>
+          <div class="meta-line">SOPs · LORs · writing</div>
+          <div class="body">
+            Placeholder: Turning equations, FEA screenshots and CAD models into readable narratives –
+            statements of purpose, LOR briefs, and portfolio storytelling.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Writing</span>
+            <span class="tag-pill">SOP / LOR</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="sketch-strip">
+        <div>2D sketch preview · placeholder</div>
+        <svg viewBox="0 0 160 60" aria-hidden="true">
+          <defs>
+            <linearGradient id="lineGradA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#38bdf8"/>
+              <stop offset="0.5" stop-color="#a855f7"/>
+              <stop offset="1" stop-color="#22c55e"/>
+            </linearGradient>
+          </defs>
+          <polyline
+            points="4,48 32,32 50,38 74,18 94,22 122,8 150,16"
+            fill="none" stroke="url(#lineGradA)" stroke-width="2" />
+          <circle cx="32" cy="32" r="3" fill="#38bdf8"/>
+          <circle cx="74" cy="18" r="3" fill="#a855f7"/>
+          <circle cx="122" cy="8" r="3" fill="#22c55e"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Selected Projects</div>
+        <div class="section-kicker">
+          Placeholder: mechanical, analytical and digital projects. Each tile can later link to
+          detailed write-ups or GitHub repos.
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <!-- … same article pattern, omitted for brevity, you can copy from previous message … -->
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Interactive Portfolio Dashboard</h3>
+          <div class="meta-line">HTML · CSS · JS · Google Sheets</div>
+          <div class="body">
+            Placeholder: Dashboard pulling data from Google Sheets, with search, layout logic and status tiles.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Dashboard</span>
+            <span class="tag-pill">Sheets API</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Spring Design Parametric Tool</h3>
+          <div class="meta-line">MATLAB · FEA</div>
+          <div class="body">
+            Placeholder: Tool that automates stiffness sweeps and validates unusual machined spring geometries.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Springs</span>
+            <span class="tag-pill">Parametric</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Actuation System Studies</h3>
+          <div class="meta-line">Mechanism · trade-offs</div>
+          <div class="body">
+            Placeholder: families of actuation concepts mapped against torque, speed and manufacturability.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Actuation</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Rotor Concept CAD</h3>
+          <div class="meta-line">Assemblies · visuals</div>
+          <div class="body">
+            Placeholder: conceptual rotor assemblies, simplified for educational visuals and future 3D web demos.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Rotor</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Email Labelling System</h3>
+          <div class="meta-line">Workflow design</div>
+          <div class="body">
+            Placeholder: taxonomy for finance, utility, career, business, ID, personal, social, tech mail.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Workflow</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Creative Web Experiments</h3>
+          <div class="meta-line">Illusions · playful UI</div>
+          <div class="body">
+            Placeholder: glass-breaking illusions, navigation tricks, and hidden stories in technical pages.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">UI experiments</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal" style="margin-top:4rem;">
+      <div class="section-header">
+        <div class="section-title">Contact &amp; Next Steps</div>
+        <div class="section-kicker">
+          Placeholder: actual contact info, links to full portfolio, GitHub, LinkedIn, and application material.
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Contact</h3>
+          <div class="meta-line">Email · GitHub · LinkedIn</div>
+          <div class="body">
+            Placeholder email / links go here.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">Email</span>
+            <span class="tag-pill">GitHub</span>
+            <span class="tag-pill">LinkedIn</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Application Materials</h3>
+          <div class="meta-line">SOP · LORs · CV</div>
+          <div class="body">
+            Placeholder: links to program-specific docs hosted on Drive or elsewhere.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">SOP</span>
+            <span class="tag-pill">LOR</span>
+          </div>
+        </article>
+
+        <article>
+          <div class="article-bolt bl"></div><div class="article-bolt br"></div>
+          <h3>Future Experiments</h3>
+          <div class="meta-line">WebGPU · 3D</div>
+          <div class="body">
+            Placeholder: ideas for WebGPU / WebGL visualisations of meshes, actuators and more.
+          </div>
+          <div class="tags">
+            <span class="tag-pill">WebGPU</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Experimental single-file UI · galaxy variant (A)
+    </footer>
+  </main>
+
+  <!-- Details pane -->
+  <aside id="details-pane" class="details-pane">
+    <button id="details-close" class="details-close">×</button>
+    <div id="details-content" class="details-content"></div>
+  </aside>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries)=>{
+      for(const entry of entries){
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      }
+    },{threshold:0.16});
+    reveals.forEach(el=>io.observe(el));
+
+    // Details pane
+    const detailsPane = document.getElementById("details-pane");
+    const detailsContent = document.getElementById("details-content");
+    document.getElementById("details-close").addEventListener("click",()=>{
+      detailsPane.classList.remove("open");
+    });
+
+    document.querySelectorAll("article").forEach(article=>{
+      article.addEventListener("click",()=>{
+        const title = article.querySelector("h3")?.innerText || "Untitled";
+        const body = article.querySelector(".body")?.innerText || "More details coming soon.";
+        const meta = article.querySelector(".meta-line")?.innerText || "";
+        detailsContent.innerHTML = `
+          <h3>${title}</h3>
+          <p style="margin-bottom:.5rem;opacity:.8;">${meta}</p>
+          <p>${body}</p>
+          <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/3000/3338/ISS001-421-24_lrg.jpg" alt="Space imagery placeholder">
+          <p style="margin-top:.75rem;font-size:.8rem;opacity:.7;">
+            Placeholder: this pane can hold extended write-ups, diagrams, FEA screenshots or media.
+          </p>`;
+        detailsPane.classList.add("open");
+      });
+    });
+  </script>
+</body>
+</html>

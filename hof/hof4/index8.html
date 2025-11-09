@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rahul Natha – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --bg:#020617;
+      --fg:#f9fafb;
+      --muted:#9ca3af;
+      --accent-1:#38bdf8;
+      --accent-2:#a855f7;
+      --accent-3:#22c55e;
+      --nav-h:72px;
+      --radius-lg:24px;
+      --radius-md:18px;
+      --border-soft:rgba(148,163,184,.45);
+      --shadow-soft:0 18px 60px rgba(15,23,42,.9);
+
+      /* new cinematic vars */
+      --light-intensity:0;     /* 0 = deep dark, 1 = strongest star light */
+      --star-scale:0.4;        /* star CSS scale */
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:#020617;          /* keep space dark, even in system-light */
+        --fg:#f9fafb;
+        --muted:#9ca3af;
+        --border-soft:rgba(148,163,184,.45);
+        --shadow-soft:0 18px 60px rgba(15,23,42,.9);
+      }
+    }
+
+    body{
+      font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      min-height:100vh;
+      overflow-x:hidden;
+      line-height:1.5;
+    }
+
+    /* galaxy background stays always */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(circle at -120% -40%,
+          rgba(255,255,255,.95) 0%,
+          rgba(252,211,77,.4) 8%,
+          rgba(248,250,252,.18) 26%,
+          transparent 55%),
+        radial-gradient(circle at 110% 130%,
+          rgba(15,23,42,.9) 0%,
+          transparent 60%),
+        url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg")
+          center/cover no-repeat fixed;
+      filter:brightness(calc(.75 + .35*var(--light-intensity)));
+      transition:filter 1.2s ease-out;
+    }
+
+    .background-mesh{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      opacity:.3;
+      mix-blend-mode:soft-light;
+      background-image:
+        linear-gradient(135deg,rgba(148,163,184,.16) 1px,transparent 1px),
+        linear-gradient(45deg,rgba(148,163,184,.16) 1px,transparent 1px);
+      background-size:26px 26px;
+      pointer-events:none;
+    }
+
+    #space-canvas{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    /* 3D-ish star sphere (CSS object) */
+    .star-sphere{
+      position:fixed;
+      right:-25vw;
+      top:5vh;
+      width:52vw;
+      height:52vw;
+      border-radius:50%;
+      pointer-events:none;
+      mix-blend-mode:screen;
+      transform-origin:center;
+      transform:scale(var(--star-scale));
+      opacity:calc(0.06 + 0.94*var(--light-intensity));
+      background:
+        radial-gradient(circle at 30% 25%,
+          rgba(255,255,255,1) 0%,
+          rgba(254,252,232,.95) 18%,
+          rgba(252,211,77,1) 38%,
+          rgba(248,250,252,0) 70%);
+      box-shadow:
+        0 0 calc(30px + 90px*var(--light-intensity)) rgba(252,211,77,.8),
+        0 0 calc(90px + 250px*var(--light-intensity)) rgba(251,191,36,.7);
+      transition:
+        transform 1.2s ease-out,
+        opacity 1.2s ease-out,
+        box-shadow 1.2s ease-out;
+      z-index:-1;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:30;
+      height:var(--nav-h);
+      display:flex; align-items:center; justify-content:center;
+      backdrop-filter:blur(16px);
+      background:linear-gradient(to bottom,
+        rgba(15,23,42,.92),rgba(15,23,42,.65),rgba(15,23,42,.1));
+      border-bottom:1px solid rgba(148,163,184,.45);
+    }
+
+    .nav-inner{
+      width:min(1120px,100% - 1.75rem);
+      display:flex; align-items:center; justify-content:space-between;
+      margin-inline:auto;
+    }
+    .logo{display:flex;align-items:center;gap:.6rem;
+      font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+    .logo-mark{
+      width:26px;height:26px;border-radius:999px;
+      background:conic-gradient(from 200deg,var(--accent-2),var(--accent-1),var(--accent-3),var(--accent-2));
+      box-shadow:0 0 16px rgba(56,189,248,.9),0 0 30px rgba(168,85,247,.9);
+      position:relative;overflow:hidden;
+      flex-shrink:0;
+    }
+    .logo-mark::after{
+      content:"";position:absolute;inset:4px;border-radius:inherit;
+      background:radial-gradient(circle at 30% 20%,rgba(248,250,252,.9),rgba(15,23,42,.95));
+      mix-blend-mode:screen;
+    }
+    .nav-links{
+      display:flex;
+      gap:1.2rem;
+      font-size:.78rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      padding-block:.3rem;
+      position:relative;
+      white-space:nowrap;
+    }
+    .nav-links a::after{
+      content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+      border-radius:999px;
+      background-image:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      transition:width .18s ease-out;
+    }
+    .nav-links a:hover{color:var(--fg);}
+    .nav-links a:hover::after{width:100%;}
+
+    @media (max-width:800px){
+      .nav-inner{
+        flex-wrap:wrap;
+        row-gap:.35rem;
+      }
+      .nav-links{
+        justify-content:flex-start;
+        font-size:.7rem;
+        gap:.7rem;
+      }
+    }
+
+    .page{
+      width:min(1120px,100% - 1.75rem);
+      margin:0 auto 4rem auto;
+      padding-top:1.5rem;
+    }
+    @media (min-width:1200px){
+      .page{padding-right:340px;}
+    }
+
+    /* HERO */
+    .hero{
+      min-height:calc(100vh - var(--nav-h));
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-planet{
+      position:absolute;
+      right:-40vw;
+      bottom:-35vh;
+      width:80vw;
+      height:80vw;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 30% 10%,rgba(246,246,255,.7),transparent 30%),
+        radial-gradient(circle at 60% 85%,rgba(15,23,42,.9),rgba(15,23,42,.2));
+      box-shadow:0 -40px 80px rgba(15,23,42,.9);
+      opacity:calc(.4 + .4*var(--light-intensity));
+      pointer-events:none;
+      transition:box-shadow 1.2s ease-out, opacity 1.2s ease-out;
+    }
+
+    .hero-name-block{
+      position:relative;
+      margin-bottom:3rem;
+      max-width:680px;
+    }
+    @media (max-width:700px){
+      .hero-name-block{margin-bottom:2.5rem;}
+    }
+
+    .hero-name{
+      font-size:clamp(4rem,7vw,6.5rem);
+      letter-spacing:.16em;
+      color:var(--fg);
+      text-shadow:
+        0 1px 0 rgba(15,23,42,.95),
+        0 2px 0 rgba(15,23,42,.95),
+        0 3px 5px rgba(15,23,42,.9);
+      white-space:normal;
+    }
+    @media (min-width:900px){
+      .hero-name{white-space:nowrap;}
+    }
+
+    .hero-sub{
+      margin-top:.9rem;
+      font-size:.98rem;
+      color:var(--muted);
+      max-width:32rem;
+      filter:brightness(calc(.9 + .5*var(--light-intensity)));
+      transition:filter 1.2s ease-out;
+    }
+    .hero-chip-bottom{
+      margin-top:.8rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.3rem .9rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.55);
+      background:rgba(15,23,42,calc(.75 + .2*var(--light-intensity)));
+      color:var(--muted);
+      backdrop-filter:blur(14px);
+      font-size:.8rem;
+      box-shadow:0 0 calc(6px + 18px*var(--light-intensity)) rgba(251,191,36,.6);
+      transition:background-color 1.2s ease-out, box-shadow 1.2s ease-out;
+    }
+
+    .scroll-indicator{
+      margin-top:1.4rem;
+      font-size:.78rem;
+      color:var(--muted);
+      display:inline-flex;
+      flex-direction:column;
+      gap:.2rem;
+    }
+    .scroll-indicator span.arrow{
+      display:inline-block;
+      animation:arrowBounce 1.2s ease-in-out infinite;
+    }
+    @keyframes arrowBounce{
+      0%,100%{transform:translateY(0);opacity:.7;}
+      50%{transform:translateY(6px);opacity:1;}
+    }
+
+    .section{
+      margin-top:4rem;
+      padding:2.5rem;
+      border-radius:var(--radius-lg);
+      background:rgba(10,12,25,.86);
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(18px);
+      position:relative;
+      overflow:hidden;
+      filter:brightness(calc(.9 + .5*var(--light-intensity)));
+      transition:filter 1.2s ease-out, box-shadow 1.2s ease-out;
+    }
+    .section-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:1rem;
+      margin-bottom:1.8rem;
+    }
+    .section-title{
+      font-size:1.05rem;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      color:var(--muted);
+    }
+    .section-kicker{
+      font-size:.86rem;
+      color:var(--muted);
+      max-width:18rem;
+      text-align:right;
+    }
+    @media (max-width:700px){
+      .section{
+        padding:1.8rem 1.6rem 2rem;
+      }
+      .section-header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .section-kicker{text-align:left;}
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1.5rem;
+    }
+    @media (max-width:1024px){
+      .section-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+    @media (max-width:700px){
+      .section-grid{grid-template-columns:minmax(0,1fr);}
+    }
+
+    /* ARTICLES (glass tiles) */
+    article{
+      position:relative;
+      padding:1.3rem 1.3rem 1.5rem;
+      border-radius:var(--radius-md);
+      background:linear-gradient(150deg,
+        rgba(15,23,42,.85),rgba(15,23,42,.98));
+      border:1px solid rgba(148,163,184,.7);
+      box-shadow:
+        0 16px 40px rgba(15,23,42,.95),
+        0 0 calc(16px + 40px*var(--light-intensity)) rgba(252,211,77,.3);
+      backdrop-filter:blur(20px);
+      cursor:pointer;
+      color:var(--fg);
+      overflow:hidden;
+      transition:
+        box-shadow .25s ease-out,
+        transform .25s ease-out,
+        background .25s ease-out;
+    }
+    article::before{
+      content:"";
+      position:absolute;
+      top:-10px; left:16px; right:16px;
+      height:14px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      background:radial-gradient(circle at 50% 20%,
+        rgba(248,250,252,.25),rgba(15,23,42,.95));
+      box-shadow:0 4px 18px rgba(15,23,42,1);
+    }
+    article::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(120deg,
+        transparent 0%,rgba(248,250,252,.32*var(--light-intensity)) 40%,transparent 80%);
+      transform:translateX(-120%);
+      opacity:0; pointer-events:none;
+    }
+    article:hover{
+      transform:translateY(-6px);
+      box-shadow:
+        0 22px 60px rgba(15,23,42,1),
+        0 0 45px rgba(251,191,36,.5);
+    }
+    article:hover::after{
+      opacity:1;
+      animation:shimmer 1.1s ease-out forwards;
+    }
+    @keyframes shimmer{
+      from{transform:translateX(-120%);}
+      to{transform:translateX(120%);}
+    }
+
+    .article-bolt{
+      position:absolute;
+      width:10px;height:10px;border-radius:999px;
+      border:1px solid rgba(148,163,184,.75);
+      background:radial-gradient(circle at 30% 30%,#f9fafb,rgba(15,23,42,1));
+      box-shadow:0 0 12px rgba(148,163,184,.8);
+    }
+    .article-bolt.bl{bottom:10px;left:16px;}
+    .article-bolt.br{bottom:10px;right:16px;}
+
+    article h3{
+      font-size:.92rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      margin-bottom:.4rem;
+      color:var(--fg);
+      text-shadow:0 1px 0 rgba(15,23,42,.85);
+    }
+    article .meta-line{
+      font-size:.72rem;
+      color:var(--muted);
+      margin-bottom:.4rem;
+    }
+    article .body{
+      font-size:.8rem;
+      color:var(--fg);
+      opacity:.94;
+      margin-bottom:.8rem;
+    }
+    article .tags{
+      display:flex;flex-wrap:wrap;gap:.3rem;
+      font-size:.68rem;
+    }
+    article .tag-pill{
+      border-radius:999px;
+      padding:.2rem .6rem;
+      border:1px solid rgba(148,163,184,.7);
+      background:rgba(15,23,42,.88);
+      color:var(--fg);
+    }
+
+    /* broken glass + robot repair */
+    .broken-glass{
+      box-shadow:
+        0 0 0 1px rgba(248,113,113,.9),
+        0 0 26px rgba(248,113,113,.7);
+    }
+    .glass-crack{
+      position:absolute;
+      inset:0;
+      background-image:
+        url("https://upload.wikimedia.org/wikipedia/commons/4/41/Cracked_glass_texture.jpg");
+      background-size:cover;
+      background-position:center;
+      opacity:.9;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+    .repair-robot{
+      position:absolute;
+      top:-6px;
+      bottom:-6px;
+      right:-60px;
+      width:46px;
+      background:
+        linear-gradient(to bottom,#e5e7eb,#9ca3af,#e5e7eb);
+      border-radius:18px;
+      box-shadow:0 0 22px rgba(148,163,184,.9);
+      animation:robotRepair 4s ease-out forwards;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .repair-robot::before{
+      content:"";
+      position:absolute;
+      inset:8px;
+      border-radius:14px;
+      border:2px solid rgba(15,23,42,.65);
+      box-shadow:inset 0 0 12px rgba(15,23,42,.7);
+    }
+    @keyframes robotRepair{
+      0%{transform:translateX(0);opacity:0;}
+      10%{transform:translateX(-60%);opacity:1;}
+      60%{transform:translateX(-60%);opacity:1;}
+      100%{transform:translateX(-140%);opacity:0;}
+    }
+
+    /* TIMELINE (unchanged layout you liked) */
+    .timeline{
+      margin-top:4rem;
+      padding:2.6rem 2.6rem 2.8rem;
+      border-radius:var(--radius-lg);
+      background:rgba(10,12,25,.9);
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow-soft);
+      backdrop-filter:blur(18px);
+      position:relative;
+      overflow:hidden;
+      filter:brightness(calc(.9 + .5*var(--light-intensity)));
+      transition:filter 1.2s ease-out, box-shadow 1.2s ease-out;
+    }
+    .timeline-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:1rem;
+      margin-bottom:1.8rem;
+    }
+    .timeline-header .section-kicker{max-width:20rem;}
+    @media (max-width:700px){
+      .timeline-header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .timeline{
+        padding:1.9rem 1.6rem 2.2rem;
+      }
+    }
+
+    .timeline-items{
+      display:flex;
+      flex-direction:column;
+      gap:.4rem;
+    }
+    .timeline-item{
+      display:grid;
+      grid-template-columns:200px minmax(0,1fr);
+      gap:1.8rem;
+      padding-block:1.2rem;
+      cursor:pointer;
+    }
+    .timeline-meta{
+      font-size:.76rem;
+      color:var(--muted);
+      text-align:right;
+      padding-right:1.2rem;
+    }
+    .timeline-meta div + div{margin-top:.15rem;}
+
+    .timeline-main{
+      position:relative;
+      padding-left:1.8rem;
+      border-left:2px solid rgba(56,189,248,.7);
+      border-image:linear-gradient(180deg,var(--accent-1),var(--accent-2)) 1;
+      transition:box-shadow .25s ease-out;
+      overflow:hidden;
+    }
+    .timeline-main::before{
+      content:"";
+      position:absolute;
+      left:-7px;
+      top:.55rem;
+      width:14px;height:14px;
+      border-radius:999px;
+      border:2px solid rgba(15,23,42,1);
+      background-image:radial-gradient(circle at 30% 30%,#f9fafb,var(--accent-1));
+      box-shadow:0 0 0 4px rgba(56,189,248,.35),
+                 0 0 26px rgba(56,189,248,.9);
+    }
+    .timeline-item:hover .timeline-main{
+      box-shadow:0 0 0 1px rgba(148,163,184,.55);
+    }
+
+    .timeline-role{
+      font-size:.96rem;
+      margin-bottom:.4rem;
+      color:var(--fg);
+    }
+    .timeline-body{
+      font-size:.82rem;
+      color:var(--muted);
+      max-width:40rem;
+    }
+    .bullet-list{
+      margin:.3rem 0 0 1.1rem;
+      padding:0;
+      list-style:disc;
+    }
+    .bullet-list li{
+      margin-bottom:.25rem;
+    }
+
+    @media (max-width:700px){
+      .timeline-item{
+        grid-template-columns:minmax(0,1fr);
+        gap:.6rem;
+      }
+      .timeline-meta{
+        text-align:left;
+        padding-right:0;
+      }
+      .timeline-main{
+        border-left-width:2px;
+        padding-left:1.2rem;
+      }
+    }
+
+    footer{
+      padding:3rem 1rem 4rem;
+      text-align:center;
+      font-size:.78rem;
+      color:var(--muted);
+    }
+
+    .reveal{opacity:0;transform:translateY(30px);
+      transition:opacity .6s ease-out,transform .6s ease-out;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    .spacer{height:2.5rem;}
+
+    /* DETAILS PANE */
+    .details-pane{
+      position:fixed;top:0;right:-360px;
+      width:340px;max-width:100%;
+      height:100vh;
+      background:rgba(6,9,20,.96);
+      border-left:1px solid rgba(148,163,184,.35);
+      box-shadow:-8px 0 40px rgba(15,23,42,.9);
+      color:var(--fg);
+      backdrop-filter:blur(18px);
+      overflow-y:auto;
+      transition:right .6s cubic-bezier(.19,1,.22,1), width .3s ease;
+      z-index:50;
+      display:flex;
+      flex-direction:column;
+    }
+    .details-pane.open{right:0;}
+    .details-pane.minimized{width:220px;}
+    .details-pane.maximized{
+      right:0;left:0;
+      width:auto;
+      border-radius:0;
+      box-shadow:none;
+    }
+
+    .details-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.5rem 1rem;
+      border-bottom:1px solid rgba(148,163,184,.35);
+      position:sticky;
+      top:0;
+      z-index:3;
+      background:inherit;
+      backdrop-filter:inherit;
+    }
+    .details-title{
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      opacity:.8;
+    }
+    .details-controls{
+      display:flex;
+      gap:.25rem;
+    }
+    .details-controls button{
+      border:none;
+      border-radius:6px;
+      padding:.18rem .45rem;
+      font-size:.8rem;
+      background:rgba(15,23,42,.8);
+      color:var(--fg);
+      cursor:pointer;
+      opacity:.8;
+    }
+    .details-controls button:hover{
+      opacity:1;
+      background:rgba(30,64,175,.9);
+    }
+
+    .details-search-row{
+      position:relative;
+      padding:.4rem 1rem .6rem;
+      border-bottom:1px solid rgba(148,163,184,.25);
+      z-index:2;
+    }
+    #details-search{
+      width:100%;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.6);
+      background:rgba(15,23,42,.9);
+      color:var(--fg);
+      padding:.35rem 2.2rem .35rem .75rem;
+      font-size:.8rem;
+      outline:none;
+    }
+    #details-search::placeholder{
+      color:rgba(148,163,184,.9);
+    }
+    .details-search-row::after{
+      content:"🔍";
+      position:absolute;
+      right:1.5rem;
+      top:50%;
+      transform:translateY(0.2rem);
+      font-size:.8rem;
+      opacity:.7;
+      pointer-events:none;
+    }
+
+    .details-dropdown{
+      position:absolute;
+      left:1rem;
+      right:1rem;
+      top:2.4rem;
+      max-height:260px;
+      overflow:auto;
+      border-radius:12px;
+      border:1px solid rgba(148,163,184,.4);
+      background:rgba(15,23,42,.98);
+      box-shadow:0 18px 40px rgba(15,23,42,.95);
+      display:none;
+    }
+    .details-dropdown.open{display:block;}
+    .details-option{
+      padding:.45rem .75rem;
+      font-size:.8rem;
+      cursor:pointer;
+    }
+    .details-option:hover{
+      background:rgba(30,64,175,.7);
+    }
+    .details-option-empty{
+      padding:.5rem .75rem;
+      font-size:.78rem;
+      opacity:.75;
+    }
+
+    .details-content{
+      padding:1.2rem 1.5rem 2rem;
+      font-size:.9rem;
+      line-height:1.6;
+      color:var(--fg);
+    }
+    .details-content h3{
+      font-size:1.05rem;
+      margin-bottom:.6rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--fg);
+    }
+    .details-content img,
+    .details-content video{
+      width:100%;
+      border-radius:10px;
+      margin:1rem 0;
+      display:block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="space-canvas"></canvas>
+  <div class="background-mesh"></div>
+  <div id="star-sphere" class="star-sphere"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span>RAHUL&nbsp;NATHA</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero">Overview</a>
+        <a href="#experience">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#certification">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="hero" class="hero">
+      <div class="hero-planet" aria-hidden="true"></div>
+      <div class="hero-name-block reveal">
+        <h1 class="hero-name">Rahul Natha</h1>
+        <p class="hero-sub">
+          Mechanical engineer & research fellow working on actuation systems, gear trains and
+          FEA – and building interactive, animation-heavy tools to explain that work.
+        </p>
+        <div class="hero-chip-bottom">
+          <span>Actuation · FEA · CAD · Dashboards</span>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll to explore experience</span>
+          <span class="arrow">↓</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="timeline reveal">
+      <div class="timeline-header">
+        <div class="section-title">Experience timeline</div>
+        <div class="section-kicker">
+          Experience entries are loaded from the <b>work</b> tab of the Google Sheet.
+        </div>
+      </div>
+      <div id="timeline-items" class="timeline-items"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Skill mesh</div>
+        <div class="section-kicker">
+          Skills are read from the <b>skill</b> tab – each row becomes a glass tile.
+        </div>
+      </div>
+      <div id="skills-grid" class="section-grid"></div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certification" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Certifications</div>
+        <div class="section-kicker">
+          Entries from the <b>certification</b> tab appear here.
+        </div>
+      </div>
+      <div id="cert-grid" class="section-grid"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+      <div class="section-header">
+        <div class="section-title">Selected projects</div>
+        <div class="section-kicker">
+          Projects are loaded from the <b>projects</b> tab.
+        </div>
+      </div>
+      <div id="projects-grid" class="section-grid"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal" style="margin-top:4rem;">
+      <div class="section-header">
+        <div class="section-title">Contact &amp; links</div>
+        <div class="section-kicker">
+          Contact rows from the <b>contact</b> tab appear as tiles.
+        </div>
+      </div>
+      <div id="contact-grid" class="section-grid"></div>
+    </section>
+
+    <footer>
+      Starship portfolio · powered by Google Sheets data
+    </footer>
+  </main>
+
+  <!-- DETAILS PANE -->
+  <aside id="details-pane" class="details-pane">
+    <div class="details-topbar">
+      <div id="details-title" class="details-title">DETAIL</div>
+      <div class="details-controls">
+        <button id="details-min" title="Minimize">_</button>
+        <button id="details-max" title="Maximize">⧉</button>
+        <button id="details-close" title="Close">×</button>
+      </div>
+    </div>
+    <div class="details-search-row">
+      <input id="details-search" type="text" placeholder="Search / choose tile" />
+      <div id="details-dropdown" class="details-dropdown"></div>
+    </div>
+    <div id="details-content" class="details-content">
+      <p style="font-size:.85rem;opacity:.8;">Select a tile to view its details.</p>
+    </div>
+  </aside>
+
+  <!-- SheetJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script>
+    const SHEET_CSV_URL =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQweOKrkGkkqFH_Qy1rstZU-ZvqmoYGcHv7eRkl-8kPeqHAs3jhFjU5X4MUE_MbLwYRjkxLp8yuyd0m/pub?output=csv";
+    const SHEET_XLSX_URL = SHEET_CSV_URL.replace("output=csv","output=xlsx");
+    const LOCAL_FALLBACK = "r...a.com.xlsx";
+
+    function escapeHTML(str){
+      return String(str ?? "").replace(/[&<>"']/g, s=>{
+        switch(s){
+          case "&":return "&amp;";
+          case "<":return "&lt;";
+          case ">":return "&gt;";
+          case '"':return "&quot;";
+          case "'":return "&#39;";
+          default:return s;
+        }
+      });
+    }
+
+    function softWrapTokens(str){
+      let s = String(str ?? "");
+      s = s.replace(/https:\/\/www\.linkedin\.com\/in(?!\[\[WBR\]\])/g,"https://www.linkedin.com/in[[WBR]]");
+      s = s.replace(/https:\/\/linkedin\.com\/in(?!\[\[WBR\]\])/g,"https://linkedin.com/in[[WBR]]");
+      s = s.replace(/https:\/\/www\.(?!\[\[WBR\]\])/g,"https://www.[[WBR]]");
+      s = s.replace(/https:\/\/(?!\[\[WBR\]\])/g,"https://[[WBR]]");
+      s = s.replace(/@gmail\.com(?!\[\[WBR\]\])/g,"[[WBR]]@gmail.com");
+      return s;
+    }
+
+    function htmlWithSoftWraps(str){
+      const withTokens = softWrapTokens(str);
+      return escapeHTML(withTokens).replace(/\[\[WBR\]\]/g,"<wbr>");
+    }
+
+    function toBulletListHTML(desc){
+      const norm = String(desc ?? "").replace(/\r\n/g,"\n").trim();
+      if(!norm) return "";
+      const segments = norm.split(/\n\s*\n/g);
+      const items = [];
+      for(let seg of segments){
+        let t = seg.trim();
+        if(!t) continue;
+        t = t.replace(/^[\u2022•\-\*]+\s*/,"");
+        items.push(`<li>${htmlWithSoftWraps(t)}</li>`);
+      }
+      if(!items.length) return "";
+      return `<ul class="bullet-list">${items.join("")}</ul>`;
+    }
+
+    async function loadWorkbook() {
+      try {
+        const resp = await fetch(SHEET_XLSX_URL,{cache:"no-store"});
+        if (!resp.ok) throw new Error("Remote XLSX not OK");
+        const buf = await resp.arrayBuffer();
+        return XLSX.read(buf,{type:"array"});
+      } catch(e){
+        console.warn("Remote sheet load failed, using local fallback:", e);
+      }
+      const resp2 = await fetch(LOCAL_FALLBACK);
+      if(!resp2.ok) throw new Error("Local fallback xlsx not found");
+      const buf2 = await resp2.arrayBuffer();
+      return XLSX.read(buf2,{type:"array"});
+    }
+
+    function sheetRows(wb,name){
+      const ws = wb.Sheets[name];
+      if(!ws) return [];
+      return XLSX.utils.sheet_to_json(ws,{defval:"",raw:false});
+    }
+
+    /* DETAIL REGISTRY */
+    const detailRegistry = {
+      work:[], skill:[], certification:[], projects:[], contact:[]
+    };
+    const detailMap = new Map();
+    let currentSection = null;
+    let currentDetailId = null;
+
+    function registerDetail(section,title,briefHtml,fallbackHtml){
+      if(!detailRegistry[section]) detailRegistry[section] = [];
+      const id = section + "-" + detailRegistry[section].length;
+      const item = {id,section,title:title||"Untitled",briefHtml:briefHtml||"",fallbackHtml:fallbackHtml||""};
+      detailRegistry[section].push(item);
+      detailMap.set(id,item);
+      return id;
+    }
+
+    function populateHero(rows){
+      if(!rows.length) return;
+      const row = rows[0];
+      const name = row.Name || "Rahul Natha";
+      const title = row.Title || "";
+      const tags = row.Tags || "";
+      document.querySelector(".hero-name").textContent = name;
+      if(title) document.querySelector(".hero-sub").textContent = title;
+      if(tags) document.querySelector(".hero-chip-bottom span").textContent = tags;
+    }
+
+    function populateWork(rows){
+      const container = document.getElementById("timeline-items");
+      if(!container) return;
+      container.innerHTML = "";
+      rows.forEach(row=>{
+        if(!row.Title) return;
+        const join = row.Join || "";
+        const exit = row.Exit || "";
+        const org = row.Org || "";
+        const type = row.Type || "";
+        const desc = row.Description || "";
+        const brief = row.Brief || "";
+        const timeRange = (join && exit) ? `${join} – ${exit}` : (join || exit);
+
+        const metaPieces = [];
+        if(timeRange) metaPieces.push(`<div>${htmlWithSoftWraps(timeRange)}</div>`);
+        if(org) metaPieces.push(`<div>${htmlWithSoftWraps(org)}</div>`);
+        if(type) metaPieces.push(`<div>${htmlWithSoftWraps(type)}</div>`);
+
+        const bulletHtmlRaw = toBulletListHTML(desc);
+        const bodyHtml = bulletHtmlRaw || `<p>${htmlWithSoftWraps(desc)}</p>`;
+
+        const itemEl = document.createElement("div");
+        itemEl.className = "timeline-item";
+        itemEl.innerHTML = `
+          <div class="timeline-meta">
+            ${metaPieces.join("")}
+          </div>
+          <div class="timeline-main">
+            <div class="timeline-role"><b>${escapeHTML(row.Title)}</b></div>
+            <div class="timeline-body">${bodyHtml}</div>
+          </div>
+        `;
+        const detailId = registerDetail("work",row.Title,brief,bodyHtml);
+        itemEl.dataset.detailId = detailId;
+        container.appendChild(itemEl);
+      });
+    }
+
+    function createSkillTile(row){
+      const article = document.createElement("article");
+      const title = row.Skill || row.Category || "Skill";
+      const cat = row.Category || "";
+      const desc = row.Description || "";
+      const brief = row.Brief || "";
+      const bodyHtml = htmlWithSoftWraps(desc);
+      const detailId = registerDetail("skill",title,brief,bodyHtml);
+      article.dataset.detailId = detailId;
+      article.innerHTML = `
+        <div class="article-bolt bl"></div>
+        <div class="article-bolt br"></div>
+        <h3>${escapeHTML(title)}</h3>
+        <div class="meta-line">${htmlWithSoftWraps(cat)}</div>
+        <div class="body">${bodyHtml}</div>
+        <div class="tags">
+          ${row.Skill ? `<span class="tag-pill">${htmlWithSoftWraps(row.Skill)}</span>` : ""}
+        </div>
+      `;
+      return article;
+    }
+
+    function populateSkills(rows){
+      const grid = document.getElementById("skills-grid");
+      if(!grid) return;
+      grid.innerHTML = "";
+      rows.forEach(row=>{
+        if(!row.Skill && !row.Category) return;
+        grid.appendChild(createSkillTile(row));
+      });
+    }
+
+    function createCertTile(row){
+      const article = document.createElement("article");
+      const title = row.Title || "Certification";
+      const issuer = row.Issuer || "";
+      const issue = row["Issue date"] || "";
+      const valid = row.Validity || "";
+      const verify = row.Verification || "";
+      const desc = row.Description || "";
+      const brief = row.Brief || "";
+      const metaParts = [];
+      if(issuer) metaParts.push(issuer);
+      if(issue) metaParts.push(issue);
+      if(valid) metaParts.push(valid);
+      const meta = metaParts.join(" · ");
+      const bodyHtml = htmlWithSoftWraps(desc);
+      const detailId = registerDetail("certification",title,brief,bodyHtml);
+      article.dataset.detailId = detailId;
+      article.innerHTML = `
+        <div class="article-bolt bl"></div>
+        <div class="article-bolt br"></div>
+        <h3>${escapeHTML(title)}</h3>
+        <div class="meta-line">${htmlWithSoftWraps(meta)}</div>
+        <div class="body">${bodyHtml}</div>
+        <div class="tags">
+          ${verify ? `<span class="tag-pill">Verification</span>` : ""}
+        </div>
+      `;
+      return article;
+    }
+
+    function populateCerts(rows){
+      const grid = document.getElementById("cert-grid");
+      if(!grid) return;
+      grid.innerHTML = "";
+      rows.forEach(row=>{
+        if(!row.Title) return;
+        grid.appendChild(createCertTile(row));
+      });
+    }
+
+    function createProjectTile(row){
+      const article = document.createElement("article");
+      const title = row.Title || "Project";
+      const tools = row.Tools || "";
+      const tech = row.Tech || "";
+      const tags = row.Tags || "";
+      const desc = row.Description || "";
+      const brief = row.Brief || "";
+      const meta = [tools,tech].filter(Boolean).join(" · ");
+      const tagPieces = tags ? tags.split(/[·,]/).map(s=>s.trim()).filter(Boolean) : [];
+      const bodyHtml = htmlWithSoftWraps(desc);
+      const detailId = registerDetail("projects",title,brief,bodyHtml);
+      article.dataset.detailId = detailId;
+      article.innerHTML = `
+        <div class="article-bolt bl"></div>
+        <div class="article-bolt br"></div>
+        <h3>${escapeHTML(title)}</h3>
+        <div class="meta-line">${htmlWithSoftWraps(meta)}</div>
+        <div class="body">${bodyHtml}</div>
+        <div class="tags">
+          ${tagPieces.map(t=>`<span class="tag-pill">${htmlWithSoftWraps(t)}</span>`).join("")}
+        </div>
+      `;
+      return article;
+    }
+
+    function populateProjects(rows){
+      const grid = document.getElementById("projects-grid");
+      if(!grid) return;
+      grid.innerHTML = "";
+      rows.forEach(row=>{
+        if(!row.Title) return;
+        grid.appendChild(createProjectTile(row));
+      });
+    }
+
+    function createContactTile(row){
+      const article = document.createElement("article");
+      const mode = row.Mode || "Contact";
+      const addr = row.Address || "";
+      const brief = row.Brief || "";
+      let addrProcessed = addr;
+      let href = "";
+      if(addr.startsWith("http")){
+        href = addr;
+      }else if(addr.includes("@")){
+        href = "mailto:" + addr;
+      }
+      addrProcessed = htmlWithSoftWraps(addrProcessed);
+      let bodyHtml = addrProcessed;
+      if(href){
+        bodyHtml = `<a href="${escapeHTML(href)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">${addrProcessed}</a>`;
+      }
+      const detailId = registerDetail("contact",mode,brief,bodyHtml);
+      article.dataset.detailId = detailId;
+      article.innerHTML = `
+        <div class="article-bolt bl"></div>
+        <div class="article-bolt br"></div>
+        <h3>${escapeHTML(mode)}</h3>
+        <div class="meta-line"></div>
+        <div class="body">${bodyHtml}</div>
+        <div class="tags"></div>
+      `;
+      return article;
+    }
+
+    function populateContact(rows){
+      const grid = document.getElementById("contact-grid");
+      if(!grid) return;
+      grid.innerHTML = "";
+      rows.forEach(row=>{
+        if(!row.Mode && !row.Address) return;
+        grid.appendChild(createContactTile(row));
+      });
+    }
+
+    /* DETAILS PANE */
+    function initDetailsPane(){
+      const pane = document.getElementById("details-pane");
+      const titleEl = document.getElementById("details-title");
+      const contentEl = document.getElementById("details-content");
+      const btnMin = document.getElementById("details-min");
+      const btnMax = document.getElementById("details-max");
+      const btnClose = document.getElementById("details-close");
+      const searchInput = document.getElementById("details-search");
+      const dropdown = document.getElementById("details-dropdown");
+
+      const allItems = [];
+      Object.values(detailRegistry).forEach(list=>list.forEach(i=>allItems.push(i)));
+
+      function renderDetailContent(item){
+        titleEl.textContent = item.title.toUpperCase();
+        let html = "";
+        if(item.briefHtml && item.briefHtml.trim()){
+          html = item.briefHtml;
+        }else if(item.fallbackHtml && item.fallbackHtml.trim()){
+          html = item.fallbackHtml;
+        }else{
+          html = `<p style="font-size:.85rem;opacity:.75;">No additional details yet.</p>`;
+        }
+        contentEl.innerHTML = html;
+      }
+
+      function renderDropdown(filterText){
+        const q = (filterText||"").toLowerCase();
+        let matches = allItems;
+        if(q){
+          matches = allItems.filter(it=>it.title.toLowerCase().includes(q));
+        }
+        if(!matches.length){
+          dropdown.innerHTML = `<div class="details-option-empty">The searched content is currently unavailable.</div>`;
+        }else{
+          dropdown.innerHTML = matches.map(it=>(
+            `<div class="details-option" data-detail-id="${it.id}">${escapeHTML(it.title)}</div>`
+          )).join("");
+        }
+        dropdown.classList.add("open");
+      }
+
+      function openDetails(id){
+        const item = detailMap.get(id);
+        if(!item) return;
+        currentDetailId = id;
+        currentSection = item.section;
+        pane.classList.add("open");
+        pane.classList.remove("minimized"); // keep maximized if it was
+        renderDetailContent(item);
+        searchInput.value = item.title;
+      }
+
+      document.addEventListener("click",e=>{
+        const target = e.target.closest("[data-detail-id]");
+        if(target){
+          openDetails(target.dataset.detailId);
+        }
+      });
+
+      dropdown.addEventListener("click",e=>{
+        const opt = e.target.closest(".details-option");
+        if(!opt) return;
+        openDetails(opt.dataset.detailId);
+        dropdown.classList.remove("open");
+      });
+
+      searchInput.addEventListener("focus",()=>{
+        renderDropdown(searchInput.value.trim());
+      });
+      searchInput.addEventListener("input",()=>{
+        renderDropdown(searchInput.value.trim());
+      });
+      searchInput.addEventListener("blur",()=>{
+        setTimeout(()=>dropdown.classList.remove("open"),150);
+      });
+      searchInput.addEventListener("keydown",e=>{
+        if(e.key==="Enter"){
+          e.preventDefault();
+          const q = searchInput.value.trim().toLowerCase();
+          const match = allItems.find(it=>it.title.toLowerCase().includes(q));
+          if(match){
+            openDetails(match.id);
+          }else{
+            dropdown.classList.remove("open");
+            contentEl.innerHTML = `<p style="font-size:.85rem;opacity:.75;">The searched content is currently unavailable.</p>`;
+          }
+        }
+      });
+
+      btnClose.addEventListener("click",()=>{
+        pane.classList.remove("open","minimized","maximized");
+      });
+      btnMin.addEventListener("click",()=>{
+        if(!pane.classList.contains("open")) pane.classList.add("open");
+        pane.classList.toggle("minimized");
+        pane.classList.remove("maximized");
+      });
+      btnMax.addEventListener("click",()=>{
+        if(!pane.classList.contains("open")) pane.classList.add("open");
+        pane.classList.toggle("maximized");
+        // remains maximized until pressed again
+      });
+    }
+
+    /* REVEAL */
+    function initReveal(){
+      const reveals = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(entries=>{
+        for(const entry of entries){
+          if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+            io.unobserve(entry.target);
+          }
+        }
+      },{threshold:0.16});
+      reveals.forEach(el=>io.observe(el));
+    }
+
+    /* STARSHIP CANVAS + DEBRIS + COLLISIONS */
+    let glassTargets = [];
+    let debrisIntensityLevel = "low";
+    let debrisCollisionChance = 0.0002;
+
+    function collectGlassTargets(){
+      const articles = Array.from(document.querySelectorAll("article"));
+      const timelineMain = Array.from(document.querySelectorAll(".timeline-main"));
+      glassTargets = articles.concat(timelineMain);
+    }
+
+    function setDebrisIntensity(level){
+      debrisIntensityLevel = level;
+      if(level === "low") debrisCollisionChance = 0.0002;
+      else if(level === "medium") debrisCollisionChance = 0.0008;
+      else if(level === "high") debrisCollisionChance = 0.002;
+    }
+
+    function triggerRandomBreak(){
+      if(!glassTargets.length) return;
+      const target = glassTargets[Math.floor(Math.random()*glassTargets.length)];
+      if(!target || target.classList.contains("broken-glass")) return;
+      target.classList.add("broken-glass");
+      const crack = document.createElement("div");
+      crack.className = "glass-crack";
+      target.appendChild(crack);
+      const robot = document.createElement("div");
+      robot.className = "repair-robot";
+      target.appendChild(robot);
+      setTimeout(()=>{
+        if(target){
+          target.classList.remove("broken-glass");
+          crack.remove();
+          robot.remove();
+        }
+      },4000);
+    }
+
+    function initStarshipCanvas(){
+      const canvas = document.getElementById("space-canvas");
+      if(!canvas) return;
+      const ctx = canvas.getContext("2d");
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+
+      window.addEventListener("resize",()=>{
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+        initObjects();
+      });
+
+      const FAR_STAR_COUNT = 140;
+      const MID_PARTICLE_COUNT = 60;
+      const DEBRIS_COUNT = 18;
+
+      let farStars = [];
+      let midParticles = [];
+      let debrisList = [];
+
+      function rand(min,max){return Math.random()*(max-min)+min;}
+
+      function initObjects(){
+        farStars = [];
+        midParticles = [];
+        debrisList = [];
+
+        for(let i=0;i<FAR_STAR_COUNT;i++){
+          farStars.push({
+            x:Math.random()*w,
+            y:Math.random()*h,
+            r:rand(0.4,1.4),
+            speed:rand(0.02,0.06),
+            twinklePhase:Math.random()*Math.PI*2
+          });
+        }
+        for(let i=0;i<MID_PARTICLE_COUNT;i++){
+          midParticles.push({
+            x:Math.random()*w,
+            y:Math.random()*h,
+            r:rand(1,2),
+            vx:rand(-0.15,-0.05),
+            vy:rand(-0.03,0.03),
+            alpha:rand(0.3,0.8)
+          });
+        }
+        for(let i=0;i<DEBRIS_COUNT;i++){
+          debrisList.push(makeDebris());
+        }
+      }
+
+      function makeDebris(){
+        const side = Math.random();
+        let x,y;
+        if(side<0.5){
+          x = rand(0,w);
+          y = -20;
+        }else{
+          x = w+20;
+          y = rand(0,h);
+        }
+        const angle = rand(Math.PI*0.6,Math.PI*1.1);
+        const speed = rand(0.8,2.2);
+        return {
+          x,y,
+          vx:Math.cos(angle)*speed,
+          vy:Math.sin(angle)*speed,
+          length:rand(18,40),
+          alpha:rand(0.4,0.9)
+        };
+      }
+
+      initObjects();
+
+      let lastTime = performance.now();
+
+      function step(now){
+        const dt = (now - lastTime) || 16;
+        lastTime = now;
+        ctx.clearRect(0,0,w,h);
+
+        // far stars (slow drift)
+        ctx.save();
+        for(const s of farStars){
+          s.x += -s.speed;
+          if(s.x<0) s.x = w;
+          const tw = 0.4 + 0.6*Math.sin(s.twinklePhase += 0.005);
+          ctx.globalAlpha = 0.4 + 0.6*tw;
+          ctx.beginPath();
+          ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+          ctx.fillStyle = "rgba(248,250,252,0.85)";
+          ctx.fill();
+        }
+        ctx.restore();
+
+        // mid particles
+        ctx.save();
+        for(const p of midParticles){
+          p.x += p.vx;
+          p.y += p.vy;
+          if(p.x<-10){p.x=w+10;p.y=Math.random()*h;}
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle = "rgba(148,163,184,0.9)";
+          ctx.fill();
+        }
+        ctx.restore();
+
+        // debris
+        ctx.save();
+        ctx.lineWidth = 1.4;
+        ctx.lineCap = "round";
+        for(const d of debrisList){
+          d.x += d.vx;
+          d.y += d.vy;
+          ctx.globalAlpha = d.alpha;
+          const nx = d.x - d.vx*d.length*0.9;
+          const ny = d.y - d.vy*d.length*0.9;
+          const grad = ctx.createLinearGradient(nx,ny,d.x,d.y);
+          grad.addColorStop(0,"rgba(15,23,42,0)");
+          grad.addColorStop(1,"rgba(148,163,184,0.9)");
+          ctx.strokeStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(nx,ny);
+          ctx.lineTo(d.x,d.y);
+          ctx.stroke();
+          if(d.x<-40 || d.y>h+40 || d.y<-40){
+            Object.assign(d,makeDebris());
+          }
+        }
+        ctx.restore();
+
+        // collisions (probabilistic)
+        if(Math.random() < debrisCollisionChance){
+          triggerRandomBreak();
+        }
+
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* STAR + LIGHT LOOP: A, B, C & low/med/high debris */
+    let currentLightIntensity = 0;
+    let targetLightIntensity = 0;
+    let currentStarScale = 0.4;
+    let targetStarScale = 0.4;
+
+    const phases = [
+      {label:"A", light:0.35, scale:0.6, debris:"low"},
+      {label:"B", light:0.65, scale:0.95, debris:"medium"},
+      {label:"C", light:1.0,  scale:1.4, debris:"high"}
+    ];
+    let phaseIndex = 0;
+    let phaseStartTime = null;
+    const PHASE_DURATION = 60000; // 60s each
+
+    function updateLightVars(){
+      document.documentElement.style.setProperty("--light-intensity", currentLightIntensity.toFixed(3));
+      document.documentElement.style.setProperty("--star-scale", currentStarScale.toFixed(3));
+    }
+
+    function animateStarLoop(){
+      const now = performance.now();
+      if(phaseStartTime && now - phaseStartTime > PHASE_DURATION){
+        phaseIndex = (phaseIndex + 1) % phases.length;
+        const ph = phases[phaseIndex];
+        targetLightIntensity = ph.light;
+        targetStarScale = ph.scale;
+        setDebrisIntensity(ph.debris);
+        phaseStartTime = now;
+      }
+
+      // smooth interpolate
+      currentLightIntensity += (targetLightIntensity - currentLightIntensity)*0.01;
+      currentStarScale += (targetStarScale - currentStarScale)*0.01;
+      updateLightVars();
+      requestAnimationFrame(animateStarLoop);
+    }
+
+    function startStarCyclesAfterDelay(){
+      // first run A+low, then B+medium, then C+high...
+      setTimeout(()=>{
+        phaseIndex = 0;
+        const ph = phases[phaseIndex];
+        targetLightIntensity = ph.light;
+        targetStarScale = ph.scale;
+        setDebrisIntensity(ph.debris);
+        phaseStartTime = performance.now();
+        animateStarLoop();
+      },10000); // 10 seconds idle
+    }
+
+    (async function init(){
+      initReveal();
+      initStarshipCanvas();
+
+      try{
+        const wb = await loadWorkbook();
+        const heroRows = sheetRows(wb,"hero");
+        const workRows = sheetRows(wb,"work");
+        const skillRows = sheetRows(wb,"skill");
+        const certRows = sheetRows(wb,"certification");
+        const projectRows = sheetRows(wb,"projects");
+        const contactRows = sheetRows(wb,"contact");
+
+        populateHero(heroRows);
+        populateWork(workRows);
+        populateSkills(skillRows);
+        populateCerts(certRows);
+        populateProjects(projectRows);
+        populateContact(contactRows);
+      }catch(e){
+        console.error("Failed to load sheet data:",e);
+      }
+
+      collectGlassTargets();
+      initDetailsPane();
+      startStarCyclesAfterDelay();
+    })();
+  </script>
+</body>
+</html>

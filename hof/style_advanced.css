@@ -1,0 +1,135 @@
+/* --- Global & Setup --- */
+:root {
+    --color-primary: #FFFFFF;
+    --color-background: #000000;
+    --color-accent: #00FFFF; /* Electric Blue */
+    --color-secondary: #00AAFF; /* Slightly softer blue */
+    --scroll-duration: 300vh; /* Make each scene 3x the viewport height */
+    --header-height: 80px;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.7;
+    perspective: 1px; /* Required for some Parallax effects */
+    overflow-x: hidden;
+}
+
+/* --- Header (Fixed) --- */
+#main-header {
+    /* ... (Same fixed styles as before) ... */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; /* Highest layer */
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Main Scroll Scenes --- */
+.scroll-scene {
+    height: var(--scroll-duration); /* Key: Makes the scene long for scroll control */
+    position: relative;
+    z-index: 1; 
+}
+
+/* Fixed Background Elements (The layers that move slowly) */
+.fixed-element {
+    position: sticky;
+    top: var(--header-height);
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Behind content */
+    opacity: 0; /* Will be controlled by JS */
+}
+
+/* Content Wrapper (The elements that stick in place during the scene) */
+.content-wrapper {
+    position: sticky;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    padding: 0 15%;
+}
+
+/* --- SCENE 1: FUSION (Hero) --- */
+#scene-fusion {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 100%);
+}
+
+#hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+#hero-motto {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    opacity: 0; /* Starts hidden, revealed by JS */
+}
+
+.word-reveal {
+    opacity: 0; /* Individual words start hidden */
+    transition: opacity 0.5s;
+}
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-border);
+    animation: pulse 1.5s infinite;
+}
+
+/* --- SCENE 2: CORE (Visualization Focus) --- */
+.project-viz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #050505;
+    border: 1px solid var(--color-accent);
+}
+
+#matlab-spring-visualization {
+    /* Will be styled for geometric shape placeholder */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.project-details-1 {
+    width: 50%;
+    text-align: left;
+    margin-left: auto; /* Position details on the right */
+    opacity: 0; /* Starts hidden */
+}
+
+/* --- SCENE 3: LEAP (Offset Cards) --- */
+.project-scene {
+    background-color: #111;
+    border-top: none;
+}
+
+.project-card {
+    position: relative;
+    width: 45%;
+    min-height: 400px;
+    padding: 30px;
+    border: 2px solid var(--color-border);
+    margin-top: 10vh;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.reveal-left { margin-right: auto; }
+.reveal-right { margin-left: auto; }

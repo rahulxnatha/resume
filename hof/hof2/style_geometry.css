@@ -1,0 +1,163 @@
+/* --- Global Reset & Variables --- */
+:root {
+    --color-primary: #FFFFFF;
+    --color-background: #0A0A0A; /* Dark Grey/Black for contrast */
+    --color-accent: #00FFFF;     /* Electric Cyan */
+    --color-secondary: #FF44AA;  /* Secondary color for highlights (e.g., stress plots) */
+    --color-border: #333333;
+    --font-main: 'IBM Plex Mono', monospace;
+    --header-height: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* --- Fixed Background Parallax Layers --- */
+#parallax-container {
+    perspective: 1000px; /* Establishes the 3D viewing context */
+}
+
+.parallax-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.15;
+    transition: transform 0.1s linear; /* Smooth mouse tracking */
+}
+
+/* 1. Grid Background */
+#fixed-grid-background {
+    z-index: -10;
+    opacity: 0.1;
+    /* Create a repeating grid pattern using CSS gradients */
+    background: linear-gradient(-90deg, var(--color-border) 1px, transparent 1px) 0%/35px 35px,
+                linear-gradient(var(--color-border) 1px, transparent 1px) 0%/35px 35px;
+}
+
+/* 2. Geometric Cube (CSS 3D) */
+#geometric-cube {
+    z-index: -5;
+    opacity: 0.3;
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 75%;
+    /* Styling the cube as a wireframe */
+    border: 3px solid var(--color-accent);
+    box-shadow: 0 0 20px var(--color-accent);
+    transform: rotateY(45deg) rotateX(15deg) translateZ(-500px); /* Initial 3D placement */
+}
+
+/* 3. Geometric Plane/Mesh (Simulated FEA Surface) */
+#geometric-plane {
+    z-index: -4;
+    opacity: 0.4;
+    width: 120vw;
+    height: 120vh;
+    /* Simulate a sparse mesh */
+    background: repeating-linear-gradient(
+        0deg, rgba(0, 0, 0, 0) 0, var(--color-accent) 1px, rgba(0, 0, 0, 0) 50px
+    );
+    transform: rotateX(80deg) rotateZ(10deg) translateZ(-800px);
+}
+
+/* --- Header & Navigation (Above 3D layers) --- */
+#main-header {
+    position: sticky;
+    top: 0;
+    /* ... (rest of header styling as before) ... */
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(10, 10, 10, 0.95);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Content Sections --- */
+#main-content {
+    position: relative;
+    z-index: 1; /* Ensures content is always on top of fixed layers */
+    padding-top: var(--header-height);
+}
+
+.content-section {
+    min-height: 80vh;
+    padding: 150px 10%;
+    border-top: 1px solid var(--color-border);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 70px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    border-bottom: 3px solid var(--color-secondary);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Hero */
+.full-height {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px var(--color-accent);
+}
+
+#hero-motto {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-top: 15px;
+}
+
+/* Content Grid (Core Section) */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.text-block p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.visual-placeholder {
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 68, 170, 0.3) 0%, rgba(10, 10, 10, 0) 70%); /* Secondary color for stress */
+    border: 1px solid var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-secondary);
+    font-weight: bold;
+}
