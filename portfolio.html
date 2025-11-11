@@ -3,7 +3,7 @@
 
 <head>
   <meta name="robots" content="noindex, nofollow">
-  
+
   <meta name="googlebot" content="noindex, nofollow" />
   <meta name="googlebot" content="notranslate" />
   <meta name="googlebot-news" content="noindex, nosnippet" />
@@ -12,7 +12,7 @@
   <meta name="google" content="nopagereadaloud" />
 
 
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta charset="UTF-8" />
   <title>Rahul Natha – Portfolio</title>
@@ -27,6 +27,13 @@
     }
 
     :root {
+
+      --galaxy-x: 0%;
+      /* horizontal offset for the galaxy */
+      --theme-transition-duration: 8000ms;
+      /* ~8s for star+colors */
+
+
       --bg: #020617;
       --fg: #f9fafb;
       --muted: #9ca3af;
@@ -39,7 +46,7 @@
       --border-soft: rgba(148, 163, 184, .45);
       --shadow-soft: 0 18px 60px rgba(15, 23, 42, .9);
 
-      --theme-transition-duration: 5s;
+      /* --theme-transition-duration: 5s; */
 
       --light-intensity: 0;
       --star-scale: 0.5;
@@ -54,16 +61,26 @@
       line-height: 1.5;
     }
 
+
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      background:
-        url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg") center/cover no-repeat fixed;
-      filter: brightness(calc(.7 + .25*var(--light-intensity)));
-      transition: filter var(--theme-transition-duration) ease-out;
-    }
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg")
+              left center / 120% no-repeat fixed;
+  background-position: var(--galaxy-x, 0%) 50%;
+  filter: brightness(calc(.7 + .25*var(--light-intensity)));
+  transform: scale(1.05);
+  transition:
+    background-position 8s cubic-bezier(.4, 0, .2, 1),
+    filter var(--theme-transition-duration) ease-in-out;
+}
+
+
+
+
+
 
     .background-mesh {
       position: fixed;
@@ -172,6 +189,8 @@
       background: linear-gradient(to bottom,
           rgba(15, 23, 42, .96), rgba(15, 23, 42, .7), rgba(15, 23, 42, .12));
       border-bottom: 1px solid rgba(148, 163, 184, .45);
+
+      transition: all var(--theme-transition-duration) ease-out;
     }
 
     body.theme-light .nav {
@@ -388,15 +407,19 @@
       box-shadow: 0 -40px 80px rgba(15, 23, 42, .9);
       opacity: calc(.5 + .3*var(--light-intensity));
       pointer-events: none;
+
       transition:
         box-shadow var(--theme-transition-duration) ease-out,
         opacity var(--theme-transition-duration) ease-out,
         background var(--theme-transition-duration) ease-out;
+
+        transition: all var(--theme-transition-duration) ease-out;
+
     }
 
     body.theme-light .hero-planet {
       background:
-        radial-gradient(circle at 22% 8%, rgba(255, 255, 255, 1) 0%, transparent 32%),
+        radial-gradient(circle at 22% 8%, rgba(255, 255, 255, 0.673) 0%, transparent 32%),
         radial-gradient(circle at 60% 85%, rgba(255, 247, 220, .9), rgba(254, 243, 199, .4));
       box-shadow: 0 -40px 90px rgba(253, 224, 71, .6);
     }
@@ -1843,22 +1866,40 @@
     }
 
     function applyThemeState(mode, { withTransition } = { withTransition: true }) {
-      const root = document.documentElement;
-      const body = document.body;
-      if (withTransition) {
-        body.classList.add("theme-transitioning");
-        setTimeout(() => body.classList.remove("theme-transitioning"), 5100);
-      }
-      if (mode === "light") {
-        body.classList.add("theme-light");
-        root.style.setProperty("--light-intensity", "1");
-        root.style.setProperty("--star-scale", "1.4");
-      } else {
-        body.classList.remove("theme-light");
-        root.style.setProperty("--light-intensity", "0");
-        root.style.setProperty("--star-scale", "0.5");
-      }
-    }
+  const root = document.documentElement;
+  const body = document.body;
+
+  // Stop any unwanted preload shift
+  if (withTransition) {
+    body.classList.add("theme-transitioning");
+    setTimeout(() => body.classList.remove("theme-transitioning"), 1500);
+  }
+
+  if (mode === "light") {
+    // Turn right → galaxy slides LEFT quickly
+    root.style.setProperty("--galaxy-x", "110%");
+    body.classList.add("theme-light");
+
+    // Delay star brightness so background move finishes first
+    setTimeout(() => {
+      root.style.setProperty("--light-intensity", "1");
+      root.style.setProperty("--star-scale", "1.4");
+    }, 12); // start star after galaxy shift
+  } else {
+    // Turn left → galaxy slides RIGHT quickly
+    root.style.setProperty("--galaxy-x", "0%");
+    body.classList.remove("theme-light");
+
+    // Star fades after slide
+    setTimeout(() => {
+      root.style.setProperty("--light-intensity", "0");
+      root.style.setProperty("--star-scale", "0.5");
+    }, 12);
+  }
+}
+
+
+
 
     function initThemeToggle() {
       const prefersLight = window.matchMedia &&
@@ -1873,6 +1914,9 @@
         applyThemeState(isLight ? "dark" : "light", { withTransition: true });
       });
     }
+
+
+
 
     (async function init() {
       initReveal();
@@ -1900,6 +1944,11 @@
 
       initDetailsPane();
     })();
+
+
+
+
+
   </script>
 </body>
 
