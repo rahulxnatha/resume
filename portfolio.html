@@ -63,19 +63,18 @@
 
 
     body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  background: url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg")
-              left center / 120% no-repeat fixed;
-  background-position: var(--galaxy-x, 0%) 50%;
-  filter: brightness(calc(.7 + .25*var(--light-intensity)));
-  transform: scale(1.05);
-  transition:
-    background-position 8s cubic-bezier(.4, 0, .2, 1),
-    filter var(--theme-transition-duration) ease-in-out;
-}
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background: url("https://upload.wikimedia.org/wikipedia/commons/8/82/Milky_Way_Galaxy.jpg") left center / 120% no-repeat fixed;
+      background-position: var(--galaxy-x, 0%) 50%;
+      filter: brightness(calc(.7 + .25*var(--light-intensity)));
+      transform: scale(1.05);
+      transition:
+        background-position 8s cubic-bezier(.4, 0, .2, 1),
+        filter var(--theme-transition-duration) ease-in-out;
+    }
 
 
 
@@ -413,7 +412,7 @@
         opacity var(--theme-transition-duration) ease-out,
         background var(--theme-transition-duration) ease-out;
 
-        transition: all var(--theme-transition-duration) ease-out;
+      transition: all var(--theme-transition-duration) ease-out;
 
     }
 
@@ -1018,9 +1017,9 @@
 
     .details-pane.minimized {
 
-      top: calc(100vh - 100px);
-      right: 20px;
-      height: 80px;
+      top: calc(100vh - 40px);
+      right: 0px;
+      height: 40px;
       transition: all .6s cubic-bezier(.19, 1, .22, 1);
       overflow: hidden;
       border-radius: 13px;
@@ -1100,6 +1099,67 @@
       background: rgba(209, 213, 219, 1);
     }
 
+    .details-tabs {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      border-bottom: 1px solid rgba(148, 163, 184, .25);
+      padding: .4rem .5rem 0.2rem;
+      background: inherit;
+      scrollbar-width: none;
+      min-height: fit-content;
+    }
+
+    .details-tab {
+      display: flex;
+      align-items: center;
+      background: rgba(30, 41, 59, .8);
+      border: 1px solid rgba(148, 163, 184, .4);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      padding: .25rem .6rem;
+      margin-right: .4rem;
+      font-size: .75rem;
+      color: var(--fg);
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .details-tab.active {
+      background: rgba(56, 189, 248, .4);
+    }
+
+    .details-tab-close {
+      margin-left: .4rem;
+      font-weight: bold;
+      opacity: .6;
+      cursor: pointer;
+    }
+
+    .details-tab-close:hover {
+      opacity: 1;
+    }
+
+    /* Dropdown + search fusion */
+    .details-dropdown {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      transform: translateY(-4px);
+      opacity: 0;
+      transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .details-dropdown.open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .details-search-wrap.active #details-search {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+
     .details-search-row {
       position: relative;
       padding: .4rem 1rem .6rem;
@@ -1113,13 +1173,21 @@
 
     #details-search {
       width: 100%;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, .6);
+      border-radius: 7px;
+      border: 0px solid rgba(148, 163, 184, .6);
       background: rgba(15, 23, 42, .9);
       color: var(--fg);
       padding: .35rem 2.2rem .35rem .75rem;
+      padding: .35rem 2.2rem .35rem 20px;
+      /* margin: 0px 8px; */
       font-size: .8rem;
       outline: none;
+      height: 38px;
+    }
+
+    #details-search:hover {
+      background: rgba(30, 41, 59, .95);
+
     }
 
     #details-search::placeholder {
@@ -1150,8 +1218,8 @@
       top: 2.4rem;
       max-height: 260px;
       overflow: auto;
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, .4);
+      border-radius: 0px 0 12px 12px;
+      border: 0px solid rgba(148, 163, 184, .4);
       background: rgba(15, 23, 42, .98);
       box-shadow: 0 18px 40px rgba(15, 23, 42, .95);
       display: none;
@@ -1164,6 +1232,9 @@
 
     .details-option {
       padding: .45rem .75rem;
+      margin: 5px 8px;
+      border-radius: 7px;
+
       font-size: .8rem;
       cursor: pointer;
       color: var(--fg);
@@ -1171,6 +1242,7 @@
 
     .details-option:hover {
       background: rgba(30, 64, 175, .7);
+      background: rgba(30, 41, 59, .95);
     }
 
     .details-option-empty {
@@ -1203,8 +1275,9 @@
       font-size: .9rem;
       line-height: 1.6;
       color: inherit;
-      max-width: 540px;
+      max-width: 750px;
       align-self: center;
+      overflow: auto;
     }
 
     .details-content h3 {
@@ -1222,6 +1295,245 @@
       margin: 1rem 0;
       display: block;
     }
+
+
+    /* contents of the detail pane  */
+
+/* ---------- detail-pane content (replace the previous block) ---------- */
+/* New detail-pane color tokens (local overrides; tweak these or move to :root) */
+:root {
+  --detail-heading: var(--fg);            /* heading color in dark theme */
+  --detail-heading-light: #0b1120;       /* heading color in light theme */
+  --detail-muted: var(--muted);          /* body / secondary text */
+  --detail-bg-card: rgba(15, 23, 42, 0.92); /* default card bg (dark) */
+  --detail-bg-card-light: rgba(255,255,255,0.98); /* card bg (light) */
+  --detail-box-bg: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  --detail-box-border: rgba(148,163,184,0.25);
+  --detail-card-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --detail-code-bg-dark: rgba(255,255,255,0.06);
+  --detail-code-bg-light: #eaeaea;
+  --detail-accent-gradient: linear-gradient(90deg, #ff3b3b 0%, #ffb347 25%, #3bd4ff 60%, #22c55e 100%);
+  --detail-vibgyor-soft: linear-gradient(135deg, rgba(255,77,77,0.06) 0%, rgba(255,183,77,0.06) 25%, rgba(255,235,77,0.06) 45%, rgba(77,255,77,0.06) 65%, rgba(77,123,255,0.06) 85%);
+}
+
+/* Headings — theme-aware for accessibility */
+.details-content h1,
+.details-content h2,
+.details-content h3 {
+  color: var(--detail-heading);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.25;
+}
+
+/* stronger contrast for light theme */
+body.theme-light .details-content h1,
+body.theme-light .details-content h2,
+body.theme-light .details-content h3 {
+  color: var(--detail-heading-light);
+}
+
+/* specific heading sizes & spacing (keeps your existing layout) */
+.details-content h1 { text-align: center; margin-bottom: 20px; font-size: 1.25rem; }
+.details-content h2 { margin-top: 30px; font-size: 1rem; }
+.details-content h3 { font-size: 0.95rem; margin-top: 18px; }
+
+/* Paragraphs and lists */
+.details-content p,
+.details-content ul,
+.details-content ol {
+  color: var(--detail-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Lists spacing */
+.details-content ul { margin: 10px 0 10px 20px; }
+
+/* Inline code styling — readable in both themes */
+.details-content code {
+  background-color: var(--detail-code-bg-dark);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  font-size: 0.92em;
+  color: var(--fg);
+}
+
+/* Light theme code override */
+body.theme-light .details-content code {
+  background-color: var(--detail-code-bg-light);
+  color: #0b1120;
+}
+
+/* Re-usable card style for AI prompts / design steps / modules — glass card */
+.details-content .ai-prompts,
+.details-content .design-steps,
+.details-content .modules {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  /* subtle VIBGYOR-tinge only as a soft background texture for variety */
+  background-image: var(--detail-vibgyor-soft), var(--detail-box-bg);
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: var(--detail-card-shadow);
+  border: 1px solid var(--detail-box-border);
+  color: var(--fg);
+}
+
+/* Ensure cards are readable in light theme */
+body.theme-light .details-content .ai-prompts,
+body.theme-light .details-content .design-steps,
+body.theme-light .details-content .modules {
+  background: var(--detail-bg-card-light);
+  color: #0b1120;
+  border-color: rgba(209,213,219,0.9);
+  box-shadow: 0 8px 22px rgba(148,163,184,0.08);
+}
+
+/* Slight accent bar for the ai-prompts box (using VIBGYOR but subtle and accessible) */
+.details-content .ai-prompts {
+  position: relative;
+  overflow: hidden;
+}
+.details-content .ai-prompts::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(59,212,255,0.04) 0%, rgba(34,197,94,0.03) 40%, rgba(255,179,71,0.02) 70%);
+  mix-blend-mode: screen;
+}
+
+/* Tag/list items inside boxes should remain high-contrast */
+.details-content .ai-prompts ul li,
+.details-content .design-steps ul li,
+.details-content .modules ul li {
+  color: var(--detail-heading);
+  opacity: 0.95;
+  margin-bottom: 6px;
+}
+
+/* Light theme override for list items */
+body.theme-light .details-content .ai-prompts ul li,
+body.theme-light .details-content .design-steps ul li,
+body.theme-light .details-content .modules ul li {
+  color: #0b1120;
+}
+
+/* Small visual accent line you can reuse where appropriate */
+.details-content .accent-line {
+  height: 4px;
+  border-radius: 4px;
+  background-image: var(--detail-accent-gradient);
+  margin: 12px 0;
+}
+
+/* Accessibility / contrast helpers (if headings are on top of colored backgrounds) */
+.details-content .sr-safe {
+  color: var(--detail-heading);
+  font-weight: 600;
+}
+
+/* Fallbacks so that if variables aren't present the UI still reads well */
+.details-content h1, .details-content h2, .details-content h3 {
+  color: var(--detail-heading, #e6eef8);
+}
+.details-content .ai-prompts, .details-content .design-steps, .details-content .modules {
+  background: var(--detail-bg-card, rgba(15,23,42,0.92));
+  border: 1px solid var(--detail-box-border, rgba(148,163,184,0.25));
+  color: var(--fg);
+}
+/* --------------------------------------------------------------------- */
+/* === Force strict black text for details pane in light theme === */
+body.theme-light .details-content,
+body.theme-light .details-content p,
+body.theme-light .details-content ul,
+body.theme-light .details-content ol,
+body.theme-light .details-content li {
+  color: #000000 !important;    /* strict black for max readability */
+}
+
+/* keep headings darker-but-styled via your variable (already set) */
+body.theme-light .details-content h1,
+body.theme-light .details-content h2,
+body.theme-light .details-content h3 {
+  color: var(--detail-heading-light);
+}
+
+/* ensure inline <code> remains readable in light theme */
+body.theme-light .details-content code {
+  background-color: var(--detail-code-bg-light);
+  color: #0b1120; /* dark text for code */
+}
+
+/* cards inside details pane should keep their dark-on-light switch */
+body.theme-light .details-content .ai-prompts,
+body.theme-light .details-content .design-steps,
+body.theme-light .details-content .modules {
+  background: var(--detail-bg-card-light);
+  color: #000000; /* ensure inner text also black */
+  border-color: rgba(209,213,219,0.9);
+}
+
+/* ===========================================================
+   UNIVERSAL THEME-AWARE SCROLLBARS
+   Works for: body, details-pane, dropdowns, text containers, etc.
+   Dark theme → dark scrollbar
+   Light theme → light scrollbar
+   =========================================================== */
+
+/* ---------- Chrome / Safari / Edge Scrollbars ---------- */
+
+/* base default (dark theme) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6); /* dark glass */
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4); /* muted glass-gray */
+  border-radius: 10px;
+  border: 2px solid rgba(15, 23, 42, 0.6); /* hollow effect */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.65);
+}
+
+/* ---------- Light theme overrides ---------- */
+body.theme-light *::-webkit-scrollbar-track {
+  background: rgba(229, 231, 235, 0.9); /* light grey base */
+}
+
+body.theme-light *::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.55); /* darker thumb for contrast */
+  border: 2px solid rgba(229, 231, 235, 0.9);
+}
+
+body.theme-light *::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);
+}
+
+/* ---------- Firefox Scrollbars ---------- */
+
+/* default (dark theme) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148,163,184,0.45) rgba(15,23,42,0.6);
+}
+
+/* light theme */
+body.theme-light * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100,116,139,0.65) rgba(229,231,235,0.9);
+}
+
+
   </style>
 
   <link rel="stylesheet" href="portfolio-responsive-css.css">
@@ -1340,12 +1652,16 @@
   <aside id="details-pane" class="details-pane">
     <div class="details-topbar">
       <div id="details-title" class="details-title">DETAIL</div>
+
+
       <div class="details-controls">
         <button id="details-min" title="Minimize">_</button>
         <button id="details-max" title="Maximize">⧉</button>
         <button id="details-close" title="Close">×</button>
       </div>
     </div>
+    <div id="details-tabs" class="details-tabs"></div>
+
     <div class="details-search-row">
       <div class="details-search-wrap">
         <input id="details-search" type="text" placeholder="Search / choose tile" />
@@ -1356,6 +1672,7 @@
         <div id="details-dropdown" class="details-dropdown"></div>
       </div>
     </div>
+
     <div id="details-content" class="details-content">
       <p style="font-size:.85rem;opacity:.8;">Select a tile to view its details.</p>
     </div>
@@ -1657,6 +1974,10 @@
       const searchInput = document.getElementById("details-search");
       const dropdown = document.getElementById("details-dropdown");
 
+      const tabsBar = document.getElementById("details-tabs");
+      let openTabs = []; // array of {id,title,html}
+
+
       function getAllItems() {
         const all = [];
         Object.values(detailRegistry).forEach(list => list.forEach(i => all.push(i)));
@@ -1692,17 +2013,62 @@
         }
         dropdown.classList.add("open");
       }
-
       function openDetails(id) {
         const item = detailMap.get(id);
         if (!item) return;
-        currentDetailId = id;
-        currentSection = item.section;
         pane.classList.add("open");
         pane.classList.remove("minimized");
-        renderDetailContent(item);
-        searchInput.value = item.title;
+
+        // check if tab exists
+        let tab = openTabs.find(t => t.id === id);
+        if (!tab) {
+          const html = item.briefHtml && item.briefHtml.trim()
+            ? item.briefHtml
+            : item.fallbackHtml || "<p>No additional details.</p>";
+          tab = { id, title: item.title, html };
+          openTabs.push(tab);
+
+          const tabEl = document.createElement("div");
+          tabEl.className = "details-tab active";
+          tabEl.dataset.id = id;
+          tabEl.innerHTML = `${escapeHTML(item.title)}<span class="details-tab-close">×</span>`;
+          tabsBar.appendChild(tabEl);
+        }
+
+        activateTab(id);
       }
+
+      function activateTab(id) {
+        openTabs.forEach(t => {
+          const el = tabsBar.querySelector(`[data-id="${t.id}"]`);
+          if (!el) return;
+          el.classList.toggle("active", t.id === id);
+        });
+        const tab = openTabs.find(t => t.id === id);
+        if (!tab) return;
+        contentEl.innerHTML = tab.html;
+        searchInput.value = tab.title;
+        currentDetailId = id;
+      }
+
+      tabsBar.addEventListener("click", e => {
+        const closeBtn = e.target.closest(".details-tab-close");
+        if (closeBtn) {
+          const parent = closeBtn.closest(".details-tab");
+          const id = parent.dataset.id;
+          parent.remove();
+          openTabs = openTabs.filter(t => t.id !== id);
+          if (currentDetailId === id && openTabs.length) {
+            activateTab(openTabs[openTabs.length - 1].id);
+          } else if (!openTabs.length) {
+            contentEl.innerHTML = `<p style="font-size:.85rem;opacity:.8;">Select a tile to view its details.</p>`;
+          }
+          return;
+        }
+        const tab = e.target.closest(".details-tab");
+        if (tab) activateTab(tab.dataset.id);
+      });
+
 
       document.addEventListener("click", e => {
         const target = e.target.closest("[data-detail-id]");
@@ -1718,15 +2084,45 @@
         dropdown.classList.remove("open");
       });
 
+      // searchInput.addEventListener("focus", () => {
+      //   renderDropdown(searchInput.value.trim());
+      // });
+
+
+
       searchInput.addEventListener("focus", () => {
-        renderDropdown(searchInput.value.trim());
-      });
-      searchInput.addEventListener("input", () => {
+        searchInput.parentElement.classList.add("active");
         renderDropdown(searchInput.value.trim());
       });
       searchInput.addEventListener("blur", () => {
-        setTimeout(() => dropdown.classList.remove("open"), 150);
+        setTimeout(() => {
+          dropdown.classList.remove("open");
+          searchInput.parentElement.classList.remove("active");
+        }, 150);
       });
+
+
+
+
+      searchInput.addEventListener('focus', function () {
+        this.select();
+      });
+
+      // Optional: also select when clicked even if already focused
+      searchInput.addEventListener('mouseup', function (e) {
+        e.preventDefault();
+      });
+
+
+
+
+
+      searchInput.addEventListener("input", () => {
+        renderDropdown(searchInput.value.trim());
+      });
+      // searchInput.addEventListener("blur", () => {
+      //   setTimeout(() => dropdown.classList.remove("open"), 150);
+      // });
       searchInput.addEventListener("keydown", e => {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -1866,37 +2262,37 @@
     }
 
     function applyThemeState(mode, { withTransition } = { withTransition: true }) {
-  const root = document.documentElement;
-  const body = document.body;
+      const root = document.documentElement;
+      const body = document.body;
 
-  // Stop any unwanted preload shift
-  if (withTransition) {
-    body.classList.add("theme-transitioning");
-    setTimeout(() => body.classList.remove("theme-transitioning"), 1500);
-  }
+      // Stop any unwanted preload shift
+      if (withTransition) {
+        body.classList.add("theme-transitioning");
+        setTimeout(() => body.classList.remove("theme-transitioning"), 1500);
+      }
 
-  if (mode === "light") {
-    // Turn right → galaxy slides LEFT quickly
-    root.style.setProperty("--galaxy-x", "110%");
-    body.classList.add("theme-light");
+      if (mode === "light") {
+        // Turn right → galaxy slides LEFT quickly
+        root.style.setProperty("--galaxy-x", "110%");
+        body.classList.add("theme-light");
 
-    // Delay star brightness so background move finishes first
-    setTimeout(() => {
-      root.style.setProperty("--light-intensity", "1");
-      root.style.setProperty("--star-scale", "1.4");
-    }, 12); // start star after galaxy shift
-  } else {
-    // Turn left → galaxy slides RIGHT quickly
-    root.style.setProperty("--galaxy-x", "0%");
-    body.classList.remove("theme-light");
+        // Delay star brightness so background move finishes first
+        setTimeout(() => {
+          root.style.setProperty("--light-intensity", "1");
+          root.style.setProperty("--star-scale", "1.4");
+        }, 12); // start star after galaxy shift
+      } else {
+        // Turn left → galaxy slides RIGHT quickly
+        root.style.setProperty("--galaxy-x", "0%");
+        body.classList.remove("theme-light");
 
-    // Star fades after slide
-    setTimeout(() => {
-      root.style.setProperty("--light-intensity", "0");
-      root.style.setProperty("--star-scale", "0.5");
-    }, 12);
-  }
-}
+        // Star fades after slide
+        setTimeout(() => {
+          root.style.setProperty("--light-intensity", "0");
+          root.style.setProperty("--star-scale", "0.5");
+        }, 12);
+      }
+    }
 
 
 
