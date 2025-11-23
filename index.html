@@ -2270,6 +2270,10 @@
 <script>
   const path = window.location.pathname;
 
+  
+    const url = new URL(window.location.href);
+    const param = new URLSearchParams(url.search);
+
   // Example: redirect all 404s under "/1/" to a specific link
   if (path.startsWith("/big/")) {
     window.location.replace("https://rahulnatha.com/big/OneDrive");
@@ -2281,10 +2285,13 @@
     //   <a href="https://rahulnatha.com">Go to Home</a>
     // `;
 
-    window.location.href = "https://rahulnatha.com/portfolio";
+    // window.location.href = "https://rahulnatha.com/portfolio";
+
+    // Redirect to /dashboard/ with all parameters
+    window.location.href = 'portfolio?' + param.toString();
 
     // Simulate an HTTP redirect:
-    window.location.replace("https://rahulnatha.com/portfolio");
+    // window.location.replace("https://rahulnatha.com/portfolio");
   }
 </script>
 </body>
