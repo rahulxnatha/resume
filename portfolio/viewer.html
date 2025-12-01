@@ -101,7 +101,7 @@
                     checked></label>
             <label style="display:flex;align-items:center;gap:8px">Speed <input id="speed" type="range" min="-2" max="2"
                     step="0.01" value="0.35"></label>
-            <div style="margin-left:auto;opacity:.95">Model: <strong id="fileName">cover.stl</strong></div>
+            <div style="margin-left:auto;opacity:.95">Model: <strong id="fileName">.stl file</strong></div>
         </div>
         <div id="viewer"></div>
         <div id="err" role="alert"></div>
@@ -122,7 +122,7 @@
         import { OrbitControls } from "https://esm.sh/three@0.159.0/examples/jsm/controls/OrbitControls.js";
         import { STLLoader } from "https://esm.sh/three@0.159.0/examples/jsm/loaders/STLLoader.js";
 
-        const MODEL_FILE = 'cover.stl'; // relative file in same folder as viewer.html
+        const MODEL_FILE = 'hspring.stl'; // relative file in same folder as viewer.html
 
         const viewer = document.getElementById('viewer');
         const resetBtn = document.getElementById('resetBtn');

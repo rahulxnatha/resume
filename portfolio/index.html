@@ -330,7 +330,7 @@
       align-items: center;
       justify-content: space-between;
       background:
-        radial-gradient(circle at 20% 40%, rgba(253, 224, 71, .9), rgba(251, 191, 36, .4), transparent 55%),
+        radial-gradient(circle at 20% 40%, rgba(253, 224, 71, .9), #fbbf2466, transparent 55%),
         radial-gradient(circle at 80% 70%, rgba(15, 23, 42, .9), rgba(15, 23, 42, .9));
       box-shadow:
         0 0 0 1px rgba(148, 163, 184, .7),
@@ -339,7 +339,7 @@
 
     body.theme-light .theme-toggle-track {
       background:
-        radial-gradient(circle at 20% 40%, rgba(253, 224, 71, 1), rgba(251, 191, 36, .6), transparent 55%),
+        radial-gradient(circle at 20% 40%, #fde047, rgba(251, 191, 36, .6), transparent 55%),
         radial-gradient(circle at 80% 70%, rgba(209, 213, 219, 1), rgba(148, 163, 184, .9));
       box-shadow:
         0 0 0 1px rgba(209, 213, 219, 1),
@@ -1052,18 +1052,18 @@
     }
 
     .details-pane.maximized {
-      right: 10%;
+      right: 1%;
       /* left: 0; */
       transition: right .6s cubic-bezier(.19, 1, .22, 1), width .3s ease;
       transition: all .6s cubic-bezier(.19, 1, .22, 1);
       width: auto;
-      width: calc(100% - 20%);
+      width: calc(100% - 2%);
       /* max-width: 100%; */
       border-radius: var(--radius-lg);
       box-shadow: none;
       border: 1px solid rgba(148, 163, 184, .35);
-      top: calc(var(--nav-h) + 50px);
-      height: calc(100vh - var(--nav-h) - 100px);
+      top: calc(var(--nav-h) + 0.01*100vh);
+      height: calc(100vh - var(--nav-h) - 0.02*100vh);
     }
 
     body.theme-light .details-pane {
