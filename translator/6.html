@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WortBrücke | Advanced German Text Analyzer</title>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Library for DOCX export -->
+    <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0F172A',
+                            surface: '#1E293B',
+                            border: '#334155',
+                            text: '#E2E8F0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .font-serif-german { font-family: 'Noto Serif', serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E0; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        ::-webkit-scrollbar-thumb:hover { background: #A0AEC0; }
+
+        /* Tooltip Logic */
+        .tooltip-base {
+            opacity: 0; visibility: hidden; transition: opacity 0.15s ease, transform 0.15s ease;
+            pointer-events: none; position: absolute; z-index: 50; white-space: nowrap;
+        }
+        .simple-word:hover .tooltip-simple, 
+        .compound-wrapper:hover .tooltip-whole, 
+        .compound-part:hover .tooltip-part { 
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); 
+        }
+
+        /* Compound Styling */
+        .compound-part { transition: background-color 0.1s ease, color 0.1s ease; cursor: help; border-radius: 2px; padding: 2px 0px; display: inline-block; }
+        
+        /* Light Mode Colors */
+        .compound-wrapper:hover .part-0 { background-color: #E2E8F0; color: #1A202C; }
+        .compound-wrapper:hover .part-1 { background-color: #FED7D7; color: #742A2A; }
+        .compound-wrapper:hover .part-2 { background-color: #C6F6D5; color: #22543D; }
+        .compound-wrapper:hover .part-3 { background-color: #BEE3F8; color: #2A4365; }
+        .compound-wrapper:hover .part-4 { background-color: #FEEBC8; color: #744210; }
+        .compound-wrapper:hover .part-5 { background-color: #E9D8FD; color: #44337A; }
+        
+        /* Dark Mode Colors */
+        .dark .compound-wrapper:hover .part-0 { background-color: #334155; color: #F1F5F9; }
+        .dark .compound-wrapper:hover .part-1 { background-color: #7F1D1D; color: #FECACA; }
+        .dark .compound-wrapper:hover .part-2 { background-color: #14532D; color: #BBF7D0; }
+        .dark .compound-wrapper:hover .part-3 { background-color: #1E3A8A; color: #BFDBFE; }
+        .dark .compound-wrapper:hover .part-4 { background-color: #78350F; color: #FDE68A; }
+        .dark .compound-wrapper:hover .part-5 { background-color: #581C87; color: #E9D5FF; }
+
+        /* Speech Highlight */
+        .speaking-highlight {
+            background-color: #FDE047 !important; color: #000 !important;
+            border-radius: 4px; box-shadow: 0 0 0 2px #FDE047; z-index: 10; transition: all 0.1s ease;
+        }
+        .dark .speaking-highlight {
+            background-color: #3B82F6 !important; color: #FFF !important; box-shadow: 0 0 0 2px #3B82F6;
+        }
+
+        .chart-container { position: relative; width: 100%; height: 200px; }
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #fff;
+            border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* PRINT STYLES - Ensures PDF looks good and text is selectable */
+        @media print {
+            body * { visibility: hidden; }
+            #readerContent, #readerContent * { visibility: visible; }
+            #readerContent { position: absolute; left: 0; top: 0; width: 100%; padding: 0; margin: 0; overflow: visible; }
+            button { display: none !important; }
+            .tooltip-base { display: none !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden bg-[#F9F9F7] text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="bg-white dark:bg-dark-surface border-b border-gray-200 dark:border-dark-border h-16 flex-none z-20 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gray-800 dark:bg-blue-600 text-white rounded flex items-center justify-center font-bold font-serif text-xl shadow-sm">W</div>
+                <h1 class="text-xl font-bold tracking-tight text-gray-800 dark:text-white hidden md:block">WortBrücke <span class="text-xs font-normal text-gray-500 dark:text-gray-400 ml-2 uppercase tracking-wide">Analyzer</span></h1>
+                
+                <!-- Mobile Dropdown -->
+                <div class="md:hidden ml-2">
+                    <select id="mobileDocSelect" onchange="switchDocument(this.value)" class="text-sm border-none bg-transparent font-medium focus:ring-0 cursor-pointer"></select>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 md:gap-4">
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors">
+                    <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 24.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button onclick="toggleSettings()" class="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white flex items-center gap-1 font-medium bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full">
+                    <span class="hidden md:inline">🔑 Keys & Settings</span>
+                    <span class="md:hidden">⚙️</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex overflow-hidden">
+        <!-- Left Panel: Input & Controls -->
+        <aside class="w-full md:w-1/3 lg:w-1/4 bg-white dark:bg-dark-surface border-r border-gray-200 dark:border-dark-border flex flex-col z-10 overflow-y-auto transition-colors duration-300">
+            
+            <!-- Document Manager Section -->
+            <div class="p-4 bg-gray-50 dark:bg-[#0B1120] border-b border-gray-200 dark:border-dark-border">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Active Document</h2>
+                    <button onclick="createNewDocument()" class="text-xs text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium">+ New Doc</button>
+                </div>
+                <div class="relative">
+                    <select id="docSelect" onchange="switchDocument(this.value)" class="w-full p-2 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-dark-surface text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+                <div class="flex gap-2 mt-2">
+                    <button onclick="renameCurrentDocument()" class="text-xs text-gray-500 hover:text-gray-700 underline">Rename</button>
+                    <button onclick="deleteCurrentDocument()" class="text-xs text-red-400 hover:text-red-600 underline">Delete Doc</button>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-6 border-b border-gray-100 dark:border-gray-700">
+                <h2 class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">New Text Input</h2>
+                <div class="flex gap-2 mb-4">
+                    <button onclick="loadExample('legal')" class="flex-1 px-3 py-1.5 text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-800 rounded hover:bg-blue-100 font-medium transition">Legal Demo</button>
+                    <button onclick="loadExample('news')" class="flex-1 px-3 py-1.5 text-xs bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-100 dark:border-green-800 rounded hover:bg-green-100 font-medium transition">News Demo</button>
+                </div>
+                <textarea id="inputText" class="w-full h-32 p-3 text-sm border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono resize-none mb-3 placeholder-gray-400 transition-colors" placeholder="Paste German text here...&#10;(Enter to submit, Shift+Enter for new line)"></textarea>
+                <button onclick="processInput()" id="analyzeBtn" class="w-full py-2.5 bg-gray-800 dark:bg-blue-600 hover:bg-gray-900 dark:hover:bg-blue-500 text-white font-medium rounded shadow transition flex justify-center items-center gap-2">
+                    <span>Analyze & Append</span>
+                </button>
+                <div id="apiWarning" class="hidden mt-2 text-xs text-orange-600 dark:text-orange-300 bg-orange-50 dark:bg-orange-900/20 p-2 rounded border border-orange-100 dark:border-orange-900/50">
+                    Offline Mode. Add API Key for best results.
+                </div>
+                <!-- Status Bar -->
+                <div id="modelStatus" class="hidden mt-2 text-[11px] text-gray-500 dark:text-gray-400 text-right bg-gray-100 dark:bg-gray-800 p-1.5 rounded"></div>
+            </div>
+
+            <!-- Stats -->
+            <div class="p-6 flex-1 transition-colors duration-300">
+                <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">Document Stats</h2>
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-gray-50 dark:bg-dark-surface p-3 rounded border border-gray-200 dark:border-dark-border shadow-sm">
+                        <div class="text-xl font-bold text-gray-800 dark:text-white" id="statWordCount">0</div>
+                        <div class="text-[10px] text-gray-500 dark:text-gray-400 uppercase">Words</div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-dark-surface p-3 rounded border border-gray-200 dark:border-dark-border shadow-sm">
+                        <div class="text-xl font-bold text-blue-600 dark:text-blue-400" id="statAvgLen">0</div>
+                        <div class="text-[10px] text-gray-500 dark:text-gray-400 uppercase">Avg. Len</div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-white dark:bg-dark-surface p-2 rounded border border-gray-200 dark:border-dark-border chart-container">
+                        <canvas id="complexityChart"></canvas>
+                    </div>
+                    <div class="bg-white dark:bg-dark-surface p-2 rounded border border-gray-200 dark:border-dark-border chart-container">
+                        <canvas id="compositionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Panel: Output -->
+        <section class="flex-1 bg-[#F9F9F7] dark:bg-dark-bg relative flex flex-col min-w-0 transition-colors duration-300">
+            <!-- Toolbar -->
+            <div class="h-12 border-b border-gray-200 dark:border-dark-border bg-white/50 dark:bg-dark-surface/50 backdrop-blur px-6 flex items-center justify-between flex-none transition-colors">
+                <div class="flex items-center gap-4 overflow-x-auto no-scrollbar">
+                    <span class="text-sm font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap">Reader View</span>
+                    <div class="h-4 w-px bg-gray-300 dark:bg-gray-600 flex-none"></div>
+                    <!-- PDF Button -->
+                    <button onclick="exportCurrentDocumentPDF()" class="text-xs text-red-600 hover:underline font-medium flex items-center gap-1 whitespace-nowrap" title="Select 'Save as PDF' in print dialog">
+                        <span>🖨️ PDF</span>
+                    </button>
+                    <!-- DOCX Button -->
+                    <button onclick="exportToDocx()" class="text-xs text-blue-700 hover:underline font-medium flex items-center gap-1 whitespace-nowrap">
+                        <span>📝 Word</span>
+                    </button>
+                    <!-- Txt Button -->
+                    <button onclick="exportCurrentDocument()" class="text-xs text-gray-600 hover:underline whitespace-nowrap">.txt</button>
+                    <button onclick="importDocument()" class="text-xs text-gray-600 hover:underline whitespace-nowrap">Import</button>
+                    <input type="file" id="fileImporter" class="hidden" accept=".txt,.json" onchange="handleFileImport(this)">
+                    <button onclick="clearCurrentDocument()" class="text-xs text-red-500 hover:underline whitespace-nowrap">Clear History</button>
+                </div>
+                <div class="flex items-center gap-3 ml-2">
+                    <span class="text-xs text-gray-400 dark:text-gray-500 hidden md:block">Hover to X-Ray</span>
+                    <div class="flex gap-1">
+                        <div class="w-3 h-3 rounded-full bg-red-200 dark:bg-red-900 border border-red-300 dark:border-red-700"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-200 dark:bg-green-900 border border-green-300 dark:border-green-700"></div>
+                        <div class="w-3 h-3 rounded-full bg-blue-200 dark:bg-blue-900 border border-blue-300 dark:border-blue-700"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="readerContent" class="flex-1 overflow-y-auto p-8 lg:p-12 scroll-smooth">
+                <div class="max-w-3xl mx-auto text-center mt-20 text-gray-400 dark:text-gray-600">
+                    <p class="mb-4 text-4xl opacity-20">🗎</p>
+                    <p>Select an example or paste text to begin analysis.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-dark-surface rounded-lg shadow-xl w-full max-w-md p-6 border border-gray-200 dark:border-gray-700">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Keys & Settings</h3>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Select Active API Key</label>
+                <div class="flex gap-2">
+                    <select id="keySelect" onchange="switchKey(this.value)" class="flex-1 p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded text-sm focus:ring-2 focus:ring-blue-500 outline-none"></select>
+                    <button onclick="testCurrentKey()" class="px-3 py-2 bg-green-100 hover:bg-green-200 text-green-700 rounded text-sm transition-colors" title="Test Connection">📶</button>
+                    <button onclick="deleteCurrentKey()" class="px-3 py-2 bg-red-100 hover:bg-red-200 text-red-600 rounded text-sm transition-colors" title="Delete key">🗑️</button>
+                </div>
+                <p class="text-[10px] text-gray-500 dark:text-gray-400 mt-1">If one key hits a limit, the app will try others automatically.</p>
+            </div>
+
+            <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded border border-gray-100 dark:border-gray-700">
+                <label class="block text-xs font-bold text-gray-500 uppercase mb-2">Add New API Key</label>
+                <div class="space-y-2">
+                    <input type="text" id="newKeyName" placeholder="Label (e.g. Work Account)" class="w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded text-sm outline-none">
+                    <input type="password" id="newKeyVal" placeholder="Paste Key (AIzaSy...)" class="w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded text-sm outline-none">
+                    <button onclick="addNewKey()" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-medium transition-colors">+ Add to List</button>
+                </div>
+            </div>
+
+            <div class="mb-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Preferred Model</label>
+                <select id="modelSelect" onchange="saveModelPref()" class="w-full p-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                    <option value="gemini-1.5-flash">Gemini 1.5 Flash (Recommended)</option>
+                    <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash (Experimental)</option>
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro (Higher Quality)</option>
+                    <option value="gemini-1.0-pro">Gemini 1.0 Pro (Legacy)</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="toggleSettings()" class="px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. STATE ---
+        const state = { 
+            apiKeys: [], 
+            currentKeyId: null,
+            selectedModel: 'gemini-1.5-flash', // Defaulting to the most stable model
+            documents: {}, 
+            currentDocId: null, 
+            charts: {}, 
+            isDark: false 
+        };
+
+        // --- 2. THEME ---
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark'); state.isDark = true;
+            } else { document.documentElement.classList.remove('dark'); state.isDark = false; }
+            updateThemeIcons();
+        }
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark'); state.isDark = !state.isDark;
+            localStorage.setItem('theme', state.isDark ? 'dark' : 'light'); updateThemeIcons();
+            if (getCurrentData()) updateStats(getCurrentData());
+        }
+        function updateThemeIcons() {
+            const sun = document.getElementById('sunIcon'); const moon = document.getElementById('moonIcon');
+            if (state.isDark) { sun.classList.remove('hidden'); moon.classList.add('hidden'); }
+            else { sun.classList.add('hidden'); moon.classList.remove('hidden'); }
+        }
+
+        // --- 3. KEY MANAGER ---
+        function loadSettings() {
+            // Load Keys
+            let storedKeys = localStorage.getItem('wortbrucke_key_store');
+            const oldKey = localStorage.getItem('wortbrucke_api_key'); // Legacy check
+
+            if (oldKey && !storedKeys) {
+                // Migrate single key to new system
+                state.apiKeys = [{ id: 'default', name: 'Default Key', key: oldKey }];
+                state.currentKeyId = 'default';
+                saveKeysToStorage();
+                localStorage.removeItem('wortbrucke_api_key');
+            } else if (storedKeys) {
+                state.apiKeys = JSON.parse(storedKeys);
+                state.currentKeyId = localStorage.getItem('wortbrucke_current_key_id') || (state.apiKeys.length > 0 ? state.apiKeys[0].id : null);
+            }
+
+            // Load Model Preference
+            const savedModel = localStorage.getItem('wortbrucke_model');
+            if (savedModel) { 
+                state.selectedModel = savedModel; 
+                document.getElementById('modelSelect').value = savedModel; 
+            }
+
+            updateKeySelectUI();
+            checkStatus();
+        }
+
+        function updateKeySelectUI() {
+            const select = document.getElementById('keySelect');
+            select.innerHTML = '';
+            if (state.apiKeys.length === 0) {
+                const opt = document.createElement('option'); opt.text = "No keys saved (Offline)"; opt.value = ""; select.appendChild(opt); return;
+            }
+            state.apiKeys.forEach(k => {
+                const opt = document.createElement('option');
+                opt.value = k.id;
+                const masked = k.key.length > 8 ? k.key.substring(0, 4) + '...' + k.key.substring(k.key.length - 4) : '******';
+                opt.text = `${k.name} (${masked})`;
+                opt.selected = (k.id === state.currentKeyId);
+                select.appendChild(opt);
+            });
+        }
+
+        function toggleSettings() { document.getElementById('settingsModal').classList.toggle('hidden'); }
+
+        function addNewKey() {
+            const name = document.getElementById('newKeyName').value.trim() || "New Key";
+            let val = document.getElementById('newKeyVal').value.trim();
+            // Sanitize: Remove invisible characters
+            val = val.replace(/[\u200B-\u200D\uFEFF]/g, ''); 
+            
+            if (!val) { alert("Please enter an API Key"); return; }
+            
+            const newId = 'k_' + Date.now();
+            state.apiKeys.push({ id: newId, name: name, key: val });
+            state.currentKeyId = newId; 
+            
+            saveKeysToStorage(); updateKeySelectUI();
+            document.getElementById('newKeyName').value = ""; document.getElementById('newKeyVal').value = "";
+            checkStatus();
+        }
+
+        function switchKey(id) {
+            state.currentKeyId = id; localStorage.setItem('wortbrucke_current_key_id', id); checkStatus();
+        }
+
+        function deleteCurrentKey() {
+            if (!state.currentKeyId || state.apiKeys.length === 0) return;
+            if (confirm("Delete this API key?")) {
+                state.apiKeys = state.apiKeys.filter(k => k.id !== state.currentKeyId);
+                state.currentKeyId = state.apiKeys.length > 0 ? state.apiKeys[0].id : null;
+                saveKeysToStorage(); updateKeySelectUI(); checkStatus();
+            }
+        }
+
+        function saveKeysToStorage() {
+            localStorage.setItem('wortbrucke_key_store', JSON.stringify(state.apiKeys));
+            if (state.currentKeyId) localStorage.setItem('wortbrucke_current_key_id', state.currentKeyId);
+        }
+
+        function saveModelPref() {
+            const mod = document.getElementById('modelSelect').value;
+            state.selectedModel = mod; localStorage.setItem('wortbrucke_model', mod);
+        }
+
+        function checkStatus() {
+            const activeKey = getActiveKey();
+            if (activeKey) { document.getElementById('apiWarning').classList.add('hidden'); }
+            else { document.getElementById('apiWarning').classList.remove('hidden'); }
+        }
+
+        function getActiveKey() {
+            if (!state.currentKeyId) return null;
+            const k = state.apiKeys.find(x => x.id === state.currentKeyId);
+            return k ? k.key : null;
+        }
+
+        async function testCurrentKey() {
+            const key = getActiveKey();
+            if (!key) { alert("No key selected."); return; }
+            try {
+                // Test with smallest prompt to verify connectivity
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
+                const response = await fetch(url, {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: "Hi" }] }] })
+                });
+                
+                if(response.ok) {
+                    alert("✅ Connection Successful! Key is valid.");
+                } else {
+                    const err = await response.json().catch(() => ({}));
+                    alert(`❌ Connection Failed: ${err.error?.message || response.statusText}`);
+                }
+            } catch (e) { alert("⚠️ Network Error: " + e.message); }
+        }
+
+        // --- 4. DOCUMENT MANAGER ---
+        function loadDocuments() {
+            const savedDocs = localStorage.getItem('wortbrucke_documents');
+            const savedCurrentId = localStorage.getItem('wortbrucke_current_doc');
+            if (savedDocs) {
+                state.documents = JSON.parse(savedDocs);
+                if (savedCurrentId && state.documents[savedCurrentId]) state.currentDocId = savedCurrentId;
+                else state.currentDocId = Object.keys(state.documents)[0];
+            } else { createNewDocument("My First Document", false); }
+            updateDocSelector(); renderReader(getCurrentData()); updateStats(getCurrentData());
+        }
+        function saveDocuments() { localStorage.setItem('wortbrucke_documents', JSON.stringify(state.documents)); localStorage.setItem('wortbrucke_current_doc', state.currentDocId); }
+        function createNewDocument(name = null, shouldSwitch = true) {
+            const id = 'doc_' + Date.now(); const docName = name || `Document ${Object.keys(state.documents).length + 1}`;
+            state.documents[id] = { name: docName, data: [] };
+            if (shouldSwitch) switchDocument(id); saveDocuments(); updateDocSelector();
+        }
+        function switchDocument(id) {
+            state.currentDocId = id; saveDocuments(); renderReader(getCurrentData()); updateStats(getCurrentData());
+            document.getElementById('docSelect').value = id;
+        }
+        function renameCurrentDocument() {
+            const newName = prompt("Enter new name:", state.documents[state.currentDocId].name);
+            if (newName && newName.trim()) { state.documents[state.currentDocId].name = newName.trim(); saveDocuments(); updateDocSelector(); }
+        }
+        function deleteCurrentDocument() {
+            if (Object.keys(state.documents).length <= 1) { alert("Cannot delete the last document."); return; }
+            if (confirm("Delete this entire document?")) {
+                delete state.documents[state.currentDocId]; state.currentDocId = Object.keys(state.documents)[0];
+                saveDocuments(); updateDocSelector(); switchDocument(state.currentDocId);
+            }
+        }
+        function updateDocSelector() {
+            const select = document.getElementById('docSelect'); const mobileSelect = document.getElementById('mobileDocSelect');
+            select.innerHTML = ''; mobileSelect.innerHTML = '';
+            Object.keys(state.documents).forEach(id => {
+                const doc = state.documents[id]; const option = document.createElement('option');
+                option.value = id; option.text = doc.name; option.selected = (id === state.currentDocId);
+                select.appendChild(option); mobileSelect.appendChild(option.cloneNode(true));
+            });
+            select.value = state.currentDocId;
+        }
+        function getCurrentData() { return state.documents[state.currentDocId]?.data || []; }
+
+        // --- 5. EXPORT & UTILS ---
+        function clearCurrentDocument() {
+            if (getCurrentData().length === 0) return;
+            if (confirm("Export history before deleting?")) {
+                exportCurrentDocument(); setTimeout(() => {
+                    if (confirm("History exported. Delete all data permanently?")) {
+                        state.documents[state.currentDocId].data = []; saveDocuments(); renderReader([]); updateStats([]);
+                    }
+                }, 1000);
+            } else if (confirm("Delete all translations permanently?")) {
+                state.documents[state.currentDocId].data = []; saveDocuments(); renderReader([]); updateStats([]);
+            }
+        }
+        function exportCurrentDocument() {
+            const doc = state.documents[state.currentDocId];
+            const blob = new Blob([JSON.stringify(doc)], {type: "text/plain;charset=utf-8"});
+            saveAs(blob, `${doc.name.replace(/\s+/g, '_')}_export.txt`);
+        }
+        
+        function exportToDocx() {
+            const data = getCurrentData();
+            if(data.length === 0) { alert("Document is empty."); return; }
+            
+            // NOTE: ESCAPED TAGS BELOW TO PREVENT BROWSER PARSING ERROR
+            let htmlContent = `<html><head><style>body { font-family: Calibri, sans-serif; } .chunk { margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; } .de { font-size: 14pt; font-weight: bold; color: #333; margin-bottom: 5px; } .en { font-size: 12pt; color: #666; font-style: italic; } h1 { color: #2563EB; }</style></head><body><h1>${state.documents[state.currentDocId].name}</h1>`;
+            data.forEach(block => { htmlContent += `<div class="chunk"><div class="de">${block.original}</div><div class="en">${block.translation}</div></div>`; });
+            htmlContent += "<\/body><\/html>";
+            
+            if (typeof htmlDocx !== 'undefined') {
+                const converted = htmlDocx.asBlob(htmlContent);
+                saveAs(converted, `${state.documents[state.currentDocId].name}.docx`);
+            } else { alert("Word export library failed to load."); }
+        }
+
+        // NEW: PDF Export via Print (Robust & Selectable)
+        function exportCurrentDocumentPDF() {
+            window.print();
+        }
+
+        function importDocument() { document.getElementById('fileImporter').click(); }
+        function handleFileImport(input) {
+            const file = input.files[0]; if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedDoc = JSON.parse(e.target.result);
+                    if (!importedDoc.data) throw new Error("Invalid file format");
+                    const newId = 'doc_' + Date.now();
+                    state.documents[newId] = { name: importedDoc.name + " (Imported)", data: importedDoc.data };
+                    switchDocument(newId); saveDocuments(); updateDocSelector(); alert("Import successful!");
+                } catch (err) { alert("Error importing file: " + err.message); }
+            };
+            reader.readAsText(file); input.value = '';
+        }
+        function deleteBlock(index) {
+            state.documents[state.currentDocId].data.splice(index, 1);
+            saveDocuments(); renderReader(getCurrentData()); updateStats(getCurrentData());
+        }
+
+        // --- 6. PROCESSING & API CALLS ---
+        function loadExample(type) { document.getElementById('inputText').value = EXAMPLES[type].text; }
+        async function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+        // Primary Processing Function
+        async function processInput() {
+            const text = document.getElementById('inputText').value; if (!text.trim()) return;
+            const btn = document.getElementById('analyzeBtn'); btn.innerHTML = '<div class="loader"></div> Processing...';
+            const statusEl = document.getElementById('modelStatus'); 
+            statusEl.innerText = ""; statusEl.classList.add('hidden');
+            
+            try {
+                let result = [];
+                if (state.apiKeys.length > 0) {
+                    statusEl.classList.remove('hidden');
+                    result = await tryKeysAndModels(text);
+                } else {
+                    // Offline fallback
+                    document.getElementById('apiWarning').classList.remove('hidden');
+                    let matched = false;
+                    for(let k in EXAMPLES) { if(EXAMPLES[k].text === text) { result = EXAMPLES[k].analysis; matched = true; break; } }
+                    if(!matched) result = heuristicAnalysis(text);
+                }
+                const currentDoc = state.documents[state.currentDocId];
+                currentDoc.data = [...currentDoc.data, ...result];
+                saveDocuments(); renderReader(currentDoc.data); updateStats(currentDoc.data);
+                document.getElementById('inputText').value = "";
+                statusEl.innerText = "Done!"; setTimeout(() => statusEl.classList.add('hidden'), 3000);
+            } catch (e) { 
+                console.error(e);
+                alert("Analysis Failed: " + e.message); 
+            }
+            btn.innerHTML = '<span>Analyze & Append</span>';
+        }
+
+        // Fallback Chain: Flash -> Flash 2.0 -> Pro -> Legacy Pro
+        const FALLBACK_CHAIN = ["gemini-1.5-flash", "gemini-2.0-flash-exp", "gemini-1.5-pro", "gemini-1.0-pro"];
+
+        async function tryKeysAndModels(text) {
+            // Priority: Active Key -> Others
+            let keysToTry = [...state.apiKeys];
+            const activeIdx = keysToTry.findIndex(k => k.id === state.currentKeyId);
+            if (activeIdx > 0) { const active = keysToTry.splice(activeIdx, 1)[0]; keysToTry.unshift(active); }
+
+            const statusEl = document.getElementById('modelStatus');
+            let lastError = null;
+
+            for (const keyObj of keysToTry) {
+                // Priority: Selected Model -> Rest of Fallback Chain
+                let modelsToTry = [state.selectedModel];
+                FALLBACK_CHAIN.forEach(m => { if(m !== state.selectedModel) modelsToTry.push(m); });
+
+                for (const model of modelsToTry) {
+                    try {
+                        statusEl.innerText = `Trying ${keyObj.name} using ${model}...`;
+                        const result = await callSpecificGeminiModel(text, model, keyObj.key);
+                        
+                        // Switch active key if needed
+                        if (keyObj.id !== state.currentKeyId) {
+                            state.currentKeyId = keyObj.id;
+                            document.getElementById('keySelect').value = keyObj.id;
+                            localStorage.setItem('wortbrucke_current_key_id', keyObj.id);
+                        }
+                        statusEl.innerText = `Success (${model})`;
+                        return result; 
+                    } catch (e) {
+                        lastError = e;
+                        // If rate limited, break model loop to try next key
+                        if (e.message.includes("429")) {
+                            statusEl.innerText = `Key Limit (${keyObj.name}). Switching...`;
+                            break; 
+                        }
+                        // If 404 (Model Not Found), just try next model on same key
+                    }
+                }
+            }
+            throw lastError || new Error("All keys/models failed.");
+        }
+
+        async function callSpecificGeminiModel(text, modelId, keyString) {
+            const prompt = `Analyze German text. Return valid JSON array: [{ "original": "sentence", "translation": "english", "words": [{ "text": "word", "trans": "meaning", "type": "word|compound", "parts": [{"text": "part", "trans": "meaning"}] }] }] Text: ${text}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${keyString.trim()}`;
+            
+            const response = await fetch(url, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", maxOutputTokens: 8192 } })
+            });
+
+            if (response.status === 429) throw new Error("429 Rate Limit");
+            if (response.status === 404) throw new Error("404 Model Not Found");
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const data = await response.json();
+            if (!data.candidates) throw new Error("No Output");
+            const raw = data.candidates[0].content.parts[0].text;
+            return JSON.parse(raw.replace(/```json/g, '').replace(/```/g, '').trim());
+        }
+
+        // --- Data & Helpers ---
+        const EXAMPLES = {
+            legal: { text: "Das Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz wurde gestern im Bundestag verabschiedet.", analysis: [{ original: "Das Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz wurde gestern im Bundestag verabschiedet.", translation: "The Beef Labeling Supervision Duties Delegation Law was passed in the Bundestag yesterday.", words: [{ text: "Das", type: "article", trans: "The" }, { text: "Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz", type: "compound", trans: "Beef Labeling Delegation Law", parts: [{text: "Rind", trans: "Cattle"}, {text: "fleisch", trans: "meat"}, {text: "etikettierung", trans: "labeling"}, {text: "s", trans: "-"}, {text: "überwachung", trans: "supervision"}, {text: "s", trans: "-"}, {text: "aufgaben", trans: "duties"}, {text: "übertragung", trans: "delegation"}, {text: "s", trans: "-"}, {text: "gesetz", trans: "law"}] }, { text: "wurde", type: "verb", trans: "was" }, { text: "gestern", type: "adverb", trans: "yesterday" }, { text: "im", type: "prep", trans: "in the" }, { text: "Bundestag", type: "compound", trans: "Federal Diet", parts: [{text: "Bund", trans: "Federation"}, {text: "es", trans: "-"}, {text: "tag", trans: "assembly"}] }, { text: "verabschiedet", type: "verb", trans: "passed" }, { text: ".", type: "punct", trans: "" }] }] },
+            news: { text: "Die Verkehrssicherheitsmaßnahmen werden in der Innenstadt verschärft.", analysis: [{ original: "Die Verkehrssicherheitsmaßnahmen werden in der Innenstadt verschärft.", translation: "Traffic safety measures in the city center are being tightened.", words: [{ text: "Die", trans: "The" }, { text: "Verkehrssicherheitsmaßnahmen", type: "compound", trans: "Traffic safety measures", parts: [{text: "Verkehr", trans: "Traffic"}, {text: "s", trans: "-"}, {text: "sicherheit", trans: "safety"}, {text: "s", trans: "-"}, {text: "maßnahmen", trans: "measures"}] }, { text: "werden", trans: "are being" }, { text: "in", trans: "in" }, { text: "der", trans: "the" }, { text: "Innenstadt", type: "compound", trans: "City center", parts: [{text: "Innen", trans: "Inner"}, {text: "stadt", trans: "city"}] }, { text: "verschärft", trans: "tightened" }, { text: ".", type: "punct", trans: "" }] }] }
+        };
+
+        function heuristicAnalysis(text) {
+            return (text.match(/[^.!?]+[.!?]+/g) || [text]).map(sentence => {
+                const words = sentence.trim().split(/\s+/).map(wordStr => {
+                    const clean = wordStr.replace(/[^\wäöüÄÖÜß]/g, '');
+                    const isComp = clean.length > 10;
+                    let parts = [];
+                    if(isComp) { const len = Math.floor(clean.length/3); parts=[{text:clean.substring(0,len),trans:"?"},{text:clean.substring(len,len*2),trans:"?"},{text:clean.substring(len*2),trans:"?"}]; }
+                    return { text: wordStr, trans: isComp?"Compound":"Simple", type: isComp?'compound':'word', parts: parts.length?parts:null };
+                });
+                return { original: sentence.trim(), translation: "[No API Key]", words: words };
+            });
+        }
+
+        function copyToClipboard(text) { navigator.clipboard.writeText(text); }
+
+        function speakGerman(text, id) {
+            window.speechSynthesis.cancel();
+            document.querySelectorAll('.speaking-highlight').forEach(el => el.classList.remove('speaking-highlight'));
+            const u = new SpeechSynthesisUtterance(text); u.lang = 'de-DE'; u.rate = 0.8;
+            const words = Array.from(document.getElementById(id).children).filter(el => el.hasAttribute('data-speech-start'));
+            u.onboundary = (e) => {
+                if(e.name === 'word') {
+                    words.forEach(el => {
+                        const s = parseInt(el.dataset.speechStart); const end = parseInt(el.dataset.speechEnd);
+                        if (e.charIndex >= s && e.charIndex < end + 2) { words.forEach(x => x.classList.remove('speaking-highlight')); el.classList.add('speaking-highlight'); }
+                    });
+                }
+            };
+            u.onend = () => words.forEach(x => x.classList.remove('speaking-highlight'));
+            window.speechSynthesis.speak(u);
+        }
+
+        function renderReader(data) {
+            const container = document.getElementById('readerContent'); container.innerHTML = '';
+            data.forEach((block, blockIdx) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = "group/card relative mb-8 bg-white dark:bg-dark-surface p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300";
+                
+                const delBtn = document.createElement('button');
+                delBtn.className = "absolute top-2 right-2 text-gray-300 hover:text-red-500 p-2 opacity-0 group-hover/card:opacity-100 transition-opacity";
+                delBtn.innerHTML = "✕"; delBtn.onclick = () => deleteBlock(blockIdx);
+                wrapper.appendChild(delBtn);
+
+                const germanLine = document.createElement('div');
+                const uniqueId = `sentence-${blockIdx}`; germanLine.id = uniqueId;
+                germanLine.className = "mb-4 text-xl md:text-2xl font-serif-german text-gray-800 dark:text-gray-100 leading-loose flex flex-wrap items-baseline gap-x-2 gap-y-1";
+                
+                let charCount = 0;
+                block.words.forEach(wordObj => {
+                    const isComp = (wordObj.type === 'compound' || (wordObj.parts && wordObj.parts.length > 1));
+                    const start = charCount; const len = wordObj.text.length; charCount += len + 1;
+                    
+                    let el;
+                    if (isComp) {
+                        el = document.createElement('span');
+                        el.className = "compound-wrapper relative inline-flex items-baseline cursor-help border-b-2 border-dashed border-blue-300 dark:border-blue-700 hover:border-blue-500 transition-colors pb-0.5";
+                        wordObj.parts.forEach((p, i) => {
+                            const ps = document.createElement('span'); ps.className = `compound-part relative part-${i % 6}`; ps.innerText = p.text;
+                            const pt = document.createElement('span'); pt.className = "tooltip-base tooltip-part -top-8 left-1/2 bg-gray-900 dark:bg-black text-white text-[11px] px-2 py-1 rounded shadow-lg transform -translate-x-1/2"; pt.innerText = p.trans;
+                            ps.appendChild(pt); el.appendChild(ps);
+                        });
+                        const wt = document.createElement('span'); wt.className = "tooltip-base tooltip-whole -bottom-10 left-1/2 bg-blue-600 text-white text-xs px-3 py-1.5 rounded shadow-lg transform -translate-x-1/2"; wt.innerText = `Full: ${wordObj.trans}`;
+                        el.appendChild(wt);
+                    } else {
+                        el = document.createElement('span'); el.className = "simple-word relative cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"; el.innerText = wordObj.text;
+                        const t = document.createElement('div'); t.className = "tooltip-base tooltip-simple -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 text-xs px-2 py-1 rounded shadow"; t.innerText = wordObj.trans;
+                        el.appendChild(t);
+                    }
+                    el.dataset.speechStart = start; el.dataset.speechEnd = start + len;
+                    germanLine.appendChild(el);
+                });
+
+                const speakBtn = document.createElement('button');
+                speakBtn.className = "ml-3 p-1 rounded-full text-gray-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:text-blue-400 dark:hover:bg-blue-900/30 transition-all transform hover:scale-110";
+                speakBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" /></svg>`;
+                speakBtn.onclick = () => speakGerman(block.original, uniqueId);
+                germanLine.appendChild(speakBtn);
+
+                const cpyBtn = document.createElement('button');
+                cpyBtn.className = "ml-2 p-1 rounded-full text-gray-400 hover:text-green-600 hover:bg-green-50 transition-all transform hover:scale-110";
+                cpyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5" /></svg>`;
+                cpyBtn.onclick = () => copyToClipboard(block.original);
+                germanLine.appendChild(cpyBtn);
+
+                const engLine = document.createElement('div');
+                engLine.className = "text-md text-gray-500 dark:text-gray-400 font-light border-t border-gray-100 dark:border-gray-700 pt-3 italic flex justify-between items-center";
+                const engTxt = document.createElement('span'); engTxt.innerText = block.translation;
+                const cpyEng = document.createElement('button'); cpyEng.className = "ml-2 p-1 rounded-full text-gray-300 hover:text-green-600";
+                cpyEng.innerHTML = cpyBtn.innerHTML; cpyEng.onclick = () => copyToClipboard(block.translation);
+                engLine.appendChild(engTxt); engLine.appendChild(cpyEng);
+                
+                wrapper.appendChild(germanLine); wrapper.appendChild(engLine); container.appendChild(wrapper);
+            });
+            if (data.length > 0) container.scrollTop = container.scrollHeight;
+        }
+
+        function updateStats(data) {
+            let totalWords = 0, totalChars = 0, sentLengths = [], types = { Simple: 0, Compound: 0 };
+            data.forEach(sent => {
+                let sc = 0; sent.words.forEach(w => { if (w.text.match(/\w/)) { totalWords++; totalChars+=w.text.length; sc++; if(w.type==='compound' || (w.parts && w.parts.length>1)) types.Compound++; else types.Simple++; } });
+                sentLengths.push(sc);
+            });
+            document.getElementById('statWordCount').innerText = totalWords;
+            document.getElementById('statAvgLen').innerText = totalWords > 0 ? (totalChars/totalWords).toFixed(1) : 0;
+            renderCharts(sentLengths, types);
+        }
+
+        function renderCharts(lengths, types) {
+            const chartColor = state.isDark ? '#475569' : '#CBD5E0'; const textColor = state.isDark ? '#94A3B8' : '#64748B';
+            const ctx1 = document.getElementById('complexityChart').getContext('2d');
+            if (state.charts.complexity) state.charts.complexity.destroy();
+            state.charts.complexity = new Chart(ctx1, {
+                type: 'bar', data: { labels: lengths.map((_, i) => `S${i+1}`), datasets: [{ data: lengths, backgroundColor: chartColor, borderRadius: 4 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
+            });
+            const ctx2 = document.getElementById('compositionChart').getContext('2d');
+            if (state.charts.composition) state.charts.composition.destroy();
+            state.charts.composition = new Chart(ctx2, {
+                type: 'doughnut', data: { labels: ['Simple', 'Compound'], datasets: [{ data: [types.Simple, types.Compound], backgroundColor: [state.isDark ? '#334155' : '#E2E8F0', '#3B82F6'], borderWidth: 0 }] },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false } } }
+            });
+        }
+
+        window.onload = function() {
+            initTheme(); loadSettings(); loadDocuments();
+            document.getElementById('inputText').addEventListener('keydown', function(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); processInput(); } });
+        };
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => { if (!localStorage.getItem('theme')) { state.isDark = e.matches; if(e.matches) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark'); updateThemeIcons(); } });
+    </script>
+</body>
+</html>
