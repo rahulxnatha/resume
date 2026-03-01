@@ -211,9 +211,9 @@
       align-items: center;
       gap: .6rem;
       font-weight: 600;
-      font-size: .8rem;
+      font-size: 1rem;
       letter-spacing: .1em;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       white-space: nowrap;
     }
 
@@ -246,9 +246,9 @@
     .nav-links {
       display: flex;
       gap: 1.2rem;
-      font-size: .78rem;
+      font-size: 1rem;
       letter-spacing: .12em;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       flex-wrap: wrap;
       justify-content: flex-end;
       font-weight: 600;
@@ -1053,18 +1053,19 @@
     }
 
     .details-pane.maximized {
-      right: 1%;
+      right: 0%;
       /* left: 0; */
       transition: right .6s cubic-bezier(.19, 1, .22, 1), width .3s ease;
       transition: all .6s cubic-bezier(.19, 1, .22, 1);
       width: auto;
-      width: calc(100% - 2%);
+      width: calc(100% - 0%);
       /* max-width: 100%; */
-      border-radius: var(--radius-lg);
+      /* border-radius: var(--radius-lg); */
+      border-radius: 0;
       box-shadow: none;
       border: 1px solid rgba(148, 163, 184, .35);
-      top: calc(var(--nav-h) + 0.01*100vh);
-      height: calc(100vh - var(--nav-h) - 0.02*100vh);
+      top: calc(var(--nav-h) + 0.00*100vh);
+      height: calc(100vh - var(--nav-h) - 0.00*100vh);
     }
 
     body.theme-light .details-pane {
@@ -1629,7 +1630,7 @@
     <div class="nav-inner">
       <div class="logo">
         <div class="logo-mark"></div>
-        <span>RAHUL&nbsp;NATHA</span>
+        <span>Rahul&nbsp;Natha</span>
       </div>
       <div class="nav-right">
         <nav class="nav-links">
@@ -1723,7 +1724,7 @@
     </section>
 
     <footer>
-      Starship portfolio · powered by Google Sheets data
+      Starship portfolio · Made by Rahul Natha · Powered by Google Sheets data
     </footer>
   </main>
 
