@@ -5,6 +5,9 @@
    - other existing behavior preserved
 */
 
+window.location.replace("https://rahulxnatha.github.io");
+
+
 /* ---------- utility helpers ---------- */
 function escapeHTML(str) {
   return String(str ?? "").replace(/[&<>"']/g, s => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[s]);
